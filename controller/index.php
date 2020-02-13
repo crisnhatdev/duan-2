@@ -1,4 +1,8 @@
 <?php
+    require_once '../model/catalog.php';
+    require_once '../model/connect.php';
+    $danhmuc = new catalog();
+    $dsdm = $danhmuc->getList();
     if(isset($_GET['act'])){
         $act = $_GET['act'];
         switch ($act) {

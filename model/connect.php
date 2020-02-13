@@ -5,7 +5,7 @@
             $dsn = 'mysql:host=localhost; dbname=duan-2';
             $user = 'root';
             $pass = '';
-            $this->db=new PDO($dsn,$user,$passa,array(PDO::MYSQL_ATTR_INIT_COMMAND =>"SET NAMES utf8"));
+            $this->db=new PDO($dsn,$user,$pass,array(PDO::MYSQL_ATTR_INIT_COMMAND =>"SET NAMES utf8"));
         }
         //lay tac ca du lieu tu db
         public function getList($select){
