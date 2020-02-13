@@ -2125,15 +2125,6 @@ ul {
   color: #000;
   font-size: 15px;
   padding: 36px 23px;
-  font-family: "Tahoma", sans-serif;
-  text-transform: capitalize;
-  line-height: 12px;
-  font-weight: 400;
-}
-
-/* line 29, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_menu.scss */
-.main_menu .main-menu-item ul li .nav-link:hover {
-  color: #000;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -2425,7 +2416,10 @@ ul {
   position: relative;
   background-color: #ecfdff;
   overflow: hidden;
+<<<<<<< HEAD
   height: 100vh;
+=======
+>>>>>>> 8ada7d6bd9ca5217b540d15b8b398d7cbe4ba7a4
 }
 
 /* line 7, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
