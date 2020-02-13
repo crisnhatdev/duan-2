@@ -43,12 +43,12 @@
                         <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?act=home">Home</a>
+                                    <a class="nav-link" href="index.php?act=home">Trang Chủ</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_1"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Shop
+                                        Cửa Hàng
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_1">
                                         <a class="dropdown-item" href="index.php?act=shop"> shop </a>
@@ -56,7 +56,7 @@
                                         
                                     </div>
                                 </li>
-                                <li class="nav-item dropdown">
+                                <!-- <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         pages
@@ -69,11 +69,11 @@
                                         <a class="dropdown-item" href="confirmation.html">confirmation</a>
                                         <a class="dropdown-item" href="elements.html">elements</a>
                                     </div>
-                                </li>
+                                </li> -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_2"
                                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        blog
+                                        Bài Viết
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                         <a class="dropdown-item" href="index.php?act=blog"> blog</a>
@@ -82,7 +82,7 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?act=contact">Contact</a>
+                                    <a class="nav-link" href="index.php?act=contact">Liên Hệ</a>
                                 </li>
                             </ul>
                         </div>
