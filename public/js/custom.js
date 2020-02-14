@@ -46,11 +46,7 @@
       autoplayHoverPause: true,
       autoplayTimeout: 5000,
       nav: true,
-<<<<<<< HEAD
       navText: ["Trước", "Sau"],
-=======
-      navText: ["next", "previous"],
->>>>>>> 8ada7d6bd9ca5217b540d15b8b398d7cbe4ba7a4
       responsive: {
         0: {
           margin: 15,
@@ -87,11 +83,7 @@
       autoplayHoverPause: true,
       autoplayTimeout: 5000,
       nav: true,
-<<<<<<< HEAD
       navText: ["Trước", "Sau"],
-=======
-      navText: ["next", "previous"],
->>>>>>> 8ada7d6bd9ca5217b540d15b8b398d7cbe4ba7a4
       smartSpeed: 1000,
       responsive: {
         0: {
@@ -154,13 +146,8 @@
     autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 5000,
-<<<<<<< HEAD
     nav: false,
     navText: ["Trước", "Sau"],
-=======
-    nav: true,
-    navText: ["next", "previous"],
->>>>>>> 8ada7d6bd9ca5217b540d15b8b398d7cbe4ba7a4
     smartSpeed: 1000,
     responsive: {
       0: {
@@ -170,11 +157,7 @@
         nav: false
       },
       768: {
-<<<<<<< HEAD
         nav: false
-=======
-        nav: true
->>>>>>> 8ada7d6bd9ca5217b540d15b8b398d7cbe4ba7a4
       }
     }
   });
@@ -251,11 +234,7 @@
   function makeTimer() {
 
     //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-<<<<<<< HEAD
     var endTime = new Date("20 Feb 2020 20:20:20 GMT+07:00");
-=======
-    var endTime = new Date("27 Sep 2019 12:56:00 GMT+01:00");
->>>>>>> 8ada7d6bd9ca5217b540d15b8b398d7cbe4ba7a4
     endTime = (Date.parse(endTime) / 1000);
 
     var now = new Date();
