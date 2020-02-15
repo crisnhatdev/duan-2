@@ -2,15 +2,15 @@
 
 class Catalog {
 
-    protected $id = null;
-    protected $name = null;
-    protected $img = null;
+    protected $malh = null;
+    protected $tenlh = null;
+    protected $hinhanhlh = null;
 
     function __construct() {
         if (func_num_args() === 3) {
-            $this->id = func_get_args(0);
-            $this->name = func_get_args(1);
-            $this->img = func_get_args(2);
+            $this->malh = func_get_args(0);
+            $this->tenlh = func_get_args(1);
+            $this->hinhanhlh = func_get_args(2);
         }
     }
 

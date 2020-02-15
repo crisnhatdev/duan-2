@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Feb 13, 2020 at 06:45 PM
+-- Generation Time: Feb 15, 2020 at 09:53 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -241,7 +241,21 @@ CREATE TABLE `sanpham` (
 
 INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `luotxem`, `mota`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `malh`) VALUES
 (1, 'Ghế Màu Xanh Lá', 3300000, 0, 'Nhựa cao cấp - Chân kim loại', 0, 0, '2020-02-13 17:19:32', 'product_1.png', 3),
-(2, 'Ghế Màu Cam', 3000000, 0, 'Nhựa cao cấp - Chân kim loại', 0, 0, '2020-02-13 17:20:11', 'product_2.png', 3);
+(2, 'Ghế Màu Cam', 3000000, 0, 'Nhựa cao cấp - Chân kim loại', 0, 0, '2020-02-13 17:20:11', 'product_2.png', 3),
+(3, 'Bàn Nước Monocle', 10900000, 0, 'Khung kim loại, Đá hoa cương', 0, 0, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', 3),
+(4, 'Bàn Nước Oval', 15900000, 0, 'Chân kim loại màu đồng- MDF giả da', 0, 0, '2020-02-14 10:29:01', 'ban-nuoc-oval.jpg', 3),
+(5, 'Bàn Ăn Delta 01', 95000000, 0, 'Khung kim loại sơn tĩnh điện- Mặt đá', 0, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', 1),
+(6, 'Bàn Ăn Roma', 9900000, 0, 'Gỗ tần bì (Ash)- MDF sơn trắng', 0, 0, '2020-02-14 10:31:35', 'ban-an-roma.jpg', 1),
+(7, 'Ghế Ăn HC', 3300000, 0, 'Chân kim loại - da công nghiệp', 0, 0, '2020-02-14 10:32:35', 'ghe_an_hc.jpg', 1),
+(8, 'Ghế Tuscany', 3600000, 0, 'Da công nghiệp - Kim loại', 0, 0, '2020-02-14 10:33:23', 'ghe-tuscany.gif', 1),
+(9, 'Bàn Làm Việc Biblio', 11900000, 0, 'Chân kim loại+ MDF+ Da', 0, 0, '2020-02-14 10:36:30', 'ban-lam-viec-biblio.jpg', 4),
+(10, 'Kệ Treo Tường Natura Gautier', 11900000, 0, 'Gỗ sồi (Oak)', 0, 0, '2020-02-14 10:38:33', 'ke-treo-natura-gautier.jpg', 4),
+(11, 'Kệ sách Glamour màu Walnut', 25700000, 0, 'Gỗ xà cừ (Mahogany), gỗ ép, gỗ lạng', 0, 0, '2020-02-14 10:39:53', 'ke_sach_glamour_mau_walnut_l.jpg', 4),
+(12, 'Bàn Làm Việc Leo', 12900000, 0, 'Chân kim loại+ Gỗ', 0, 0, '2020-02-14 10:37:35', 'line-pio_desk.jpg', 4),
+(13, 'Giường Hộc Kéo Iris - 1m6', 14900000, 0, 'Khung gỗ bọc vải', 0, 0, '2020-02-14 10:43:44', '500-iris-grey.jpg', 2),
+(14, 'Giường Bụi', 16900000, 0, 'Gỗ Thông + MDF Veneer Thông + Kim loại sơn tinh điện+ Vải', 0, 0, '2020-02-14 10:44:22', 'bui_bed-front.jpg', 2),
+(15, 'Giường Ngủ Lạc Viên', 31900000, 0, 'Gỗ xà cừ - Da công nghiệp', 0, 0, '2020-02-14 10:45:38', 'giuong-ngu-lac-vien.jpg', 2),
+(16, 'Giường Dixie', 62000000, 0, 'Khung gỗ tần bì', 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', 2);
 
 -- --------------------------------------------------------
 

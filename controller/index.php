@@ -3,11 +3,15 @@
 //Model
 require_once '../model/connect.php';
 require_once '../model/catalog.php';
+require_once '../model/product.php';
 //<---End--->
 //
 //Global Var
 $crCata = new Catalog();
 $cataList = $crCata->getCata();
+
+$crPro = new Product();
+$proList = $crPro->getPro();
 //<---End--->
 //
 //Control
