@@ -1,3 +1,4 @@
+<?php require_once '../view/header.php'; ?>
 <!-- banner part start-->
 <section class="banner_part">
     <div class="container">
@@ -259,3 +260,4 @@
     </div>
 </section>
 <!--::subscribe_area part end::-->
+<?php require_once '../view/footer.php'; ?>

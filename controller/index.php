@@ -15,7 +15,6 @@ $proList = $crPro->getPro();
 //<---End--->
 //
 //Control
-require_once '../view/header.php';
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -42,8 +41,6 @@ if (isset($_GET['act'])) {
 } else {
     require_once '../view/content.php';
 }
-
-require_once '../view/footer.php';
 
 //<---End--->
 ?>
