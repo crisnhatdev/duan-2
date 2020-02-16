@@ -60,37 +60,23 @@
                                             ?>
                                         </div>
                                     </li>
-                                    <!--                                <li class="nav-item dropdown">
-                                                                        <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
-                                                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                            pages
-                                                                        </a>
-                                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                                                            <a class="dropdown-item" href="login.html"> login</a>
-                                                                            <a class="dropdown-item" href="tracking.html">tracking</a>
-                                                                            <a class="dropdown-item" href="checkout.html">product checkout</a>
-                                                                            <a class="dropdown-item" href="cart.html">shopping cart</a>
-                                                                            <a class="dropdown-item" href="confirmation.html">confirmation</a>
-                                                                            <a class="dropdown-item" href="elements.html">elements</a>
-                                                                        </div>
-                                                                    </li>-->
                                     <li class="nav-item">
                                         <a class="nav-link" href=".?act=blog" id="navbarDropdown_2"
                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Tin Tức
                                         </a>
-                                        <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown_2">-->
-                                        <!--<a class="dropdown-item" href="blog.html"> blog</a>-->
-                                        <!--<a class="dropdown-item" href="single-blog.html">Single blog</a>-->
-                                        <!--</div>-->
                                     </li>
 
                                     <li class="nav-item">
                                         <a class="nav-link" href=".?act=contact">Liên hệ</a>
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href=".?act=account">Tài khoản</a>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
+<!--                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                            <a class="dropdown-item" href=".?act=signIn"> Đăng nhập</a>
+                                            <a class="dropdown-item" href=".?act=signUp">Đăng ký</a>
+                                        </div>-->
                                     </li>
                                 </ul>
                             </div>
