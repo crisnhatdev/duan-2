@@ -5,6 +5,38 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="banner_slider owl-carousel">
+                    <!--                    <div class="single_banner_slider">
+                                            <div class="row">
+                                                <div class="col-lg-5 col-md-8">
+                                                    <div class="banner_text">
+                                                        <div class="banner_text_iner">
+                                                            <h1>Sự tinh tế</h1>
+                                                            <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
+                                                            <a href="#" class="btn_2">Mua Ngay</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="banner_img d-none d-lg-block">
+                                                    <img src="../public/img/banner_img.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>-->
+                    <!--                    <div class="single_banner_slider">
+                                            <div class="row">
+                                                <div class="col-lg-5 col-md-8">
+                                                    <div class="banner_text">
+                                                        <div class="banner_text_iner">
+                                                            <h1>Sự tinh tế</h1>
+                                                            <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
+                                                            <a href="#" class="btn_2">Mua Ngay</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="banner_img d-none d-lg-block">
+                                                    <img src="../public/img/banner_img.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>-->
                     <div class="single_banner_slider">
                         <div class="row">
                             <div class="col-lg-5 col-md-8">
@@ -18,38 +50,7 @@
                             </div>
                             <div class="banner_img d-none d-lg-block">
                                 <img src="../public/img/banner_img.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_banner_slider">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-8">
-                                <div class="banner_text">
-                                    <div class="banner_text_iner">
-                                        <h1>Sự tinh tế</h1>
-                                        <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
-                                        <a href="#" class="btn_2">Mua Ngay</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="banner_img d-none d-lg-block">
-                                <img src="../public/img/banner_img.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_banner_slider">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-8">
-                                <div class="banner_text">
-                                    <div class="banner_text_iner">
-                                        <h1>Sự tinh tế</h1>
-                                        <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
-                                        <a href="#" class="btn_2">Mua Ngay</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="banner_img d-none d-lg-block">
-                                <img src="../public/img/banner_img.png" alt="">
+                                <!--<img src="../public/img/newproduct/phongan/banan/ban-an-delta-1.png" alt="">-->
                             </div>
                         </div>
                     </div>
@@ -74,7 +75,7 @@
             <?php
             foreach ($cataList as $key => $cata) {
                 ?>
-                <div class="col-lg-<?= ($key === count($cataList) - 1) ? 12 : 6 ?> col-sm-<?= ($key === count($cataList) - 1) ? 12 : 6 ?>">
+                <div class="col-lg-<?= ($key === 0 || $key === 3) ? 7 : 5 ?> col-sm-6">
                     <div style="background-image: url('../public/img/catalog/<?= $cata['hinhanhlh'] ?>'); background-size: cover; background-position: center;" class="single_feature_post_text">
                         <p>Hàng cao cấp</p>
                         <h3><?= $cata['tenlh'] ?></h3>

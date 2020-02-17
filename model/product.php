@@ -24,20 +24,41 @@ class Product {
         }
     }
 
-    //Hàm lấy danh sách catalog
-    function getPro() {
+    //Hàm lấy danh sách sản phẩm
+    function getPro($malh = 0, $masp = 0, $dacbiet = 0, $moi = 0, $gioihan = 0) {
         $db = new Connect();
-        $query = "SELECT * FROM sanpham";
+
+        $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh where 1";
+        //lấy sp theo mã loại hàng
+        if ($malh > 0) {
+            $query .= " and a.malh = $malh";
+        }
+        //lấy sp theo mã sp
+        if ($masp > 0) {
+            $query .= " and b.masp = $masp";
+        }
+        //lấy sp đặc biệt
+        if ($dacbiet == 1) {
+            $query .= " and b.dacbiet = 1";
+        }
+        //lấy sp mới
+        if ($moi == 1) {
+            $query .= " order by b.ngaynhap desc";
+        }
+        // giới hạn sp
+        if ($gioihan > 0) {
+            $query .= " limit $gioihan";
+        }
+
         $result = $db->getAll($query);
         return $result;
     }
 
-    //Hàm lấy catalog theo id
-    function getProById($id) {
+    //tăng lượt xem
+    function up_view($bang, $tenCot, $ma) {
         $db = new Connect();
-        $query = "SELECT * FROM sanpham WHERE masp = $id";
-        $result = $db->getOne($query);
-        return $result;
+        $query = "UPDATE $bang SET luotxem = luotxem + 1 WHERE $tenCot = $ma";
+        $result = $db->execute($query);
     }
 
     function insertPro() {

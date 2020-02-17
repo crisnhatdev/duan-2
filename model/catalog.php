@@ -13,18 +13,16 @@ class Catalog {
     }
 
     //Hàm lấy danh sách catalog
-    function getCata() {
+    function getCata($malh = 0) {
         $db = new Connect();
-        $query = "SELECT * FROM loaihang";
-        $result = $db->getAll($query);
-        return $result;
-    }
 
-    //Hàm lấy catalog theo id
-    function getCataById($malh) {
-        $db = new Connect();
-        $query = "SELECT * FROM loaihang WHERE malh = $malh";
-        $result = $db->getOne($query);
+        $query = "SELECT * FROM loaihang WHERE 1";
+        //lấy sp theo mã loại hàng
+        if ($malh > 0) {
+            $query .= " and malh = $malh";
+        }
+
+        $result = $db->getAll($query);
         return $result;
     }
 
@@ -45,7 +43,7 @@ class Catalog {
         $query = "UPDATE `loaihang` SET `tenlh`= $tenlh,`hinhanhlh`= $hinhanhlh WHERE `malh` = $malh";
         $result = $db->execute($query);
     }
-    
+
 }
 
 ?>
