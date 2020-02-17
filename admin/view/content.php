@@ -5,7 +5,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
+            <a class="navbar-brand" href="javascript:void(0)">Trang Chủ</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -16,7 +16,7 @@
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
+                <input type="text" value="" class="form-control" placeholder="Tìm Kiếm...">
                 <button type="submit" class="btn btn-default btn-round btn-just-icon">
                   <i class="material-icons">search</i>
                   <div class="ripple-container"></div>
@@ -63,6 +63,7 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
+          <!-- row1 -->
           <div class="row">
             <div class="col-xl-4 col-lg-12">
               <div class="card card-chart">
@@ -70,13 +71,13 @@
                   <div class="ct-chart" id="dailySalesChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Daily Sales</h4>
+                  <h4 class="card-title">Giảm giá hàng ngày</h4>
                   <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> tăng giảm giá hôm nay.</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                    <i class="material-icons">access_time</i> cập nhật 4 phút trước
                   </div>
                 </div>
               </div>
@@ -87,12 +88,12 @@
                   <div class="ct-chart" id="websiteViewsChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Email Subscriptions</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">Email đăng ký</h4>
+                  <p class="card-category">Nhận thông báo từ người đăng ký</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    <i class="material-icons">access_time</i> Gửi 2 ngày trước
                   </div>
                 </div>
               </div>
@@ -103,17 +104,18 @@
                   <div class="ct-chart" id="completedTasksChart"></div>
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Completed Tasks</h4>
-                  <p class="card-category">Last Campaign Performance</p>
+                  <h4 class="card-title">Tiến độ công việc</h4>
+                  <p class="card-category">Hoàn thành tháng 11</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                    <i class="material-icons">access_time</i> Viết 2 ngày hôm qua
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!-- row2 -->
           <div class="row">
             <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
               <div class="card card-stats">
@@ -121,15 +123,13 @@
                   <div class="card-icon">
                     <i class="material-icons">content_copy</i>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
+                  <p class="card-category">Sản Phẩm</p>
+                  <h3 class="card-title">49
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons text-warning">warning</i>
-                    <a href="#pablo" class="warning-link">Get More Space...</a>
+                    <a href="#pablo" class="warning-link">Xem Thêm</a>
                   </div>
                 </div>
               </div>
@@ -140,12 +140,12 @@
                   <div class="card-icon">
                     <i class="material-icons">store</i>
                   </div>
-                  <p class="card-category">Revenue</p>
-                  <h3 class="card-title">$34,245</h3>
+                  <p class="card-category">Bình Luận</p>
+                  <h3 class="card-title">22</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
+                    <i class="material-icons">date_range</i> Xem Thêm
                   </div>
                 </div>
               </div>
@@ -156,12 +156,12 @@
                   <div class="card-icon">
                     <i class="material-icons">info_outline</i>
                   </div>
-                  <p class="card-category">Fixed Issues</p>
+                  <p class="card-category">Bài Viết</p>
                   <h3 class="card-title">75</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
+                    <i class="material-icons">local_offer</i> Xem Thêm
                   </div>
                 </div>
               </div>
@@ -172,18 +172,18 @@
                   <div class="card-icon">
                     <i class="fa fa-twitter"></i>
                   </div>
-                  <p class="card-category">Followers</p>
+                  <p class="card-category">Tài Khoản</p>
                   <h3 class="card-title">+245</h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">update</i> Just Updated
+                    <i class="material-icons">update</i> Xem Thêm
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -475,36 +475,36 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
             <ul>
               <li>
                 <a href="https://www.creative-tim.com">
-                  Creative Tim
+                  H.Nhật + K.Bảo
                 </a>
               </li>
               <li>
                 <a href="https://creative-tim.com/presentation">
-                  About Us
+                  Chúng Tôi
                 </a>
               </li>
               <li>
                 <a href="http://blog.creative-tim.com">
-                  Blog
+                  Bài Viết
                 </a>
               </li>
               <li>
                 <a href="https://www.creative-tim.com/license">
-                  Licenses
+                  Xem Thêm
                 </a>
               </li>
             </ul>
           </nav>
           <div class="copyright float-right" id="date">
-            , made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            , Được tài trợ <i class="material-icons">favorite</i> bởi
+            <a href="https://www.creative-tim.com" target="_blank">H.Nhật + K.Bảo </a>
           </div>
         </div>
       </footer>
