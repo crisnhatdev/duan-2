@@ -1,42 +1,32 @@
-<?php require_once '../view/header.php'; ?>
 <!-- banner part start-->
 <section class="banner_part">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <div class="banner_slider owl-carousel">
-                    <!--                    <div class="single_banner_slider">
-                                            <div class="row">
-                                                <div class="col-lg-5 col-md-8">
-                                                    <div class="banner_text">
-                                                        <div class="banner_text_iner">
-                                                            <h1>Sự tinh tế</h1>
-                                                            <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
-                                                            <a href="#" class="btn_2">Mua Ngay</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="banner_img d-none d-lg-block">
-                                                    <img src="../public/img/banner_img.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>-->
-                    <!--                    <div class="single_banner_slider">
-                                            <div class="row">
-                                                <div class="col-lg-5 col-md-8">
-                                                    <div class="banner_text">
-                                                        <div class="banner_text_iner">
-                                                            <h1>Sự tinh tế</h1>
-                                                            <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
-                                                            <a href="#" class="btn_2">Mua Ngay</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="banner_img d-none d-lg-block">
-                                                    <img src="../public/img/banner_img.png" alt="">
-                                                </div>
-                                            </div>
-                                        </div>-->
+                    <?php
+                    foreach ($bannerList as $banner) {
+                        ?>
+                        <div class="single_banner_slider">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-8">
+                                    <div class="banner_text">
+                                        <div class="banner_text_iner">
+                                            <h1><?= $banner['tieude'] ?></h1>
+                                            <p><?= $banner['noidung'] ?></p>
+                                            <a href="#" class="btn_2">Mua Ngay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="banner_img d-none d-lg-block">
+                                    <img src="../public/img/banner/<?= $banner['hinhanhbn'] ?>" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+
                     <div class="single_banner_slider">
                         <div class="row">
                             <div class="col-lg-5 col-md-8">
@@ -49,7 +39,23 @@
                                 </div>
                             </div>
                             <div class="banner_img d-none d-lg-block">
-                                <img src="../public/img/banner_img.png" alt="">
+                                <img src="../public/img/banner/5a01961f7ca233f48ba6273d.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single_banner_slider">
+                        <div class="row">
+                            <div class="col-lg-5 col-md-8">
+                                <div class="banner_text">
+                                    <div class="banner_text_iner">
+                                        <h1>Sự tinh tế</h1>
+                                        <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
+                                        <a href="#" class="btn_2">Mua Ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="banner_img d-none d-lg-block">
+                                <img src="../public/img/banner/5a0196567ca233f48ba6273e.png" alt="">
                                 <!--<img src="../public/img/newproduct/phongan/banan/ban-an-delta-1.png" alt="">-->
                             </div>
                         </div>
@@ -96,37 +102,50 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="section_tittle text-center">
-                    <h2>Mẫu mã tuyệt vời</h2>
+                    <h2>Mẫu mã mới nhất</h2>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row align-items-center justify-content-between">
             <div class="col-lg-12">
-                <div class="product_list_slider owl-carousel">
-                    <div class="single_product_list_slider">
-                        <div class="row align-items-center justify-content-between">
-                            <?php
-                            foreach ($proList as $pro) {
-                                ?>
-                                <div class="col-lg-4 col-xl-3 col-sm-6">
-                                    <div class="single_product_item">
-                                        <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
-                                        <div class="single_product_text">
-                                            <h4><?= $pro['tensp'] ?></h4>
-                                            <h3><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</h3>
-                                            <a href="#" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
+                <div class="best_product_slider owl-carousel">
+                    <?php
+                    foreach ($newList as $pro) {
+                        ?>
+                        <div class="single_product_item">
+                            <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <div class="single_product_text">
+                                <h4><?= $pro['tensp'] ?></h4>
+                                <h3><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</h3>
+                                <a href="#" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <!--        <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product_list_slider owl-carousel">
+                            <div class="single_product_list_slider">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-lg-4 col-xl-3 col-sm-6">
+                                        <div class="single_product_item">
+                                            <img src="../public/img/newproduct/test/" alt="">
+                                            <div class="single_product_text">
+                                                <h4></h4>
+                                                <h3> VNĐ</h3>
+                                                <a href="#" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <?php
-                            }
-                            ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
+                </div>-->
     </div>
 </section>
 <!-- product_list part start-->
@@ -171,7 +190,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="section_tittle text-center">
-                    <h2>Mặt hàng bán chạy</h2>
+                    <h2>Mặt hàng đặc biệt</h2>
                 </div>
             </div>
         </div>
@@ -179,7 +198,7 @@
             <div class="col-lg-12">
                 <div class="best_product_slider owl-carousel">
                     <?php
-                    foreach ($proList as $pro) {
+                    foreach ($bestList as $pro) {
                         ?>
                         <div class="single_product_item">
                             <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
@@ -221,6 +240,41 @@
 </section>
 <!--::subscribe_area part end::-->
 
+<!-- sale_product_list part start-->
+<section class="product_list section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="section_tittle text-center">
+                    <h2>Mặt hàng khuyến mãi</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-12">
+                <div class="best_product_slider owl-carousel">
+                    <?php
+                    foreach ($saleList as $pro) {
+                        ?>
+                        <div class="single_product_item">
+                            <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <div class="single_product_text">
+                                <h4><?= $pro['tensp'] ?></h4>
+                                <del><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</del> - <b><?= $pro['khuyenmai'] ?>%</b>
+                                <h3><?= number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') ?> VNĐ</h3>
+                                <a href="#" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- sale_product_list part end-->
+
 <!-- subscribe_area part start-->
 <section class="client_logo padding_top">
     <div class="container">
@@ -261,4 +315,3 @@
     </div>
 </section>
 <!--::subscribe_area part end::-->
-<?php require_once '../view/footer.php'; ?>

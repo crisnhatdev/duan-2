@@ -2432,7 +2432,7 @@ ul {
     margin-top: 7rem;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 576px) {
     /* line 7, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
     .banner_part .single_banner_slider .banner_text, .banner_part {
         height: 50vh;
@@ -2440,17 +2440,6 @@ ul {
 
     .banner_part .single_banner_slider .banner_text .banner_text_iner {
         margin-top: 4rem;
-    }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-    /* line 7, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
-    .banner_part .single_banner_slider .banner_text, .banner_part {
-        height: 60vh;
-    }
-
-    .banner_part .single_banner_slider .banner_text .banner_text_iner {
-        margin-top: 7rem;
     }
 }
 
@@ -2531,15 +2520,20 @@ ul {
 /* line 66, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
 .banner_part .single_banner_slider .banner_img {
     position: absolute;
-    right: 0;
-    width: 40vw;
-    top: 35%;
+    right: 10%;
+    top: 30%;
+}
+
+.banner_part .single_banner_slider .banner_img img {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
 }
 
 @media only screen and (max-width: 1200px) {
-    .banner_part .single_banner_slider .banner_img {
-        top: 40%;
-    }
+    /*    .banner_part .single_banner_slider .banner_img {
+            top: 40%;
+        }*/
 }
 
 /* line 72, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_banner.scss */
@@ -7807,4 +7801,5 @@ h6 {
     }
 }
 
+/*Custom Css*/
 /*# sourceMappingURL=style.css.map */

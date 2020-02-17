@@ -38,11 +38,11 @@ class Product {
             $query .= " and b.masp = $masp";
         }
         //lấy sp đặc biệt
-        if ($dacbiet == 1) {
+        if ($dacbiet === 1) {
             $query .= " and b.dacbiet = 1";
         }
         //lấy sp mới
-        if ($moi == 1) {
+        if ($moi === 1) {
             $query .= " order by b.ngaynhap desc";
         }
         // giới hạn sp
@@ -59,6 +59,15 @@ class Product {
         $db = new Connect();
         $query = "UPDATE $bang SET luotxem = luotxem + 1 WHERE $tenCot = $ma";
         $result = $db->execute($query);
+    }
+
+    //kiểm tra giá km
+    function checkKM($gia, $khuyenmai) {
+        if ($khuyenmai > 0) {
+            return $gia - $gia * $khuyenmai / 100;
+        } else {
+            return $gia;
+        }
     }
 
     function insertPro() {

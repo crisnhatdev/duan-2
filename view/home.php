@@ -1,3 +1,3 @@
 <?php
-    require_once 'content.php';
+require_once '../view/content.php';
 ?>
