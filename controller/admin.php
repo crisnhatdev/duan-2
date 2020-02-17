@@ -16,8 +16,8 @@ $proList = $crPro->getPro();
 //<---End--->
 //
 //Control
-require_once '../admin/view/header.php'; 
-
+ 
+ require_once '../admin/view/header.php';
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
@@ -26,6 +26,9 @@ if (isset($_GET['act'])) {
             break;
         case 'about':
             require_once '../admin/view/about.php';
+            break;
+        case 'loaihang':
+            require_once '../admin/view/loaihang.php';
             break;
         case 'product':
             require_once '../admin/view/product.php';

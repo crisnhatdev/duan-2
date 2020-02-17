@@ -15283,11 +15283,12 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .sidebar .nav p {
   margin: 0;
   line-height: 30px;
-  font-size: 12px;
+  font-size: 16px;
   position: relative;
   display: block;
   height: auto;
   white-space: nowrap;
+  color: white;
 }
 
 .sidebar .nav i {
@@ -15304,11 +15305,11 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .sidebar .nav li .dropdown-menu a {
   margin: 10px 15px 0;
   border-radius: 3px;
-  color: #3C4858;
+  color: white;
   padding-left: 10px;
   padding-right: 10px;
   text-transform: capitalize;
-  font-size: 13px;
+  font-size: 16px;
   padding: 10px 15px;
 }
 
@@ -15391,7 +15392,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-background-color="black"] .nav .nav-item .nav-link {
-  color: #fff;
+  color: white;
 }
 
 .sidebar[data-background-color="black"] .nav .nav-item i {
@@ -15471,7 +15472,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar[data-background-color="red"] .nav .nav-item .nav-link {
-  color: #fff;
+  color: white;
 }
 
 .sidebar[data-background-color="red"] .nav .nav-item i {
@@ -18474,7 +18475,7 @@ Copyright (c) 2015 Daniel Eden
   }
 
   .navbar-collapse .navbar-nav .nav-item .nav-link {
-    color: #3C4858;
+    color: white;
     margin: 5px 15px;
   }
 
