@@ -39,7 +39,7 @@ class Catalog {
         $query = "INSERT INTO loaihang(malh,tenlh, hinhanhlh) VALUES (null,'$tenlh','$hinhanhlh')";
         echo $query;
         $result = $db->getOne($query);
-        echo $result;
+        // echo $result;
         return $result;
     }
 
