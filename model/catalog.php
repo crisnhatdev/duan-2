@@ -7,7 +7,7 @@ class Catalog {
 
     function __construct() {
         if (func_num_args() === 2) {
-            $this->tenlh = func_get_args(1);
+            $this->tenlh = func_get_args(1); 
             $this->hinhanhlh = func_get_args(2);
         }
     }
@@ -25,14 +25,25 @@ class Catalog {
         $result = $db->getAll($query);
         return $result;
     }
-
-    function insertCata() {
+        //Hàm lấy danh sách catalog theo id
+    function getCataId($malh) {
         $db = new Connect();
-        $query = "INSERT INTO `loaihang`(`tenlh`, `hinhanhlh`) VALUES ($this->tenlh,$this->hinhanhlh)";
-        $result = $db->execute($query);
+
+        $query = "SELECT * FROM loaihang WHERE malh=$malh";
+        $result = $db->getOne($query);
+        return $result;
     }
 
-    function deleCata($malh) {
+    function insertCata($tenlh, $hinhanhlh) { 
+        $db = new Connect();
+        $query = "INSERT INTO loaihang(malh,tenlh, hinhanhlh) VALUES (null,'$tenlh','$hinhanhlh')";
+        echo $query;
+        $result = $db->getOne($query);
+        echo $result;
+        return $result;
+    }
+
+    function delCata($malh) {
         $db = new Connect();
         $query = "DELETE FROM `loaihang` WHERE malh = $malh";
         $result = $db->execute($query);
@@ -43,6 +54,8 @@ class Catalog {
         $query = "UPDATE `loaihang` SET `tenlh`= $tenlh,`hinhanhlh`= $hinhanhlh WHERE `malh` = $malh";
         $result = $db->execute($query);
     }
+
+    
 
 }
 
