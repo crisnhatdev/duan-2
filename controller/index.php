@@ -4,17 +4,33 @@
 require_once '../model/connect.php';
 require_once '../model/catalog.php';
 require_once '../model/product.php';
-//<---End--->
+require_once '../model/banner.php';
+//<---Model-End--->
 //
-//Global Var
+//Banner
+$crBanner = new Banner();
+$bannerList = $crBanner->getBanner();
+//<---Banner-End--->
+//Catalog
 $crCata = new Catalog();
-$cataList = $crCata->getCata();
-
+$cataList = $crCata->getCata(); //array catalog
+//<---Catalog-End--->
+//Product
 $crPro = new Product();
-$proList = $crPro->getPro();
-//<---End--->
+$proList = $crPro->getPro(0, 0, 0, 1, 12); //array product
+$newList = array_filter($proList, function($pro) {
+    return $pro['khuyenmai'] == 0;
+}); //sp mới nhất không sale || sp đặc biệt
+$bestList = array_filter($proList, function($pro) {
+    return $pro['dacbiet'] == 1 && $pro['khuyenmai'] == 0;
+}); //sp đặc biệt không sale
+$saleList = array_filter($proList, function($pro) {
+    return $pro['khuyenmai'] > 0;
+}); //sp sale
+//<---Product-End--->
 //
 //Control
+require_once '../view/header.php';
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -49,5 +65,6 @@ if (isset($_GET['act'])) {
     require_once '../view/content.php';
 }
 
+require_once '../view/footer.php';
 //<---End--->
 ?>
