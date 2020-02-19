@@ -352,6 +352,13 @@
         });
     }
 
+    //price filter - only for HTML
+    Number.prototype.format = function (n, x, s, c) { //n: toFixed(n); x(000); s(1.000); c(1.000,25)
+        var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+                num = this.toFixed(Math.max(0, ~~n));
+        return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+    };
+
     function switchForm() {
         if ($(this).hasClass('register-btn')) {
             $(".register-form").css({"z-index": 5, "opacity": 1});

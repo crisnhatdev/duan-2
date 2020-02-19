@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="../public/css/animate.css">
         <!-- owl carousel CSS -->
         <link rel="stylesheet" href="../public/css/owl.carousel.min.css">
+        <!-- nice select CSS -->
+        <link rel="stylesheet" href="../public/css/nice-select.css">
         <!-- font awesome CSS -->
         <link rel="stylesheet" href="../public/css/all.css">
         <!-- flaticon CSS -->
@@ -22,6 +24,7 @@
         <link rel="stylesheet" href="../public/css/magnific-popup.css">
         <!-- swiper CSS -->
         <link rel="stylesheet" href="../public/css/slick.css">
+        <link rel="stylesheet" href="../public/css/price_rangs.css">
         <!-- style CSS -->
         <link rel="stylesheet" href="../public/css/style.css">
     </head>
@@ -54,7 +57,7 @@
                                             <?php
                                             foreach ($cataList as $cata) {
                                                 ?>
-                                                <a class="dropdown-item" href=".?act=home"><?= $cata['tenlh'] ?></a>
+                                                <a class="dropdown-item" href=".?act=catalog&malh=<?= $cata['malh'] ?>"><?= $cata['tenlh'] ?></a>
                                                 <?php
                                             }
                                             ?>
@@ -73,10 +76,10 @@
 
                                     <li class="nav-item ">
                                         <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
-<!--                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                            <a class="dropdown-item" href=".?act=signIn"> Đăng nhập</a>
-                                            <a class="dropdown-item" href=".?act=signUp">Đăng ký</a>
-                                        </div>-->
+                                        <!--                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                                                                    <a class="dropdown-item" href=".?act=signIn"> Đăng nhập</a>
+                                                                                    <a class="dropdown-item" href=".?act=signUp">Đăng ký</a>
+                                                                                </div>-->
                                     </li>
                                 </ul>
                             </div>

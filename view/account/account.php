@@ -1,4 +1,3 @@
-<?php require_once '../view/header.php'; ?>
 <!-- breadcrumb start-->
 <section class="breadcrumb breadcrumb_bg">
     <div class="container">
@@ -109,5 +108,3 @@
     </div>
 </section>
 <!--================login_part end =================-->
-
-<?php require_once '../view/footer.php'; ?>

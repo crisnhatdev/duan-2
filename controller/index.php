@@ -1,6 +1,7 @@
 <?php
 
 //Model
+session_start();
 require_once '../model/connect.php';
 require_once '../model/catalog.php';
 require_once '../model/product.php';
@@ -17,54 +18,53 @@ $cataList = $crCata->getCata(); //array catalog
 //<---Catalog-End--->
 //Product
 $crPro = new Product();
-$proList = $crPro->getPro(0, 0, 0, 1, 12); //array product
-$newList = array_filter($proList, function($pro) {
-    return $pro['khuyenmai'] == 0;
-}); //sp mới nhất không sale || sp đặc biệt
-$bestList = array_filter($proList, function($pro) {
-    return $pro['dacbiet'] == 1 && $pro['khuyenmai'] == 0;
-}); //sp đặc biệt không sale
-$saleList = array_filter($proList, function($pro) {
-    return $pro['khuyenmai'] > 0;
-}); //sp sale
+$proList = $crPro->getPro(0, 0, 0, 1, 12); //array 12 product
 //<---Product-End--->
 //
 //Control
-require_once '../view/header.php';
+require_once '../view/layout/header.php';
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
         //page
         case 'home':
-            require_once '../view/content.php';
+            require_once '../view/layout/content.php';
             break;
         case 'about':
-            require_once '../view/about.php';
+            require_once '../view/pages/about.php';
             break;
         case 'contact':
-            require_once '../view/contact.php';
+            require_once '../view/pages/contact.php';
             break;
         //blog
         case 'blog':
-            require_once '../view/blog.php';
+            require_once '../view/blog/blog.php';
             break;
         //shop
+        case 'catalog':
+            $proByCata = $crPro->getPro($_GET['malh']);
+            json_encode('besst');
+            require_once '../view/shop/catalog.php';
+            break;
         case 'product':
-            require_once '../view/product.php';
+            require_once '../view/shop/product.php';
+            break;
+        case 'product-detail':
+            require_once '../view/shop/product-detail.php';
             break;
         //account
         case 'account':
-            require_once '../view/account.php';
+            require_once '../view/account/account.php';
             break;
         default:
-            require_once '../view/content.php';
+            require_once '../view/layout/content.php';
             break;
     }
 } else {
-    require_once '../view/content.php';
+    require_once '../view/layout/content.php';
 }
 
-require_once '../view/footer.php';
+require_once '../view/layout/footer.php';
 //<---End--->
 ?>

@@ -1,3 +1,14 @@
+<?php
+$newList = array_filter($proList, function($pro) {
+    return $pro['khuyenmai'] == 0;
+}); //sp mới nhất không sale
+$bestList = array_filter($proList, function($pro) {
+    return $pro['dacbiet'] == 1 && $pro['khuyenmai'] == 0;
+}); //sp đặc biệt không sale
+$saleList = array_filter($proList, function($pro) {
+    return $pro['khuyenmai'] > 0;
+}); //sp sale
+?>
 <!-- banner part start-->
 <section class="banner_part">
     <div class="container">
@@ -26,40 +37,6 @@
                         <?php
                     }
                     ?>
-
-                    <div class="single_banner_slider">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-8">
-                                <div class="banner_text">
-                                    <div class="banner_text_iner">
-                                        <h1>Sự tinh tế</h1>
-                                        <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
-                                        <a href="#" class="btn_2">Mua Ngay</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="banner_img d-none d-lg-block">
-                                <img src="../public/img/banner/5a01961f7ca233f48ba6273d.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single_banner_slider">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-8">
-                                <div class="banner_text">
-                                    <div class="banner_text_iner">
-                                        <h1>Sự tinh tế</h1>
-                                        <p>Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, DNB đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.</p>
-                                        <a href="#" class="btn_2">Mua Ngay</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="banner_img d-none d-lg-block">
-                                <img src="../public/img/banner/5a0196567ca233f48ba6273e.png" alt="">
-                                <!--<img src="../public/img/newproduct/phongan/banan/ban-an-delta-1.png" alt="">-->
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -113,7 +90,7 @@
                     foreach ($newList as $pro) {
                         ?>
                         <div class="single_product_item">
-                            <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
                             <div class="single_product_text">
                                 <h4><?= $pro['tensp'] ?></h4>
                                 <h3><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</h3>
@@ -126,26 +103,6 @@
                 </div>
             </div>
         </div>
-        <!--        <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product_list_slider owl-carousel">
-                            <div class="single_product_list_slider">
-                                <div class="row align-items-center justify-content-between">
-                                    <div class="col-lg-4 col-xl-3 col-sm-6">
-                                        <div class="single_product_item">
-                                            <img src="../public/img/newproduct/test/" alt="">
-                                            <div class="single_product_text">
-                                                <h4></h4>
-                                                <h3> VNĐ</h3>
-                                                <a href="#" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
     </div>
 </section>
 <!-- product_list part start-->
@@ -201,7 +158,7 @@
                     foreach ($bestList as $pro) {
                         ?>
                         <div class="single_product_item">
-                            <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
                             <div class="single_product_text">
                                 <h4><?= $pro['tensp'] ?></h4>
                                 <h3><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</h3>
@@ -257,7 +214,7 @@
                     foreach ($saleList as $pro) {
                         ?>
                         <div class="single_product_item">
-                            <img src="../public/img/newproduct/test/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
                             <div class="single_product_text">
                                 <h4><?= $pro['tensp'] ?></h4>
                                 <del><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</del> - <b><?= $pro['khuyenmai'] ?>%</b>
