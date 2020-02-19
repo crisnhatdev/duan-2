@@ -3,7 +3,7 @@
         <div class="card">
             <div class="cart-header card-header-primary">
                 <h4 class="pb-4">Danh Mục Sản Phẩm</h4>
-                <?php if (isset($_GET['id']) && $_GET['id']) {
+                <?php if (isset($_GET['id'])){
                 ?>
                     <form method="post" action="admin.php?act=update_cata" enctype="multipart/form-data">
                         <div class="form-group col-md-6">
@@ -68,7 +68,7 @@
                                 <td><img src="../public/img/catalog/<?= $cata['hinhanhlh'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
                                 <td>
                                     <a href="<?php echo 'admin.php?act=update_cata_form&id=' . $cata['malh'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
-                                    <a href="<?php echo 'admin.php?act=delete_cata&id=' . $cata['malh'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
+                                    <a href="<?php echo 'admin.php?act=delete_cata&malh=' . $cata['malh'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
                                 </td>
                             </tr>
                         <?php

@@ -31,15 +31,15 @@
   <link href="../admin/layout/assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../admin/layout/assets/demo/demo.css" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous"> -->
-      <!-- table data -->
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"/>
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-      <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>            
-      <!-- ckeditor -->
-      <script type="text/javascript" src="../admin/layout/ckeditor/ckeditor.js"></script>
+  <!-- table data -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <!-- ckeditor -->
+  <script type="text/javascript" src="../admin/layout/ckeditor/ckeditor.js"></script>
 </head>
 
 <body class="dark-edition">
@@ -86,7 +86,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="admin.php?act=qlyCata">Quản Lí Loại</a>
-              <a class="dropdown-item" href="#">Quản Lí Sản Phẩm</a>
+              <a class="dropdown-item" href="admin.php?act=qlyProduct">Quản Lí Sản Phẩm</a>
               <a class="dropdown-item" href="#">Quản Lí Sản Phẩm Chi Tiết</a>
             </div>
           </li>
@@ -118,11 +118,11 @@
             </a>
           </li>
           <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Đăng Ký Ngay</p>
-                </a>
-            </li>
+            <a class="nav-link" href="./upgrade.html">
+              <i class="material-icons">unarchive</i>
+              <p>Đăng Ký Ngay</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

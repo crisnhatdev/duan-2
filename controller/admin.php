@@ -25,7 +25,7 @@ if (isset($_GET['act'])) {
             break;
             //catalog
         case 'qlyCata':
-            require_once '../admin/view/loaihang.php';
+            require_once '../admin/view/catalog/loaihang.php';
             break;
 
         case 'add_cata':
@@ -42,35 +42,35 @@ if (isset($_GET['act'])) {
             //capnhatlai 
             $crCata = new Catalog();
             $cataList = $crCata->getCata();
-            require_once '../admin/view/loaihang.php';
+            require_once '../admin/view/catalog/loaihang.php';
             break;
         case 'update_cata_form':
             $crCata = new Catalog();
             $id = $_GET['id'];
             $cataListById = $crCata->getCataId($id);
-            require_once '../admin/view/loaihang.php';
+            require_once '../admin/view/catalog/loaihang.php';
             break;
 
         case 'update_cata':
             //update cata
-                $tenlh = $_POST['tenlh'];
-                $malh = $_POST['malh'];
-                $hinhanhlh = $_FILES['hinhanhlh']['name'];
-                $dir = "../public/img/catalog/";
-                $url = $dir . $hinhanhlh;
-                move_uploaded_file($_FILES['hinhanhlh']['tmp_name'], $url);
-                $updateCata = new Catalog();
-                $updateCata->updateCata($malh, $tenlh, $hinhanhlh);
+            $tenlh = $_POST['tenlh'];
+            $malh = $_POST['malh'];
+            $hinhanhlh = $_FILES['hinhanhlh']['name'];
+            $dir = "../public/img/catalog/";
+            $url = $dir . $hinhanhlh;
+            move_uploaded_file($_FILES['hinhanhlh']['tmp_name'], $url);
+            $updateCata = new Catalog();
+            $updateCata->updateCata($malh, $tenlh, $hinhanhlh);
 
-                //capnhatlai
-                $crCata = new Catalog();
-                $cataList = $crCata->getCata();
+            //capnhatlai
+            $crCata = new Catalog();
+            $cataList = $crCata->getCata();
             require_once '../admin/view/loaihang.php';
             break;
         case 'delete_cata':
             //deleteCata
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
+            if (isset($_GET['malh'])) {
+                $id = $_GET['malh'];
                 $deleteCata = new Catalog();
                 $deleteCata->delCata($id);
                 //capnhatlai
@@ -79,8 +79,68 @@ if (isset($_GET['act'])) {
             }
             require_once '../admin/view/loaihang.php';
             break;
-        case 'product':
-            require_once '../admin/view/product.php';
+        case 'qlyProduct':                                                          //product
+            $crPro = new Product();
+            $proList = $crPro->getPro();
+            require_once '../admin/view/product/product.php';
+            break;
+
+        case 'add_product_key':
+            require_once '../admin/view/product/addProduct.php';
+            break;
+        case 'add_product':
+            //addCata
+            $tenlh = $_POST['tenlh'];
+            $hinhanhlh = $_FILES['hinhanhlh']['name'];
+            if ($_FILES['hinhanhlh']['name'] != "") {
+                $dir = "../public/img/catalog/";
+                $url = $dir . $hinhanhlh;
+                move_uploaded_file($_FILES['hinhanhlh']['tmp_name'], $url);
+            }
+            $addCata = new Catalog();
+            $addCata->insertCata($tenlh, $hinhanhlh);
+            //capnhatlai 
+            $crCata = new Catalog();
+            $cataList = $crCata->getCata();
+            require_once '../admin/view/catalog/loaihang.php';
+            break;
+            // case 'update_product':
+            //     $crCata = new Catalog();
+            //     $id = $_GET['id'];
+            //     $cataListById = $crCata->getCataId($id);
+            //     require_once '../admin/view/loaihang.php';
+            //     break;
+
+        case 'update_product_key':
+            require_once '../admin/view/updateProduct.php';
+            break;
+        case 'update_product':
+            //update cata
+            $tenlh = $_POST['tenlh'];
+            $malh = $_POST['malh'];
+            $hinhanhlh = $_FILES['hinhanhlh']['name'];
+            $dir = "../public/img/catalog/";
+            $url = $dir . $hinhanhlh;
+            move_uploaded_file($_FILES['hinhanhlh']['tmp_name'], $url);
+            $updateCata = new Catalog();
+            $updateCata->updateCata($malh, $tenlh, $hinhanhlh);
+
+            //capnhatlai
+            $crCata = new Catalog();
+            $cataList = $crCata->getCata();
+            require_once '../admin/view/loaihang.php';
+            break;
+        case 'delete_product':
+            //deleteCata
+            if (isset($_GET['malh'])) {
+                $id = $_GET['malh'];
+                $deleteCata = new Catalog();
+                $deleteCata->delCata($id);
+                //capnhatlai
+                $crCata = new Catalog();
+                $cataList = $crCata->getCata();
+            }
+            require_once '../admin/view/loaihang.php';
             break;
         case 'blog':
             require_once '../admin/view/blog.php';
