@@ -5,6 +5,10 @@ class Catalog {
     protected $tenlh = null;
     protected $hinhanhlh = null;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b1c11361fbbf58959edf2346087908d6bc91820
 // 
 //    function __construct() {
 //        if (func_num_args() === 2) {
@@ -12,19 +16,28 @@ class Catalog {
 //            $this->hinhanhlh = func_get_args(1);
 //        }
 //    }
+<<<<<<< HEAD
+=======
+
+    function __construct() {
+        if (func_num_args() === 2) {
+            $this->tenlh = func_get_args(1); 
+            $this->hinhanhlh = func_get_args(2);
+        }
+    }
+>>>>>>> 5b1c11361fbbf58959edf2346087908d6bc91820
     //Hàm lấy danh sách catalog
     function getCata($malh = 0) {
         $db = new Connect();
-
         $query = "SELECT * FROM loaihang WHERE 1";
         //lấy sp theo mã loại hàng
         if ($malh > 0) {
             $query .= " and malh = $malh";
         }
-
         $result = $db->getAll($query);
         return $result;
     }
+<<<<<<< HEAD
 
     //Hàm xử lý các obj bị trùng trong 1 arr
     function unique_multidim_array($array, $key) {
@@ -40,6 +53,14 @@ class Catalog {
             $i++;
         }
         return $temp_array;
+=======
+        //Hàm lấy danh sách catalog theo id
+    function getCataId($malh) {
+        $db = new Connect();
+        $query = "SELECT * FROM loaihang WHERE malh=$malh";
+        $result = $db->getOne($query);
+        return $result;
+>>>>>>> 5b1c11361fbbf58959edf2346087908d6bc91820
     }
 
     //lấy sản phẩm giới hạn theo số trang
@@ -95,7 +116,7 @@ class Catalog {
 
     function updateCata($malh, $tenlh, $hinhanhlh) {
         $db = new Connect();
-        $query = "UPDATE `loaihang` SET `tenlh`= $tenlh,`hinhanhlh`= $hinhanhlh WHERE `malh` = $malh";
+        $query = "UPDATE loaihang SET tenlh= '".$tenlh."',hinhanhlh= '".$hinhanhlh."' WHERE malh = $malh";
         $db->execute($query);
     }
 
