@@ -1,4 +1,5 @@
 <!--   Core JS Files   -->
+
 <script src="../admin/layout/assets/js/core/jquery.min.js"></script>
   <script src="../admin/layout/assets/js/core/popper.min.js"></script>
   <script src="../admin/layout/assets/js/core/bootstrap-material-design.min.js"></script>

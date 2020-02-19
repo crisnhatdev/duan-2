@@ -5,6 +5,7 @@ class Catalog {
     protected $tenlh = null;
     protected $hinhanhlh = null;
 
+<<<<<<< HEAD
 // 
 //    function __construct() {
 //        if (func_num_args() === 2) {
@@ -12,6 +13,15 @@ class Catalog {
 //            $this->hinhanhlh = func_get_args(1);
 //        }
 //    }
+=======
+    function __construct() {
+        if (func_num_args() === 2) {
+            $this->tenlh = func_get_args(1); 
+            $this->hinhanhlh = func_get_args(2);
+        }
+    }
+
+>>>>>>> ea49ff14a2635fbac8d4799b13f4949f97858ee2
     //Hàm lấy danh sách catalog
     function getCata($malh = 0) {
         $db = new Connect();
@@ -25,7 +35,16 @@ class Catalog {
         $result = $db->getAll($query);
         return $result;
     }
+        //Hàm lấy danh sách catalog theo id
+    function getCataId($malh) {
+        $db = new Connect();
 
+        $query = "SELECT * FROM loaihang WHERE malh=$malh";
+        $result = $db->getOne($query);
+        return $result;
+    }
+
+<<<<<<< HEAD
     //lấy sản phẩm giới hạn theo số trang
     function proByPage($malh = 0, $hiensp = 0, $idtrang = 0, $timsp = '', $filter = '') {
         $db = new Connect();
@@ -68,9 +87,18 @@ class Catalog {
         $db = new Connect();
         $query = "INSERT INTO `loaihang`(`tenlh`, `hinhanhlh`) VALUES ('$tenlh','$hinhanhlh')";
         $db->execute($query);
+=======
+    function insertCata($tenlh, $hinhanhlh) { 
+        $db = new Connect();
+        $query = "INSERT INTO loaihang(malh,tenlh, hinhanhlh) VALUES (null,'$tenlh','$hinhanhlh')";
+        echo $query;
+        $result = $db->getOne($query);
+        // echo $result;
+        return $result;
+>>>>>>> ea49ff14a2635fbac8d4799b13f4949f97858ee2
     }
 
-    function deleCata($malh) {
+    function delCata($malh) {
         $db = new Connect();
         $query = "DELETE FROM `loaihang` WHERE malh = $malh";
         $db->execute($query);
@@ -81,6 +109,8 @@ class Catalog {
         $query = "UPDATE `loaihang` SET `tenlh`= $tenlh,`hinhanhlh`= $hinhanhlh WHERE `malh` = $malh";
         $db->execute($query);
     }
+
+    
 
 }
 
