@@ -6,6 +6,7 @@ require_once '../model/connect.php';
 require_once '../model/catalog.php';
 require_once '../model/product.php';
 require_once '../model/banner.php';
+require_once '../model/color.php';
 //<---Model-End--->
 //
 //Banner
@@ -43,8 +44,17 @@ if (isset($_GET['act'])) {
             break;
         //shop
         case 'catalog':
-            $proByCata = $crPro->getPro($_GET['malh']);
-            json_encode('besst');
+            $proByCata = $crPro->getPro($_GET['malh']); //tất cả sản phẩm theo mã lh
+            $limitProByCata = $crCata->proByPage($_GET['malh'], 3, 1); //mảng sản phẩm giới hạn theo trang
+
+            if (isset($_GET['type'])) {
+                $mams = (isset($_GET['mams'])) ? $_GET['mams'] : 0;
+                $mamh = (isset($_GET['mamh'])) ? $_GET['mamh'] : 0;
+
+                $proByCata_ft = $crPro->getPro($_GET['malh'], 0, 0, 1, 0, $mams, $mamh); //tất cả sản phẩm theo mã loại hàng, ma màu, mã mặt hàng
+                $limitProByCata_ft = $crCata->proByPage($_GET['malh'], 3, 1, '', $mams, $mamh); //mảng sản phẩm giới hạn theo trang
+            }
+
             require_once '../view/shop/catalog.php';
             break;
         case 'product':

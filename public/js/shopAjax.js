@@ -148,8 +148,9 @@ $(document).on('ready', function () {
         $(this).siblings().removeClass('active');
 
         var idCata = this.parentElement.getAttribute('data-malh');
-        var kyw = this.parentElement.getAttribute('data-kyw');
-        var filter = this.parentElement.getAttribute('data-filter');
+        var mams = this.parentElement.getAttribute('data-mams');
+        var mamh = this.parentElement.getAttribute('data-mamh');
+        var kyw = this.parentElement.getAttribute('data-kyw') || '';
         var page = this.innerText;
         var type = 'pagination';
 
@@ -157,11 +158,9 @@ $(document).on('ready', function () {
             url: '../view/shop/handleAjax.php',
             type: 'get',
             dataType: 'json',
-            data: {idCata: idCata, page: page, kyw: kyw, filter: filter, type: type},
+            data: {idCata: idCata, page: page, kyw: kyw, mams: mams, mamh: mamh, type: type},
             success: function (res) {
-//                $('#products').html(res);
-                console.log('ss')
-//            }
+                $('#catalog_page').html(res);
             },
             error: function (request, status, error) {
                 console.log(request.responseText);

@@ -233,7 +233,7 @@
     function makeTimer() {
 
         //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-        var endTime = new Date("20 Feb 2020 20:20:20 GMT+07:00");
+        var endTime = new Date("29 Feb 2020 20:20:20 GMT+07:00");
         endTime = (Date.parse(endTime) / 1000);
 
         var now = new Date();
@@ -370,6 +370,20 @@
     }
 
     $('.login-btn, .register-btn').on('click', switchForm)
+
+    $('li a').each(function () {
+        if ($(this).prop('href') == window.location.href) {
+            $(this).siblings().removeClass('active_color');
+            $(this).addClass('active_color');
+            $(this).parents('li').addClass('active_color');
+        }
+    });
+//    $('.stars a').on('click', function (e) {
+//        $(this).siblings().removeClass('active');
+//        $(this).addClass('active');
+//        $('#rating').val(this.className);
+//        $(this).parent().addClass('selected');
+//    })
 }(jQuery));
 //document.getElementById('test-login').addEventListener('click', function () {
 //    document.getElementById('test-login-form').style.transform = "translateX(100%)";

@@ -25,7 +25,7 @@ $saleList = array_filter($proList, function($pro) {
                                         <div class="banner_text_iner">
                                             <h1><?= $banner['tieude'] ?></h1>
                                             <p><?= $banner['noidung'] ?></p>
-                                            <a href="#" class="btn_2">Mua Ngay</a>
+                                            <!--<a href="#" class="btn_2">Mua Ngay</a>-->
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@ $saleList = array_filter($proList, function($pro) {
                     <div style="background-image: url('../public/img/catalog/<?= $cata['hinhanhlh'] ?>'); background-size: cover; background-position: center;" class="single_feature_post_text">
                         <p>Hàng cao cấp</p>
                         <h3><?= $cata['tenlh'] ?></h3>
-                        <a href="#" class="feature_btn">Khám phá ngay <i class="fas fa-play"></i></a>
+                        <a href=".?act=catalog&malh=<?= $cata['malh'] ?>" class="feature_btn">Khám phá ngay <i class="fas fa-play"></i></a>
                     </div>
                 </div>
                 <?php

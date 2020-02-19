@@ -1,19 +1,26 @@
 <?php
 
+//Model
 session_start();
 require_once '../../model/connect.php';
 require_once '../../model/catalog.php';
-//include '../../model/product.php';
+require_once '../../model/product.php';
 //include '../../model/cate.php';
 //include '../../model/cart.php';
 //include '../../model/validate.php';
 //include '../../model/phpmailer.php';
 //include './fetchshop.php';
-
+// <---End-Model--->
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
+//Catalog
+$crCata = new Catalog();
+// <---End-Catalog--->
+//Product
+$crPro = new Product();
+// <---End-Product--->
+//Controller
 $type = $_GET['type'];
-
 switch ($type) {
 //    case 'add':
 //        $maspct = $_GET['maspct'];
@@ -276,45 +283,32 @@ switch ($type) {
 //        echo json_encode('Bạn đã đặt hàng thành công. Chúng tôi sẽ giao trong vòng 2-3 ngày.');
 //        break;
     case 'pagination':
-        json_encode(123);
-        $proByCata = new Catalog();
-
         $idCata = $_GET['idCata'];
         $page = $_GET['page'];
+        $mams = $_GET['mams'];
+        $mamh = $_GET['mamh'];
         $kyw = $_GET['kyw'];
-        $filter = $_GET['filter'];
-
-        $limitPros = $proByCata->proByPage($idCata, 3, $page, $kyw, $filter);
-        $output = '1234567';
-//        foreach ($limitPros as $pro) {
-//            $output .= '<li class="product type-product">
-//                            <article class="vertical-item text-center women">
-//                                <div class="item-media-wrap bottommargin_25">
-//                                    <div class="item-media"> 
-//                                        <a href=".?act=product&masp=' . $pro['masp'] . '&mams=' . get_detailPro($pro['masp'])[0]['mams'] . '">
-//                                            <img src="view/images/shop/' . $pro['hinhanhsp'] . '" alt="" />
-//                                            <img src="view/images/shop/' . substr($pro['hinhanhsp'], 0, strrpos($pro['hinhanhsp'], '.jpg')) . '-1' . substr($pro['hinhanhsp'], strrpos($pro['hinhanhsp'], '.jpg')) . '" alt="" />
-//                                        </a>
-//                                        <div class="product_buttons darklinks">
-//                                            <a class="p-view prettyPhoto " data-gal="prettyPhoto[product1-gal]" href="view/images/shop/' . $pro['hinhanhsp'] . '" data-toggle="tooltip" title="Phóng to hình">
-//                                                <i class="qtyler-external"></i>
-//                                                <span class="sr-only">Phóng to hình</span>
-//                                            </a>
-//                                            <a class="p-view prettyPhoto sr-only" title="" data-gal="prettyPhoto[product1-gal]" href="view/images/shop/' . $pro['hinhanhsp'] . '"></a>
-//                                        </div>
-//                                    </div>    
-//                                </div>
-//                                <div class="item-content">
-//                                    <h3 class="entry-title"> <a href=".?act=product&masp=' . $pro['masp'] . '&mams=' . get_detailPro($pro['masp'])[0]['mams'] . '">' . $pro['tensp'] . '</a> </h3>
-//                                    <div class="price"> <span class="amount">' . number_format($pro['gia']) . '</span> VNĐ</div>
-//                                </div>   
-//                            </article>
-//                        </li>';
-//        }
-
+        
+        $limitPros = $crCata->proByPage($idCata, 3, $page, $kyw, $mams, $mamh);
+        $output = '';
+        
+        foreach ($limitPros as $pro) {
+            $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
+            $output .='<div class="col-lg-4 col-sm-6">
+                            <div class="single_product_item">
+                                <img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" alt="">
+                                <div class="single_product_text">
+                                    <h4>' . $pro['tensp'] . '</h4>' . $promotion . '
+                                    <h3>' . number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') . ' VNĐ</h3>
+                                    <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>';
+        }
         echo json_encode($output);
         break;
     default:
         break;
 }
+//<---End-Controller--->
 ?>

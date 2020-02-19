@@ -25,10 +25,10 @@ class Product {
     }
 
     //Hàm lấy danh sách sản phẩm
-    function getPro($malh = 0, $masp = 0, $dacbiet = 0, $moi = 0, $gioihan = 0) {
+    function getPro($malh = 0, $masp = 0, $dacbiet = 0, $moi = 0, $gioihan = 0, $mams = 0, $mamh = 0) {
         $db = new Connect();
 
-        $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh where 1";
+        $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh INNER JOIN mausac c on b.mams = c.mams INNER JOIN mathang d on d.mamh = b.mamh where 1";
         //lấy sp theo mã loại hàng
         if ($malh > 0) {
             $query .= " and a.malh = $malh";
@@ -40,6 +40,14 @@ class Product {
         //lấy sp đặc biệt
         if ($dacbiet === 1) {
             $query .= " and b.dacbiet = 1";
+        }
+        //lấy sp theo màu
+        if ($mams > 0) {
+            $query .= " and c.mams = $mams";
+        }
+        //lấy sp theo mặt hàng
+        if ($mamh > 0) {
+            $query .= " and d.mamh = $mamh";
         }
         //lấy sp mới
         if ($moi === 1) {
