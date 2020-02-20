@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Feb 15, 2020 at 09:53 AM
+-- Generation Time: Feb 19, 2020 at 07:06 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -43,6 +43,29 @@ CREATE TABLE `baiviet` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `banner`
+--
+
+CREATE TABLE `banner` (
+  `mabn` int(11) NOT NULL,
+  `tieude` varchar(100) COLLATE utf8_bin NOT NULL,
+  `noidung` text COLLATE utf8_bin NOT NULL,
+  `hinhanhbn` varchar(100) COLLATE utf8_bin NOT NULL,
+  `link` varchar(100) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`mabn`, `tieude`, `noidung`, `hinhanhbn`, `link`) VALUES
+(1, 'Sự Tinh Tế', 'Khởi nguồn từ 1999 với ý tưởng tạo ra sự khác biệt và gu thẩm mỹ Tinh Tế, Sweet Home đã trở thành và giữ vững vị trí thương hiệu nội thất hàng đầu Việt Nam.', '5a01961f7ca233f48ba6273d.png', NULL),
+(2, 'Sự Hoàn Hảo', 'Suốt cả quá trình hình thành và phát triển Sweet Home luôn lấy sự Hoàn Hảo của những sản phẩm là tiêu chí đánh giá hàng đầu.', '5a0196567ca233f48ba6273e.png', NULL),
+(3, 'Sự Chân Thành', 'Bằng tất cả sự Chân Thành - đội ngũ Sweet Home sẽ luôn đem đến sự thoải mái như chính những người thân gia đình.', '58f3736ea4fa116215a92403.png', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `binhluanbv`
 --
 
@@ -69,31 +92,6 @@ CREATE TABLE `binhluansp` (
   `matk` int(11) NOT NULL,
   `masp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dichvu`
---
-
-CREATE TABLE `dichvu` (
-  `madv` int(11) NOT NULL,
-  `tieude` varchar(100) COLLATE utf8_bin NOT NULL,
-  `noidung` text COLLATE utf8_bin NOT NULL,
-  `hinhanh` varchar(100) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `dichvu`
---
-
-INSERT INTO `dichvu` (`madv`, `tieude`, `noidung`, `hinhanh`) VALUES
-(1, 'Thiết kế thời trang', 'Thiết kế thời trang là nghệ thuật áp dụng thiết kế, thẩm mỹ và vẻ đẹp tự nhiên vào quần áo và các ph', '01.jpg'),
-(2, 'Tiến triển', 'Phát triển là một phạm trù của triết học, là quá trình vận động tiến lên từ thấp đến cao, từ đơn giản đến phức tạp, từ kém hoàn thiện đến hoàn thiện hơn của một sự vật. Quá trình vận động đó diễn ra vừa dần dần, vừa nhảy vọt để đưa tới sự ra đời của cái mới thay thế cái cũ.', '02.jpg'),
-(3, 'Jeans', 'Jeans là một loại quần xuất xứ từ các nước phương Tây, và là một trong những biểu tượng của xã hội phương tây vào thế kỷ XX. Cụ thể, nó đã từng là biểu tượng cho tuổi trẻ, sự phản kháng, tự do và cho chủ nghĩa cá nhân của mọi tầng lớp nhân dân ở phương tây.', '03.jpg'),
-(4, 'Trang phục', 'Thời Trang Nữ Thiết Kế, Phong Cách Trẻ Trung, Hiện Đại. Lựa chọn của các cô nàng sành điệu, Freeship cho hóa đơn từ 300,000đ. Mua sắm ngay! Giao hàng toàn quốc. Miễn phí đổi 30 ngày. Update mẫu mới hàng tuần. Sản phẩm chất lượng.', '04.jpg'),
-(5, 'Áo thun', 'Bạn muốn chọn áo thun trơn đơn giản hay áo thun nữ kiểu cá tính? GUMAC luôn mang đến sự đa dạng về mẫu mã cùng chất liệu áo thun cao cấp để chị em có sự lựa chọn dễ dàng nhất. Những mẫu áo thun nữ hàng hiệu hay áo thun nữ cao cấp của nhà Gu luôn có giá rẻ nhất cho mọi người, đặc biệt là áo thun nữ kiểu mới nhất trong bộ sưu tập thường nhận được nhiều sự quan tâm và chú ý. Chị em muốn tìm áo thun nữ rẻ đẹp thì hãy ghé thăm GUMAC ngay hôm nay.', '06.jpg'),
-(6, 'Khăn trải giường', 'Ga trải giường, khăn trải giường là một tấm vải dùng để bao phủ lên bề mặt của một tấm đệm dùng để nằm ngủ. Khi nằm lên nệm giường thì người nằm thường tiếp xúc trực tiếp với tấm ga chứ ít khi tiếp xúc trực tiếp với đệm.', '05.jpg');
 
 -- --------------------------------------------------------
 
@@ -133,7 +131,7 @@ CREATE TABLE `hoadonchitiet` (
   `soluong` int(11) NOT NULL,
   `dongia` double(10,0) NOT NULL,
   `mahd` int(11) NOT NULL,
-  `maspct` int(11) NOT NULL
+  `masp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -192,8 +190,34 @@ INSERT INTO `loaihang` (`malh`, `tenlh`, `hinhanhlh`) VALUES
 (1, 'Nội Thất Phòng Ăn', 'PA3.jpg'),
 (2, 'Nội Thất Phòng Ngủ', 'PN.jpg'),
 (3, 'Nội Thất Phòng Khách', 'PK.jpg'),
-(4, 'Nội Thất Phòng Làm Việc', 'PLV.jpg'),
-(5, 'Nội Thất Trẻ Em', 'PTE2.jpg');
+(4, 'Nội Thất Phòng Làm Việc', 'PLV.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mathang`
+--
+
+CREATE TABLE `mathang` (
+  `mamh` int(11) NOT NULL,
+  `tenmh` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `mathang`
+--
+
+INSERT INTO `mathang` (`mamh`, `tenmh`) VALUES
+(1, 'Bàn'),
+(2, 'Ghế'),
+(3, 'Giường'),
+(4, 'Kệ Treo Tường'),
+(5, 'Tủ'),
+(6, 'Nệm'),
+(7, 'Bàn Trang Điểm'),
+(8, 'Sofa'),
+(9, 'Xe Đẩy'),
+(10, 'Kệ Sách');
 
 -- --------------------------------------------------------
 
@@ -203,18 +227,23 @@ INSERT INTO `loaihang` (`malh`, `tenlh`, `hinhanhlh`) VALUES
 
 CREATE TABLE `mausac` (
   `mams` int(11) NOT NULL,
-  `tenmau` varchar(20) COLLATE utf8_bin NOT NULL,
-  `hex` varchar(10) COLLATE utf8_bin NOT NULL
+  `tenmau` varchar(20) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `mausac`
 --
 
-INSERT INTO `mausac` (`mams`, `tenmau`, `hex`) VALUES
-(1, 'Đen', '#000'),
-(2, 'Trắng', '#fff'),
-(3, 'Xám', '#a4a4a4');
+INSERT INTO `mausac` (`mams`, `tenmau`) VALUES
+(1, 'Đen'),
+(2, 'Nâu'),
+(3, 'Xám'),
+(4, 'Xanh'),
+(5, 'Bọc Da'),
+(6, 'Cam'),
+(7, 'Trắng'),
+(8, 'Kem'),
+(9, 'Không Xác Định');
 
 -- --------------------------------------------------------
 
@@ -228,10 +257,13 @@ CREATE TABLE `sanpham` (
   `gia` double(10,0) NOT NULL,
   `luotxem` int(11) NOT NULL DEFAULT 0,
   `mota` text COLLATE utf8_bin DEFAULT NULL,
+  `mams` int(11) NOT NULL DEFAULT 9,
+  `mamh` int(11) NOT NULL,
   `khuyenmai` int(3) NOT NULL DEFAULT 0,
   `dacbiet` int(1) NOT NULL DEFAULT 0,
   `ngaynhap` timestamp NOT NULL DEFAULT current_timestamp(),
   `hinhanhsp` varchar(100) COLLATE utf8_bin NOT NULL,
+  `trangthai` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   `malh` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -239,60 +271,23 @@ CREATE TABLE `sanpham` (
 -- Dumping data for table `sanpham`
 --
 
-INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `luotxem`, `mota`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `malh`) VALUES
-(1, 'Ghế Màu Xanh Lá', 3300000, 0, 'Nhựa cao cấp - Chân kim loại', 0, 0, '2020-02-13 17:19:32', 'product_1.png', 3),
-(2, 'Ghế Màu Cam', 3000000, 0, 'Nhựa cao cấp - Chân kim loại', 0, 0, '2020-02-13 17:20:11', 'product_2.png', 3),
-(3, 'Bàn Nước Monocle', 10900000, 0, 'Khung kim loại, Đá hoa cương', 0, 0, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', 3),
-(4, 'Bàn Nước Oval', 15900000, 0, 'Chân kim loại màu đồng- MDF giả da', 0, 0, '2020-02-14 10:29:01', 'ban-nuoc-oval.jpg', 3),
-(5, 'Bàn Ăn Delta 01', 95000000, 0, 'Khung kim loại sơn tĩnh điện- Mặt đá', 0, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', 1),
-(6, 'Bàn Ăn Roma', 9900000, 0, 'Gỗ tần bì (Ash)- MDF sơn trắng', 0, 0, '2020-02-14 10:31:35', 'ban-an-roma.jpg', 1),
-(7, 'Ghế Ăn HC', 3300000, 0, 'Chân kim loại - da công nghiệp', 0, 0, '2020-02-14 10:32:35', 'ghe_an_hc.jpg', 1),
-(8, 'Ghế Tuscany', 3600000, 0, 'Da công nghiệp - Kim loại', 0, 0, '2020-02-14 10:33:23', 'ghe-tuscany.gif', 1),
-(9, 'Bàn Làm Việc Biblio', 11900000, 0, 'Chân kim loại+ MDF+ Da', 0, 0, '2020-02-14 10:36:30', 'ban-lam-viec-biblio.jpg', 4),
-(10, 'Kệ Treo Tường Natura Gautier', 11900000, 0, 'Gỗ sồi (Oak)', 0, 0, '2020-02-14 10:38:33', 'ke-treo-natura-gautier.jpg', 4),
-(11, 'Kệ sách Glamour màu Walnut', 25700000, 0, 'Gỗ xà cừ (Mahogany), gỗ ép, gỗ lạng', 0, 0, '2020-02-14 10:39:53', 'ke_sach_glamour_mau_walnut_l.jpg', 4),
-(12, 'Bàn Làm Việc Leo', 12900000, 0, 'Chân kim loại+ Gỗ', 0, 0, '2020-02-14 10:37:35', 'line-pio_desk.jpg', 4),
-(13, 'Giường Hộc Kéo Iris - 1m6', 14900000, 0, 'Khung gỗ bọc vải', 0, 0, '2020-02-14 10:43:44', '500-iris-grey.jpg', 2),
-(14, 'Giường Bụi', 16900000, 0, 'Gỗ Thông + MDF Veneer Thông + Kim loại sơn tinh điện+ Vải', 0, 0, '2020-02-14 10:44:22', 'bui_bed-front.jpg', 2),
-(15, 'Giường Ngủ Lạc Viên', 31900000, 0, 'Gỗ xà cừ - Da công nghiệp', 0, 0, '2020-02-14 10:45:38', 'giuong-ngu-lac-vien.jpg', 2),
-(16, 'Giường Dixie', 62000000, 0, 'Khung gỗ tần bì', 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sanphamchitiet`
---
-
-CREATE TABLE `sanphamchitiet` (
-  `maspct` int(11) NOT NULL,
-  `masz` int(11) NOT NULL,
-  `mams` int(11) NOT NULL,
-  `soluong` int(11) NOT NULL,
-  `hinhanhspct` varchar(100) COLLATE utf8_bin NOT NULL,
-  `masp` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `size`
---
-
-CREATE TABLE `size` (
-  `masz` int(11) NOT NULL,
-  `tensize` varchar(10) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `size`
---
-
-INSERT INTO `size` (`masz`, `tensize`) VALUES
-(1, 'Xs'),
-(2, 'S'),
-(3, 'M'),
-(4, 'L'),
-(5, 'XL');
+INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `luotxem`, `mota`, `mams`, `mamh`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `trangthai`, `malh`) VALUES
+(1, 'Ghế Màu Xanh Lá', 3300000, 0, 'Nhựa cao cấp - Chân kim loại', 2, 2, 0, 1, '2020-02-13 17:19:32', 'product_1.png', NULL, 3),
+(2, 'Ghế Màu Cam', 3000000, 0, 'Nhựa cao cấp - Chân kim loại', 6, 2, 0, 0, '2020-02-13 17:20:11', 'product_2.png', NULL, 3),
+(3, 'Bàn Nước Monocle', 10900000, 0, 'Khung kim loại, Đá hoa cương', 1, 1, 0, 1, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', NULL, 3),
+(4, 'Bàn Nước Oval', 15900000, 0, 'Chân kim loại màu đồng- MDF giả da', 2, 1, 0, 0, '2020-02-14 10:29:01', 'ban-nuoc-oval.jpg', NULL, 3),
+(5, 'Bàn Ăn Delta 01', 95000000, 0, 'Khung kim loại sơn tĩnh điện- Mặt đá', 7, 1, 10, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', NULL, 1),
+(6, 'Bàn Ăn Roma', 9900000, 0, 'Gỗ tần bì (Ash)- MDF sơn trắng', 7, 1, 0, 1, '2020-02-14 10:31:35', 'ban-an-roma.jpg', NULL, 1),
+(7, 'Ghế Ăn HC', 3300000, 0, 'Chân kim loại - da công nghiệp', 8, 2, 5, 0, '2020-02-14 10:32:35', 'ghe_an_hc.jpg', NULL, 1),
+(8, 'Ghế Tuscany', 3600000, 0, 'Da công nghiệp - Kim loại', 5, 2, 3, 1, '2020-02-14 10:33:23', 'ghe-tuscany.gif', NULL, 1),
+(9, 'Bàn Làm Việc Biblio', 11900000, 0, 'Chân kim loại+ MDF+ Da', 2, 1, 0, 1, '2020-02-14 10:36:30', 'ban-lam-viec-biblio.jpg', NULL, 4),
+(10, 'Kệ Treo Tường Natura Gautier', 11900000, 0, 'Gỗ sồi (Oak)', 1, 4, 0, 0, '2020-02-14 10:38:33', 'ke-treo-natura-gautier.jpg', NULL, 4),
+(11, 'Kệ sách Glamour màu Walnut', 25700000, 0, 'Gỗ xà cừ (Mahogany), gỗ ép, gỗ lạng', 2, 10, 0, 1, '2020-02-14 10:39:53', 'ke_sach_glamour_mau_walnut_l.jpg', NULL, 4),
+(12, 'Bàn Làm Việc Leo', 12900000, 0, 'Chân kim loại+ Gỗ', 9, 1, 0, 0, '2020-02-14 10:37:35', 'line-pio_desk.jpg', NULL, 4),
+(13, 'Giường Hộc Kéo Iris', 14900000, 0, 'Khung gỗ bọc vải', 3, 3, 20, 0, '2020-02-14 10:43:44', '500-iris-grey.jpg', NULL, 2),
+(14, 'Giường Bụi', 16900000, 0, 'Gỗ Thông + MDF Veneer Thông + Kim loại sơn tinh điện+ Vải', 7, 3, 29, 0, '2020-02-14 10:44:22', 'bui_bed-front.jpg', NULL, 2),
+(15, 'Giường Ngủ Lạc Viên', 31900000, 0, 'Gỗ xà cừ - Da công nghiệp', 4, 3, 0, 1, '2020-02-14 10:45:38', 'giuong-ngu-lac-vien.jpg', NULL, 2),
+(16, 'Giường Dixie', 62000000, 0, 'Khung gỗ tần bì', 3, 3, 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -337,6 +332,12 @@ ALTER TABLE `baiviet`
   ADD KEY `malbv` (`malbv`);
 
 --
+-- Indexes for table `banner`
+--
+ALTER TABLE `banner`
+  ADD PRIMARY KEY (`mabn`);
+
+--
 -- Indexes for table `binhluanbv`
 --
 ALTER TABLE `binhluanbv`
@@ -351,12 +352,6 @@ ALTER TABLE `binhluansp`
   ADD PRIMARY KEY (`stt`),
   ADD KEY `matk` (`matk`),
   ADD KEY `masp` (`masp`);
-
---
--- Indexes for table `dichvu`
---
-ALTER TABLE `dichvu`
-  ADD PRIMARY KEY (`madv`);
 
 --
 -- Indexes for table `doitac`
@@ -376,7 +371,7 @@ ALTER TABLE `hoadon`
 --
 ALTER TABLE `hoadonchitiet`
   ADD PRIMARY KEY (`stt`),
-  ADD KEY `masp` (`maspct`),
+  ADD KEY `masp` (`masp`),
   ADD KEY `mahd` (`mahd`);
 
 --
@@ -398,6 +393,12 @@ ALTER TABLE `loaihang`
   ADD PRIMARY KEY (`malh`);
 
 --
+-- Indexes for table `mathang`
+--
+ALTER TABLE `mathang`
+  ADD PRIMARY KEY (`mamh`);
+
+--
 -- Indexes for table `mausac`
 --
 ALTER TABLE `mausac`
@@ -408,22 +409,9 @@ ALTER TABLE `mausac`
 --
 ALTER TABLE `sanpham`
   ADD PRIMARY KEY (`masp`),
-  ADD KEY `malh` (`malh`);
-
---
--- Indexes for table `sanphamchitiet`
---
-ALTER TABLE `sanphamchitiet`
-  ADD PRIMARY KEY (`maspct`),
-  ADD KEY `masp` (`masp`),
+  ADD KEY `malh` (`malh`),
   ADD KEY `mams` (`mams`),
-  ADD KEY `sanphamchitiet_ibfk_3` (`masz`);
-
---
--- Indexes for table `size`
---
-ALTER TABLE `size`
-  ADD PRIMARY KEY (`masz`);
+  ADD KEY `sanpham_ibfk_3` (`mamh`);
 
 --
 -- Indexes for table `taikhoan`
@@ -442,6 +430,12 @@ ALTER TABLE `baiviet`
   MODIFY `mabv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `banner`
+--
+ALTER TABLE `banner`
+  MODIFY `mabn` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `binhluanbv`
 --
 ALTER TABLE `binhluanbv`
@@ -452,12 +446,6 @@ ALTER TABLE `binhluanbv`
 --
 ALTER TABLE `binhluansp`
   MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
-
---
--- AUTO_INCREMENT for table `dichvu`
---
-ALTER TABLE `dichvu`
-  MODIFY `madv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `doitac`
@@ -493,31 +481,25 @@ ALTER TABLE `loaibaiviet`
 -- AUTO_INCREMENT for table `loaihang`
 --
 ALTER TABLE `loaihang`
-  MODIFY `malh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `malh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `mathang`
+--
+ALTER TABLE `mathang`
+  MODIFY `mamh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `mausac`
 --
 ALTER TABLE `mausac`
-  MODIFY `mams` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `mams` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
   MODIFY `masp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
-
---
--- AUTO_INCREMENT for table `sanphamchitiet`
---
-ALTER TABLE `sanphamchitiet`
-  MODIFY `maspct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
-
---
--- AUTO_INCREMENT for table `size`
---
-ALTER TABLE `size`
-  MODIFY `masz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `taikhoan`
@@ -560,22 +542,16 @@ ALTER TABLE `hoadon`
 -- Constraints for table `hoadonchitiet`
 --
 ALTER TABLE `hoadonchitiet`
-  ADD CONSTRAINT `hoadonchitiet_ibfk_1` FOREIGN KEY (`maspct`) REFERENCES `sanphamchitiet` (`maspct`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `hoadonchitiet_ibfk_1` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`) ON UPDATE CASCADE,
   ADD CONSTRAINT `hoadonchitiet_ibfk_2` FOREIGN KEY (`mahd`) REFERENCES `hoadon` (`mahd`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`malh`) REFERENCES `loaihang` (`malh`) ON UPDATE CASCADE;
-
---
--- Constraints for table `sanphamchitiet`
---
-ALTER TABLE `sanphamchitiet`
-  ADD CONSTRAINT `sanphamchitiet_ibfk_1` FOREIGN KEY (`masp`) REFERENCES `sanpham` (`masp`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `sanphamchitiet_ibfk_3` FOREIGN KEY (`masz`) REFERENCES `size` (`masz`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `sanphamchitiet_ibfk_4` FOREIGN KEY (`mams`) REFERENCES `mausac` (`mams`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`malh`) REFERENCES `loaihang` (`malh`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sanpham_ibfk_2` FOREIGN KEY (`mams`) REFERENCES `mausac` (`mams`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `sanpham_ibfk_3` FOREIGN KEY (`mamh`) REFERENCES `mathang` (`mamh`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

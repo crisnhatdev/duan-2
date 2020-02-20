@@ -5,7 +5,7 @@ class Connect {
     protected $db = null;
 
     public function __construct() {
-        $dsn = 'mysql:host=localhost; dbname=php2';
+        $dsn = 'mysql:host=localhost:3308; dbname=php2';
         $user = 'root';
         $pass = '';
         $this->db = new PDO($dsn, $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

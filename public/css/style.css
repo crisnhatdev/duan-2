@@ -2768,6 +2768,12 @@ ul {
     opacity: 1;
     visibility: visible;
 }
+@media screen and (max-width: 992px) {
+    .feature_part .single_feature_post_text .feature_btn {
+        opacity: 1;
+        visibility: visible;
+    }
+}
 
 /***************** product list css *******************/
 /* line 3, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product_list.scss */
