@@ -13,12 +13,14 @@ class Catalog {
 //        }
 //    }
 
+
     function __construct() {
         if (func_num_args() === 2) {
             $this->tenlh = func_get_args(1); 
             $this->hinhanhlh = func_get_args(2);
         }
     }
+
     //Hàm lấy danh sách catalog
     function getCata($malh = 0) {
         $db = new Connect();
@@ -44,6 +46,7 @@ class Catalog {
             $i++;
         }
         return $temp_array;
+
     }
         //Hàm lấy danh sách catalog theo id
     function getCataId($malh) {
@@ -51,6 +54,7 @@ class Catalog {
         $query = "SELECT * FROM loaihang WHERE malh=$malh";
         $result = $db->getOne($query);
         return $result;
+
 
     }
 

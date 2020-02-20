@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
+<<<<<<< HEAD
 -- Generation Time: Feb 20, 2020 at 11:12 AM
+=======
+-- Generation Time: Feb 19, 2020 at 07:06 PM
+>>>>>>> 7f0604771ac4c3e83febc01cdfca13af3ced6518
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -493,7 +497,11 @@ ALTER TABLE `mathang`
 -- AUTO_INCREMENT for table `mausac`
 --
 ALTER TABLE `mausac`
+<<<<<<< HEAD
   MODIFY `mams` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+=======
+  MODIFY `mams` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+>>>>>>> 7f0604771ac4c3e83febc01cdfca13af3ced6518
 
 --
 -- AUTO_INCREMENT for table `sanpham`
