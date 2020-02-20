@@ -50,8 +50,8 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal text-white">
-          Sweet House
+      <div class="logo" style="background: #fff" ><a href="http://www.creative-tim.com" class="simple-text logo-normal text-white">
+          <img src="../public/img/logo1.png" alt="" style="width:55px;height:55px">
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">

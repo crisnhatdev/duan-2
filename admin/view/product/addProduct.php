@@ -4,7 +4,7 @@
             <h3>Thêm Sản Phẩm</h3>
         </div>
         <div class="card-body">
-            <form action="admin.php?act=qlsp" method="post" enctype="multipart/form-data">
+            <form action="admin.php?act=add_product" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="form-group">
@@ -52,6 +52,14 @@
                         <div class="form-group">
                             <label class="form-control-label" for="exampleFormControlInput1">Khuyến mãi</label>
                             <input type="number" class="form-control" name="khuyenmai">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="exampleFormControlInput1">Mã Màu Sắc</label>
+                            <input type="number" class="form-control" name="mamausac">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" for="exampleFormControlInput1">Mã Mặt Hàng</label>
+                            <input type="number" class="form-control" name="mamathang">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="exampleFormControlInput1">Ngày nhập</label>
