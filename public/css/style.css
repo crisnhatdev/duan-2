@@ -13,6 +13,9 @@
 
 /**************** extend css start ****************/
 /**************** common css start ****************/
+* {
+    scroll-behavior: smooth;
+}
 /* line 4, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_common.scss */
 body {
     font-family: "Tahoma", sans-serif;
@@ -7808,4 +7811,103 @@ h6 {
 }
 
 /*Custom Css*/
+
+p.stars a:before,
+p.stars a:hover ~ a:before {
+    color: #e44a7a;
+    content: "\f006";
+}
+
+p.stars {
+    display: inline-block;
+    margin: 0 0 10px;
+    line-height: 1;
+}
+
+p.stars a {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+    text-indent: -999em;
+    margin-right: 1px;
+}
+
+p.stars a:before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    font-family: FontAwesome;
+    text-indent: 0;
+}
+
+p.stars.selected a.active:before, p.stars:hover a:before {
+    content: "\f005";
+    color: #ff3368;
+    opacity: 1;
+}
+
+p.stars.selected a.active ~ a:before {
+    content: "\f006";
+    color: #ff3368;
+    opacity: .75;
+}
+
+p.stars.selected a:not(.active):before {
+    content: "\f005";
+    color: #ff3368;
+    opacity: 1;
+}
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+.validate-input { 
+    position: relative;
+}
+
+.alert-validate::before {
+    content: attr(data-validate);
+    position: absolute;
+    max-width: 100%;
+    background-color: #fff;
+    border: 1px solid #e44a7a;;
+    border-radius: 2px;
+    padding: 4px 25px 4px 10px;
+    bottom: 25px;
+    /*transform: translateY(-55%);*/
+    right: 29px;
+    /*pointer-events: none;*/
+    color: #e44a7a;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+    content: '\f06a';
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    color: #e44a7a;
+    font-size: 16px;
+    bottom: 28px;
+    right: 32px;
+}
+
+.alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+.validate_field {
+    margin: 10px 0;
+    font-size: 18px; 
+    text-align: center;
+}
 /*# sourceMappingURL=style.css.map */

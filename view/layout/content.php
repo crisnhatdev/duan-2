@@ -90,7 +90,9 @@ $saleList = array_filter($proList, function($pro) {
                     foreach ($newList as $pro) {
                         ?>
                         <div class="single_product_item">
-                            <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <a href=".?act=product&masp=<?= $pro['masp'] ?>">
+                                <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            </a>
                             <div class="single_product_text">
                                 <h4><?= $pro['tensp'] ?></h4>
                                 <h3><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</h3>
@@ -127,13 +129,16 @@ $saleList = array_filter($proList, function($pro) {
                             <div id="seconds" class="date"></div>
                         </div>
                     </div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nhập địa chỉ Email"
-                               aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="validate_field success_field" style="color: #28a745"></div>
+                    <div class="validate_field error_field" style="color: red" ></div>
+                    <form class="input-group subscribe-form-ajax form-group" action="../view/account/handleUser.php" method="post" data-type="subscribe">
+                        <input type="email" class="form-control" placeholder="Nhập email của bạn"
+                               aria-label="Nhập email của bạn" aria-describedby="basic-addon3" name="subscribe-mail" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Nhập email của bạn'">
                         <div class="input-group-append">
-                            <a href="#" class="input-group-text btn_2" id="basic-addon2">Đăng ký ngay</a>
+                            <button value="submit" type="submit" class="input-group-text btn_2" id="basic-addon3">Đăng ký ngay</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -158,7 +163,9 @@ $saleList = array_filter($proList, function($pro) {
                     foreach ($bestList as $pro) {
                         ?>
                         <div class="single_product_item">
-                            <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <a href=".?act=product&masp=<?= $pro['masp'] ?>">
+                                <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            </a>
                             <div class="single_product_text">
                                 <h4><?= $pro['tensp'] ?></h4>
                                 <h3><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</h3>
@@ -183,13 +190,16 @@ $saleList = array_filter($proList, function($pro) {
                 <div class="subscribe_area_text text-center">
                     <h5>Cập nhật tin tức</h5>
                     <h2>Hãy đăng ký nhận tin tức về các hoạt động sắp tới của chúng tôi </h2>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nhập địa chỉ Email"
-                               aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="validate_field success_field" style="color: #28a745"></div>
+                    <div class="validate_field error_field" style="color: red" ></div>
+                    <form class="input-group subscribe-form-ajax form-group" action="../view/account/handleUser.php" method="post" data-type="subscribe">
+                        <input type="email" class="form-control" placeholder="Nhập email của bạn"
+                               aria-label="Nhập email của bạn" aria-describedby="basic-addon2" name="subscribe-mail" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Nhập email của bạn'">
                         <div class="input-group-append">
-                            <a href="#" class="input-group-text btn_2" id="basic-addon2">Đăng ký ngay</a>
+                            <button value="submit" type="submit" class="input-group-text btn_2" id="basic-addon2">Đăng ký ngay</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -214,7 +224,9 @@ $saleList = array_filter($proList, function($pro) {
                     foreach ($saleList as $pro) {
                         ?>
                         <div class="single_product_item">
-                            <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            <a href=".?act=product&masp=<?= $pro['masp'] ?>">
+                                <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            </a>
                             <div class="single_product_text">
                                 <h4><?= $pro['tensp'] ?></h4>
                                 <del><?= number_format($pro['gia'], 0, '', '.') ?> VNĐ</del> - <b><?= $pro['khuyenmai'] ?>%</b>

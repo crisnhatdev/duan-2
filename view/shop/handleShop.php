@@ -5,12 +5,10 @@ session_start();
 require_once '../../model/connect.php';
 require_once '../../model/catalog.php';
 require_once '../../model/product.php';
-//include '../../model/cate.php';
-//include '../../model/cart.php';
-//include '../../model/validate.php';
-//include '../../model/phpmailer.php';
-//include './fetchshop.php';
-// <---End-Model--->
+require_once '../../model/comment.php';
+require_once '../../model/validate.php';
+require_once '../../model/news.php';
+//<---End-Model---->
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
 //Catalog
@@ -19,9 +17,90 @@ $crCata = new Catalog();
 //Product
 $crPro = new Product();
 // <---End-Product--->
+//Comment
+$crComm = new Comment();
+// <---End-Comment--->
+//Validate
+$crValid = new Validate();
+// <---End-Validate--->
+//News
+$crNews = new News();
+// <---End-News
 //Controller
-$type = $_GET['type'];
+$type = $_REQUEST['type'];
 switch ($type) {
+    case 'comments-product':
+        $bang = 'binhluansp';
+        $tenCot = 'masp';
+        $cmt = $crValid->valid_value_insert($_REQUEST['arrData'][0]['value']); //nội dung đánh giá
+        $sao = $_REQUEST['arrData'][1]['value']; //lấy giá trị index = 0 trong mảng arrDat và string đầu tiên (i = 0)
+        $ngaydang = date("Y:m:d H:i:s"); //ngày
+        $matk = 77; // mã tk đánh giá
+//            $matk = $_SESSION['user']['idaccount'];// mã tk đánh giá
+        $masp = $_REQUEST['arrData'][2]['value'];
+
+        if ($crValid->valid_text($cmt) && $cmt != '') {
+            $crComm->upCmt($bang, $tenCot, $cmt, $sao, $ngaydang, $matk, $masp); //up cmt mới lên database
+
+            $cmtsList = $crComm->getCmt($bang, $tenCot, $masp); //lấy tổng số cmt ra để tính tổng cmts
+
+            $total = 0;
+            foreach ($cmtsList as $cmt) {
+                $total += $cmt['sao'];
+            }
+            $total = $total / count($cmtsList); // tính điểm tổng cho sp
+
+            $newCmt = $cmtsList[0]; //lấy cmt mới nhất trong cmtList
+            $star = ''; // hiện thị số sao người dùng đã đánh giá
+            for ($i = 0; $i < $newCmt['sao']; $i++) {
+                $star .= '<i class = "fa fa-star"></i> ';
+            }
+
+
+            $output = '<div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="../public/img/product/single-product/review-3.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>' . $newCmt['tenkh'] . '</h4>' .
+                    $star . '</div>
+                                </div>
+                                <p>' . $newCmt['noidung'] . '</p>
+                            </div>';
+
+            echo json_encode(array($output, $total, count($cmtsList)));
+        }
+        break;
+    case 'pagination-cmts-product':
+        $bang = 'binhluansp';
+        $tenCot = 'masp';
+        $mabv = $_REQUEST['masp'];
+        $page = $_REQUEST['page'];
+
+        $limitCmtsPro = $crComm->paginationCmts($bang, $tenCot, 3, $page, $mabv); //tên bảng, tên cột, cmt giới hạn, trang, mã bv
+
+        $output = '';
+        foreach ($limitCmtsPro as $cmt) {
+            $star = ''; // hiện thị số sao người dùng đã đánh giá
+            for ($i = 0; $i < $cmt['sao']; $i++) {
+                $star .= '<i class = "fa fa-star"></i> ';
+            }
+            $output .= '<div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="../public/img/product/single-product/review-3.png" alt="" />
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>' . $cmt['tenkh'] . '</h4>' .
+                    $star . '</div>
+                                </div>
+                                <p>' . $cmt['noidung'] . '</p>
+                            </div>';
+        }
+
+        echo json_encode($output);
+        break;
 //    case 'add':
 //        $maspct = $_GET['maspct'];
 //
@@ -282,16 +361,16 @@ switch ($type) {
 //
 //        echo json_encode('Bạn đã đặt hàng thành công. Chúng tôi sẽ giao trong vòng 2-3 ngày.');
 //        break;
-    case 'pagination':
+    case 'pagination-catalog':
         $idCata = $_GET['idCata'];
         $page = $_GET['page'];
         $mams = $_GET['mams'];
         $mamh = $_GET['mamh'];
         $kyw = $_GET['kyw'];
-        
+
         $limitPros = $crCata->proByPage($idCata, 3, $page, $kyw, $mams, $mamh);
         $output = '';
-        
+
         foreach ($limitPros as $pro) {
             $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
             $output .='<div class="col-lg-4 col-sm-6">

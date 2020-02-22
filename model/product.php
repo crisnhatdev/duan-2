@@ -63,7 +63,7 @@ class Product {
     }
 
     //tăng lượt xem
-    function up_view($bang, $tenCot, $ma) {
+    function upView($bang, $tenCot, $ma) {
         $db = new Connect();
         $query = "UPDATE $bang SET luotxem = luotxem + 1 WHERE $tenCot = $ma";
         $result = $db->execute($query);
@@ -81,19 +81,19 @@ class Product {
     function insertPro() {
         $db = new Connect();
         $query = "INSERT INTO `sanpham`(`tensp`, `gia`, `mota`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `malh`) VALUES ($this->tensp,$this->gia,$this->mota,$this->khuyenmai,$this->dacbiet,$this->ngaynhap,$this->hinhanhsp,$this->malh)";
-        $result = $db->execute($query);
+        $db->execute($query);
     }
 
     function delePro($masp) {
         $db = new Connect();
         $query = "DELETE FROM `sanpham` WHERE masp = $masp";
-        $result = $db->execute($query);
+        $db->execute($query);
     }
 
     function updatePro($masp, $tensp, $gia, $mota, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $malh) {
         $db = new Connect();
         $query = "UPDATE `sanpham` SET `tensp`= $tensp, `gia` = $gia, `mota` = $mota, `khuyenmai` = $khuyenmai, `dacbiet` = $dacbiet, `ngaynhap` = $ngaynhap, `hinhanhsp`= $hinhanhsp, `malh` = $malh WHERE `masp` = $masp";
-        $result = $db->execute($query);
+        $db->execute($query);
     }
 
 }

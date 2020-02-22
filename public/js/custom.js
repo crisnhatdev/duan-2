@@ -322,35 +322,35 @@
     //   console.log(  $(this).innerHTML='Product Count: '+ a++ );
     // });
 
-    var product_overview = $('#vertical');
-    if (product_overview.length) {
-        product_overview.lightSlider({
-            gallery: true,
-            item: 1,
-            vertical: true,
-            verticalHeight: 450,
-            thumbItem: 3,
-            slideMargin: 0,
-            speed: 600,
-            autoplay: true,
-            responsive: [
-                {
-                    breakpoint: 991,
-                    settings: {
-                        item: 1,
-                    }
-                },
-                {
-                    breakpoint: 576,
-                    settings: {
-                        item: 1,
-                        slideMove: 1,
-                        verticalHeight: 350,
-                    }
-                }
-            ]
-        });
-    }
+//    var product_overview = $('#vertical');
+//    if (product_overview.length) {
+//        product_overview.lightSlider({
+//            gallery: true,
+//            item: 1,
+//            vertical: true,
+//            verticalHeight: 450,
+//            thumbItem: 3,
+//            slideMargin: 0,
+//            speed: 600,
+//            autoplay: true,
+//            responsive: [
+//                {
+//                    breakpoint: 991,
+//                    settings: {
+//                        item: 1,
+//                    }
+//                },
+//                {
+//                    breakpoint: 576,
+//                    settings: {
+//                        item: 1,
+//                        slideMove: 1,
+//                        verticalHeight: 350,
+//                    }
+//                }
+//            ]
+//        });
+//    }
 
     //price filter - only for HTML
     Number.prototype.format = function (n, x, s, c) { //n: toFixed(n); x(000); s(1.000); c(1.000,25)
@@ -378,12 +378,13 @@
             $(this).parents('li').addClass('active_color');
         }
     });
-//    $('.stars a').on('click', function (e) {
-//        $(this).siblings().removeClass('active');
-//        $(this).addClass('active');
-//        $('#rating').val(this.className);
-//        $(this).parent().addClass('selected');
-//    })
+    
+    $('.stars a').on('click', function (e) {
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+        $('#rating').val(this.className);
+        $(this).parent().addClass('selected');
+    })
 }(jQuery));
 //document.getElementById('test-login').addEventListener('click', function () {
 //    document.getElementById('test-login-form').style.transform = "translateX(100%)";

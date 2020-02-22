@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="../public/css/themify-icons.css">
         <!-- font awesome CSS -->
         <link rel="stylesheet" href="../public/css/magnific-popup.css">
+        <link rel="stylesheet" href="../public/css/font-awesome.min.css">
         <!-- swiper CSS -->
         <link rel="stylesheet" href="../public/css/slick.css">
         <link rel="stylesheet" href="../public/css/price_rangs.css">
@@ -64,7 +65,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href=".?act=blog" id="navbarDropdown_2"
+                                        <a class="nav-link" href=".?act=news" id="navbarDropdown_2"
                                            role="button" aria-haspopup="true" aria-expanded="false">
                                             Tin Tức
                                         </a>

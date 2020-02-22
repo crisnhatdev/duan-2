@@ -7,6 +7,9 @@ require_once '../model/catalog.php';
 require_once '../model/product.php';
 require_once '../model/banner.php';
 require_once '../model/color.php';
+require_once '../model/account.php';
+require_once '../model/comment.php';
+require_once '../model/news.php';
 //<---Model-End--->
 //
 //Banner
@@ -19,9 +22,18 @@ $cataList = $crCata->getCata(); //array catalog
 //<---Catalog-End--->
 //Product
 $crPro = new Product();
-$proList = $crPro->getPro(0, 0, 0, 1, 12); //array 12 product
+$proList = $crPro->getPro(0, 0, 0, 1); //array products
 //<---Product-End--->
-//
+//Comments
+$crComm = new Comment(); // khởi tạo comments
+//<---Comments-End--->
+//Account
+$crAcc = new Account(); // khởi tạo account
+//<---Account-End--->
+//News
+$crNews = new News(); // khởi tạo news
+$newsCataList = $crNews->getCataNews();
+//<---News-End--->
 //Control
 require_once '../view/layout/header.php';
 
@@ -39,30 +51,49 @@ if (isset($_GET['act'])) {
             require_once '../view/pages/contact.php';
             break;
         //blog
-        case 'blog':
-            require_once '../view/blog/blog.php';
+        case 'news':
+            $malbv = (isset($_GET['malbv'])) ? $_GET['malbv'] : 0;
+            $newsList = $crNews->getNews($malbv);
+
+            require_once '../view/news/news.php';
+            break;
+        case 'news-detail':
+            $mabv = $_GET['mabv']; //mã bài viết
+            $news = $crNews->getNews(0, $mabv)[0]; //lấy dữ liệu theo mã bv
+            $prevNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức cũ hơn
+            $nextNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức mới hơn
+            $cmtList = $crComm->getCmt('binhluanbv', 'mabv', $mabv); //các cmt của bv
+            $crPro->upView('baiviet', 'mabv', $mabv); //tăng view
+
+            require_once '../view/news/news-detail.php';
             break;
         //shop
         case 'catalog':
-            $proByCata = $crPro->getPro($_GET['malh']); //tất cả sản phẩm theo mã lh
-            $limitProByCata = $crCata->proByPage($_GET['malh'], 3, 1); //mảng sản phẩm giới hạn theo trang
+            $malh = $_GET['malh'];
+            $proByCata = $crPro->getPro($malh); //tất cả sản phẩm theo mã lh
+            $limitProByCata = $crCata->proByPage($malh, 3, 1); //mảng sản phẩm giới hạn theo trang
 
             if (isset($_GET['type'])) {
                 $mams = (isset($_GET['mams'])) ? $_GET['mams'] : 0;
                 $mamh = (isset($_GET['mamh'])) ? $_GET['mamh'] : 0;
 
-                $proByCata_ft = $crPro->getPro($_GET['malh'], 0, 0, 1, 0, $mams, $mamh); //tất cả sản phẩm theo mã loại hàng, ma màu, mã mặt hàng
+                $proByCata_ft = $crPro->getPro($_GET['malh'], 0, 0, 1, 0, $mams, $mamh); //tất cả sản phẩm theo mã loại hàng, mã màu, mã mặt hàng
                 $limitProByCata_ft = $crCata->proByPage($_GET['malh'], 3, 1, '', $mams, $mamh); //mảng sản phẩm giới hạn theo trang
             }
 
             require_once '../view/shop/catalog.php';
             break;
         case 'product':
+            $masp = $_GET['masp'];
+            $productDt = $crPro->getPro(0, $masp)[0]; // chi tiết sản phẩm
+            $relativePros = $crPro->getPro($productDt['malh']); //các sản phẩm liên quan cùng mã lh
+            $crPro->upView('sanpham', 'masp', $masp); // tăng lượt xem khi có người nhấp vào sp || bv
+            $cmtList = $crComm->getCmt('binhluansp', 'masp', $masp); // lấy tổng cmt theo mã sp
             require_once '../view/shop/product.php';
             break;
-        case 'product-detail':
-            require_once '../view/shop/product-detail.php';
-            break;
+//        case 'product-detail':
+//            require_once '../view/shop/product-detail.php';
+//            break;
         //account
         case 'account':
             require_once '../view/account/account.php';
