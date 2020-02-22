@@ -121,7 +121,6 @@
 <script src="../public/js/ajax/shopAjax.js"></script>
 <script src="../public/js/ajax/userAjax.js"></script>
 <script src="../public/js/ajax/newsAjax.js"></script>
-<!--<script src="../public/js/ajax/productAjax.js"></script>-->
 <script src="../public/js/custom.js"></script>
 
 </body>

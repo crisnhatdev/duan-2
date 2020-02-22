@@ -62,7 +62,7 @@ if (isset($_GET['act'])) {
             $news = $crNews->getNews(0, $mabv)[0]; //lấy dữ liệu theo mã bv
             $prevNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức cũ hơn
             $nextNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức mới hơn
-            $cmtList = $crComm->getCmt('binhluanbv', 'mabv', $mabv); //các cmt của bv
+            $cmtsList = $crComm->getCmt('binhluanbv', 'mabv', $mabv); //các cmt của bv
             $crPro->upView('baiviet', 'mabv', $mabv); //tăng view
 
             require_once '../view/news/news-detail.php';
@@ -88,7 +88,7 @@ if (isset($_GET['act'])) {
             $productDt = $crPro->getPro(0, $masp)[0]; // chi tiết sản phẩm
             $relativePros = $crPro->getPro($productDt['malh']); //các sản phẩm liên quan cùng mã lh
             $crPro->upView('sanpham', 'masp', $masp); // tăng lượt xem khi có người nhấp vào sp || bv
-            $cmtList = $crComm->getCmt('binhluansp', 'masp', $masp); // lấy tổng cmt theo mã sp
+            $cmtsList = $crComm->getCmt('binhluansp', 'masp', $masp); // lấy tổng cmt theo mã sp
             require_once '../view/shop/product.php';
             break;
 //        case 'product-detail':

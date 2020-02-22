@@ -54,7 +54,7 @@ $(document).on('ready', function () {
             dataType: 'json',
             data: {masp: masp, page: page, type: 'pagination-cmts-product'},
             success: function (res) {
-                $('.comments-area').append(res);
+                $('.review_list').append(res);
             },
             error: function (request, status, error) {
                 console.log(request.responseText);

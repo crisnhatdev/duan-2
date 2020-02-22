@@ -1,6 +1,5 @@
 //get all input
 var input = $('.form-group .validate-form-control');
-console.log(input);
 //if input focus. hide validate
 $('.form-group .validate-form-control').each(function () {
     $(this).focus(function () {
@@ -58,6 +57,6 @@ function valid_pass(str) {
 }
 
 function valid_text(str) {
-    return (str.match((/^\w+[^<>%$;:]*$/)) !== null) ? true : false;
+    return (str.match((/^\w+[^<>%$;]*$/)) !== null) ? true : false;
 }
 

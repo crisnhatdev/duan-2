@@ -6,8 +6,7 @@
             <div class="col-lg-8">
                 <div class="breadcrumb_iner">
                     <div class="breadcrumb_iner_item">
-                        <h2>Shop Single</h2>
-                        <p>Home <span>-</span> Shop Single</p>
+                        <h2><?= $productDt['tensp'] ?></h2>
                     </div>
                 </div>
             </div>
@@ -24,38 +23,29 @@
             <div class="col-lg-7 col-xl-7">
                 <div class="product_slider_img">
                     <div id="vertical">
-                        <div data-thumb="img/product/single-product/product_1.png">
-                            <img src="img/product/single-product/product_1.png" />
-                        </div>
-                        <div data-thumb="img/product/single-product/product_1.png">
-                            <img src="img/product/single-product/product_1.png" />
-                        </div>
-                        <div data-thumb="img/product/single-product/product_1.png">
-                            <img src="img/product/single-product/product_1.png" />
-                        </div>
-                        <div data-thumb="img/product/single-product/product_1.png">
-                            <img src="img/product/single-product/product_1.png" />
+                        <div data-thumb="../public/img/newproduct/upload/<?= $productDt['hinhanhsp'] ?>">
+                            <img src="../public/img/newproduct/upload/<?= $productDt['hinhanhsp'] ?>" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 col-xl-4">
                 <div class="s_product_text">
-                    <h5>previous <span>|</span> next</h5>
-                    <h3>Faded SkyBlu Denim Jeans</h3>
-                    <h2>$149.99</h2>
+                    <!--<h5>previous <span>|</span> next</h5>-->
+                    <h3><?= $productDt['tensp'] ?></h3>
+                    <?= ($productDt['khuyenmai'] > 0) ? "<del style='color: #000'>" . number_format($productDt['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $productDt['khuyenmai'] . "%</b>" : '' ?>
+                    <h2><?= number_format($crPro->checkKm($productDt['gia'], $productDt['khuyenmai']), 0, '', '.') ?> VNĐ</h2>
                     <ul class="list">
                         <li>
-                            <a class="active" href="#">
-                                <span>Category</span> : Household</a>
+                            <a class="active" href=".?act=catalog&malh=<?= $productDt['malh'] ?>">
+                                <span>Khu </span> : <?= $productDt['tenlh'] ?></a>
                         </li>
                         <li>
-                            <a href="#"> <span>Availibility</span> : In Stock</a>
+                            <a href="#"> <span>Mặt Hàng</span> : <?= $productDt['tenmh'] ?></a>
                         </li>
                     </ul>
                     <p>
-                        First replenish living. Creepeth image image. Creeping can't, won't called.
-                        Two fruitful let days signs sea together all land fly subdue
+                        <?= $productDt['mota'] ?>
                     </p>
                     <div class="card_area d-flex justify-content-between align-items-center">
                         <div class="product_count">
@@ -63,7 +53,7 @@
                             <input class="input-number" type="text" value="1" min="0" max="10">
                             <span class="number-increment"> <i class="ti-plus"></i></span>
                         </div>
-                        <a href="#" class="btn_3">add to cart</a>
+                        <a href="#" class="btn_3">Thêm Vào Giỏ</a>
                         <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
                     </div>
                 </div>
@@ -79,51 +69,25 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                   aria-selected="true">Description</a>
+                   aria-selected="true">Mô Tả</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                   aria-selected="false">Specification</a>
+                   aria-selected="false">Chính Sách Giao Hàng</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-                   aria-selected="false">Comments</a>
-            </li>
+            <!--            <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+                               aria-selected="false">Comments</a>
+                        </li>-->
             <li class="nav-item">
                 <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-                   aria-selected="false">Reviews</a>
+                   aria-selected="false">Đánh Giá</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <p>
-                    Beryl Cook is one of Britain’s most talented and amusing artists
-                    .Beryl’s pictures feature women of all shapes and sizes enjoying
-                    themselves .Born between the two world wars, Beryl Cook eventually
-                    left Kendrick School in Reading at the age of 15, where she went
-                    to secretarial school and then into an insurance office. After
-                    moving to London and then Hampton, she eventually married her next
-                    door neighbour from Reading, John Cook. He was an officer in the
-                    Merchant Navy and after he left the sea in 1956, they bought a pub
-                    for a year before John took a job in Southern Rhodesia with a
-                    motor company. Beryl bought their young son a box of watercolours,
-                    and when showing him how to use it, she decided that she herself
-                    quite enjoyed painting. John subsequently bought her a child’s
-                    painting set for her birthday and it was with this that she
-                    produced her first significant work, a half-length portrait of a
-                    dark-skinned lady with a vacant expression and large drooping
-                    breasts. It was aptly named ‘Hangover’ by Beryl’s husband and
-                </p>
-                <p>
-                    It is often frustrating to attempt to plan meals that are designed
-                    for one. Despite this fact, we are seeing more and more recipe
-                    books and Internet websites that are dedicated to the act of
-                    cooking for one. Divorce and the death of spouses or grown
-                    children leaving for college are all reasons that someone
-                    accustomed to cooking for more than one would suddenly need to
-                    learn how to adjust all the cooking practices utilized before into
-                    a streamlined plan of cooking that is more efficient for one
-                    person creating less
+                    <?= $productDt['mota'] ?>
                 </p>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -198,283 +162,137 @@
                     </table>
                 </div>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="comment_list">
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/single-product/review-1.png" alt="" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                            <div class="review_item reply">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/single-product/review-2.png" alt="" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/single-product/review-3.png" alt="" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <h5>12th Feb, 2017 at 05:56 pm</h5>
-                                        <a class="reply_btn" href="#">Reply</a>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="review_box">
-                            <h4>Post a comment</h4>
-                            <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
-                                  novalidate="novalidate">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" id="message" rows="1"
-                                                  placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <button type="submit" value="submit" class="btn_3">
-                                        Submit Now
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="row total_rate">
+                        <div class="row total_rate" style="margin-bottom: 30px">
                             <div class="col-6">
                                 <div class="box_total">
-                                    <h5>Overall</h5>
-                                    <h4>4.0</h4>
-                                    <h6>(03 Reviews)</h6>
+                                    <h5>Điểm Đánh Giá</h5>
+                                    <h4 class="box-score"><?php
+                                        if ($cmtsList) {
+                                            $total = 0;
+                                            foreach ($cmtsList as $cmt) {
+                                                $total += $cmt['sao'];
+                                            }
+                                            $total = number_format(($total / count($cmtsList)), 2);
+                                            echo $total;
+                                        } else {
+                                            echo 0;
+                                        }
+                                        ?></h4>
+                                    <h6>(<span class="box-count-cmts"><?= count($cmtsList) ?></span> Đánh Giá)</h6>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="rating_list">
-                                    <h3>Based on 3 Reviews</h3>
+                                    <h3>Dựa trên <span class="box-count-cmts"><?= count($cmtsList) ?></span> đánh giá</h3>
                                     <ul class="list">
                                         <li>
-                                            <a href="#">5 Star
+                                            <a href="#">5 Sao
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01</a>
+                                                <i class="fa fa-star"></i> <?=
+                                                count($crComm->getStarFromCmt($cmtsList, 5))
+                                                ?> </a>
                                         </li>
                                         <li>
-                                            <a href="#">4 Star
+                                            <a href="#">4 Sao
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01</a>
+                                                <i class="fa fa-star"></i> </a>
+                                            <i class="fa fa-star"></i> <?=
+                                            count($crComm->getStarFromCmt($cmtsList, 4))
+                                            ?>
                                         </li>
                                         <li>
-                                            <a href="#">3 Star
+                                            <a href="#">3 Sao
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01</a>
+                                                <i class="fa fa-star"></i></a>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i> <?=
+                                            count($crComm->getStarFromCmt($cmtsList, 3))
+                                            ?>
                                         </li>
                                         <li>
-                                            <a href="#">2 Star
+                                            <a href="#">2 Sao
                                                 <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01</a>
+                                                <i class="fa fa-star"></i> </a>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i> <?=
+                                            count($crComm->getStarFromCmt($cmtsList, 2))
+                                            ?>
                                         </li>
                                         <li>
-                                            <a href="#">1 Star
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01</a>
+                                            <a href="#">1 Sao
+                                                <i class="fa fa-star"></i> </a>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i> <?=
+                                            count($crComm->getStarFromCmt($cmtsList, 4))
+                                            ?>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="review_list">
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/single-product/review-1.png" alt="" />
+                            <?php
+                            $threeCmts = array_slice($cmtsList, 0, 3);
+                            foreach ($threeCmts as $cmt) {
+                                ?>
+                                <div class="review_item">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img style="height: 60px; width: 60px; border-radius: 100%; object-fit: cover" src="../public/img/user/<?= $cmt['hinhanhkh'] ?>" alt="" />
+                                        </div>
+                                        <div class="media-body">
+                                            <h4><?= $cmt['tenkh'] ?></h4>
+                                            <?php
+                                            for ($i = 0; $i < $cmt['sao']; $i++) {
+                                                echo '<i class = "fa fa-star"></i> ';
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
+                                    <p><?= $cmt['noidung'] ?></p>
                                 </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/single-product/review-2.png" alt="" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="img/product/single-product/review-3.png" alt="" />
-                                    </div>
-                                    <div class="media-body">
-                                        <h4>Blake Ruiz</h4>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                    ullamco laboris nisi ut aliquip ex ea commodo
-                                </p>
-                            </div>
+                            <?php } ?>
                         </div>
+                        <?=
+                        (count($cmtsList) >= 3) ? '<div class="grey pagination-cmts-product" data-masp ="' . $masp . '" style="cursor: pointer; text-align:right">Xem Bình Luận Cũ</div>' : '';
+                        ?>
                     </div>
+
                     <div class="col-lg-6">
                         <div class="review_box">
-                            <h4>Add a Review</h4>
-                            <p>Your Rating:</p>
-                            <ul class="list">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-star"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p>Outstanding</p>
-                            <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate">
+                            <h4>Đánh giá sản phẩm</h4>
+                            <span class="grey">Yêu thích:</span>
+                            <p class="stars">
+                                <a class="1">1</a>
+                                <a class="2">2</a>
+                                <a class="3">3</a>
+                                <a class="4">4</a>
+                                <a class="5">5</a> 
+                            </p>
+                            <form class="row contact_form comment-product-ajax">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="name" placeholder="Your Full name" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="email" placeholder="Email Address" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="number" placeholder="Phone Number" />
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" rows="1" placeholder="Review"></textarea>
+                                    <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp">
+                                        <textarea class="form-control validate-form-control" name="message" id="message" cols="30" rows="9"
+                                                  placeholder="Đánh giá" required=""></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12 text-right">
+                                    <input type="hidden" name="rating" id="rating" value="5">
+                                    <input type="hidden" name="masp" value="<?= $masp ?>">
                                     <button type="submit" value="submit" class="btn_3">
-                                        Submit Now
+                                        Nhập
                                     </button>
                                 </div>
                             </form>
@@ -493,48 +311,32 @@
         <div class="row justify-content-center">
             <div class="col-lg-12">
                 <div class="section_tittle text-center">
-                    <h2>Best Sellers <span>shop</span></h2>
+                    <h2>Sản phẩm liên quan</h2>
                 </div>
             </div>
         </div>
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-12">
                 <div class="best_product_slider owl-carousel">
-                    <div class="single_product_item">
-                        <img src="img/product/product_1.png" alt="">
-                        <div class="single_product_text">
-                            <h4>Quartz Belt Watch</h4>
-                            <h3>$150.00</h3>
+                    <?php
+                    foreach ($relativePros as $pro) {
+                        ?>
+                        <div class="single_product_item">
+                            <a href=".?act=product&masp=<?= $pro['masp'] ?>">
+                                <img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" alt="">
+                            </a>
+                            <div class="single_product_text">
+                                <h4><?= $pro['tensp'] ?></h4>
+                                <?=
+                                ($pro['khuyenmai'] > 0) ? '<del>' . number_format($pro['gia'], 0, '', '.') . 'VNĐ</del> - <b>' . $pro['khuyenmai'] . '%</b>' : ''
+                                ?>
+                                <h3><?= number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') ?> VNĐ</h3>
+                                <a href="#" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="single_product_item">
-                        <img src="img/product/product_2.png" alt="">
-                        <div class="single_product_text">
-                            <h4>Quartz Belt Watch</h4>
-                            <h3>$150.00</h3>
-                        </div>
-                    </div>
-                    <div class="single_product_item">
-                        <img src="img/product/product_3.png" alt="">
-                        <div class="single_product_text">
-                            <h4>Quartz Belt Watch</h4>
-                            <h3>$150.00</h3>
-                        </div>
-                    </div>
-                    <div class="single_product_item">
-                        <img src="img/product/product_4.png" alt="">
-                        <div class="single_product_text">
-                            <h4>Quartz Belt Watch</h4>
-                            <h3>$150.00</h3>
-                        </div>
-                    </div>
-                    <div class="single_product_item">
-                        <img src="img/product/product_5.png" alt="">
-                        <div class="single_product_text">
-                            <h4>Quartz Belt Watch</h4>
-                            <h3>$150.00</h3>
-                        </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

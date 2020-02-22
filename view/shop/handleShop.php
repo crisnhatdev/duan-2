@@ -33,7 +33,7 @@ switch ($type) {
         $bang = 'binhluansp';
         $tenCot = 'masp';
         $cmt = $crValid->valid_value_insert($_REQUEST['arrData'][0]['value']); //nội dung đánh giá
-        $sao = $_REQUEST['arrData'][1]['value']; //lấy giá trị index = 0 trong mảng arrDat và string đầu tiên (i = 0)
+        $sao = $_REQUEST['arrData'][1]['value'][0]; //lấy giá trị index = 0 trong mảng arrDat và string đầu tiên (i = 0)
         $ngaydang = date("Y:m:d H:i:s"); //ngày
         $matk = 77; // mã tk đánh giá
 //            $matk = $_SESSION['user']['idaccount'];// mã tk đánh giá
@@ -60,7 +60,7 @@ switch ($type) {
             $output = '<div class="review_item">
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="../public/img/product/single-product/review-3.png" alt="" />
+                                        <img style="height: 60px; width: 60px; border-radius: 100%; object-fit: cover" src="../public/img/user/' . $newCmt['hinhanhkh'] . '" alt="" />
                                     </div>
                                     <div class="media-body">
                                         <h4>' . $newCmt['tenkh'] . '</h4>' .
@@ -89,7 +89,7 @@ switch ($type) {
             $output .= '<div class="review_item">
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="../public/img/product/single-product/review-3.png" alt="" />
+                                        <img style="height: 60px; width: 60px; border-radius: 100%; object-fit: cover" src="../public/img/user/' . $cmt['hinhanhkh'] . '" alt="" />
                                     </div>
                                     <div class="media-body">
                                         <h4>' . $cmt['tenkh'] . '</h4>' .
@@ -375,7 +375,9 @@ switch ($type) {
             $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
             $output .='<div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" alt="">
+                                <a href=".?act=product&masp=' . $pro['masp'] . '">
+                                    <img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" alt="">
+                                </a>
                                 <div class="single_product_text">
                                     <h4>' . $pro['tensp'] . '</h4>' . $promotion . '
                                     <h3>' . number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') . ' VNĐ</h3>

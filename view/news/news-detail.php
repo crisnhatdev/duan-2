@@ -27,7 +27,7 @@
                         </h2>
                         <ul class="blog-info-link mt-3 mb-4">
                             <li><a href="#"><i class="far fa-user"></i> <?= $news['tenkh'] ?></a></li>
-                            <li><a href="#comments-area"><i class="far fa-comments"></i> <span class="box-count-cmts"><?= count($cmtList) ?></span> Đánh Giá</a></li>
+                            <li><a href="#comments-area"><i class="far fa-comments"></i> <span class="box-count-cmts"><?= count($cmtsList) ?></span> Đánh Giá</a></li>
                         </ul>
                         <p>
                             <?= $news['noidungbv'] ?>
@@ -115,9 +115,9 @@
                     </div>
                 </div>
                 <div class="comments-area" id="comments-area">
-                    <h4><span class="box-count-cmts"><?= count($cmtList) ?></span> Bình Luận</h4>
+                    <h4><span class="box-count-cmts"><?= count($cmtsList) ?></span> Bình Luận</h4>
                     <?php
-                    $threeCmts = array_slice($cmtList, 0, 3);
+                    $threeCmts = array_slice($cmtsList, 0, 3);
                     foreach ($threeCmts as $cmt) {
                         ?>
                         <div class="comment-list">
@@ -151,7 +151,7 @@
                     ?>
                 </div>
                 <?=
-                (3) ? '<div class="grey pagination-cmts-news" data-mabv ="' . $mabv . '" style="cursor: pointer; text-align:right">Xem Bình Luận Cũ</div>' : '';
+                (count($cmtsList) >= 3) ? '<div class="grey pagination-cmts-news" data-mabv ="' . $mabv . '" style="cursor: pointer; text-align:right">Xem Bình Luận Cũ</div>' : '';
                 ?>
                 <div class="comment-form">
                     <h4>Để lại lời Đánh Giá</h4>
@@ -205,42 +205,6 @@
                                     </li>';
                             }
                             ?>
-                            <!--                            <li>
-                                                            <a href="#" class="d-flex">
-                                                                <p>Resaurant food</p>
-                                                                <p>(37)</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="d-flex">
-                                                                <p>Travel news</p>
-                                                                <p>(10)</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="d-flex">
-                                                                <p>Modern technology</p>
-                                                                <p>(03)</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="d-flex">
-                                                                <p>Product</p>
-                                                                <p>(11)</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="d-flex">
-                                                                <p>Inspiration</p>
-                                                                <p>21</p>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#" class="d-flex">
-                                                                <p>Health Care (21)</p>
-                                                                <p>09</p>
-                                                            </a>
-                                                        </li>-->
                         </ul>
                     </aside>
 
@@ -255,33 +219,6 @@
                                 <p>January 12, 2019</p>
                             </div>
                         </div>
-                        <!--                        <div class="media post_item">
-                                                    <img src="img/post/post_2.png" alt="post">
-                                                    <div class="media-body">
-                                                        <a href="single-blog.html">
-                                                            <h3>The Amazing Hubble</h3>
-                                                        </a>
-                                                        <p>02 Hours ago</p>
-                                                    </div>
-                                                </div>
-                                                <div class="media post_item">
-                                                    <img src="img/post/post_3.png" alt="post">
-                                                    <div class="media-body">
-                                                        <a href="single-blog.html">
-                                                            <h3>Astronomy Or Astrology</h3>
-                                                        </a>
-                                                        <p>03 Hours ago</p>
-                                                    </div>
-                                                </div>
-                                                <div class="media post_item">
-                                                    <img src="img/post/post_4.png" alt="post">
-                                                    <div class="media-body">
-                                                        <a href="single-blog.html">
-                                                            <h3>Asteroids telescope</h3>
-                                                        </a>
-                                                        <p>01 Hours ago</p>
-                                                    </div>
-                                                </div>-->
                     </aside>
                     <!--                    <aside class="single_sidebar_widget tag_cloud_widget">
                                             <h4 class="widget_title">Tag Clouds</h4>
@@ -355,13 +292,10 @@
                         <h4 class="widget_title">Đăng ký nhận tin mới</h4>
                         <div class="validate_field success_field" style="color: #28a745"></div>
                         <div class="validate_field error_field" style="color: red" ></div>
-                        <form class="subscribe-form-ajax" action="../view/account/handleUser.php" method="post" data-type="subscribe">
-                            <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp" style="height: 66px; position: relative">
-                                <input type="email" class="form-control validate-form-control" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Nhập email của bạn'" placeholder='Nhập email của bạn' name="subscribe-mail" required="" >
-                            </div>
-
-                            <button value="submit" class="button rounded-0 primary-bg text-white w-100 btn_1"
+                        <form class="subscribe-form-ajax form-group">
+                            <input type="email" class="form-control validate-form-control" onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = 'Nhập email của bạn'" placeholder='Nhập email của bạn' name="subscribe-mail"  required="">
+                            <button style="padding: 15px 24px" value="submit" class="button rounded-0 primary-bg text-white w-100 mt-30"
                                     type="submit">Đăng ký</button>
                         </form>
                     </aside>

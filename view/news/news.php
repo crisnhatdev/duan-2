@@ -236,13 +236,10 @@
                         <h4 class="widget_title">Đăng ký nhận tin mới</h4>
                         <div class="validate_field success_field" style="color: #28a745"></div>
                         <div class="validate_field error_field" style="color: red" ></div>
-                        <form class="subscribe-form-ajax" action="../view/account/handleUser.php" method="post" data-type="subscribe">
-                            <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp" style="height: 66px; position: relative">
-                                <input type="email" class="form-control validate-form-control" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Nhập email của bạn'" placeholder='Nhập email của bạn' name="subscribe-mail" required="" >
-                            </div>
-
-                            <button value="submit" class="button rounded-0 primary-bg text-white w-100 btn_1"
+                        <form class="subscribe-form-ajax form-group">
+                            <input type="email" class="form-control validate-form-control" onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = 'Nhập email của bạn'" placeholder='Nhập email của bạn' name="subscribe-mail"  required="">
+                            <button style="padding: 15px 24px" value="submit" class="button rounded-0 primary-bg text-white w-100 mt-30"
                                     type="submit">Đăng ký</button>
                         </form>
                     </aside>

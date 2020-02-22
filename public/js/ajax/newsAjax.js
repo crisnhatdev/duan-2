@@ -8,6 +8,7 @@ $(document).ready(function () {
         var checkValid = true;
         if (validate(textArea) == false) {
             showValidate(textArea);
+//            $(textArea).css('border', '1px solid #ff3368');
             $(textArea).val('');
             checkValid = false;
         }
