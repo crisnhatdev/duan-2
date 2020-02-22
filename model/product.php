@@ -57,7 +57,7 @@ class Product {
         if ($gioihan > 0) {
             $query .= " limit $gioihan";
         }
-
+        $query .= " order by masp asc";
         $result = $db->getAll($query);
         return $result;
     }
@@ -77,11 +77,19 @@ class Product {
             return $gia;
         }
     }
-
-    function insertPro() {
+    //lay san pham theo id
+    function getProId($masp) {
         $db = new Connect();
-        $query = "INSERT INTO `sanpham`(`tensp`, `gia`, `mota`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `malh`) VALUES ($this->tensp,$this->gia,$this->mota,$this->khuyenmai,$this->dacbiet,$this->ngaynhap,$this->hinhanhsp,$this->malh)";
-        $db->execute($query);
+        $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh  WHERE masp=$masp";
+        $result = $db->getOne($query);
+        return $result;
+
+    }
+    // nhớ sửa lại mấy hàm
+    function insertPro($tensp,$gia,$luotxem,$mota,$mamausac,$mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp,$trangthai,$malh) {
+        $db = new Connect();
+        $query = "INSERT INTO `sanpham`(`tensp`,`gia`,`luotxem`,`mota`,`mams`,`mamh`,`khuyenmai`,`dacbiet`,`ngaynhap`,`hinhanhsp`,`trangthai`,`malh`) VALUES ('$tensp','$gia','$luotxem','$mota','$mamausac','$mamathang','$khuyenmai','$dacbiet','$ngaynhap','$hinhanhsp','$trangthai','$malh')";
+        $result = $db->execute($query);
     }
 
     function delePro($masp) {
@@ -90,10 +98,11 @@ class Product {
         $db->execute($query);
     }
 
-    function updatePro($masp, $tensp, $gia, $mota, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $malh) {
+    function updatePro($masp,$tensp,$gia,$luotxem,$mota,$mamausac,$mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp,$trangthai,$malh) {
         $db = new Connect();
-        $query = "UPDATE `sanpham` SET `tensp`= $tensp, `gia` = $gia, `mota` = $mota, `khuyenmai` = $khuyenmai, `dacbiet` = $dacbiet, `ngaynhap` = $ngaynhap, `hinhanhsp`= $hinhanhsp, `malh` = $malh WHERE `masp` = $masp";
-        $db->execute($query);
+        $query = "UPDATE sanpham SET tensp= ".$tensp.",gia = ".$gia.",luotxem=".$luotxem.",mota = ".$mota.",mams=".$mamausac.",mamh=".$mamathang.", khuyenmai = ".$khuyenmai.", dacbiet = ".$dacbiet.", ngaynhap = ".$ngaynhap.", hinhanhsp= ".$hinhanhsp.",trangthai= ".$trangthai.", malh = ".$malh." WHERE masp = $masp";
+        echo $query;
+        $result = $db->execute($query);
     }
 
 }

@@ -9,11 +9,11 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
+                        <th scope="col">Danh Mục</th>
                         <th scope="col">Tên Sản Phẩm</th>
                         <th scope="col">Hình ảnh</th>
                         <th scope="col">Giá </th>
                         <th scope="col">Mô Tả</th>
-                        <th scope="col">Mã Loại</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -23,6 +23,7 @@
                     ?>
                         <tr>
                             <td><?= $pro['masp'] ?></td>
+                            <td><?= $pro['tenlh'] ?></td>
                             <td><?= $pro['tensp'] ?></td>
                             <td><img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
                             <td><?= $pro['gia'] ?></td>
@@ -41,29 +42,3 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $('#myTable').DataTable({
-            initComplete: function() {
-                this.api().columns().every(function() {
-                    var column = this;
-                    var select = $('<select><option value=""></option></select>')
-                        .appendTo($(column.footer()).empty())
-                        .on('change', function() {
-                            var val = $.fn.dataTable.util.escapeRegex(
-                                $(this).val()
-                            );
-
-                            column
-                                .search(val ? '^' + val + '$' : '', true, false)
-                                .draw();
-                        });
-
-                    column.data().unique().sort().each(function(d, j) {
-                        select.append('<option value="' + d + '">' + d + '</option>')
-                    });
-                });
-            }
-        });
-    });
-</script>

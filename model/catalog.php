@@ -12,6 +12,15 @@ class Catalog {
 //            $this->hinhanhlh = func_get_args(1);
 //        }
 //    }
+
+
+    function __construct() {
+        if (func_num_args() === 2) {
+            $this->tenlh = func_get_args(1); 
+            $this->hinhanhlh = func_get_args(2);
+        }
+    }
+
     //Hàm lấy danh sách catalog
     function getCata($malh = 0) {
         $db = new Connect();
@@ -23,7 +32,6 @@ class Catalog {
         $result = $db->getAll($query);
         return $result;
     }
-
     //Hàm xử lý các obj bị trùng trong 1 arr
     function unique_multidim_array($array, $key) {
         $temp_array = array();
@@ -38,6 +46,16 @@ class Catalog {
             $i++;
         }
         return $temp_array;
+
+    }
+        //Hàm lấy danh sách catalog theo id
+    function getCataId($malh) {
+        $db = new Connect();
+        $query = "SELECT * FROM loaihang WHERE malh=$malh";
+        $result = $db->getOne($query);
+        return $result;
+
+
     }
 
     //lấy sản phẩm giới hạn theo số trang

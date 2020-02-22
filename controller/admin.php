@@ -77,11 +77,11 @@ if (isset($_GET['act'])) {
                 $crCata = new Catalog();
                 $cataList = $crCata->getCata();
             }
-            require_once '../admin/view/loaihang.php';
+            require_once '../admin/view/catalog/loaihang.php';
             break;
-        case 'qlyProduct':                                                          //product
+        case 'qlyProduct':                                                         //product
             $crPro = new Product();
-            $proList = $crPro->getPro();
+            $proList = $crPro->getPro(0, 0, 0, 0, 0, 0, 0);
             require_once '../admin/view/product/product.php';
             break;
 
@@ -90,57 +90,77 @@ if (isset($_GET['act'])) {
             break;
         case 'add_product':
             //addCata
-            $tenlh = $_POST['tenlh'];
-            $hinhanhlh = $_FILES['hinhanhlh']['name'];
-            if ($_FILES['hinhanhlh']['name'] != "") {
-                $dir = "../public/img/catalog/";
-                $url = $dir . $hinhanhlh;
-                move_uploaded_file($_FILES['hinhanhlh']['tmp_name'], $url);
+            $malh = $_POST['malh'];
+            $tensp = $_POST['tensp'];
+            $gia = $_POST['gia'];
+            $mota = $_POST['mota'];
+            $khuyenmai = $_POST['khuyenmai'];
+            $dacbiet = $_POST['dacbiet'];
+            $ngaynhap = date('Y-m-d H:m:s');
+            $trangthai = NULL;
+            $hinhanhsp = $_FILES['hinhanhsp']['name'];
+            if ($_FILES['hinhanhsp']['name'] != "") {
+                $dir = "../public/img/newproduct/upload/";
+                $url = $dir . $hinhanhsp;
+                move_uploaded_file($_FILES['hinhanhsp']['tmp_name'], $url);
             }
-            $addCata = new Catalog();
-            $addCata->insertCata($tenlh, $hinhanhlh);
-            //capnhatlai 
-            $crCata = new Catalog();
-            $cataList = $crCata->getCata();
-            require_once '../admin/view/catalog/loaihang.php';
-            break;
-            // case 'update_product':
-            //     $crCata = new Catalog();
-            //     $id = $_GET['id'];
-            //     $cataListById = $crCata->getCataId($id);
-            //     require_once '../admin/view/loaihang.php';
-            //     break;
+            $luotxem = $_POST['luotxem'];
+            $mamausac = $_POST['mamausac'];
+            $mamathang = $_POST['mamathang'];
 
+            $addProduct = new Product();
+            $addProduct->insertPro($tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh);
+            //capnhatlai 
+            $crPro = new Product();
+            $proList = $crPro->getPro();
+            require_once '../admin/view/product/product.php';
+            break;
         case 'update_product_key':
-            require_once '../admin/view/updateProduct.php';
+            $masp = $_GET['id'];
+            $crPro = new Product();
+            $proId = $crPro->getProId($masp);
+            require_once '../admin/view/product/updateProduct.php';
             break;
         case 'update_product':
             //update cata
-            $tenlh = $_POST['tenlh'];
+            $masp = $_POST['masp'];
             $malh = $_POST['malh'];
-            $hinhanhlh = $_FILES['hinhanhlh']['name'];
-            $dir = "../public/img/catalog/";
-            $url = $dir . $hinhanhlh;
-            move_uploaded_file($_FILES['hinhanhlh']['tmp_name'], $url);
-            $updateCata = new Catalog();
-            $updateCata->updateCata($malh, $tenlh, $hinhanhlh);
-
+            $tensp = $_POST['tensp'];
+            $gia = $_POST['gia'];
+            $mota = $_POST['mota'];
+            $khuyenmai = $_POST['khuyenmai'];
+            $dacbiet = $_POST['dacbiet'];
+            $ngaynhap = date('Y-m-d H:m:s');
+            $trangthai = NULL;
+            $hinhanhsp = $_FILES['hinhanhsp']['name'];
+            if ($_FILES['hinhanhsp']['name'] != "") {
+                $dir = "../public/img/newproduct/upload/";
+                $url = $dir . $hinhanhsp;
+                move_uploaded_file($_FILES['hinhanhsp']['tmp_name'], $url);
+            }
+            $luotxem = $_POST['luotxem'];
+            $mamausac = $_POST['mamausac'];
+            $mamathang = $_POST['mamathang'];
+            $updateProduct= new Product();
+            $updateProduct->updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh);
             //capnhatlai
-            $crCata = new Catalog();
-            $cataList = $crCata->getCata();
-            require_once '../admin/view/loaihang.php';
+            $crPro = new Product();
+            $proList = $crPro->getPro();
+            require_once '../admin/view/product/product.php';
+            break;
+        case 'delete_product_key':
+            require_once '../admin/view/product/product.php';
             break;
         case 'delete_product':
             //deleteCata
-            if (isset($_GET['malh'])) {
-                $id = $_GET['malh'];
-                $deleteCata = new Catalog();
-                $deleteCata->delCata($id);
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $deletePro = new Product();
+                $deletePro->delePro($id);
                 //capnhatlai
-                $crCata = new Catalog();
-                $cataList = $crCata->getCata();
+                $proList = $crPro->getPro();
             }
-            require_once '../admin/view/loaihang.php';
+            require_once '../admin/view/product/product.php';
             break;
         case 'blog':
             require_once '../admin/view/blog.php';
