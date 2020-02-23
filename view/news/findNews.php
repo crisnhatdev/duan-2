@@ -4,7 +4,7 @@
             <div class="col-lg-8">
                 <div class="breadcrumb_iner">
                     <div class="breadcrumb_iner_item">
-                        <h2>Tin Tức</h2>
+                        <h2>Tìm Kiếm Tin Tức</h2>
                         <!--<p>Home <span>-</span> Shop Single</p>-->
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <nav class="blog-pagination justify-content-center d-flex">
                     <?=
-                    (count($newsList) >= 3) ? '<div class="grey pagination-news" data-malbv ="' . $malbv . '" style="cursor: pointer; text-align:right; font-size: 24px">Xem Bài Viết Cũ</div>' : '';
+                    (count($newsList) >= 3) ? '<div class="grey pagination-news" data-malbv ="0" style="cursor: pointer; text-align:right; font-size: 24px">Xem Bài Viết Cũ</div>' : '';
                     ?>
                 </nav>
             </div>

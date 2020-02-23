@@ -65,6 +65,16 @@ class Product {
         return $result;
     }
 
+    function findProduct($timsp = '') {
+        $db = new Connect();
+
+        $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh INNER JOIN mausac c on b.mams = c.mams INNER JOIN mathang d on d.mamh = b.mamh where 1";
+        $query .= " and lcase(`tensp`) LIKE '%" . mb_strtolower($timsp, 'UTF-8') . "%'";
+
+        $result = $db->getAll($query);
+        return $result; // trả về 1 mảng các sp đã theo giới hạn 
+    }
+
     //tăng lượt xem
     function upView($bang, $tenCot, $ma) {
         $db = new Connect();

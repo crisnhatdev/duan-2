@@ -104,8 +104,9 @@
             </div>
             <div class="search_input" id="search_input_box">
                 <div class="container ">
-                    <form class="d-flex justify-content-between search-inner">
-                        <input type="text" class="form-control" id="search_input" placeholder="Tìm kiếm">
+                    <form class="d-flex justify-content-between search-inner" action=".?" method="get">
+                        <input type="hidden" name="act" value="find-product" />
+                        <input type="text" name="value" class="form-control" id="search_input" placeholder="Tìm kiếm">
                         <button type="submit" class="btn"></button>
                         <span class="ti-close" id="close_search" title="Đóng tìm kiếm"></span>
                     </form>

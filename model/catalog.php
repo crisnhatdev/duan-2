@@ -16,7 +16,7 @@ class Catalog {
 
     function __construct() {
         if (func_num_args() === 2) {
-            $this->tenlh = func_get_args(1); 
+            $this->tenlh = func_get_args(1);
             $this->hinhanhlh = func_get_args(2);
         }
     }
@@ -32,6 +32,7 @@ class Catalog {
         $result = $db->getAll($query);
         return $result;
     }
+
     //Hàm xử lý các obj bị trùng trong 1 arr
     function unique_multidim_array($array, $key) {
         $temp_array = array();
@@ -46,16 +47,14 @@ class Catalog {
             $i++;
         }
         return $temp_array;
-
     }
-        //Hàm lấy danh sách catalog theo id
+
+    //Hàm lấy danh sách catalog theo id
     function getCataId($malh) {
         $db = new Connect();
         $query = "SELECT * FROM loaihang WHERE malh=$malh";
         $result = $db->getOne($query);
         return $result;
-
-
     }
 
     //lấy sản phẩm giới hạn theo số trang
@@ -72,7 +71,7 @@ class Catalog {
         }
         //dùng để phân trang trong page tìm kiếm sản phẩm
         if ($timsp != '') {
-            $query .= " and lcase(`tensp`) LIKE '%" . strtolower($timsp) . "%'";
+            $query .= " and lcase(`tensp`) LIKE '%" . mb_strtolower($timsp, 'UTF-8') . "%'";
         }
         //lấy sp theo màu
         if ($mams > 0) {
@@ -111,7 +110,7 @@ class Catalog {
 
     function updateCata($malh, $tenlh, $hinhanhlh) {
         $db = new Connect();
-        $query = "UPDATE loaihang SET tenlh= '".$tenlh."',hinhanhlh= '".$hinhanhlh."' WHERE malh = $malh";
+        $query = "UPDATE loaihang SET tenlh= '" . $tenlh . "',hinhanhlh= '" . $hinhanhlh . "' WHERE malh = $malh";
         $db->execute($query);
     }
 

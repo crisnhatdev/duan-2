@@ -176,10 +176,11 @@
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
-                        <form action="#">
+                        <form action=".?" method="get">
                             <div class="form-group">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder='Tìm bài viết'
+                                    <input type="hidden" name="act" value="find-news" />
+                                    <input type="text" name="value" class="form-control" placeholder='Tìm bài viết'
                                            onfocus="this.placeholder = ''"
                                            onblur="this.placeholder = 'Tìm bài viết'">
                                     <div class="input-group-append">

@@ -68,13 +68,18 @@ if (isset($_GET['act'])) {
             $mabv = $_GET['mabv']; //mã bài viết
             $news = $crNews->getNews(0, $mabv)[0]; //lấy dữ liệu theo mã bv
             $prevNews = @$crNews->getNews(0, $mabv - 1)[0]; //lấy tin tức cũ hơn
-            $nextNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức mới hơn
+            $nextNews = @$crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức mới hơn
             $cmtsList = $crComm->getCmt('binhluanbv', 'mabv', $mabv); //các cmt của bv
             $crPro->upView('baiviet', 'mabv', $mabv); //tăng view
 
             $crAcc->addCookie("recent-news[$mabv]", $mabv, 30); // thêm bài viết vừa xem vào cookie
 
             require_once '../view/news/news-detail.php';
+            break;
+        case 'find-news':
+            $search = trim(htmlspecialchars(addslashes($_GET['value'])));
+            $newsList = $crNews->findNews($search); //tất cả sản phẩm theo mã lh
+            require_once '../view/news/findNews.php';
             break;
         //shop
         case 'catalog':
@@ -95,14 +100,20 @@ if (isset($_GET['act'])) {
         case 'product':
             $masp = $_GET['masp'];
             $productDt = $crPro->getPro(0, $masp)[0]; // chi tiết sản phẩm
-            $relativePros = $crPro->getPro($productDt['malh']); //các sản phẩm liên quan cùng mã lh
             $crPro->upView('sanpham', 'masp', $masp); // tăng lượt xem khi có người nhấp vào sp || bv
+
+            $relativePros = $crPro->getPro($productDt['malh']); //các sản phẩm liên quan cùng mã lh
+
             $cmtsList = $crComm->getCmt('binhluansp', 'masp', $masp); // lấy tổng cmt theo mã sp
             require_once '../view/shop/product.php';
             break;
-//        case 'product-detail':
-//            require_once '../view/shop/product-detail.php';
-//            break;
+        case 'find-product':
+            $search = trim(htmlspecialchars(addslashes($_GET['value'])));
+            $proBySearch = $crPro->findProduct($search); //tất cả sản phẩm theo mã lh
+            $limitProBySearch = $crCata->proByPage(0, 3, 1, $search); //mảng sản phẩm giới hạn theo trang
+
+            require_once '../view/shop/findProduct.php';
+            break;
         //account
         case 'account':
             require_once '../view/account/account.php';
