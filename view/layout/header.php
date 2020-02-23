@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="zxx">
-
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -29,7 +28,6 @@
         <!-- style CSS -->
         <link rel="stylesheet" href="../public/css/style.css">
     </head>
-
     <body>
         <!--::header part start::-->
         <header class="main_menu home_menu">

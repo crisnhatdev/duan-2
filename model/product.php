@@ -27,7 +27,7 @@ class Product {
     //Hàm lấy danh sách sản phẩm
     function getPro($malh = 0, $masp = 0, $dacbiet = 0, $moi = 0, $gioihan = 0, $mams = 0, $mamh = 0) {
         $db = new Connect();
-
+        $order = '';
         $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh INNER JOIN mausac c on b.mams = c.mams INNER JOIN mathang d on d.mamh = b.mamh where 1";
         //lấy sp theo mã loại hàng
         if ($malh > 0) {
@@ -51,13 +51,16 @@ class Product {
         }
         //lấy sp mới
         if ($moi === 1) {
-            $query .= " order by b.ngaynhap desc";
+            $order = "desc";
         }
+
+        $query .= " order by masp $order";
+
         // giới hạn sp
         if ($gioihan > 0) {
             $query .= " limit $gioihan";
         }
-        $query .= " order by masp asc";
+
         $result = $db->getAll($query);
         return $result;
     }
@@ -77,16 +80,17 @@ class Product {
             return $gia;
         }
     }
+
     //lay san pham theo id
     function getProId($masp) {
         $db = new Connect();
         $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh  WHERE masp=$masp";
         $result = $db->getOne($query);
         return $result;
-
     }
+
     // nhớ sửa lại mấy hàm
-    function insertPro($tensp,$gia,$luotxem,$mota,$mamausac,$mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp,$trangthai,$malh) {
+    function insertPro($tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh) {
         $db = new Connect();
         $query = "INSERT INTO `sanpham`(`tensp`,`gia`,`luotxem`,`mota`,`mams`,`mamh`,`khuyenmai`,`dacbiet`,`ngaynhap`,`hinhanhsp`,`trangthai`,`malh`) VALUES ('$tensp','$gia','$luotxem','$mota','$mamausac','$mamathang','$khuyenmai','$dacbiet','$ngaynhap','$hinhanhsp','$trangthai','$malh')";
         $result = $db->execute($query);
@@ -98,9 +102,9 @@ class Product {
         $db->execute($query);
     }
 
-    function updatePro($masp,$tensp,$gia,$luotxem,$mota,$mamausac,$mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp,$trangthai,$malh) {
+    function updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh) {
         $db = new Connect();
-        $query = "UPDATE sanpham SET tensp= ".$tensp.",gia = ".$gia.",luotxem=".$luotxem.",mota = ".$mota.",mams=".$mamausac.",mamh=".$mamathang.", khuyenmai = ".$khuyenmai.", dacbiet = ".$dacbiet.", ngaynhap = ".$ngaynhap.", hinhanhsp= ".$hinhanhsp.",trangthai= ".$trangthai.", malh = ".$malh." WHERE masp = $masp";
+        $query = "UPDATE sanpham SET tensp= " . $tensp . ",gia = " . $gia . ",luotxem=" . $luotxem . ",mota = " . $mota . ",mams=" . $mamausac . ",mamh=" . $mamathang . ", khuyenmai = " . $khuyenmai . ", dacbiet = " . $dacbiet . ", ngaynhap = " . $ngaynhap . ", hinhanhsp= " . $hinhanhsp . ",trangthai= " . $trangthai . ", malh = " . $malh . " WHERE masp = $masp";
         echo $query;
         $result = $db->execute($query);
     }

@@ -56,13 +56,14 @@ class Account {
         $db->execute($query);
     }
 
-//thêm cookie
+    //thêm cookie
     function addCookie($name, $value, $day) {
         setcookie($name, $value, time() + (86400 * $day), "/");
     }
 
+    //xóa cookie
     function deleteCookie($name) {
-        add_cookie($name, "", -1);
+        $this->addCookie($name, "", -1);
     }
 
     // kiểm tra ck có tồn tại không

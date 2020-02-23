@@ -2,6 +2,7 @@
 
 //Model
 session_start();
+ob_start();
 require_once '../model/connect.php';
 require_once '../model/catalog.php';
 require_once '../model/product.php';
@@ -16,24 +17,31 @@ require_once '../model/news.php';
 $crBanner = new Banner();
 $bannerList = $crBanner->getBanner();
 //<---Banner-End--->
+//
 //Catalog
 $crCata = new Catalog();
 $cataList = $crCata->getCata(); //array catalog
 //<---Catalog-End--->
+//
 //Product
 $crPro = new Product();
 $proList = $crPro->getPro(0, 0, 0, 1); //array products
 //<---Product-End--->
+//
 //Comments
 $crComm = new Comment(); // khởi tạo comments
 //<---Comments-End--->
+//
 //Account
 $crAcc = new Account(); // khởi tạo account
 //<---Account-End--->
+//
 //News
 $crNews = new News(); // khởi tạo news
 $newsCataList = $crNews->getCataNews();
+($crAcc->checkCookie('recent-news')) ? $threeRecentNews = array_slice($_COOKIE['recent-news'], -3, 3) : $threeRecentNews = [];
 //<---News-End--->
+//
 //Control
 require_once '../view/layout/header.php';
 
@@ -50,20 +58,21 @@ if (isset($_GET['act'])) {
         case 'contact':
             require_once '../view/pages/contact.php';
             break;
-        //blog
+        //news
         case 'news':
             $malbv = (isset($_GET['malbv'])) ? $_GET['malbv'] : 0;
             $newsList = $crNews->getNews($malbv);
-
             require_once '../view/news/news.php';
             break;
         case 'news-detail':
             $mabv = $_GET['mabv']; //mã bài viết
             $news = $crNews->getNews(0, $mabv)[0]; //lấy dữ liệu theo mã bv
-            $prevNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức cũ hơn
+            $prevNews = @$crNews->getNews(0, $mabv - 1)[0]; //lấy tin tức cũ hơn
             $nextNews = $crNews->getNews(0, $mabv + 1)[0]; //lấy tin tức mới hơn
             $cmtsList = $crComm->getCmt('binhluanbv', 'mabv', $mabv); //các cmt của bv
             $crPro->upView('baiviet', 'mabv', $mabv); //tăng view
+
+            $crAcc->addCookie("recent-news[$mabv]", $mabv, 30); // thêm bài viết vừa xem vào cookie
 
             require_once '../view/news/news-detail.php';
             break;
@@ -107,5 +116,6 @@ if (isset($_GET['act'])) {
 }
 
 require_once '../view/layout/footer.php';
+//ob_end_flush();
 //<---End--->
 ?>

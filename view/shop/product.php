@@ -243,6 +243,7 @@
                             </div>
                         </div>
                         <div class="review_list">
+                            <div></div>
                             <?php
                             $threeCmts = array_slice($cmtsList, 0, 3);
                             foreach ($threeCmts as $cmt) {

@@ -127,42 +127,22 @@
 
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h3 class="widget_title">Các tin vừa xem</h3>
-                        <div class="media post_item">
-                            <!--<img src="img/post/post_1.png" alt="post">-->
-                            <div class="media-body">
-                                <a href="single-blog.html">
-                                    <h3>From life was you fish...</h3>
-                                </a>
-                                <p>January 12, 2019</p>
+                        <?php
+                        foreach ($threeRecentNews as $mabv) {
+                            $news = $crNews->getNews(0, $mabv)[0];
+                            ?>
+                            <div class="media post_item">
+                                <img style="height: 80px; width:80px; object-fit: cover" src="../public/img/blog/upload/<?= $news['hinhanhbv'] ?>" alt="post">
+                                <div class="media-body">
+                                    <a href=".?act=news-detail&mabv=<?= $mabv ?>">
+                                        <h3><?= $news['tenbv'] ?><?= $mabv ?></h3>
+                                    </a>
+                                    <p><?= date("d-m, Y", strtotime($news['ngaydang'])) ?></p>
+                                </div>
                             </div>
-                        </div>
-                        <!--                        <div class="media post_item">
-                                                    <img src="img/post/post_2.png" alt="post">
-                                                    <div class="media-body">
-                                                        <a href="single-blog.html">
-                                                            <h3>The Amazing Hubble</h3>
-                                                        </a>
-                                                        <p>02 Hours ago</p>
-                                                    </div>
-                                                </div>
-                                                <div class="media post_item">
-                                                    <img src="img/post/post_3.png" alt="post">
-                                                    <div class="media-body">
-                                                        <a href="single-blog.html">
-                                                            <h3>Astronomy Or Astrology</h3>
-                                                        </a>
-                                                        <p>03 Hours ago</p>
-                                                    </div>
-                                                </div>
-                                                <div class="media post_item">
-                                                    <img src="img/post/post_4.png" alt="post">
-                                                    <div class="media-body">
-                                                        <a href="single-blog.html">
-                                                            <h3>Asteroids telescope</h3>
-                                                        </a>
-                                                        <p>01 Hours ago</p>
-                                                    </div>
-                                                </div>-->
+                            <?php
+                        }
+                        ?>
                     </aside>
                     <!--                    <aside class="single_sidebar_widget tag_cloud_widget">
                                             <h4 class="widget_title">Tag Clouds</h4>
