@@ -104,11 +104,15 @@
               <p>Quản Lí Bình Luận</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">subject</i>
-              <p>Quản Lí Bài Viết</p>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons">shopping_cart</i>
+              Quản Lí bài viết
             </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="admin.php?act=qlyCataBlog">Quản Lí Danh Mục</a>
+              <a class="dropdown-item" href="admin.php?act=qlyBlog">Quản Lí Bài Viêt</a>
+            </div>
           </li>
 
           <li class="nav-item ">
