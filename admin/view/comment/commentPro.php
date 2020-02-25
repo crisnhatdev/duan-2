@@ -17,7 +17,6 @@
                     </thead>
                     <tbody>
                         <?php
-                        $i=0;
                         foreach ($cmtPro as $key => $cmt) {
                         ?>
                             <tr>

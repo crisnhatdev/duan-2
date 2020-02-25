@@ -288,28 +288,30 @@ if (isset($_GET['act'])) {
             break;
             // ---------------------------------------------------------------------COMMENT----------------------------------------------
         case 'cmtBlog':
-            $crCmt = new comment();
-            $cmtBlog = $crCmt->getCmtByBang();
+            $crCmt = new Comment();
+            $cmtBlog = $crCmt->getCmtBv();
 
             require_once '../admin/view/comment/qlyCommentBlog.php';
             break;
-        case 'cmtPro':
-            $crCmt = new comment();
-            $cmtPro = $crCmt->getCmtByBang(1);
+        case 'cmtProduct':
+            $crCmt = new Comment();
+            $cmtPro = $crCmt->getCmtPro();
+            require_once '../admin/view/comment/commentPro.php';
+            break;
         case 'delCmtPro':
-            $crCmt = new comment();
+            $crCmt = new Comment();
             $stt = $_GET['stt'];
             $crCmt->delCmtPro($stt);
             //capnhat
-            $crCmt = new comment();
-            $cmtPro = $crCmt->getCmtByBang(1);
-            require_once '../admin/view/comment/qlyCommentPro.php';
-
+            $crCmt = new Comment();
+            $cmtPro = $crCmt->getCmtPro();
+            require_once '../admin/view/comment/CommentPro.php';
+            break;
         case 'delCmtBlog':
-            $crCmt = new comment();
+            $crCmt = new Comment();
             $stt = $_GET['stt'];
             $crCmt->delCmtBlog($stt);
-            $cmtBlog = $crCmt->getCmtByBang();
+            $cmtBlog = $crCmt->getCmtBv();
             require_once '../admin/view/comment/qlyCommentBlog.php';
             break;
             // -------------------------------------------------------------------------TAI KHOAN-----------------------------------------------
@@ -336,7 +338,7 @@ if (isset($_GET['act'])) {
                 move_uploaded_file($_FILES['hinhanhkh']['tmp_name'], $url);
             }
             $phanquyen = $_POST['phanquyen'];
-            $crAcc->register($name, $phone, $pass, $address, $email,$gioithieu, $phanquyen, $hinhanhkh);
+            $crAcc->register($name, $phone, $pass, $address, $email, $gioithieu, $phanquyen, $hinhanhkh);
             //capnhat
             $getAcc = $crAcc->all_user();
             require_once '../admin/view/account/qlyAccount.php';
@@ -361,7 +363,7 @@ if (isset($_GET['act'])) {
                 move_uploaded_file($_FILES['hinhanhkh']['tmp_name'], $url);
             }
             $phanquyen = $_POST['phanquyen'];
-            $crAcc->update_info($matk,$name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen);
+            $crAcc->update_info($matk, $name, $phone, $pass, $address, $email, $gioithieu, $hinhanhkh, $phanquyen);
             $getAcc = $crAcc->all_user();
             require_once '../admin/view/account/qlyAccount.php';
             break;

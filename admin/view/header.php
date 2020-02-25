@@ -104,7 +104,7 @@
               Quản Lí Bình Luận
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="admin.php?act=cmtPro">Bình Luận Sản Phẩm</a>
+              <a class="dropdown-item" href="admin.php?act=cmtProduct">Bình Luận Sản Phẩm</a>
               <a class="dropdown-item" href="admin.php?act=cmtBlog">Bình Luận Bài Viết</a>
             </div>
           </li>

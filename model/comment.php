@@ -38,15 +38,17 @@ class Comment
         return $db->execute($query);
     }
     //lay cmt theo bang
-    function getCmtByBang($bang = 0)
+    function getCmtBv()
     {
         $db = new Connect();
-
-        if ($bang > 0) {
-            $query = "SELECT * FROM binhluansp  ";
-        } else {
-            $query = "SELECT * FROM binhluanbv  ";
-        }
+        $query = "SELECT * FROM binhluanbv  ";
+        return $db->getAll($query);
+    }
+    
+    function getCmtPro()
+    {
+        $db = new Connect();
+        $query = "SELECT * FROM binhluansp  ";
         return $db->getAll($query);
     }
 
