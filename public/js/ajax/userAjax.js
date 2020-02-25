@@ -48,6 +48,7 @@ $(document).ready(function () {
 
     //login, register, update with ajax
     var checkSubmit = true;
+//    console.log($('.user-ajax'))
     $('.user-ajax').on('submit', function (e) {
         e.preventDefault();
         var form = $(this);
@@ -55,49 +56,35 @@ $(document).ready(function () {
         var method = form.attr('method');
         var type = form.data('type');
         var data = form.serializeArray();
+//        var pic = ($('input[name="picture"]').val()) ? $('input[name="picture"]') : '';
         var checkValid = true;
-        for (var i = 0; i < input.length; i++) {
-            if (validate(input[i]) == false) {
-                showValidate(input[i]);
-                $(input[i]).val('');
-                checkValid = false;
-            }
-        }
+//        for (var i = 0; i < input.length; i++) {
+//            if (validate(input[i]) == false) {
+//                showValidate(input[i]);
+//                $(input[i]).val('');
+//                checkValid = false;
+//            }
+//        }
 
         if (checkValid && checkSubmit) {
             $.ajax({
                 url: action,
                 type: method,
-                dataType: 'json',
+                dataType: false,
                 data: {arrData: data, type: type},
                 success: function (res) {
-                    console.log(res);
-//                    $(input).each(function () {
-//                        if (validate(this) == false) {
-//                            showValidate(this);
-//                            $(this).val('');
-//                        }
-//                    });
-//
-//                    var arrRes = Object.entries(res); //chuyển obj thành array
-//
-//                    if (arrRes[0][0] === 'success_field') {
-//                        checkSubmit = false;
-//                    }
-//
-//                    $('#messages_modal .list-unstyled').html('<li class="text-center">' + arrRes[0][1] + '</li>')
-//                    $('#messages_modal').modal('show');
-//
-//                    setTimeout(function () {
-//                        $('#messages_modal').modal('hide').data('bs.modal', null);
-//                        $('body').css('padding', 0)
-//                    }, 1500);
-//
-//                    if (arrRes.length > 1) {
-//                        setTimeout(function () {
-//                            window.location.href = arrRes[1][1];
-//                        }, 1500)
-//                    }
+                    console.log(res)
+                    //res is object
+                    for (let key in res) {
+                        $('.' + key).html(res[key])
+                        setTimeout(function () {
+                            $('.' + key).html('');
+                            $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
+                        }, 1000)
+                        if (key === 'direct') {
+                            window.location.href = res[key];
+                        }
+                    }
                 },
                 error: function (request, status, error) {
                     console.log(request.responseText);

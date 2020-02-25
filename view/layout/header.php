@@ -48,7 +48,7 @@
                                         <a class="nav-link" href=".?">Trang chủ</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#/" id="navbarDropdown_1"
+                                        <a class="nav-link dropdown-toggle" href="#catalog" id="navbarDropdown_1"
                                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Cửa hàng
                                         </a>
@@ -73,13 +73,25 @@
                                         <a class="nav-link" href=".?act=contact">Liên hệ</a>
                                     </li>
 
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
-                                        <!--                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                                                                    <a class="dropdown-item" href=".?act=signIn"> Đăng nhập</a>
-                                                                                    <a class="dropdown-item" href=".?act=signUp">Đăng ký</a>
-                                                                                </div>-->
-                                    </li>
+                                    <?php
+                                    if ($crAcc->checkSs('user')) {
+                                        ?>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle"  href="#account" id="navbarDropdown_2">Tài khoản</a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                                <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
+                                                <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
+                                            </div>
+                                        </li>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
+                                        </li>
+                                        <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                             <div class="hearer_icon d-flex">

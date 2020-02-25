@@ -55,7 +55,7 @@ class News {
     function getCataNews(
     $malbv = 0) {
         $db = new Connect();
-        $query = "select* from loaibaiviet where 1";
+        $query = "select * from loaibaiviet where 1";
         if ($malbv > 0) {
             $query .= " and malbv = $malbv";
         }
