@@ -25,9 +25,9 @@ class Account {
     }
 
 //hàm đăng ký 
-    function register($name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen) {
+    function register($name, $phone, $pass, $email, $phanquyen) {
         $db = new Connect();
-        $query = "INSERT INTO `taikhoan`(`tenkh`, `sdt`, `matkhau`, `diachi`, `email`,`gioithieu`,`hinhanhkh`,`phanquyen`) VALUES ('$name','$phone','$pass','$address','$email','$gioithieu','$hinhanhkh','$phanquyen')";
+        $query = "INSERT INTO `taikhoan`(`tenkh`, `sdt`, `matkhau`, `email`,`phanquyen`) VALUES ('$name','$phone','$pass','$email',$phanquyen)";
         $db->execute($query);
     }
 
@@ -40,6 +40,7 @@ class Account {
     }
 
 //hàm update info
+
     function update_info($matk,$name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen) {
         $db = new Connect();
         $query = "UPDATE taikhoan SET tenkh='.$name.',sdt='.$phone.',matkhau='.$pass.',diachi='.$address.',email='.$email.',gioithieu='.$gioithieu.',hinhanhkh='.$hinhanhkh.',phanquyen= '.$phanquyen.' WHERE matk = $matk";
@@ -92,7 +93,7 @@ class Account {
 
     function get_user_by($col, $val) {
         $db = new Connect();
-        $query = "select * from taikhoan where $col = $val";
+        $query = "select * from taikhoan where $col = '$val'";
 
         return $db->getOne($query);
     }
@@ -100,7 +101,7 @@ class Account {
 //update user
     function update_user_by($col1, $val1, $col2, $val2) {
         $db = new Connect();
-        $query = "UPDATE `taikhoan` SET `$col1`= $val1 WHERE $col2 = $val2";
+        $query = "UPDATE `taikhoan` SET `$col1`= '$val1' WHERE $col2 = '$val2'";
 
         $db->execute($query);
     }

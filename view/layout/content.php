@@ -129,8 +129,8 @@ $saleList = array_filter($proList, function($pro) {
                             <div id="seconds" class="date"></div>
                         </div>
                     </div>
-                    <div class="validate_field success_field" style="color: #28a745"></div>
-                    <div class="validate_field error_field" style="color: red" ></div>
+                    <div class="validate_field success_subscribe" style="color: #28a745"></div>
+                    <div class="validate_field error_subscribe" style="color: red" ></div>
                     <form class="input-group subscribe-form-ajax form-group" action="../view/account/handleUser.php" method="post" data-type="subscribe">
                         <input type="email" class="form-control validate-form-control" placeholder="Nhập email của bạn"
                                aria-label="Nhập email của bạn" aria-describedby="basic-addon3" name="subscribe-mail" onfocus="this.placeholder = ''"

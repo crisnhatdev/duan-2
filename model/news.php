@@ -3,19 +3,19 @@
 class News
 {
 
-    function getNews($malbv = 0, $mabv = 0)
-    {
+    function getNews($malbv = 0, $mabv = 0, $gioihan = 0) {
         $db = new Connect();
         $query = "select a.*, b.*, c.tenkh, c.hinhanhkh, c.gioithieu from baiviet a inner join loaibaiviet b on a.malbv = b.malbv inner join taikhoan c on a.matk = c.matk where 1";
+        // $query = "select * from loaibaiviet a INNER JOIN baiviet b on a.malbv= b.malbv INNER JOIN taikhoan c on b.matk = b.matk where 1 ";
         if ($malbv > 0) {
             $query .= " and b.malbv = $malbv";
         }
-
         if ($mabv > 0) {
             $query .= " and a.mabv = $mabv";
         }
-
-
+        if($gioihan > 0){
+            $query .= " limit $gioihan";
+        }
         return $db->getAll($query);
     }
 
@@ -31,12 +31,8 @@ class News
     }
 
     //lấy sản phẩm giới hạn theo số trang
-    function newsByPage(
-        $mabv = 0,
-        $hienbv = 0,
-        $idtrang = 0,
-        $timbv = ''
-    ) {
+    function newsByPage($mabv = 0, $hienbv = 0, $idtrang = 0, $timbv = '') {
+
         $db = new Connect();
 
         $query = " select a.*, b.*, c.tenkh, c.hinhanhkh, c.gioithieu from baiviet a inner join loaibaiviet b on a.malbv = b.malbv inner join taikhoan c on a.matk = c.matk where 1";
@@ -63,7 +59,7 @@ class News
         $malbv = 0
     ) {
         $db = new Connect();
-        $query = "select* from loaibaiviet where 1";
+        $query = "select * from loaibaiviet where 1";
         if ($malbv > 0) {
             $query .= " and malbv = $malbv";
         }

@@ -8,6 +8,8 @@ require_once '../../model/product.php';
 require_once '../../model/comment.php';
 require_once '../../model/validate.php';
 require_once '../../model/news.php';
+require_once '../../model/account.php';
+require_once '../../model/phpmailer.php';
 //<---End-Model---->
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
@@ -26,9 +28,16 @@ $crValid = new Validate();
 //News
 $crNews = new News();
 // <---End-News--->
+//Account
+$crAcc = new Account();
+// <---End-Account--->
+//Mail
+$crMail = new PHPMail();
+// <---End-Mail--->
 //Controller
 $type = $_REQUEST['type'];
 $errArr = array();
+$succesArr = array();
 
 if ($type) {
     switch ($type) {
@@ -36,192 +45,178 @@ if ($type) {
             $email = $_POST['arrData'][0]['value']; //email đăng ký nhận tin
 
             if (!$crValid->valid_text($email) || $email == '') {
-                $errArr['error_field'] = 'Bạn không được để trống các ô có dấu * hoặc sử dụng ký tự đặc biết';
+                $errArr['error_subscribe'] = 'Bạn không được để trống hoặc sử dụng ký tự đặc biết';
                 echo json_encode($errArr);
                 return;
             }
 
             if (!$crValid->valid_email($email)) {
-                $errArr['error_field'] = 'Email không đúng định dạng';
+                $errArr['error_subscribe'] = 'Email không đúng định dạng';
                 echo json_encode($errArr);
                 return;
             }
 
             $crNews->insertSubcriNews($email);
-            $errArr['success_field'] = 'Bạn đã đăng ký nhận tin thành công';
-            echo json_encode($errArr);
+            $succesArr['success_subscribe'] = 'Bạn đã đăng ký nhận tin thành công';
+            echo json_encode($succesArr);
             break;
         case 'contact':
-            $data = $_POST['arrData'];
-
-            $name = valid_value_insert($data[0]['value']);
-            $email = $data[1]['value'];
-            $phone = $data[2]['value'];
-            $mess = valid_value_insert($data[3]['value']);
-
-            foreach ($data as $value) {
-                if (!valid_text($value['value']) || $value['value'] == '') {
-                    $errArr['error_field'] = 'Bạn không được để trống các ô có dấu * hoặc sử dụng ký tự đặc biết';
-                    echo json_encode($errArr);
-                    return;
-                }
-            }
-
-            if (!valid_phone($phone)) {
-                $errArr['phone_field'] = 'Số điện thoại không đúng định dạng';
-                echo json_encode($errArr);
-                return;
-            }
-
-            if (!valid_email($email)) {
-                $errArr['email_field'] = 'Email không đúng định dạng';
-                echo json_encode($errArr);
-                return;
-            }
-
-            $title = 'Thông báo';
-            $desc = htmlContact();
-            if (sendMail($title, $desc, $email) === 1) {
-                up_contact($email, $phone, $name, $mess);
-                $errArr['success_field'] = 'Bạn đã gửi hỗ trợ thành công. Hãy chờ liên hệ của chúng tôi';
-                $errArr['direct'] = '.?';
-                echo json_encode($errArr);
-            }
+//            $data = $_POST['arrData'];
+//
+//            $name = valid_value_insert($data[0]['value']);
+//            $email = $data[1]['value'];
+//            $phone = $data[2]['value'];
+//            $mess = valid_value_insert($data[3]['value']);
+//
+//            foreach ($data as $value) {
+//                if (!valid_text($value['value']) || $value['value'] == '') {
+//                    $errArr['error_field'] = 'Bạn không được để trống các ô có dấu * hoặc sử dụng ký tự đặc biết';
+//                    echo json_encode($errArr);
+//                    return;
+//                }
+//            }
+//
+//            if (!valid_phone($phone)) {
+//                $errArr['phone_field'] = 'Số điện thoại không đúng định dạng';
+//                echo json_encode($errArr);
+//                return;
+//            }
+//
+//            if (!valid_email($email)) {
+//                $errArr['email_field'] = 'Email không đúng định dạng';
+//                echo json_encode($errArr);
+//                return;
+//            }
+//
+//            $title = 'Thông báo';
+//            $desc = htmlContact();
+//            if (sendMail($title, $desc, $email) === 1) {
+//                up_contact($email, $phone, $name, $mess);
+//                $errArr['success_field'] = 'Bạn đã gửi hỗ trợ thành công. Hãy chờ liên hệ của chúng tôi';
+//                $errArr['direct'] = '.?';
+//                echo json_encode($errArr);
+//            }
             break;
         case 'register':
             $data = $_POST['arrData'];
 
-            $name = valid_value_insert($data[0]['value']);
-            $phone = $data[1]['value'];
-            $email = $data[2]['value'];
-            $pass = $data[3]['value'];
-            $pass_2 = $data[4]['value'];
-            $address = valid_value_insert($data[5]['value']);
-            $gender = 'Nam';
+            $email = $data[0]['value'];
+            $pass = $data[1]['value'];
+            $pass_2 = $data[2]['value'];
+            $name = $crValid->valid_value_insert($data[3]['value']);
+            $phone = $data[4]['value'];
             $level = 0;
 
             foreach ($data as $value) {
-                if (!valid_text($value['value']) || $value['value'] == '') {
-                    $errArr['error_field'] = 'Bạn không được để trống các ô có dấu * hoặc sử dụng ký tự đặc biết';
-                    echo json_encode($errArr);
-                    return;
+                if (!$crValid->valid_text($value['value']) || $value['value'] == '') {
+                    $errArr['error_' . $value['name']] = 'Bạn không được để trống hoặc sử dụng ký tự đặc biết';
                 }
             }
-
-            if (valid_email($email)) {
-                if (check_register('email', $email)) {
-                    $errArr['email_field'] = 'Email đã có người đăng ký';
-                    echo json_encode($errArr);
-                    return;
+//
+            if ($crValid->valid_email($email)) {
+                if ($crAcc->check_register('email', $email)) {
+                    $errArr['error_' . $data[0]['name']] = 'Email đã có người đăng ký';
                 }
             } else {
-                $errArr['email_field'] = 'Email không đúng định dạng';
-                echo json_encode($errArr);
-                return;
+                $errArr['error_' . $data[0]['name']] = 'Email không đúng định dạng';
             }
-
-            if (valid_phone($phone)) {
-                if (check_register('sdt', $phone)) {
-                    $errArr['phone_field'] = 'Số điện thoại đã được đăng ký';
-                    echo json_encode($errArr);
-                    return;
+//
+            if ($crValid->valid_phone($phone)) {
+                if ($crAcc->check_register('sdt', $phone)) {
+                    $errArr['error_' . $data[4]['name']] = 'Số điện thoại đã được đăng ký';
                 }
             } else {
-                $errArr['phone_field'] = 'Hãy nhập đúng số điện thoại';
-                echo json_encode($errArr);
-                return;
+                $errArr['error_' . $data[4]['name']] = 'Hãy nhập đúng số điện thoại';
             }
 
-            if (valid_pass($pass)) {
-                $hashedPass = bcrypt_password($pass); // băm mật khẩu sau đó mới up lên database
+            if (!$crValid->valid_pass($pass)) {
+                $errArr['error_' . $data[1]['name']] = 'Mật khẩu cần có 8 ký tự trở lên bao gồm chữ hoa, thường và số';
+                $errArr['error_' . $data[2]['name']] = 'Mật khẩu cần có 8 ký tự trở lên bao gồm chữ hoa, thường và số';
+            }
+
+            if (count($errArr) === 0) {
+                $hashedPass = $crAcc->bcrypt_password($pass); // băm mật khẩu sau đó mới up lên database
 
                 if ($pass === $pass_2) {
                     $title = "Kích hoạt tài khoản";
-                    $desc = htmlRegister($email);
-                    if (sendMail($title, $desc, $email) === 1) {
-                        register($name, $phone, $hashedPass, $address, $email, $gender, $level);
-                        $errArr['success_field'] = 'Đăng ký thành công. Hãy kiểm tra email của bạn';
-                        $errArr['direct'] = '?act=login';
-                        echo json_encode($errArr);
+                    $desc = $crMail->htmlRegister($email);
+                    if ($crMail->sendMail($title, $desc, $email) === 1) {
+                        $crAcc->register($name, $phone, $hashedPass, $email, $level);
+                        echo json_encode('http://localhost/php2/asm/controller/?act=account&email=' . $email);
+//                        $succesArr['success_field'] = 'Đăng ký thành công. Hãy kiểm tra email của bạn';
+//                        echo json_encode($succesArr);
                     } else {
                         $errArr['error_field'] = 'Đã xảy ra lỗi. Không thể đăng ký';
                         echo json_encode($errArr);
                     }
                 } else {
-                    $errArr['password2_field'] = 'Mật khẩu không giống nhau';
+                    $errArr['error_' . $data[1]['name']] = 'Mật khẩu không giống nhau';
+                    $errArr['error_' . $data[2]['name']] = 'Mật khẩu không giống nhau';
                     echo json_encode($errArr);
                 }
             } else {
-                $errArr['password_field'] = 'Mật khẩu cần có 8 ký tự trở lên bao gồm chữ hoa, thường và số';
                 echo json_encode($errArr);
             }
             break;
         case 'login':
-            $data = $_POST['arrData'];
+            $data = $_POST['arrData']; //lấy thông tin tk và mk
 
-            $email = $data[0]['value'];
-            $pass = $data[1]['value'];
+            $email = $data[0]['value']; //tk lấy từ mảng arrData
+            $pass = $data[1]['value']; //mk lấy từ mảng arrData
 
-            foreach ($data as $value) {
-                if (!valid_text($value['value']) || $value['value'] === '') {
-                    $errArr['error_field'] = 'Bạn không được để trống các ô có dấu * hoặc sử dụng ký tự đặc biết';
-                    echo json_encode($errArr);
-                    return;
-                }
+            if (!$crValid->valid_email($email)) {
+                $errArr['error_' . $data[0]['name']] = 'Hãy nhập đúng địa chỉ Email!';
             }
 
-            if (!valid_email($email)) {
-                $errArr['email_field'] = 'Hãy nhập đúng địa chỉ email';
+            if (!$crValid->valid_pass($pass)) {
+                $errArr['error_' . $data[1]['name']] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
                 echo json_encode($errArr);
                 return;
             }
 
-            if (!valid_pass($pass)) {
-                $errArr['password_field'] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
-                echo json_encode($errArr);
-                return;
+            $user = $crAcc->get_user_by('email', $email); // lấy user trên databse và sử dụng mk đã băm
+
+            $isValid = $crAcc->bcrypt_verify($pass, $user['matkhau']); // check mật khẩu người dùng nhập và mật khẩu đã băm trên database
+
+            if (!$isValid) {
+                $errArr['error_psw_lg'] = '';
+                $errArr['error_field_lg'] = 'Tài khoản hoặc mật khẩu không đúng';
             }
 
-            $user = get_user_by('email', $email); // lấy mk đã băm trên database bằng email
-
-            $isValid = bcrypt_verify($pass, $user['matkhau']); // check mật khẩu người dùng nhập và mật khẩu đã băm trên database
-
-            if ($isValid) {
+            if (count($errArr) === 0) {
                 if ($user['kichhoat'] === '0') {
-                    $errArr['error_field'] = 'Tài khoản của bạn chưa kích hoạt. Hãy kiểm tra email';
-                    $errArr['direct'] = '.?act=login';
+                    $errArr['error_field_lg'] = 'Tài khoản của bạn chưa kích hoạt. Hãy kiểm tra email';
 
                     $title = "Kích hoạt tài khoản";
-                    $desc = htmlRegister($email);
-                    sendMail($title, $desc, $user['email']);
+                    $desc = $crMail->htmlRegister($email);
+                    $crMail->sendMail($title, $desc, $user['email']);
 
                     echo json_encode($errArr);
                     return;
                 }
                 $_SESSION['user'] = array(
-                    'idaccount' => $user['matk'],
+                    'id' => $user['matk'],
                     'name' => $user['tenkh'],
                     'phone' => $user['sdt'],
                     'address' => $user['diachi'],
+                    'introduce' => $user['gioithieu'],
                     'email' => $user['email'],
-                    'gender' => $user['gioitinh'],
                     'level' => $user['phanquyen']);
 
-                $remember = searchForValue('rememberme', $data);
+                $remember = $crAcc->searchForValue('rememberme', $data);
                 if ($remember === 'on') {
-                    add_cookie('user-email', $email, 1);
+                    $crAcc->addCookie('user-email', $email, 1);
                 } else {
-                    if (check_cookie('user-email')) {
-                        delete_cookie('user-email');
+                    if ($crAcc->checkCookie('user-email')) {
+                        $crAcc->deleteCookie('user-email');
                     }
                 }
-                $direct = searchForValue('location', $data);
+                $direct = $crAcc->searchForValue('location', $data);
 
-                $errArr['success_field'] = 'Đăng nhập thành công';
-                $errArr['direct'] = $direct;
-                echo json_encode($errArr);
+                $successArr['success_field_lg'] = 'Đăng nhập thành công';
+                $successArr['direct'] = $direct;
+                echo json_encode($successArr);
             } else {
-                $errArr['error_field'] = 'Email hoặc mật khẩu không đúng';
                 echo json_encode($errArr);
             }
             break;
@@ -235,21 +230,25 @@ if ($type) {
             $data = $_POST['arrData'];
 
             foreach ($data as $value) {
-                if (!valid_text($value['value']) || $value['value'] === '') {
-                    $errArr['error_field'] = 'Bạn không được để trống các ô có dấu * hoặc sử dụng ký tự đặc biết';
-                    echo json_encode($errArr);
-                    return;
+                if (!$crValid->valid_text($value['value'])) {
+                    $errArr['error_' . $value['name']] = 'Bạn không được sử dụng ký tự đặc biết';
                 }
             }
 
-            $idAcc = $_SESSION['user']['idaccount'];
-            $name = valid_value_insert($data[0]['value']);
-            $address = valid_value_insert($data[1]['value']);
-            $gender = $data[2]['value'];
+            if (count($errArr) === 0) {
+                $idAcc = $_SESSION['user']['id'];
+                $name = $crValid->valid_value_insert($data[2]['value']);
+                $address = $crValid->valid_value_insert($data[3]['value']);
+                $intro = $crValid->valid_value_insert($data[4]['value']);
+//                $pic = $_POST['pic'];
+//                move_uploaded_file($pic, "../public/img/user/$pic"); //chuyển bộ nhớ ảnh vào thư mục trên và gán tên
 
-            update_info($name, $address, $gender, $idAcc);
-            $errArr['popup_field'] = 'Cập nhật thành công';
-            echo json_encode($errArr);
+                $crAcc->update_info($name, $address, $intro, $idAcc);
+                $succesArr['success_field'] = 'Cập nhật thành công';
+                echo json_encode($succesArr);
+            } else {
+                echo json_encode($errArr);
+            }
             break;
         case 'change-pass':
             $data = $_POST['arrData'];
