@@ -1,128 +1,151 @@
+<!-- End Navbar -->
+<div class="content">
+  <div class="container-fluid">
+    <!-- row1 -->
+    <div class="row">
+      <div class="col-xl-4 col-lg-12">
+        <div class="card card-chart">
+          <div class="card-header card-header-success">
+            <div class="ct-chart" id="dailySalesChart"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Giảm giá hàng ngày</h4>
+            <p class="card-category">
+              <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> tăng giảm giá hôm nay.</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> cập nhật 4 phút trước
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-12">
+        <div class="card card-chart">
+          <div class="card-header card-header-warning">
+            <div class="ct-chart" id="websiteViewsChart"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Email đăng ký</h4>
+            <p class="card-category">Nhận thông báo từ người đăng ký</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> Gửi 2 ngày trước
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-12">
+        <div class="card card-chart">
+          <div class="card-header card-header-danger">
+            <div class="ct-chart" id="completedTasksChart"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Tiến độ công việc</h4>
+            <p class="card-category">Hoàn thành tháng 11</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> Viết 2 ngày hôm qua
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- row2 -->
+    <div class="row">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">content_copy</i>
+            </div>
+            <p class="card-category">Sản Phẩm</p>
+            <h3 class="card-title">
+              <?php
+              $crPro = new Product();
+              $totalPro = count($crPro->total_pro());
+              echo $totalPro;
+              ?>
 
-      <!-- End Navbar -->
-      <div class="content">
-        <div class="container-fluid">
-          <!-- row1 -->
-          <div class="row">
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Giảm giá hàng ngày</h4>
-                  <p class="card-category">
-                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> tăng giảm giá hôm nay.</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> cập nhật 4 phút trước
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Email đăng ký</h4>
-                  <p class="card-category">Nhận thông báo từ người đăng ký</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Gửi 2 ngày trước
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-12">
-              <div class="card card-chart">
-                <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
-                </div>
-                <div class="card-body">
-                  <h4 class="card-title">Tiến độ công việc</h4>
-                  <p class="card-category">Hoàn thành tháng 11</p>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> Viết 2 ngày hôm qua
-                  </div>
-                </div>
-              </div>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <a class="text-white" href="admin.php?act=qlyProduct">Xem Thêm</a>
             </div>
           </div>
-          <!-- row2 -->
-          <div class="row">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">content_copy</i>
-                  </div>
-                  <p class="card-category">Sản Phẩm</p>
-                  <h3 class="card-title">49
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <a href="#pablo" class="warning-link">Xem Thêm</a>
-                  </div>
-                </div>
-              </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">store</i>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">store</i>
-                  </div>
-                  <p class="card-category">Bình Luận</p>
-                  <h3 class="card-title">22</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">date_range</i> Xem Thêm
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">info_outline</i>
-                  </div>
-                  <p class="card-category">Bài Viết</p>
-                  <h3 class="card-title">75</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">local_offer</i> Xem Thêm
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-info card-header-icon">
-                  <div class="card-icon">
-                    <i class="fa fa-twitter"></i>
-                  </div>
-                  <p class="card-category">Tài Khoản</p>
-                  <h3 class="card-title">+245</h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">update</i> Xem Thêm
-                  </div>
-                </div>
-              </div>
+            <p class="card-category">Bình Luận</p>
+            <h3 class="card-title">
+              <?php
+              $crCmt = new Comment();
+              $totalCmt = count($crCmt->total_cmt());
+              echo $totalCmt;
+              ?>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i>  <a class="text-white" href="admin.php?act=qlyComment">Xem Thêm</a>
             </div>
           </div>
-          <!-- <div class="row">
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+            <p class="card-category">Bài Viết</p>
+            <h3 class="card-title">
+              <?php
+              $crNews = new News();
+              $totalNews = count($crNews->total_news());
+              echo $totalNews;
+              ?>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">local_offer</i><a class="text-white" href="admin.php?act=qlyBlogt"> Xem Thêm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+              <i class="fa fa-twitter"></i>
+            </div>
+            <p class="card-category">Tài Khoản</p>
+            <h3 class="card-title">+
+              <?php
+              $crAcc = new Account();
+              $totalAcc = count($crAcc->total_acc());
+              echo $totalAcc;
+              ?>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i><a class="text-white" href="admin.php?act=qlyAccount"> Xem Thêm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -415,109 +438,109 @@
           </div>
         </div>
       </div> -->
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  H.Nhật + K.Bảo
-                </a>
-              </li>
-              <li>
-                <a href="https://creative-tim.com/presentation">
-                  Chúng Tôi
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Bài Viết
-                </a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license">
-                  Xem Thêm
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right" id="date">
-            , Được tài trợ <i class="material-icons">favorite</i> bởi
-            <a href="https://www.creative-tim.com" target="_blank">H.Nhật + K.Bảo </a>
-          </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav class="float-left">
+          <ul>
+            <li>
+              <a href="https://www.creative-tim.com">
+                H.Nhật + K.Bảo
+              </a>
+            </li>
+            <li>
+              <a href="https://creative-tim.com/presentation">
+                Chúng Tôi
+              </a>
+            </li>
+            <li>
+              <a href="http://blog.creative-tim.com">
+                Bài Viết
+              </a>
+            </li>
+            <li>
+              <a href="https://www.creative-tim.com/license">
+                Xem Thêm
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright float-right" id="date">
+          , Được tài trợ <i class="material-icons">favorite</i> bởi
+          <a href="https://www.creative-tim.com" target="_blank">H.Nhật + K.Bảo </a>
         </div>
-      </footer>
-      <script>
-        const x = new Date().getFullYear();
-        let date = document.getElementById('date');
-        date.innerHTML = '&copy; ' + x + date.innerHTML;
-      </script>
-    </div>
+      </div>
+    </footer>
+    <script>
+      const x = new Date().getFullYear();
+      let date = document.getElementById('date');
+      date.innerHTML = '&copy; ' + x + date.innerHTML;
+    </script>
   </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <a href="#" data-toggle="dropdown">
-        <i class="fa fa-cog fa-2x"> </i>
-      </a>
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger active-color">
-            <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-purple active" data-color="purple"></span>
-              <span class="badge filter badge-azure" data-color="azure"></span>
-              <span class="badge filter badge-green" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="danger"></span>
-            </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">Images</li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../admin/layout/assets/img/sidebar-1.jpg" alt="">
-          </a>
-        </li>
-        <li class="active">
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../admin/layout/assets/img/sidebar-2.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../admin/layout/assets/img/sidebar-3.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../admin/layout/assets/img/sidebar-4.jpg" alt="">
-          </a>
-        </li>
-        <li class="button-container">
-          <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-        </li>
-        <!-- <li class="header-title">Want more components?</li>
+</div>
+<div class="fixed-plugin">
+  <div class="dropdown show-dropdown">
+    <a href="#" data-toggle="dropdown">
+      <i class="fa fa-cog fa-2x"> </i>
+    </a>
+    <ul class="dropdown-menu">
+      <li class="header-title"> Sidebar Filters</li>
+      <li class="adjustments-line">
+        <a href="javascript:void(0)" class="switch-trigger active-color">
+          <div class="badge-colors ml-auto mr-auto">
+            <span class="badge filter badge-purple active" data-color="purple"></span>
+            <span class="badge filter badge-azure" data-color="azure"></span>
+            <span class="badge filter badge-green" data-color="green"></span>
+            <span class="badge filter badge-warning" data-color="orange"></span>
+            <span class="badge filter badge-danger" data-color="danger"></span>
+          </div>
+          <div class="clearfix"></div>
+        </a>
+      </li>
+      <li class="header-title">Images</li>
+      <li>
+        <a class="img-holder switch-trigger" href="javascript:void(0)">
+          <img src="../admin/layout/assets/img/sidebar-1.jpg" alt="">
+        </a>
+      </li>
+      <li class="active">
+        <a class="img-holder switch-trigger" href="javascript:void(0)">
+          <img src="../admin/layout/assets/img/sidebar-2.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a class="img-holder switch-trigger" href="javascript:void(0)">
+          <img src="../admin/layout/assets/img/sidebar-3.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a class="img-holder switch-trigger" href="javascript:void(0)">
+          <img src="../admin/layout/assets/img/sidebar-4.jpg" alt="">
+        </a>
+      </li>
+      <li class="button-container">
+        <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+      </li>
+      <!-- <li class="header-title">Want more components?</li>
             <li class="button-container">
                 <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
                   Get the pro version
                 </a>
             </li> -->
-        <li class="button-container">
-          <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-            View Documentation
-          </a>
-        </li>
-        <li class="button-container github-star">
-          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
-      </ul>
-    </div>
+      <li class="button-container">
+        <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+          View Documentation
+        </a>
+      </li>
+      <li class="button-container github-star">
+        <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+      </li>
+      <li class="header-title">Thank you for 95 shares!</li>
+      <li class="button-container text-center">
+        <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+        <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+        <br>
+        <br>
+      </li>
+    </ul>
   </div>
+</div>

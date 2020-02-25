@@ -5,6 +5,8 @@ require_once '../model/connect.php';
 require_once '../model/catalog.php';
 require_once '../model/product.php';
 require_once '../model/news.php';
+require_once '../model/account.php';
+require_once '../model/comment.php';
 //<---End--->
 //
 //Global Var
@@ -28,7 +30,7 @@ if (isset($_GET['act'])) {
         case 'home':
             require_once '../admin/view/content.php';
             break;
-            //catalog
+            // ------------------------------------------------------------CATALOG-------------------------------------------
         case 'qlyCata':
             require_once '../admin/view/catalog/loaihang.php';
             break;
@@ -84,7 +86,8 @@ if (isset($_GET['act'])) {
             }
             require_once '../admin/view/catalog/loaihang.php';
             break;
-        case 'qlyProduct':                                                         //product
+            // -------------------------------------------------------------PRODUCT-------------------------------------------
+        case 'qlyProduct':
             $crPro = new Product();
             $proList = $crPro->getPro(0, 0, 0, 0, 0, 0, 0);
             require_once '../admin/view/product/product.php';
@@ -136,7 +139,6 @@ if (isset($_GET['act'])) {
             $khuyenmai = $_POST['khuyenmai'];
             $dacbiet = $_POST['dacbiet'];
             $ngaynhap = date('Y-m-d H:m:s');
-            $trangthai = NULL;
             $hinhanhsp = $_FILES['hinhanhsp']['name'];
             if ($_FILES['hinhanhsp']['name'] != "") {
                 $dir = "../public/img/newproduct/upload/";
@@ -147,7 +149,7 @@ if (isset($_GET['act'])) {
             $mamausac = $_POST['mamausac'];
             $mamathang = $_POST['mamathang'];
             $updateProduct = new Product();
-            $updateProduct->updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh);
+            $updateProduct->updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $malh);
             //capnhatlai
             $crPro = new Product();
             $proList = $crPro->getPro();
@@ -167,7 +169,7 @@ if (isset($_GET['act'])) {
             }
             require_once '../admin/view/product/product.php';
             break;
-            //Loai BLOG
+            // -------------------------------------------------------------------LOẠI BLOG-----------------------------------------
         case 'qlyCataBlog':
             $crNews = new News();
             $getCataNewsId = $crNews->getCataNews();
@@ -213,18 +215,167 @@ if (isset($_GET['act'])) {
             $newsCataList = $crNews->getCataNews();
             require_once '../admin/view/blog/loaiBlog.php';
             break;
-            // BLOG
+            // -----------------------------------------------------------------------BLOG----------------------------------------
         case 'qlyBlog':
-            $crNews = new News();
             $qlyBlog = $crNews->getNews();
-
             require_once '../admin/view/blog/qlyBlog.php';
             break;
-        case 'contact':
-            require_once '../admin/view/contact.php';
+        case 'addBlogKey':
+            $crNews = new News();
+            $getTaikhoan = $crNews->getNews();
+            require_once '../admin/view/blog/addBlog.php';
+            break;
+        case 'addBlog':
+            $crNews = new News();
+            $tenbv = $_POST['tenbv'];
+            $motabv = $_POST['motabv'];
+            $noidungbv = $_POST['noidungbv'];
+            $luotxem = $_POST['luotxem'];
+            $ngaydang = date('Y-m-d H:m:s');
+            $matk = $_POST['matk'];
+            $malbv = $_POST['malbv'];
+            $hinhanhbv = $_FILES['hinhanhbv']['name'];
+            if ($_FILES['hinhanhbv']['name'] != "") {
+                $dir = "../public/img/blog/";
+                $url = $dir . $hinhanhbv;
+                move_uploaded_file($_FILES['hinhanhbv']['tmp_name'], $url);
+                $qlyBlog = $crNews->inserBlog($tenbv, $motabv, $noidungbv, $luotxem, $hinhanhbv, $ngaydang, $matk, $malbv);
+            }
+            //capnhatlai
+            $crNews = new News();
+            $qlyBlog = $crNews->getNews();
+            require_once '../admin/view/blog/qlyBlog.php';
+            break;
+        case 'delBlog':
+            $id = $_GET['mabv'];
+
+            $crNews = new News();
+            $crNews->deleteBlog($id);
+            //capnhatlai
+            $crNews = new News();
+            $qlyBlog = $crNews->getNews();
+            require_once '../admin/view/blog/qlyBlog.php';
+            break;
+        case 'updateBlogKey':
+            $id = $_GET['id'];
+            $getBlogId = $crNews->getBlogId($id);
+            $dstaikhoan = $crNews->getNews();
+            require_once '../admin/view/blog/updateBlog.php';
+            break;
+        case 'updateBlog':
+            $mabv = $_POST['mabv'];
+            $getBlogId = $crNews->getBlogId($mabv);
+            $crNews = new News();
+            $mabv = $_POST['mabv'];
+            $tenbv = $_POST['tenbv'];
+            $motabv = $_POST['motabv'];
+            $noidungbv = $_POST['noidungbv'];
+            $luotxem = $_POST['luotxem'];
+            $ngaydang = date('Y-m-d H:m:s');
+            $matk = $_POST['matk'];
+            $malbv = $_POST['malbv'];
+            $hinhanhbv = $_FILES['hinhanhbv']['name'];
+            if ($_FILES['hinhanhbv']['name'] != "") {
+                $dir = "../public/img/blog/";
+                $url = $dir . $hinhanhbv;
+                move_uploaded_file($_FILES['hinhanhbv']['tmp_name'], $url);
+                $qlyBlog = $crNews->updateBlog($mabv, $tenbv, $motabv, $noidungbv, $luotxem, $hinhanhbv, $ngaydang, $matk, $malbv);
+            }
+            //capnhatlai
+            $crNews = new News();
+            $qlyBlog = $crNews->getNews();
+            require_once '../admin/view/blog/qlyBlog.php';
+            break;
+            // ---------------------------------------------------------------------COMMENT----------------------------------------------
+        case 'cmtBlog':
+            $crCmt = new comment();
+            $cmtBlog = $crCmt->getCmtByBang();
+
+            require_once '../admin/view/comment/qlyCommentBlog.php';
+            break;
+        case 'cmtPro':
+            $crCmt = new comment();
+            $cmtPro = $crCmt->getCmtByBang(1);
+        case 'delCmtPro':
+            $crCmt = new comment();
+            $stt = $_GET['stt'];
+            $crCmt->delCmtPro($stt);
+            //capnhat
+            $crCmt = new comment();
+            $cmtPro = $crCmt->getCmtByBang(1);
+            require_once '../admin/view/comment/qlyCommentPro.php';
+
+        case 'delCmtBlog':
+            $crCmt = new comment();
+            $stt = $_GET['stt'];
+            $crCmt->delCmtBlog($stt);
+            $cmtBlog = $crCmt->getCmtByBang();
+            require_once '../admin/view/comment/qlyCommentBlog.php';
+            break;
+            // -------------------------------------------------------------------------TAI KHOAN-----------------------------------------------
+        case 'qlyAcc':
+            $crAcc = new Account();
+            $getAcc = $crAcc->all_user();
+            require_once '../admin/view/account/qlyAccount.php';
+            break;
+        case 'add_Acc_Key':
+            require_once '../admin/view/account/addAccount.php';
+            break;
+        case 'addAcc':
+            $crAcc = new Account();
+            $name = $_POST['tenkh'];
+            $phone = $_POST['phone'];
+            $pass = $_POST['password'];
+            $address = $_POST['address'];
+            $email = $_POST['email'];
+            $gioithieu = $_POST['gioithieu'];
+            $hinhanhkh = $_FILES['hinhanhkh']['name'];
+            if ($_FILES['hinhanhkh']['name'] != "") {
+                $dir = "../public/img/blog/";
+                $url = $dir . $hinhanhkh;
+                move_uploaded_file($_FILES['hinhanhkh']['tmp_name'], $url);
+            }
+            $phanquyen = $_POST['phanquyen'];
+            $crAcc->register($name, $phone, $pass, $address, $email,$gioithieu, $phanquyen, $hinhanhkh);
+            //capnhat
+            $getAcc = $crAcc->all_user();
+            require_once '../admin/view/account/qlyAccount.php';
+            break;
+        case 'updateAccKey':
+            $crAcc = new Account();
+            $matk = $_GET['matk'];
+            $getAccById = $crAcc->info_acc($matk);
+            require_once '../admin/view/account/updateAccount.php';
+            break;
+        case 'updateAcc':
+            $matk = $_POST['matk'];
+            $name = $_POST['tenkh'];
+            $phone = $_POST['phone'];
+            $pass = $_POST['password'];
+            $address = $_POST['address'];
+            $email = $_POST['email'];
+            $hinhanhkh = $_FILES['hinhanhkh']['name'];
+            if ($_FILES['hinhanhkh']['name'] != "") {
+                $dir = "../public/img/blog/";
+                $url = $dir . $hinhanhkh;
+                move_uploaded_file($_FILES['hinhanhkh']['tmp_name'], $url);
+            }
+            $phanquyen = $_POST['phanquyen'];
+            $crAcc->update_info($matk,$name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen);
+            $getAcc = $crAcc->all_user();
+            require_once '../admin/view/account/qlyAccount.php';
+            break;
+        case 'delAcc':
+            $crAcc = new Account();
+            $matk = $_GET['matk'];
+            $crAcc->del_acc($matk);
+            //capnhat
+            $getAcc = $crAcc->all_user();
+            require_once '../admin/view/account/qlyAccount.php';
             break;
         default:
             require_once '../admin/view/content.php';
+
             break;
     }
 } else {

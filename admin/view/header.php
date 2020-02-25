@@ -50,7 +50,7 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo" style="background: #fff" ><a href="http://www.creative-tim.com" class="simple-text logo-normal text-white">
+      <div class="logo" style="background: #fff"><a href="http://www.creative-tim.com" class="simple-text logo-normal text-white">
           <img src="../public/img/logo1.png" alt="" style="width:55px;height:55px">
         </a></div>
       <div class="sidebar-wrapper">
@@ -75,7 +75,8 @@
               Quản Lí Tài Khoản
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Thêm Tài Khoản</a>
+            <a class="dropdown-item" href="admin.php?act=qlyAcc">Danh Sách Tài Khoản</a>
+              <a class="dropdown-item" href="admin.php?act=add_Acc_Key">Thêm Tài Khoản</a>
             </div>
           </li>
 
@@ -97,12 +98,15 @@
               <p>Quản Lí Hóa Đơn</p>
             </a>
           </li>
-
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">library_books</i>
-              <p>Quản Lí Bình Luận</p>
+              Quản Lí Bình Luận
             </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="admin.php?act=cmtPro">Bình Luận Sản Phẩm</a>
+              <a class="dropdown-item" href="admin.php?act=cmtBlog">Bình Luận Bài Viết</a>
+            </div>
           </li>
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

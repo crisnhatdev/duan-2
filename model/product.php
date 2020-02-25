@@ -112,13 +112,20 @@ class Product {
         $db->execute($query);
     }
 
-    function updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh) {
+    function updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $malh) {
         $db = new Connect();
-        $query = "UPDATE sanpham SET tensp= " . $tensp . ",gia = " . $gia . ",luotxem=" . $luotxem . ",mota = " . $mota . ",mams=" . $mamausac . ",mamh=" . $mamathang . ", khuyenmai = " . $khuyenmai . ", dacbiet = " . $dacbiet . ", ngaynhap = " . $ngaynhap . ", hinhanhsp= " . $hinhanhsp . ",trangthai= " . $trangthai . ", malh = " . $malh . " WHERE masp = $masp";
-        echo $query;
+        if($hinhanhsp !=""){
+        $query = "UPDATE sanpham SET tensp='$tensp',gia = '$gia',luotxem='$luotxem',mota ='$mota',mams= '$mamausac', mamh='$mamathang', khuyenmai ='$khuyenmai', dacbiet ='$dacbiet', ngaynhap ='$ngaynhap', hinhanhsp='$hinhanhsp', malh ='$malh' WHERE masp = $masp";
+        }
+        else{
+            $query = "UPDATE `sanpham` SET tensp= " . $tensp . ",gia = " . $gia . ",luotxem=" . $luotxem . ",mota = " . $mota . ",mams=" . $mamausac . ",mamh=" . $mamathang . ", khuyenmai = " . $khuyenmai . ", dacbiet = " . $dacbiet . ", ngaynhap = " . $ngaynhap . ", malh = " . $malh . " WHERE masp = $masp";    
+        }
         $result = $db->execute($query);
+    }
+    function total_pro() {
+        $db = new Connect();
+        $query = "SELECT * FROM sanpham";
+        return $db->getAll($query);
     }
 
 }
-
-?>

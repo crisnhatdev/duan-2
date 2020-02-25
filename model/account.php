@@ -25,10 +25,9 @@ class Account {
     }
 
 //hàm đăng ký 
-    function register($name, $phone, $pass, $address, $email, $gender, $phanquyen) {
+    function register($name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen) {
         $db = new Connect();
-        $query = "INSERT INTO `taikhoan`(`tenkh`, `sdt`, `matkhau`, `diachi`, `email`,`gioitinh`,`phanquyen`) VALUES ($name,$phone,$pass,$address,$email,$gender,$phanquyen)";
-
+        $query = "INSERT INTO `taikhoan`(`tenkh`, `sdt`, `matkhau`, `diachi`, `email`,`gioithieu`,`hinhanhkh`,`phanquyen`) VALUES ('$name','$phone','$pass','$address','$email','$gioithieu','$hinhanhkh','$phanquyen')";
         $db->execute($query);
     }
 
@@ -41,10 +40,9 @@ class Account {
     }
 
 //hàm update info
-    function update_info($name, $address, $gender, $idAcc) {
+    function update_info($matk,$name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen) {
         $db = new Connect();
-        $query = "UPDATE `taikhoan` SET `tenkh`=$name,`diachi`=$address,`gioitinh`= $gender WHERE matk = $idAcc";
-
+        $query = "UPDATE taikhoan SET tenkh='.$name.',sdt='.$phone.',matkhau='.$pass.',diachi='.$address.',email='.$email.',gioithieu='.$gioithieu.',hinhanhkh='.$hinhanhkh.',phanquyen= '.$phanquyen.' WHERE matk = $matk";
         $db->execute($query);
     }
 
@@ -120,7 +118,11 @@ class Account {
 
         return $isValid;
     }
-
+    function total_acc() {
+        $db = new Connect();
+        $query = "SELECT * FROM taikhoan";
+        return $db->getAll($query);
+    }
 }
 
 ?>
