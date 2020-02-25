@@ -39,9 +39,14 @@ class Account {
         return $db->getOne($query);
     }
 
-//hàm update info
+    function update_info_client($name, $address, $intro, $idAcc) {
+        $db = new Connect();
+        $query = "UPDATE taikhoan SET tenkh='$name', diachi='$address', gioithieu='$intro' WHERE matk = $idAcc";
+        $db->execute($query);
+    }
 
-    function update_info($matk,$name, $phone, $pass, $address, $email,$gioithieu,$hinhanhkh, $phanquyen) {
+    //hàm update info
+    function update_info($matk, $name, $phone, $pass, $address, $email, $gioithieu, $hinhanhkh, $phanquyen) {
         $db = new Connect();
         $query = "UPDATE taikhoan SET tenkh='.$name.',sdt='.$phone.',matkhau='.$pass.',diachi='.$address.',email='.$email.',gioithieu='.$gioithieu.',hinhanhkh='.$hinhanhkh.',phanquyen= '.$phanquyen.' WHERE matk = $matk";
         $db->execute($query);
@@ -119,11 +124,13 @@ class Account {
 
         return $isValid;
     }
+
     function total_acc() {
         $db = new Connect();
         $query = "SELECT * FROM taikhoan";
         return $db->getAll($query);
     }
+
 }
 
 ?>
