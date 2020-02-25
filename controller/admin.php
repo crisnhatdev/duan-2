@@ -4,7 +4,7 @@
 require_once '../model/connect.php';
 require_once '../model/catalog.php';
 require_once '../model/product.php';
-
+require_once '../model/news.php';
 //<---End--->
 //
 //Global Var
@@ -12,6 +12,11 @@ $crCata = new Catalog();
 $cataList = $crCata->getCata();
 $crPro = new Product();
 $proList = $crPro->getPro();
+
+$crNews = new News(); // khởi tạo news
+$newsCataList = $crNews->getCataNews();
+
+
 //<---End--->
 //
 //Control
@@ -141,7 +146,7 @@ if (isset($_GET['act'])) {
             $luotxem = $_POST['luotxem'];
             $mamausac = $_POST['mamausac'];
             $mamathang = $_POST['mamathang'];
-            $updateProduct= new Product();
+            $updateProduct = new Product();
             $updateProduct->updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh);
             //capnhatlai
             $crPro = new Product();
@@ -162,8 +167,58 @@ if (isset($_GET['act'])) {
             }
             require_once '../admin/view/product/product.php';
             break;
-        case 'blog':
-            require_once '../admin/view/blog.php';
+            //Loai BLOG
+        case 'qlyCataBlog':
+            $crNews = new News();
+            $getCataNewsId = $crNews->getCataNews();
+            require_once '../admin/view/blog/loaiBlog.php';
+            break;
+            //them
+        case 'addCataBlog':
+            $crNews = new News();
+            $tenloai = $_POST['tenlbv'];
+            $hinhanh = '';
+            $crNews->them_danhmucbv($tenloai, $hinhanh);
+            //capnhat lai
+            $newsCataList = $crNews->getCataNews();
+            require_once '../admin/view/blog/loaiBlog.php';
+            break;
+            //xoa
+        case 'delCataBlog':
+            $crNews = new News();
+            if (isset($_GET['malbv']) && $_GET['malbv']) {
+                $malbv = $_GET['malbv'];
+                $crNews->xoa_danhmucbv($malbv);
+            }
+            //capnhat lai
+            $getCataNewsId = $crNews->getCataNews();
+            require_once '../admin/view/blog/loaiBlog.php';
+            break;
+            //sua
+        case 'updateCataBlogKey':
+            $crNews = new News();
+            $id = $_GET['id'];
+            $getCataNewsId = $crNews->getCataNewsId($id);
+            require_once '../admin/view/blog/loaiBlog.php';
+            break;
+
+        case 'updateCataBlog':
+            $malbv = $_POST['malbv'];
+            $tenloai = $_POST['tenlbv'];
+            $hinhanh = '';
+            $crNews = new News();
+            $crNews->capnhat_danhmucbv($tenloai, $hinhanh, $malbv);
+            //capnhat lai
+            $crNews = new News();
+            $newsCataList = $crNews->getCataNews();
+            require_once '../admin/view/blog/loaiBlog.php';
+            break;
+            // BLOG
+        case 'qlyBlog':
+            $crNews = new News();
+            $qlyBlog = $crNews->getNews();
+
+            require_once '../admin/view/blog/qlyBlog.php';
             break;
         case 'contact':
             require_once '../admin/view/contact.php';
