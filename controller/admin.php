@@ -337,8 +337,17 @@ if (isset($_GET['act'])) {
                 $url = $dir . $hinhanhkh;
                 move_uploaded_file($_FILES['hinhanhkh']['tmp_name'], $url);
             }
-            $phanquyen = $_POST['phanquyen'];
-            $crAcc->register($name, $phone, $pass, $address, $email, $gioithieu, $phanquyen, $hinhanhkh);
+            $getPhanquyen = $_POST['phanquyen'];
+            if($getPhanquyen='boss'){
+                $phanquyen =1;
+            }
+            else if($getPhanquyen='admin'){
+                $phanquyen =2;
+            }
+            else if($getPhanquyen='user'){
+                $phanquyen = 3;
+            }
+            $crAcc->dangkytaikhoan($name, $phone, $pass, $address, $email, $gioithieu, $phanquyen, $hinhanhkh);
             //capnhat
             $getAcc = $crAcc->all_user();
             require_once '../admin/view/account/qlyAccount.php';
@@ -350,11 +359,13 @@ if (isset($_GET['act'])) {
             require_once '../admin/view/account/updateAccount.php';
             break;
         case 'updateAcc':
+            $crAcc = new Account();
             $matk = $_POST['matk'];
             $name = $_POST['tenkh'];
             $phone = $_POST['phone'];
             $pass = $_POST['password'];
             $address = $_POST['address'];
+            $gioithieu = $_POST['gioithieu'];
             $email = $_POST['email'];
             $hinhanhkh = $_FILES['hinhanhkh']['name'];
             if ($_FILES['hinhanhkh']['name'] != "") {
@@ -362,7 +373,16 @@ if (isset($_GET['act'])) {
                 $url = $dir . $hinhanhkh;
                 move_uploaded_file($_FILES['hinhanhkh']['tmp_name'], $url);
             }
-            $phanquyen = $_POST['phanquyen'];
+            $getPhanquyen = $_POST['phanquyen'];
+            if($getPhanquyen='boss'){
+                $phanquyen =1;
+            }
+            else if($getPhanquyen='admin'){
+                $phanquyen =2;
+            }
+            else if($getPhanquyen='user'){
+                $phanquyen = 3;
+            }
             $crAcc->update_info($matk, $name, $phone, $pass, $address, $email, $gioithieu, $hinhanhkh, $phanquyen);
             $getAcc = $crAcc->all_user();
             require_once '../admin/view/account/qlyAccount.php';
