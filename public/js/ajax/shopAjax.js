@@ -181,6 +181,7 @@ $(document).on('ready', function () {
 
     //pagination catalog
     $('.page-item').on('click', function () {
+        console.log(2);
         this.classList.add('active');
         $(this).siblings().removeClass('active');
 

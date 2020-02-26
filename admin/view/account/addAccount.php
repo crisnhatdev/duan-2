@@ -5,7 +5,7 @@
         </div>
         <div class="card-body">
             <?php
-                
+
             ?>
             <form method="post" action="admin.php?act=addAcc" enctype="multipart/form-data" style="padding: 30px 0">
                 <div class="form-row mb-3">
@@ -31,13 +31,6 @@
                 </div>
                 <div class="form-row mb-3">
                     <div class="col">
-                        <select class="custom-select border-danger" id="inputGroupSelect01" name="gioitinh" required="">
-                            <option selected value="Giới Tính" disabled="">Giới Tính</option>
-                            <option value="nam">Nam</option>
-                            <option value="nu">Nữ</option>
-                        </select>
-                    </div>
-                    <div class="col">
                         <select class="custom-select border-danger  mb-3" id="inputGroupSelect01" name="phanquyen" required="">
                             <option selected disabled="">Phân Quyền</option>
                             <option value="boss">Boss</option>
@@ -45,13 +38,13 @@
                             <option value="user">user</option>
                         </select>
                     </div>
-
-                </div>
-                <div class="form-row mb-3">
-                    <div class="col d-flex bd-highlight flex-row-reverse justify-content-around">
+                    <div class="col d-flex bd-highlight flex-row-reverse justify-content-center">
                         <label class="" for="exampleFormControlFile1">Hình ảnh</label>
                         <input type="file" class="custom-file-input p-2" name="hinhanhkh" required="required">
                     </div>
+                </div>
+                <div class="form-row mb-3">
+
                     <div class="col">
                         <textarea name="gioithieu" id="" cols="71" rows="3" placeholder="Giới Thiệu Bản Thân"></textarea>
                     </div>

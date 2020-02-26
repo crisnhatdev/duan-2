@@ -40,6 +40,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <!-- ckeditor -->
   <script type="text/javascript" src="../admin/layout/ckeditor/ckeditor.js"></script>
+
 </head>
 
 <body class="dark-edition">
@@ -138,9 +139,9 @@
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
+          <!-- <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:void(0)">Trang Chủ</a>
-          </div>
+          </div> -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
