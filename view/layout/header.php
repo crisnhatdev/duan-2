@@ -81,6 +81,7 @@
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                                 <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
                                                 <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
+                                                <a class="dropdown-item logout" href="#">Thoát</a>
                                             </div>
                                         </li>
                                         <?php

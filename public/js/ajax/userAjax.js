@@ -80,9 +80,11 @@ $(document).ready(function () {
                         setTimeout(function () {
                             $('.' + key).html('');
                             $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
-                        }, 1000)
+                        }, 1500)
                         if (key === 'direct') {
-                            window.location.href = res[key];
+                            setTimeout(function () {
+                                window.location.href = res[key];
+                            }, 2000)
                         }
                     }
                 },
@@ -100,7 +102,7 @@ $(document).ready(function () {
     //submit logout with ajax
     $('.logout').on('click', function (e) {
         $.ajax({
-            url: 'view/template/user/handleuser.php',
+            url: '../view/account/handleUser.php',
             type: 'post',
             dataType: 'json',
             data: {type: 'logout'},

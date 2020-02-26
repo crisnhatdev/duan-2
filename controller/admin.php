@@ -90,6 +90,8 @@ if (isset($_GET['act'])) {
         case 'qlyProduct':
             $crPro = new Product();
             $proList = $crPro->getPro(0, 0, 0, 0, 0, 0, 0);
+            $crCata = new Catalog();
+            $proListLimit = $crCata->proByPage(0,5,1);
             require_once '../admin/view/product/product.php';
             break;
 

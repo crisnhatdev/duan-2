@@ -112,7 +112,7 @@ if ($type) {
                     $errArr['error_' . $value['name']] = 'Bạn không được để trống hoặc sử dụng ký tự đặc biết';
                 }
             }
-//
+
             if ($crValid->valid_email($email)) {
                 if ($crAcc->check_register('email', $email)) {
                     $errArr['error_' . $data[0]['name']] = 'Email đã có người đăng ký';
@@ -120,7 +120,7 @@ if ($type) {
             } else {
                 $errArr['error_' . $data[0]['name']] = 'Email không đúng định dạng';
             }
-//
+
             if ($crValid->valid_phone($phone)) {
                 if ($crAcc->check_register('sdt', $phone)) {
                     $errArr['error_' . $data[4]['name']] = 'Số điện thoại đã được đăng ký';
@@ -222,7 +222,6 @@ if ($type) {
             break;
         case 'logout':
             unset($_SESSION['user']);
-            $errArr['success_field'] = 'Đăng nhập thành công';
             $errArr['direct'] = "index.php";
             echo json_encode($errArr);
             break;
@@ -243,7 +242,7 @@ if ($type) {
 //                $pic = $_POST['pic'];
 //                move_uploaded_file($pic, "../public/img/user/$pic"); //chuyển bộ nhớ ảnh vào thư mục trên và gán tên
 
-                $crAcc->update_info($name, $address, $intro, $idAcc);
+                $crAcc->update_info_client($name, $address, $intro, $idAcc);
                 $succesArr['success_field'] = 'Cập nhật thành công';
                 echo json_encode($succesArr);
             } else {
@@ -256,37 +255,42 @@ if ($type) {
             $oldPass = $data[0]['value'];
             $newPass = $data[1]['value'];
             $newPass_2 = $data[2]['value'];
-            $matk = $_SESSION['user']['idaccount'];
+            $matk = $_SESSION['user']['id'];
 
             foreach ($data as $value) {
                 if ($value['value'] === '') {
-                    $errArr['error_field'] = 'Bạn không được để trống các ô có dấu *';
-                    echo json_encode($errArr);
-                    return;
+                    $errArr['error_' . $value['name']] = 'Bạn không được để trống các ô có dấu *';
                 }
             }
 
-            $user = get_user_by('matk', $matk);
+            if ($newPass !== $newPass_2) { //3- check 2 new pass if not equals
+                $errArr['error_new_pass'] = 'Mật khẩu mới không giống nhau';
+                $errArr['error_new_pass_2'] = 'Mật khẩu mới không giống nhau';
+            }
 
-            if (bcrypt_verify($oldPass, $user['matkhau'])) { //1- check old pass of account if old pass correct
-                if (valid_pass($newPass)) { //2- valid pass with regex if true
-                    if ($newPass === $newPass_2) { //3- check 2 new pass if equals
-                        $hashedNewPass = bcrypt_password($newPass); //băm mật khẩu mới
+            if (!$crValid->valid_pass($newPass)) { //2- valid pass with regex if false
+                $errArr['error_new_pass'] = 'Mật khẩu cần có 8 ký tự trở lên bao gồm chữ hoa, thường và số';
+                $errArr['error_new_pass_2'] = 'Mật khẩu cần có 8 ký tự trở lên bao gồm chữ hoa, thường và số';
+            }
 
-                        update_user_by('matkhau', $hashedNewPass, 'matk', $matk);
+            $user = $crAcc->get_user_by('matk', $matk);
 
-                        unset($_SESSION['user']);
+            if ($crAcc->bcrypt_verify($oldPass, $user['matkhau'])) { //1- check old pass of account if old pass incorrect
+                if (count($errArr) === 0) {
+                    $hashedNewPass = $crAcc->bcrypt_password($newPass); //băm mật khẩu mới
 
-                        $errArr['success_field'] = 'Đổi mật khẩu thành công';
-                        $errArr['direct'] = '?act=login';
-                        echo json_encode($errArr);
-                    } else { //3- if pass not equals
-                        $errArr['new_password2_field'] = 'Mật khẩu mới không giống nhau';
-                        echo json_encode($errArr);
-                    }
+                    $crAcc->update_user_by('matkhau', $hashedNewPass, 'matk', $matk);
+
+                    unset($_SESSION['user']);
+
+                    $succesArr['success_field'] = 'Đổi mật khẩu thành công';
+                    $succesArr['direct'] = '?act=login';
+                    echo json_encode($succesArr);
+                } else {
+                    echo json_encode($errArr);
                 }
-            } else { //1- if old pass wrong
-                $errArr['old_password_field'] = 'Mật khẩu cũ không đúng';
+            } else {
+                $errArr['error_old_pass'] = 'Hãy kiểm tra mật khẩu cũ';
                 echo json_encode($errArr);
             }
             break;

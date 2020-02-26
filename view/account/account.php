@@ -81,7 +81,7 @@
                         <form class="row contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="login" novalidate="novalidate">
 
                             <div class="col-md-12 form-group p_star">
-                                <input type="email" class="form-control" id="email_lg" name="email_lg" value=""
+                                <input type="email" class="form-control" id="email_lg" name="email_lg" value="<?= ($crAcc->checkCookie('user-email')) ? $_COOKIE['user-email'] : '' ?>"
                                        placeholder="Email (*)">
                                 <div class="validate_field error_email_lg text-danger"></div>
                             </div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account d-flex align-items-center">
-                                    <input type="checkbox" id="f-option" name="rememberme">
+                                    <input type="checkbox" id="f-option" name="rememberme" <?= ($crAcc->checkCookie('user-email')) ? 'checked' : '' ?>>
                                     <label for="f-option">Ghi nhớ đăng nhập</label>
                                 </div>
                                 <input type="hidden" name="location" value=".">
