@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Feb 22, 2020 at 07:43 PM
+-- Generation Time: Feb 26, 2020 at 04:37 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -45,21 +45,9 @@ CREATE TABLE `baiviet` (
 --
 
 INSERT INTO `baiviet` (`mabv`, `tenbv`, `motabv`, `hinhanhbv`, `noidungbv`, `luotxem`, `ngaydang`, `matk`, `malbv`) VALUES
-(14, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 1, '2020-02-22 12:47:50', 77, 1),
-(15, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 4, '2020-02-22 13:07:34', 77, 2),
-(16, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 139, '2020-02-22 18:39:23', 77, 1),
-(17, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 3),
-(18, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 1),
-(19, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 2),
-(20, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 1),
-(21, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 1),
-(22, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 2),
-(23, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 2),
-(24, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 2),
-(25, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 3),
-(26, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 3),
-(27, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 3),
-(28, 'Kim Bảo đẹp trai, thông minh, học giỏi  siêu cấp vô địch vũ trụ', 'Không còn từ gì để mô tả', 'single_blog_1.png', 'Không còn từ gì để viết cả', 0, '2020-02-22 05:29:22', 77, 3);
+(29, 'Kim Bảo', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100006, '2020-02-26 15:20:00', 77, 1),
+(30, 'trúc Đào', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100023, '2020-02-26 15:26:09', 77, 1),
+(31, 'Hồng nhật', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100041, '2020-02-26 15:36:12', 77, 1);
 
 -- --------------------------------------------------------
 
@@ -104,10 +92,7 @@ CREATE TABLE `binhluanbv` (
 --
 
 INSERT INTO `binhluanbv` (`stt`, `noidung`, `sao`, `ngaydang`, `matk`, `mabv`) VALUES
-(62, 'Tuyệt vời', '5', '2020-02-22 18:32:54', 77, 16),
-(63, 'Cho em share nhé', '5', '2020-02-22 18:33:12', 77, 16),
-(64, 'Xin share ạ ', '5', '2020-02-22 18:33:27', 77, 16),
-(65, '123@', '5', '2020-02-22 18:35:28', 77, 16);
+(66, 'Good', '5', '2020-02-23 14:36:47', 77, 31);
 
 -- --------------------------------------------------------
 
@@ -123,6 +108,23 @@ CREATE TABLE `binhluansp` (
   `matk` int(11) NOT NULL,
   `masp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `binhluansp`
+--
+
+INSERT INTO `binhluansp` (`stt`, `noidung`, `sao`, `ngaydang`, `matk`, `masp`) VALUES
+(361, 'Tạm ', 4, '2020-02-23 05:29:12', 77, 16),
+(362, 'Tệ', 1, '2020-02-23 05:29:17', 77, 16),
+(363, 'Tệ', 2, '2020-02-23 05:29:23', 77, 16),
+(364, 'Tệ', 2, '2020-02-23 05:29:26', 77, 16),
+(365, 'Tệ', 2, '2020-02-23 05:29:32', 77, 16),
+(366, 'Tệ', 2, '2020-02-23 05:29:34', 77, 16),
+(367, 'Tệ', 2, '2020-02-23 05:29:35', 77, 16),
+(368, 'Tệ', 2, '2020-02-23 05:29:37', 77, 16),
+(369, 'Tốt', 5, '2020-02-23 05:29:40', 77, 16),
+(370, 'Tốt', 5, '2020-02-23 05:29:43', 77, 16),
+(371, 'Tốt', 5, '2020-02-23 05:29:46', 77, 16);
 
 -- --------------------------------------------------------
 
@@ -153,7 +155,25 @@ INSERT INTO `dangky-baiviet` (`stt`, `email`) VALUES
 (11, 'kimbao756@yahoo.com'),
 (12, 'kimbao756@yahoo.com'),
 (13, 'kimbao756@yahoo.com'),
-(14, '123213A@yahoo.com');
+(14, '123213A@yahoo.com'),
+(15, 'kibao123213@yahoo.com'),
+(16, 'kibao123213@yahoo.com'),
+(17, 'kibao123213@yahoo.com'),
+(18, 'kibao123213@yahoo.com'),
+(19, 'kibao123213@yahoo.com'),
+(20, 'kibao123213@yahoo.com'),
+(21, 'kibao123213@yahoo.com'),
+(22, 'kibao123213@yahoo.com'),
+(23, 'kibao123213@yahoo.com'),
+(24, 'kibao123213@yahoo.com'),
+(25, 'kibao123213@yahoo.com'),
+(26, 'kibao123213@yahoo.com'),
+(27, 'kibao123213@yahoo.com'),
+(28, 'kibao123213@yahoo.com'),
+(29, 'kibao123213@yahoo.com'),
+(30, 'kibao123213@yahoo.com'),
+(31, 'kibao123213@yahoo.com'),
+(32, 'kibao123213@yahoo.com');
 
 -- --------------------------------------------------------
 
@@ -204,7 +224,7 @@ CREATE TABLE `hoadonchitiet` (
 
 CREATE TABLE `lienhe` (
   `stt` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `tieude` text COLLATE utf8_bin NOT NULL,
   `sdt` varchar(100) COLLATE utf8_bin NOT NULL,
   `tenkh` varchar(100) COLLATE utf8_bin NOT NULL,
   `tinnhan` varchar(255) COLLATE utf8_bin NOT NULL,
@@ -336,9 +356,9 @@ CREATE TABLE `sanpham` (
 INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `luotxem`, `mota`, `mams`, `mamh`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `trangthai`, `malh`) VALUES
 (1, 'Ghế Màu Xanh Lá', 3300000, 12, 'Nhựa cao cấp - Chân kim loại', 2, 2, 0, 1, '2020-02-13 17:19:32', 'product_1.png', NULL, 3),
 (2, 'Ghế Màu Cam', 3000000, 2, 'Nhựa cao cấp - Chân kim loại', 6, 2, 0, 0, '2020-02-13 17:20:11', 'product_2.png', NULL, 3),
-(3, 'Bàn Nước Monocle', 10900000, 1, 'Khung kim loại, Đá hoa cương', 1, 1, 0, 1, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', NULL, 3),
+(3, 'Bàn Nước Monocle', 10900000, 2, 'Khung kim loại, Đá hoa cương', 1, 1, 0, 1, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', NULL, 3),
 (4, 'Bàn Nước Oval', 15900000, 0, 'Chân kim loại màu đồng- MDF giả da', 2, 1, 0, 0, '2020-02-14 10:29:01', 'ban-nuoc-oval.jpg', NULL, 3),
-(5, 'Bàn Ăn Delta 01', 95000000, 439, 'Khung kim loại sơn tĩnh điện- Mặt đá', 7, 1, 10, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', NULL, 1),
+(5, 'Bàn Ăn Delta 01', 95000000, 450, 'Khung kim loại sơn tĩnh điện- Mặt đá', 7, 1, 10, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', NULL, 1),
 (6, 'Bàn Ăn Roma', 9900000, 17, 'Gỗ tần bì (Ash)- MDF sơn trắng', 7, 1, 0, 1, '2020-02-14 10:31:35', 'ban-an-roma.jpg', NULL, 1),
 (7, 'Ghế Ăn HC', 3300000, 27, 'Chân kim loại - da công nghiệp', 8, 2, 5, 0, '2020-02-14 10:32:35', 'ghe_an_hc.jpg', NULL, 1),
 (8, 'Ghế Tuscany', 3600000, 1, 'Da công nghiệp - Kim loại', 5, 2, 3, 1, '2020-02-14 10:33:23', 'ghe-tuscany.gif', NULL, 1),
@@ -349,7 +369,7 @@ INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `luotxem`, `mota`, `mams`, `mamh`
 (13, 'Giường Hộc Kéo Iris', 14900000, 1, 'Khung gỗ bọc vải', 3, 3, 20, 0, '2020-02-14 10:43:44', '500-iris-grey.jpg', NULL, 2),
 (14, 'Giường Bụi', 16900000, 20, 'Gỗ Thông + MDF Veneer Thông + Kim loại sơn tinh điện+ Vải', 7, 3, 29, 0, '2020-02-14 10:44:22', 'bui_bed-front.jpg', NULL, 2),
 (15, 'Giường Ngủ Lạc Viên', 31900000, 33, 'Gỗ xà cừ - Da công nghiệp', 4, 3, 0, 1, '2020-02-14 10:45:38', 'giuong-ngu-lac-vien.jpg', NULL, 2),
-(16, 'Giường Dixie', 62000000, 0, 'Khung gỗ tần bì', 3, 3, 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', NULL, 2);
+(16, 'Giường Dixie', 62000000, 6, 'Khung gỗ tần bì', 3, 3, 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -377,10 +397,8 @@ CREATE TABLE `taikhoan` (
 --
 
 INSERT INTO `taikhoan` (`matk`, `tenkh`, `sdt`, `matkhau`, `diachi`, `email`, `gioithieu`, `hinhanhkh`, `phanquyen`, `token`, `hieuluc`, `kichhoat`) VALUES
-(77, 'Kim bảo', '0974721751', '$2y$10$vMlGN/fnybMaMNl9Fa5Nsu2u5BgsSCHAkHW6ckmVH9mELi.h6AWpK', '103 lê sao, phú thạnh, tân phú', 'kimbao756g@gmail.com', '\"Hãy cứ khát khao, hãy cứ dại khờ.\" <i>Steve Jobs</i>', 'hongnhat.jpg', 1, NULL, NULL, 1),
-(100, 'Nguyen Nhat', '0929429458', '$2y$10$JpN09YFwI1KlTZg7Buoc8.LDva1KbYxOcrpLncGOR7qbV5k8fPL2q', 'Lai thieu thuan an binh duong, nguyen van luong go vap tp hcm', 'hongnhat3333@gmail.com', 'Nam', NULL, 1, NULL, NULL, 1),
-(101, 'Duy Trịnh', '0904047470', '$2y$10$BoMQ3Uf7SVgrA6T52XEXf.C9LrbFDqJ2hdh.mYdUEHM0px5iTTdmO', '666/40/27 nguyen van qua quan 12', 'duytrinh2508@gmail.com', 'Nam', NULL, 1, NULL, NULL, 1),
-(104, 'Nguyen nguyenthi', '0362277635', '$2y$10$EXVl6B5Bllo/GOpSBY51pODJHrM11IqaSfkCVbvixyQWrCYsU3F5m', 'Xã thạnh mỹ,huyện thanh hóa , tỉnh nghệ an', 'nguyennttps08770@fpt.edu.vn', 'Nam', NULL, 0, NULL, NULL, 1);
+(77, 'Kim bảo', '0974721751', '$2y$10$bVFDNbSdQVFQ6aEdwRzp4OSAwCgcItqFWi9r5ZILVt6skkMwzxT/O', '103 lê sao, phú thạnh, tân phú', 'kimbao756@gmail.com', '\"Hãy cứ khát khao, hãy cứ dại khờ.\" <i>Steve Jobs</i>', 'hongnhat.jpg', 1, '', '', 1),
+(109, 'Kim bảo', '0909123123', '$2y$10$5i7tuJP3wbkedwfGYWZMCO.LgRdHt0q.fUMOubg.pU2aU.C6yjCX2', '103 lê sao phú thạnh. tân phú', 'kimbao756g@gmail.com', 'Kim bảo đẹp trai quá xá', '', 0, '$2y$10$GaKRpoU1mm3/IQ/mY./UEOAzJRXzLpTdCbridMRRwDuCIs8yAxlPq', '1582727759', 1);
 
 --
 -- Indexes for dumped tables
@@ -496,7 +514,7 @@ ALTER TABLE `taikhoan`
 -- AUTO_INCREMENT for table `baiviet`
 --
 ALTER TABLE `baiviet`
-  MODIFY `mabv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `mabv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `banner`
@@ -508,19 +526,19 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `binhluanbv`
 --
 ALTER TABLE `binhluanbv`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `binhluansp`
 --
 ALTER TABLE `binhluansp`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=372;
 
 --
 -- AUTO_INCREMENT for table `dangky-baiviet`
 --
 ALTER TABLE `dangky-baiviet`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `doitac`
@@ -580,7 +598,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `matk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `matk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- Constraints for dumped tables

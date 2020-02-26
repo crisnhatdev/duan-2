@@ -270,35 +270,44 @@
                         (count($cmtsList) >= 3) ? '<div class="grey pagination-cmts-product" data-masp ="' . $masp . '" style="cursor: pointer; text-align:right">Xem Bình Luận Cũ</div>' : '';
                         ?>
                     </div>
-
-                    <div class="col-lg-6">
-                        <div class="review_box">
-                            <h4>Đánh giá sản phẩm</h4>
-                            <span class="grey">Yêu thích:</span>
-                            <p class="stars">
-                                <a class="1">1</a>
-                                <a class="2">2</a>
-                                <a class="3">3</a>
-                                <a class="4">4</a>
-                                <a class="5">5</a> 
-                            </p>
-                            <form class="row contact_form comment-product-ajax">
-                                <div class="col-md-12">
-                                    <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp">
-                                        <textarea class="form-control validate-form-control" name="message" id="message" cols="30" rows="9"
-                                                  placeholder="Đánh giá" required=""></textarea>
+                    <?php
+                    if ($crAcc->checkSs('user')) {
+                        ?>
+                        <div class="col-lg-6">
+                            <div class="review_box">
+                                <h4>Đánh giá sản phẩm</h4>
+                                <span class="grey">Yêu thích:</span>
+                                <p class="stars">
+                                    <a class="1">1</a>
+                                    <a class="2">2</a>
+                                    <a class="3">3</a>
+                                    <a class="4">4</a>
+                                    <a class="5">5</a> 
+                                </p>
+                                <form class="row contact_form comment-product-ajax">
+                                    <div class="col-md-12">
+                                        <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp">
+                                            <textarea class="form-control validate-form-control" name="message" id="message" cols="30" rows="9"
+                                                      placeholder="Đánh giá" required=""></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <input type="hidden" name="rating" id="rating" value="5">
-                                    <input type="hidden" name="masp" value="<?= $masp ?>">
-                                    <button type="submit" value="submit" class="btn_3">
-                                        Nhập
-                                    </button>
-                                </div>
-                            </form>
+                                    <div class="col-md-12 text-right">
+                                        <input type="hidden" name="rating" id="rating" value="5">
+                                        <input type="hidden" name="masp" value="<?= $masp ?>">
+                                        <input type="hidden" name="location" value="<?= $_SERVER['REQUEST_URI'] ?>">
+                                        <button type="submit" value="submit" class="btn_3">
+                                            Nhập
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    <?php } else {
+                        ?>
+                        <div class="col-lg-6 text-center"><a href=".?act=account&location=<?= urlencode($_SERVER['REQUEST_URI']) ?>" class="btn_3">Bạn cần đăng nhập để bình luận</a></div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

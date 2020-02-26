@@ -129,8 +129,8 @@ $saleList = array_filter($proList, function($pro) {
                             <div id="seconds" class="date"></div>
                         </div>
                     </div>
-                    <div class="validate_field success_subscribe" style="color: #28a745"></div>
-                    <div class="validate_field error_subscribe" style="color: red" ></div>
+                    <div class="validate_field none success_subscribe text-success"></div>
+                    <div class="validate_field none error_subscribe text-danger"></div>
                     <form class="input-group subscribe-form-ajax form-group" action="../view/account/handleUser.php" method="post" data-type="subscribe">
                         <input type="email" class="form-control validate-form-control" placeholder="Nhập email của bạn"
                                aria-label="Nhập email của bạn" aria-describedby="basic-addon3" name="subscribe-mail" onfocus="this.placeholder = ''"
@@ -190,8 +190,8 @@ $saleList = array_filter($proList, function($pro) {
                 <div class="subscribe_area_text text-center">
                     <h5>Cập nhật tin tức</h5>
                     <h2>Hãy đăng ký nhận tin tức về các hoạt động sắp tới của chúng tôi </h2>
-                    <div class="validate_field success_field" style="color: #28a745"></div>
-                    <div class="validate_field error_field" style="color: red" ></div>
+                    <div class="validate_field none success_subscribe text-success"></div>
+                    <div class="validate_field none error_subscribe text-danger"></div>
                     <form class="input-group subscribe-form-ajax form-group" data-type="">
                         <input type="email" class="form-control validate-form-control" placeholder="Nhập email của bạn"
                                aria-label="Nhập email của bạn" aria-describedby="basic-addon2" name="subscribe-mail" onfocus="this.placeholder = ''"

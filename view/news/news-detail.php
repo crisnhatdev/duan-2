@@ -153,25 +153,36 @@
                 <?=
                 (count($cmtsList) >= 3) ? '<div class="grey pagination-cmts-news" data-mabv ="' . $mabv . '" style="cursor: pointer; text-align:right">Xem Bình Luận Cũ</div>' : '';
                 ?>
-                <div class="comment-form">
-                    <h4>Để lại lời Đánh Giá</h4>
-                    <form class="form-contact comment_form comment-news-ajax" action="../view/account/handleUser.php" method="post" data-type="comments">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp">
-                                    <textarea class="form-control w-100 validate-form-control" name="message" id="message" cols="30" rows="9"
-                                              placeholder="Đánh giá" required=""></textarea>
+                <?php
+                if ($crAcc->checkSs('user')) {
+                    ?>
+                    <div class="comment-form">
+                        <h4>Để lại lời Đánh Giá</h4>
+                        <form class="form-contact comment_form comment-news-ajax" action="../view/account/handleUser.php" method="post" data-type="comments">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group" data-validate="Đã xảy ra lỗi cú pháp">
+                                        <textarea class="form-control w-100 validate-form-control" name="message" id="message" cols="30" rows="9"
+                                                  placeholder="Đánh giá" required=""></textarea>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12 text-right">
-                            <input type="hidden" name="mabv" value="<?= $mabv ?>">
-                            <button type="submit" value="submit" class="btn_3">
-                                Nhập
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                            <div class="col-md-12 text-right">
+                                <input type="hidden" name="mabv" value="<?= $mabv ?>">
+
+                                <button type="submit" value="submit" class="btn_3">
+                                    Nhập
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="comment-form text-center"><a href=".?act=account&location=<?= urlencode($_SERVER['REQUEST_URI']) ?>" style="padding: 9px 42px; background-color: #fff; border-radius: 50px; border: 1px solid #ff3368" class="btn_1">Bạn cần đăng nhập để bình luận</a></div>
+                    <?php
+                }
+                ?>
             </div>
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">

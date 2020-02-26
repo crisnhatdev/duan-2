@@ -13,7 +13,7 @@ class Account {
 //nếu chưa thì trả về false
     function check_register($col, $val) {
         $db = new Connect();
-        $query = "SELECT * FROM `taikhoan` WHERE `$col` = $val";
+        $query = "SELECT * FROM `taikhoan` WHERE `$col` = '$val'";
 
         $check = false;
 

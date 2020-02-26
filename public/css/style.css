@@ -7910,12 +7910,16 @@ p.stars.selected a:not(.active):before {
 
 .validate_field {
     margin: 10px 0;
-    font-size: 14px; 
+    font-size: 16px; 
     text-align: center;
     position: absolute;
     pointer-events: none;
-    top: 0;
-    right: 5px;
+    top: 1px;
+    right: 22px;
     background-color: #fff;
+}
+.validate_field.none {
+    position: static;
+    background-color: transparent;
 }
 /*# sourceMappingURL=style.css.map */

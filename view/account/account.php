@@ -24,8 +24,8 @@
                 <div class="login_part_form">
                     <div class="login_part_form_iner">
                         <h3>ĐĂNG KÝ! <br>Hãy đăng ký ngay bây giờ</h3>
-                        <div class="validate_field success_field text-success" style="position: static" ></div>
-                        <div class="validate_field error_field text-danger" style="position: static" ></div>
+                        <div class="validate_field none success_field text-success"></div>
+                        <div class="validate_field none error_field text-danger"></div>
                         <form class="row contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="register" novalidate="novalidate">
                             <div class="col-md-12 form-group p_star">
                                 <input type="email" class="form-control" id="email" name="email" value=""
@@ -76,8 +76,8 @@
                             echo '<p class="text-center text-success">Bạn đã kích hoạt tài khoản thành công.</p>';
                         }
                         ?>
-                        <div class="validate_field success_field_lg text-success" style="position: static" ></div>
-                        <div class="validate_field error_field_lg text-danger" style="position: static" ></div>
+                        <div class="validate_field none success_field_lg text-success"></div>
+                        <div class="validate_field none error_field_lg text-danger"></div>
                         <form class="row contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="login" novalidate="novalidate">
 
                             <div class="col-md-12 form-group p_star">
@@ -95,11 +95,11 @@
                                     <input type="checkbox" id="f-option" name="rememberme" <?= ($crAcc->checkCookie('user-email')) ? 'checked' : '' ?>>
                                     <label for="f-option">Ghi nhớ đăng nhập</label>
                                 </div>
-                                <input type="hidden" name="location" value=".">
+                                <input type="hidden" name="location" value="<?= (isset($_GET['location'])) ? '?' . explode('?', $_GET['location'])[1] : '.' ?>">
                                 <button type="submit" value="submit" class="btn_3">
                                     Đăng nhập
                                 </button>
-                                <a class="lost_pass" href="#">Quên mật khẩu?</a>
+                                <a class="lost_pass" href=".?act=acc-forgot">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>

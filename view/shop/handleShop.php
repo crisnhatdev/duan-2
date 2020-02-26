@@ -35,8 +35,7 @@ switch ($type) {
         $cmt = $crValid->valid_value_insert($_REQUEST['arrData'][0]['value']); //nội dung đánh giá
         $sao = $_REQUEST['arrData'][1]['value'][0]; //lấy giá trị index = 0 trong mảng arrDat và string đầu tiên (i = 0)
         $ngaydang = date("Y:m:d H:i:s"); //ngày
-        $matk = 77; // mã tk đánh giá
-//            $matk = $_SESSION['user']['idaccount'];// mã tk đánh giá
+        $matk = $_SESSION['user']['id']; // mã tk đánh giá
         $masp = $_REQUEST['arrData'][2]['value'];
 
         if ($crValid->valid_text($cmt) && $cmt != '') {

@@ -24,8 +24,8 @@
                 <div class="login_part_form">
                     <div class="login_part_form_iner">
                         <h3>Cập nhật thông tin của bạn ngay bây giờ! </h3>
-                        <div class="validate_field success_field text-success" style="position: static" ></div>
-                        <div class="validate_field error_field text-danger" style="position: static" ></div>
+                        <div class="validate_field none success_field text-success"></div>
+                        <div class="validate_field none error_field text-danger"></div>
                         <form class="row contact_form user-ajax" enctype="multipart/form-data" action="../view/account/handleUser.php" method="post" data-type="update" novalidate="novalidate">
                             <div class="col-md-6 form-group p_star">
                                 <input type="email" class="form-control" id="email" name="email" value="<?= $user['email'] ?>"

@@ -23,12 +23,10 @@ $(document).ready(function () {
                 dataType: 'json',
                 data: {arrData: data, type: type},
                 success: function (res) {
-                    for (obj in res) {
-                        $('.' + obj).html(res[obj])
+                    for (let key in res) {
+                        $('.' + key).html(res[key]);
                         setTimeout(function () {
-                            for (obj in res) {
-                                $('.' + obj).html('')
-                            }
+                            $('.' + key).html('')
                         }, 2000)
                         $(form)[0].reset();
                     }
@@ -41,8 +39,6 @@ $(document).ready(function () {
                 }
             })
         }
-
-
         return false;
     })
 
@@ -76,6 +72,12 @@ $(document).ready(function () {
                     console.log(res)
                     //res is object
                     for (let key in res) {
+//                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').attr('placeholder',res[key]);
+//                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').css('border', '1px solid red');
+//                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').focus(function() {
+//                            $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').css('border', '1px solid #ccc');
+//                            $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').attr('placeholder','');
+//                        });
                         $('.' + key).html(res[key])
                         setTimeout(function () {
                             $('.' + key).html('');

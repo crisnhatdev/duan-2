@@ -122,11 +122,14 @@ if (isset($_GET['act'])) {
             $user = $crAcc->get_user_by('matk', $_SESSION['user']['id']);
             require_once '../view/account/updateUser.php';
             break;
+        case 'acc-change':
+            require_once '../view/account/changeUser.php';
+            break;
         case 'acc-forgot':
             require_once '../view/account/forgotUser.php';
             break;
-        case 'acc-change':
-            require_once '../view/account/changeUser.php';
+        case 'acc-change-forgot':
+            require_once '../view/account/changeForgotUser.php';
             break;
         default:
             require_once '../view/layout/content.php';
