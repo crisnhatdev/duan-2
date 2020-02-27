@@ -3,7 +3,7 @@
         <div class="card">
             <div class="cart-header card-header-primary">
                 <h4 class="pb-4">Danh Mục Sản Phẩm</h4>
-                <?php if (isset($_GET['id'])){
+                <?php if (isset($_GET['id'])) {
                 ?>
                     <form method="post" action="admin.php?act=update_cata" enctype="multipart/form-data">
                         <div class="form-group col-md-6">
@@ -76,6 +76,15 @@
                         ?>
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center pt-3">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

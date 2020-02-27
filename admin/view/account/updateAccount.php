@@ -7,7 +7,7 @@
             <form method="post" action="admin.php?act=updateAcc" enctype="multipart/form-data" style="padding: 30px 0">
                 <div class="form-row mb-3">
                     <div class="col">
-                        <input type="text" class="border-danger form-control  mb-3" value="<?= $getAccById['tenkh'] ?>" placeholder="Tên Khách Hàng" name="tenkh" required="">
+                        <input type="text" readonly class="border-danger form-control text-success  mb-3" value="<?= $getAccById['tenkh'] ?>" placeholder="Tên Khách Hàng" name="tenkh" required="">
                     </div>
                     <div class="col">
                         <input type="text" class="border-danger form-control " value="<?= $getAccById['email'] ?>" placeholder="Email" name="email" required="">
@@ -15,26 +15,24 @@
                 </div>
                 <div class="form-row mb-3">
                     <div class="col">
-                        <input type="text" class="border-danger form-control  mb-3" value="<?= $getAccById['matkhau'] ?>" placeholder="Mật Khẩu" name="password" required="">
-                    </div>
-                    <div class="col">
                         <input type="text" class="border-danger form-control " value="<?= $getAccById['diachi'] ?>" placeholder="Địa Chỉ" name="address" required="">
                     </div>
-                </div>
-                <div class="form-row mb-3">
                     <div class="col">
-                        <select class="custom-select border-danger" id="inputGroupSelect01" name="gioitinh" required="">
-                            <option selected value="Giới Tính" disabled="">Giới Tính</option>
-                            <option value="nam">Nam</option>
-                            <option value="nu">Nữ</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <select class="custom-select border-danger  mb-3" id="inputGroupSelect01" name="phanquyen" required="">
-                            <option selected disabled="">Phân Quyền</option>
+                        <select class="custom-select border-danger  mb-3" id="inputGroupSelect01" name="phanquyen" required="required">
+                            <?php
+                                foreach ($getAcc as $key => $acc) {
+                                    echo '<option value="' .$acc['phanquyen']. '"';
+                                    if($acc['phanquyen'] == $getAccById['phanquyen']){
+                                        echo 'selected';
+                                    }
+                                    echo '>' . $acc['phanquyen'].
+                                    '</option>';
+                                }
+                            ?>
+                            <!-- <option selected disabled="">Phân Quyền</option>
                             <option value="boss">Boss</option>
                             <option value="admin">Admin</option>
-                            <option value="user">user</option>
+                            <option value="user">user</option> -->
                         </select>
                     </div>
                 </div>
@@ -50,6 +48,9 @@
                 <div class="form-row mb-3">
                     <div class="col">
                         <textarea name="gioithieu" id="" cols="55" rows="3" placeholder="Giới Thiệu Bản Thân"></textarea>
+                    </div>
+                    <div class="col">
+                        <img src="../public/img/account/<?= $getAccById['hinhanhkh'] ?>" alt="" style="width:80px">
                     </div>
                 </div>
                 <div class="form-row">

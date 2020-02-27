@@ -5,7 +5,7 @@
             <a href="admin.php?act=add_product_key" class="btn btn-primary">Thêm Sản Phẩm</a>
         </div>
         <div class="card-body table-responsive">
-            <table class="table text-center">
+            <table class="table text-center" id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

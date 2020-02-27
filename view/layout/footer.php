@@ -4,45 +4,45 @@
         <div class="row justify-content-around">
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Top Products</h4>
+                    <h4>Thông Tin</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">Managed Website</a></li>
-                        <li><a href="">Manage Reputation</a></li>
-                        <li><a href="">Power Tools</a></li>
-                        <li><a href="">Marketing Service</a></li>
+                        <li><a href="">Giới Thiệu</a></li>
+                        <li><a href="">Thông Tin Thanh Toán</a></li>
+                        <li><a href="">Chính Sách Bảo Mật</a></li>
+                        <li><a href="">Điều Khoản</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Quick Links</h4>
+                    <h4>Khách Hàng</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">Jobs</a></li>
-                        <li><a href="">Brand Assets</a></li>
-                        <li><a href="">Investor Relations</a></li>
-                        <li><a href="">Terms of Service</a></li>
+                        <li><a href="">Liên Hệ</a></li>
+                        <li><a href="">Trả Hàng</a></li>
+                        <li><a href="">Sơ Đồ Trang</a></li>
+                        <li><a href="">Dịch Vụ</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Features</h4>
+                    <h4>Chức Năng Khác</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">Jobs</a></li>
-                        <li><a href="">Brand Assets</a></li>
-                        <li><a href="">Investor Relations</a></li>
-                        <li><a href="">Terms of Service</a></li>
+                        <li><a href="">Thương Hiệu</a></li>
+                        <li><a href="">Phiếu Quà Tặng</a></li>
+                        <li><a href="">Cộng Tác Bán Hàng</a></li>
+                        <li><a href="">Khuyến Mãi</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-2">
                 <div class="single_footer_part">
-                    <h4>Resources</h4>
+                    <h4>Liên Hệ</h4>
                     <ul class="list-unstyled">
-                        <li><a href="">Guides</a></li>
-                        <li><a href="">Research</a></li>
-                        <li><a href="">Experts</a></li>
-                        <li><a href="">Agencies</a></li>
+                        <li><a href="">Địa Chỉ: Cv Phần Mềm Quang Trung</a></li>
+                        <li><a href="">Hotline: 0123456789 </a></li>
+                        <li><a href="">Email: 123@gmail.com</a></li>
+                        
                     </ul>
                 </div>
             </div>

@@ -29,16 +29,25 @@
                                 <td><?= $acc['sdt'] ?></td>
                                 <td><?= $acc['diachi'] ?></td>
                                 <td><?= $acc['email'] ?></td>
-                                <td><img src="../public/img/blog/<?= $acc['hinhanhlh'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
+                                <td><img src="../public/img/account/<?= $acc['hinhanhkh'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
                                 <td><?= $acc['phanquyen'] ?></td>
                                 <td><a href="<?php echo 'admin.php?act=updateAccKey&matk=' . $acc['matk'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
-                                <a href="<?php echo 'admin.php?act=delAcc&matk=' . $acc['matk'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a></td>
+                                    <a href="<?php echo 'admin.php?act=delAcc&matk=' . $acc['matk'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a></td>
                             </tr>
                         <?php
                         }
                         ?>
                     </tbody>
                 </table>
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>

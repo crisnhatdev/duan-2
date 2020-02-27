@@ -57,9 +57,15 @@ class Account
     }
 
     //hàm update info
-    function update_info($matk, $name, $phone, $pass, $address, $email, $gioithieu, $hinhanhkh, $phanquyen) {
+    function update_info($matk, $phone,$address, $email, $gioithieu, $hinhanhkh, $phanquyen) {
         $db = new Connect();
-        $query = "UPDATE taikhoan SET tenkh='.$name.',sdt='.$phone.',matkhau='.$pass.',diachi='.$address.',email='.$email.',gioithieu='.$gioithieu.',hinhanhkh='.$hinhanhkh.',phanquyen= '.$phanquyen.' WHERE matk = $matk";
+        if($hinhanhkh !=""){
+            $query = "UPDATE taikhoan SET sdt='$phone',diachi='$address',email='$email',gioithieu='$gioithieu',hinhanhkh='$hinhanhkh',phanquyen= '$phanquyen' WHERE matk = $matk";
+        }
+        else{
+            $query = "UPDATE taikhoan SET sdt='$phone',diachi='$address',email='$email',gioithieu='$gioithieu',phanquyen= '$phanquyen' WHERE matk = $matk";
+        }
+        
         $db->execute($query);
     }
 
