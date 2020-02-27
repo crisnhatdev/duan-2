@@ -11,6 +11,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Tên Khách Hàng</th>
+                            <th scope="col">Giới Thiệu</th>
                             <th scope="col">Số Điện Thoại</th>
                             <th scope="col">Địa Chỉ</th>
                             <th scope="col">Email</th>
@@ -26,6 +27,7 @@
                             <tr>
                                 <td><?= $acc['matk'] ?></td>
                                 <td><?= $acc['tenkh'] ?></td>
+                                <td><?= $acc['gioithieu'] ?></td>
                                 <td><?= $acc['sdt'] ?></td>
                                 <td><?= $acc['diachi'] ?></td>
                                 <td><?= $acc['email'] ?></td>

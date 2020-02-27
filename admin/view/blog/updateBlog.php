@@ -66,25 +66,25 @@
                             </div>
                             <?php
                             if ($getBlogId['hinhanhbv'] != "") {
-                                echo '<img src="view/images/blog/' . $getBlogId['hinhanhbv'] . '" width="80px">';
+                                echo '<img src="../public/img/blog/upload/' . $getBlogId['hinhanhbv'] . '" width="80px">';
                             }
                             ?>
                         </div>
                     </div>
                     <div class="form-group col-md-9">
+                    <label for="exampleFormControlTextarea1">Nội dung bài viết</label>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Nội dung bài viết</label>
                             <textarea class="form-control" id="noidungbv" rows="3" name="noidungbv"><?php echo $getBlogId['noidungbv']; ?></textarea>
-                            <!-- <script>
+                            <script>
                                 CKEDITOR.replace('noidungbv', {
-                                    filebrowserBrowseUrl: 'admin/ckfinder/ckfinder.html',
-                                    filebrowserImageBrowseUrl: 'admin/ckfinder/ckfinder.html?type=Images',
-                                    filebrowserFlashBrowseUrl: 'admin/ckfinder/ckfinder.html?type=Flash',
-                                    filebrowserUploadUrl: 'admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                                    filebrowserImageUploadUrl: 'admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                                    filebrowserFlashUploadUrl: 'admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                                    filebrowserBrowseUrl: '../admin/layout/ckfinder/ckfinder.html',
+                                    filebrowserImageBrowseUrl: '../admin/layout/ckfinder/ckfinder.html?type=Images',
+                                    filebrowserFlashBrowseUrl: '../admin/layout/ckfinder/ckfinder.html?type=Flash',
+                                    filebrowserUploadUrl: '../admin/layout/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                    filebrowserImageUploadUrl: '../admin/layout/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                    filebrowserFlashUploadUrl: '../admin/layout/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
                                 });
-                            </script> -->
+                            </script>
                         </div>
                     </div>
                 </div>

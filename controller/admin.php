@@ -225,8 +225,8 @@ if (isset($_GET['act'])) {
             require_once '../admin/view/blog/qlyBlog.php';
             break;
         case 'addBlogKey':
-            $crNews = new News();
-            $getTaikhoan = $crNews->getNews();
+            $crAcc = new Account();
+            $getTaikhoan = $crAcc->all_user();
             require_once '../admin/view/blog/addBlog.php';
             break;
         case 'addBlog':

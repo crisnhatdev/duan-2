@@ -30,7 +30,7 @@
                             <td><?= $blog['motabv'] ?></td>
                             <td><?= $blog['noidungbv'] ?></td>
                             <td><?= $blog['luotxem'] ?></td>
-                            <td><img blog="../public/img/blog/upload/<?= $blog['hinhanhbv'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
+                            <td><img src="../public/img/blog/upload/<?= $blog['hinhanhbv'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
                             <td><?= $blog['ngaydang'] ?></td>
                             <td>
                                 <a href="<?php echo 'admin.php?act=updateBlogKey&id=' . $blog['mabv'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
