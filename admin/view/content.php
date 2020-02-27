@@ -117,7 +117,7 @@
           </div>
           <div class="card-footer">
             <div class="stats">
-              <i class="material-icons">local_offer</i><a class="text-white" href="admin.php?act=qlyBlogt"> Xem Thêm</a>
+              <i class="material-icons">local_offer</i><a class="text-white" href="admin.php?act=qlyBlog"> Xem Thêm</a>
             </div>
           </div>
         </div>

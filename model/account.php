@@ -50,22 +50,23 @@ class Account
     }
 
     //hàm update info
-    function update_info_client($name, $address, $intro, $idAcc) {
+    function update_info_client($name, $address, $intro, $idAcc)
+    {
         $db = new Connect();
         $query = "UPDATE taikhoan SET tenkh='$name', diachi='$address', gioithieu='$intro' WHERE matk = $idAcc";
         $db->execute($query);
     }
 
     //hàm update info
-    function update_info($matk, $phone,$address, $email, $gioithieu, $hinhanhkh, $phanquyen) {
+    function update_info($matk, $phone, $address, $email, $gioithieu, $hinhanhkh, $phanquyen)
+    {
         $db = new Connect();
-        if($hinhanhkh !=""){
+        if ($hinhanhkh != "") {
             $query = "UPDATE taikhoan SET sdt='$phone',diachi='$address',email='$email',gioithieu='$gioithieu',hinhanhkh='$hinhanhkh',phanquyen= '$phanquyen' WHERE matk = $matk";
-        }
-        else{
+        } else {
             $query = "UPDATE taikhoan SET sdt='$phone',diachi='$address',email='$email',gioithieu='$gioithieu',phanquyen= '$phanquyen' WHERE matk = $matk";
         }
-        
+
         $db->execute($query);
     }
 
@@ -74,7 +75,6 @@ class Account
     {
         $db = new Connect();
         $query = "DELETE FROM `taikhoan` WHERE matk = $matk";
-
         $db->execute($query);
     }
 
@@ -154,12 +154,8 @@ class Account
 
     function total_acc()
     {
-
-
-    function total_acc() {
         $db = new Connect();
         $query = "SELECT * FROM taikhoan";
         return $db->getAll($query);
     }
-}
 }

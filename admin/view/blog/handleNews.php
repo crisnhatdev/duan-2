@@ -361,40 +361,39 @@ switch ($type) {
         //
         //        echo json_encode('Bạn đã đặt hàng thành công. Chúng tôi sẽ giao trong vòng 2-3 ngày.');
         //        break;
-    case 'pagination-catalog':
-        $idCata = $_GET['idCata'];
+    case 'pagination-blog':
         $page = $_GET['page'];
-        $mams = $_GET['mams'];
-        $mamh = $_GET['mamh'];
-        $kyw = $_GET['kyw'];
-
-        $limitPros = $crCata->proByPage($idCata, 5, $page, $kyw, $mams, $mamh);
+        $timbv = $_GET['timbv'];
+        $mabv = $_GET['mabv'];
+        $limitBlog = $crNews->newsByPage($mabv,5, $page,$timbv);
 
         $output = '<thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Danh Mục</th>
-            <th scope="col">Tên Sản Phẩm</th>
-            <th scope="col">Giá </th>
-            <th scope="col">Hình ảnh</th>
-            <th scope="col">Mô Tả</th>
-            <th scope="col">Mã Loại</th>
+            <th scope="col">Tên Bài Viết</th>
+            <th scope="col">Mô Tả </th>
+            <th scope="col">Nội Dung</th>
+            <th scope="col">Lượt Xem</th>
+            <th scope="col">Hình Ảnh</th>
+            <th scope="col">Ngày Đăng</th>
             <th scope="col" class="text-center">Action</th>
         </tr>
     </thead>';
 
-        foreach ($limitPros as $pro) {
+        foreach ($limitBlog as $blog) {
             // $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
-            $output .= '<tbody><tr><td>' . $pro['masp'] . '</td>
-                        <td>' . $pro['tenlh'] . '</td>
-                        <td>' . $pro['tensp'] . '</td>
-                        <td>' . $pro['gia'] . '</td>
-                        <td><img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" style="width:75px;height:75px;border-radius:50%"></td>
-                        <td>' . $pro['mota'] . '</td>
-                        <td>' . $pro['malh'] . '</td>
+            $output .= '<tbody><tr><td>' . $blog['mabv'] . '</td>
+                        <td>' . $blog['tenlbv'] . '</td>
+                        <td>' . $blog['tenbv'] . '</td>
+                        <td>' . $blog['motabv'] . '</td>
+                        <td>' . $blog['noidungbv'] . '</td>
+                        <td>' . $blog['luotxem'] . '</td>
+                        <td><img src="../public/img/blog/upload/' . $blog['hinhanhbv'] . '" style="width:75px;height:75px;border-radius:50%"></td>
+                        <td>' . $blog['ngaydang'] . '</td>
                         <td>
-                            <a href="admin.php?act=update_product_key&id=' . $pro['masp'] . '" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
-                            <a href="admin.php?act=delete_product&id=' . $pro['masp'] . '" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
+                            <a href="admin.php?act=update_product_key&id=' . $blog['mabv'] . '" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
+                            <a href="admin.php?act=delete_product&id=' . $blog['mabv'] . '" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
                         </td>
                         </tr></tbody>';
         }

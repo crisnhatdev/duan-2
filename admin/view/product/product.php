@@ -5,7 +5,7 @@
             <a href="admin.php?act=add_product_key" class="btn btn-primary">Thêm Sản Phẩm</a>
         </div>
         <div class="card-body table-responsive">
-            <table class="table text-center" id="myTable">
+            <table class="table text-center"  id="myTable">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -23,7 +23,7 @@
                     // print_r($proList);
                     foreach ($proListLimit as $key => $pro) {
                         ?>
-                        <tr id="catalog_page">
+                        <tr >
                             <td><?= $pro['masp'] ?></td>
                             <td><?= $pro['tenlh'] ?></td>
                             <td><?= $pro['tensp'] ?></td>
