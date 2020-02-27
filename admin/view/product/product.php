@@ -22,7 +22,7 @@
                     <?php
                     // print_r($proList);
                     foreach ($proListLimit as $key => $pro) {
-                    ?>
+                        ?>
                         <tr id="catalog_page">
                             <td><?= $pro['masp'] ?></td>
                             <td><?= $pro['tenlh'] ?></td>
@@ -36,7 +36,7 @@
                                 <a href="<?php echo 'admin.php?act=delete_product&id=' . $pro['masp'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
                             </td>
                         </tr>
-                    <?php
+                        <?php
                     }
                     ?>
                 </tbody>
@@ -44,7 +44,7 @@
             <div class="col-lg-12">
                 <div class="pageination">
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center" data-malh = '<?= (isset($_GET['malh'])) ? $_GET['malh'] : 0 ?>' data-mams="<?= (isset($_GET['mams'])) ? $_GET['mams'] : 0 ?>" data-mamh="<?= (isset($_GET['mamh'])) ? $_GET['mamh'] : 0 ?>">
+                        <ul class="pagination justify-content-center" data-kyw ="" data-malh = '<?= (isset($_GET['malh'])) ? $_GET['malh'] : 0 ?>' data-mams="<?= (isset($_GET['mams'])) ? $_GET['mams'] : 0 ?>" data-mamh="<?= (isset($_GET['mamh'])) ? $_GET['mamh'] : 0 ?>">
                             <?php
                             $pages = $crCata->calcPage($proList, 5);
                             for ($i = 0; $i < $pages; $i++) {

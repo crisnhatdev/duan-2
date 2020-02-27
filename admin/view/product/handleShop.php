@@ -369,28 +369,24 @@ switch ($type) {
         $kyw = $_GET['kyw'];
 
         $limitPros = $crCata->proByPage($idCata, 5, $page, $kyw, $mams, $mamh);
-        
+
         $output = '';
 
         foreach ($limitPros as $pro) {
             // $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
             $output .= '<td>' . $pro['masp'] . '</td>
-            <td>' . $pro['tenlh'] . '</td>
-            <td>' . $pro['tensp'] . '</td>
-            <td>' . $pro['gia'] . '</td>
-            <td><img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" style="width:75px;height:75px;border-radius:50%"></td>
-            <td>' . $pro['mota'] . '</td>
-            <td>' . $pro['malh'] . '</td>
-            ';
+                        <td>' . $pro['tenlh'] . '</td>
+                        <td>' . $pro['tensp'] . '</td>
+                        <td>' . $pro['gia'] . '</td>
+                        <td><img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" style="width:75px;height:75px;border-radius:50%"></td>
+                        <td>' . $pro['mota'] . '</td>
+                        <td>' . $pro['malh'] . '</td>
+                        ';
         }
-        echo json_encode($output);
+        echo json_encode(123);
         break;
     default:
         break;
 }
 //<---End-Controller--->
 ?>
-<!-- <td>
-    <a href="<?php echo 'admin.php?act=update_product_key&id=' . $pro['masp'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
-    <a href="<?php echo 'admin.php?act=delete_product&id=' . $pro['masp'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
-</td> -->
