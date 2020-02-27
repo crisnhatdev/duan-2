@@ -49,7 +49,7 @@
                         <div class="widgets_inner">
                             <ul class="list">
                                 <?php
-                                $proByMh = $crCata->unique_multidim_array($proByCata, 'mamh');//lọc mảng những sp theo mã mh
+                                $proByMh = $crCata->unique_multidim_array($proByCata, 'mamh'); //lọc mảng những sp theo mã mh
                                 foreach ($proByMh as $pro) {
                                     echo '<li>
                                             <a href=".?act=catalog&malh=' . $_GET['malh'] . '&type=filter&mamh=' . $pro['mamh'] . '">' . $pro['tenmh'] . '</a>
@@ -133,7 +133,8 @@
                                     <h4><?= $pro['tensp'] ?></h4>
                                     <?= ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '' ?>
                                     <h3><?= number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') ?> VNĐ</h3>
-                                    <a href="#/" class="add_cart">+ Thêm vào giỏ<i class="ti-heart"></i></a>
+                                    <input type="hidden" name="masp" value="<?= $pro['masp'] ?>"/>
+                                    <a href="#/" class="add_cart add_to_cart_button">+ Thêm vào giỏ<i class="ti-heart"></i></a>
                                 </div>
                             </div>
                         </div>

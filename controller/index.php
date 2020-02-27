@@ -11,6 +11,7 @@ require_once '../model/color.php';
 require_once '../model/account.php';
 require_once '../model/comment.php';
 require_once '../model/news.php';
+require_once '../model/cart.php';
 //<---Model-End--->
 //session_destroy();
 //Banner
@@ -42,6 +43,9 @@ $newsCataList = $crNews->getCataNews();
 ($crAcc->checkCookie('recent-news')) ? $threeRecentNews = array_slice($_COOKIE['recent-news'], -3, 3) : $threeRecentNews = []; // nếu có cookie recent news thì cắt 3 bài viết cuối
 //<---News-End--->
 //
+//Cart
+$crCart = new Cart();
+// <---End-Cart--->
 //Control
 require_once '../view/layout/header.php';
 
@@ -113,6 +117,13 @@ if (isset($_GET['act'])) {
             $limitProBySearch = $crCata->proByPage(0, 3, 1, $search); //mảng sản phẩm giới hạn theo trang
 
             require_once '../view/shop/findProduct.php';
+            break;
+        case 'view-cart':
+            $cartList = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+            require_once '../view/shop/viewCart.php';
+            break;
+        case 'checkout':
+            require_once '../view/shop/viewCart.php';
             break;
         //account
         case 'account':

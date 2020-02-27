@@ -98,16 +98,20 @@
                             <div class="hearer_icon d-flex">
                                 <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                                 <a href=""><i class="ti-heart"></i></a>
-                                <div class="dropdown cart">
-                                    <a class="dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-cart-plus"></i>
+                                <div class="cart">
+                                    <a href=".?act=view-cart" id="navbarDropdown3" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-cart-plus" data-cart="<?= (isset($_SESSION['cart'])) ? count($_SESSION['cart']) : 0 ?>"></i>
                                     </a>
-                                    <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <div class="single_product">
-        
-                                        </div>
-                                    </div> -->
+                                    <!--                                <div class="dropdown cart">
+                                                                        <a class="dropdown-toggle" href=".?act=view-cart" id="navbarDropdown3" role="button"
+                                                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-cart-plus"></i>
+                                                                        </a>
+                                                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                            <div class="single_product">
+                                                                                
+                                                                            </div>
+                                                                        </div> -->
 
                                 </div>
                             </div>

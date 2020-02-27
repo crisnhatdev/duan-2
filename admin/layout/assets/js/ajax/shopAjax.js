@@ -17,7 +17,7 @@ $('.page-item').on('click', function () {
         dataType: 'json',
         data: {idCata: idCata, page: page, kyw: kyw, mams: mams, mamh: mamh, type: 'pagination-catalog'},
         success: function (res) {
-            $('#catalog_page').html(res);
+            $('#myTable tbody').html(res);
             console.log(res);
         },
         error: function (request, status, error) {

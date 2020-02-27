@@ -134,6 +134,7 @@ if ($type) {
                         $crAcc->register($name, $phone, $hashedPass, $email, $level);
 //                        echo json_encode('http://localhost/php2/asm/controller/?act=account&email=' . $email);
                         $succesArr['success_field'] = 'Đăng ký thành công. Hãy kiểm tra email của bạn';
+                        $succesArr['direct'] = '.';
                         echo json_encode($succesArr);
                     } else {
                         $errArr['error_field'] = 'Đã xảy ra lỗi. Không thể đăng ký';
@@ -362,8 +363,7 @@ if ($type) {
             }
             break;
         default:
-            json_encode(123213123);
-
+            json_encode('Có vẻ bạn chưa biết phải làm gì nhỉ');
             break;
     }
 }

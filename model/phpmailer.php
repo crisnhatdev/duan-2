@@ -26,7 +26,7 @@ class PHPMail {
         $mail->setLanguage('vi', 'PHPMailer/language/phpmailer.lang-vi.php');
 //Recipients
         $mail->CharSet = "utf-8";
-        $mail->setFrom('no-reply@gmail.com', 'Form Ftyler');
+        $mail->setFrom('no-reply@gmail.com', 'Form Sweet House');
         $mail->addAddress($userEmail);               // Name is optional
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
@@ -35,11 +35,11 @@ class PHPMail {
         $mail->Body = "$desc";
 
         //send the message, check for errors
-//        if (!$mail->send()) {
-//            return 0;
-//        } else {
+        if (!$mail->send()) {
+            return 0;
+        } else {
             return 1;
-//        }
+        }
     }
 
     function htmlRegister($email) {
@@ -102,7 +102,7 @@ class PHPMail {
                 <div class="container">
                     <header style="justify-content: space-between;">
                         <a href="http://localhost/php2/asm">
-                            <img src="http://localhost/php2/asm/public/img/logo1.png" alt="Logo Ftyler">
+                            <img src="http://localhost/php2/asm/public/img/logo1.png" alt="Logo Sweet House">
                         </a>
                         <ul>
                             <li>
@@ -188,7 +188,7 @@ class PHPMail {
                 <div class="container">
                     <headerstyle="justify-content: space-between;">
                         <a href="https://trinhduy.com">
-                            <img src="https://trinhduy.com/view/images/logo.png" alt="Logo Ftyler">
+                            <img src="https://trinhduy.com/view/images/logo.png" alt="Logo Sweet House">
                         </a>
                         <ul>
                             <li>
@@ -275,7 +275,7 @@ class PHPMail {
                 <div class="container">
                     <header style="justify-content: space-between;">
                         <a href="https://trinhduy.com">
-                            <img src="https://trinhduy.com/view/images/logo.png" alt="Logo Ftyler">
+                            <img src="https://trinhduy.com/view/images/logo.png" alt="Logo Sweet House">
                         </a>
                         <ul>
                             <li>
