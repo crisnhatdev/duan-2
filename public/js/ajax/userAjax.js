@@ -69,7 +69,7 @@ $(document).ready(function () {
                 dataType: false,
                 data: {arrData: data, type: type},
                 success: function (res) {
-                    console.log(res)
+                    console.log(res);
                     //res is object
                     for (let key in res) {
 //                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').attr('placeholder',res[key]);
@@ -79,10 +79,16 @@ $(document).ready(function () {
 //                            $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').attr('placeholder','');
 //                        });
                         $('.' + key).html(res[key])
+                        
                         setTimeout(function () {
                             $('.' + key).html('');
                             $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
                         }, 1500)
+                                                   
+                        if(key === 'success_field' || key === 'success_field_lg') {
+                          $(':submit', form).attr('disabled', true);
+                        }  
+                        
                         if (key === 'direct') {
                             setTimeout(function () {
                                 window.location.href = res[key];

@@ -267,44 +267,32 @@
 
         window.inputNumber = function (el) {
 
-            var min = el.attr('min') || false;
-            var max = el.attr('max') || false;
+            var min = el.getAttribute('min') || false;
+            var max = el.getAttribute('max') || false;
+            
+//            var dec = el.previousElementSibling.addEventListener('click', decrement); //giảm
+//            var inc = el.nextElementSibling.addEventListener('click', increment); //tangw
 
-            var els = {};
-
-            els.dec = el.prev();
-            els.inc = el.next();
-
-            el.each(function () {
-                init($(this));
-            });
-
-            function init(el) {
-
-                els.dec.on('click', decrement);
-                els.inc.on('click', increment);
-
-                function decrement() {
-                    var value = el[0].value;
-                    value--;
-                    if (!min || value >= min) {
-                        el[0].value = value;
-                    }
-                }
-
-                function increment() {
-                    var value = el[0].value;
-                    value++;
-                    if (!max || value <= max) {
-                        el[0].value = value++;
-                    }
-                }
-            }
+//            function decrement() {
+//                var value = el.value;
+//                value--;
+//                if (!min || value >= min) {
+//                    el.value = value;
+//                }
+//            }
+//
+//            function increment() {
+//                var value = el.value;
+//                value++;
+//                if (!max || value <= max) {
+//                    el.value = value++;
+//                }
+//            }
         }
     })();
-
-    inputNumber($('.input-number'));
-
+    $('.input-number').each(function () {
+        inputNumber(this);
+    })
 
 
     setInterval(function () {
@@ -378,7 +366,7 @@
             $(this).parents('li').addClass('active_color');
         }
     });
-    
+
     $('.stars a').on('click', function (e) {
         $(this).siblings().removeClass('active');
         $(this).addClass('active');

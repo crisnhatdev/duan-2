@@ -17,6 +17,9 @@ $('.page-item').on('click', function () {
         dataType: 'json',
         data: {idCata: idCata, page: page, kyw: kyw, mams: mams, mamh: mamh, type: 'pagination-catalog'},
         success: function (res) {
+<<<<<<< HEAD
+            $('#myTable tbody').html(res);
+=======
             $('#myTable').html(res);
             console.log(res);
         },
@@ -40,6 +43,7 @@ $('.page-item-news').on('click', function () {
         data: {mabv:mabv , page: page,timbv:timbv, type: 'pagination-blog'},
         success: function (res) {
             $('#myBlog').html(res);
+>>>>>>> 4514fa398e81a3325223486498076b60143081ec
             console.log(res);
         },
         error: function (request, status, error) {

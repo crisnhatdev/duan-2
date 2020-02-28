@@ -310,8 +310,8 @@
 
                     <aside class="single_sidebar_widget newsletter_widget">
                         <h4 class="widget_title">Đăng ký nhận tin mới</h4>
-                        <div class="validate_field success_field" style="color: #28a745"></div>
-                        <div class="validate_field error_field" style="color: red" ></div>
+                        <div class="validate_field none success_subscribe text-success"></div>
+                        <div class="validate_field none error_subscribe text-danger"></div>
                         <form class="subscribe-form-ajax form-group">
                             <input type="email" class="form-control validate-form-control" onfocus="this.placeholder = ''"
                                    onblur="this.placeholder = 'Nhập email của bạn'" placeholder='Nhập email của bạn' name="subscribe-mail"  required="">

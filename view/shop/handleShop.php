@@ -8,6 +8,7 @@ require_once '../../model/product.php';
 require_once '../../model/comment.php';
 require_once '../../model/validate.php';
 require_once '../../model/news.php';
+require_once '../../model/cart.php';
 //<---End-Model---->
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
@@ -25,7 +26,10 @@ $crValid = new Validate();
 // <---End-Validate--->
 //News
 $crNews = new News();
-// <---End-News
+// <---End-News--->
+//Cart
+$crCart = new Cart();
+// <---End-Cart--->
 //Controller
 $type = $_REQUEST['type'];
 switch ($type) {
@@ -100,17 +104,17 @@ switch ($type) {
 
         echo json_encode($output);
         break;
-//    case 'add':
-//        $maspct = $_GET['maspct'];
-//
-//        $soluong = (isset($_GET['soluong'])) ? $_GET['soluong'] : 1;
-//
-//        add_item($maspct, $soluong);
-//
+    case 'add':
+        $masp = $_GET['masp'];
+
+        $soluong = (isset($_GET['soluong'])) ? $_GET['soluong'] : 1;
+
+        $crCart->add_item($masp, $soluong);
+
 //        $arr = load_cart();
-//
-//        echo json_encode($arr);
-//        break;
+
+        echo json_encode(count($_SESSION['cart']));
+        break;
 //    case 'remove':
 //        $maspct = $_GET['maspct'];
 //
@@ -120,17 +124,77 @@ switch ($type) {
 //
 //        echo json_encode($arr);
 //        break;
-//    case 'update':
-//        $maspct = $_GET['maspct'];
-//
-//        $soluong = $_GET['soluong'];
-//
-//        update_item($maspct, $soluong);
-//
-//        $arr = load_cart();
-//
-//        echo json_encode($arr);
-//        break;
+    case 'update':
+        $masp = $_GET['masp'];
+
+        $soluong = $_GET['soluong'];
+
+        $crCart->update_item($masp, $soluong);
+
+        $cartList = $_SESSION['cart'];
+        $output = '';
+        foreach ($cartList as $item) {
+            $promotion = ($item['khuyenmai'] > 0) ? "<del style='color: #000'>" . number_format($item['gia'], 0, '', '.') . " VNĐ</del> - <b>" . $item['khuyenmai'] . "%</b>" : '';
+            $output .= '<tr>
+                    <td>' . $item['masp'] . '</td>
+                    <td>
+                        <div class="media">
+                            <div class="d-flex">
+                                <a href=".?act=product&masp=' . $item['masp'] . '"><img style="width: 160px" src="../public/img/newproduct/upload/' . $item['hinhanhsp'] . '" alt="" /></a>
+                            </div>
+                            <div class="media-body">
+                                <a href=".?act=product&masp=' . $item['masp'] . '"><p>' . $item['tensp'] . '</p></a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        ' . $promotion . '
+                        <h5><b>' . number_format($crPro->checkKm($item['gia'], $item['khuyenmai']), 0, '', '.') . ' VNĐ</b></h5>
+                    </td>
+                    <td>
+                        <div class="product_count">
+                            <span class="input-number-decrement"> <i class="ti-angle-down qty_btn "></i></span>
+                            <input class="input-number qty_input" type="text" value="' . $item['soluong'] . '" min="1" max="5" onchange="(this.value > 5) ? this.value = 5 : this.value">
+                            <span class="input-number-increment"> <i class="ti-angle-up qty_btn "></i></span>
+                        </div>
+                    </td>
+                    <td>
+                        <h5>' . number_format($crPro->checkKm($item['gia'], $item['khuyenmai']) * $item['soluong'], 0, '', '.') . ' VNĐ</h5>
+                    </td>
+                </tr>';
+        }
+        $ship = ($crCart->tongtien() > 1000000) ? 'Free Ship' : number_format(30000, '0', '', '.');
+        $output .= '<tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h5>Tổng Cộng: </h5>
+                            </td>
+                            <td>
+                                <h5>' . number_format($crCart->tongtien(), '0', '', '.') . ' VNĐ</h5>
+                            </td>
+                        </tr>
+                        <tr class="shipping_area">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <h5>Shipping: </h5>
+                            </td>
+                            <td>
+                                <div class="shipping_box">
+                                    <ul class="list">
+                                        <li class="active">
+                                            <a href="#/">Ship COD:' . $ship . ' VNĐ</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>';
+
+        echo json_encode(array($output, count($cartList)));
+        break;
 //    case 'choose':
 //        $masp = $_GET['ma'][0];
 //        $mams = $_GET['ma'][1];
@@ -380,7 +444,8 @@ switch ($type) {
                                 <div class="single_product_text">
                                     <h4>' . $pro['tensp'] . '</h4>' . $promotion . '
                                     <h3>' . number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') . ' VNĐ</h3>
-                                    <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                    <input type="hidden" name="masp" value="' . $pro['masp'] . '"/>
+                                    <a href="#/" class="add_cart add_to_cart_button">+ Thêm vào giỏ<i class="ti-heart"></i></a>
                                 </div>
                             </div>
                         </div>';
