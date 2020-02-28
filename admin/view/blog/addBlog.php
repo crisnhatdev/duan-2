@@ -17,61 +17,63 @@
                         </div>
                     </div>
                     <div class="form-group col-md-4">
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect1">Tài khoản</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="matk" required="required">
-                                    <?php
-                                    foreach ($getTaikhoan as $taikhoan) {
-                                        echo '<option value="' . $taikhoan['matk'] . '">' . $taikhoan['tenkh'] . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Tài khoản</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="matk" required="required">
+                                <?php
+                                foreach ($getTaikhoan as $taikhoan) {
+                                    echo '<option value="' . $taikhoan['matk'] . '">' . $taikhoan['tenkh'] . '</option>';
+                                }
+                                ?>
+                            </select>
                         </div>
+                    </div>
                     <div class="form-group col-md-4">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Ngày đăng</label>
                             <input type="date" class="form-control" id="exampleFormControlInput1" name="ngaydang">
                         </div>
                     </div>
-                    <div class="form-group col-md-4">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Lượt xem</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1" name="luotxem">
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-8">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Tiêu đề bài viết</label>
                             <input type="text" class="form-control" name="tenbv" required="required">
                         </div>
+                    </div>
+                    <div class="form-group col-md-4">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Mô tả bài viết</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="motabv" required="required"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-file">
+                            <div class="custom-file d-flex -">
                                 <label class="custom-file-label" for="exampleFormControlFile1">Hình ảnh</label>
                                 <input type="file" class="custom-file-input" name="hinhanhbv" required="required">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-8">
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Nội dung bài viết</label>
+                            <label for="exampleFormControlTextarea1">Mô tả bài viết</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="motabv" required="required"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label for="exampleFormControlTextarea1">Nội dung bài viết</label>
+                        <div class="form-group">
                             <textarea class="form-control" id="noidungbv" rows="3" name="noidungbv" required="required"></textarea>
-                            <!-- <script>
-                                    CKEDITOR.replace('noidungbv', {
-                                        filebrowserBrowseUrl: 'admin/ckfinder/ckfinder.html',
-                                        filebrowserImageBrowseUrl: 'admin/ckfinder/ckfinder.html?type=Images',
-                                        filebrowserFlashBrowseUrl: 'admin/ckfinder/ckfinder.html?type=Flash',
-                                        filebrowserUploadUrl: 'admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-                                        filebrowserImageUploadUrl: 'admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-                                        filebrowserFlashUploadUrl: 'admin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-                                    });
-                                </script> -->
+                            <script>
+                                CKEDITOR.replace('noidungbv', {
+                                    filebrowserBrowseUrl: '../admin/layout/ckfinder/ckfinder.html',
+                                    filebrowserImageBrowseUrl: '../admin/layout/ckfinder/ckfinder.html?type=Images',
+                                    filebrowserFlashBrowseUrl: '../admin/layout/ckfinder/ckfinder.html?type=Flash',
+                                    filebrowserUploadUrl: '../admin/layout/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                                    filebrowserImageUploadUrl: '../admin/layout/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                                    filebrowserFlashUploadUrl: '../admin/layout/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>

@@ -219,12 +219,14 @@ if (isset($_GET['act'])) {
             break;
             // -----------------------------------------------------------------------BLOG----------------------------------------
         case 'qlyBlog':
+            $crCata = new Catalog();
             $qlyBlog = $crNews->getNews();
+            $blogLimit = $crNews->newsByPage(0,5,1);
             require_once '../admin/view/blog/qlyBlog.php';
             break;
         case 'addBlogKey':
-            $crNews = new News();
-            $getTaikhoan = $crNews->getNews();
+            $crAcc = new Account();
+            $getTaikhoan = $crAcc->all_user();
             require_once '../admin/view/blog/addBlog.php';
             break;
         case 'addBlog':

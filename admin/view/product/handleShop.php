@@ -29,6 +29,7 @@ $crNews = new News();
 //Controller
 $type = $_REQUEST['type'];
 switch ($type) {
+<<<<<<< HEAD
     // case 'comments-product':
     //     $bang = 'binhluansp';
     //     $tenCot = 'masp';
@@ -94,6 +95,83 @@ switch ($type) {
     //    case 'add':
     //        $maspct = $_GET['maspct'];
     //
+=======
+        // case 'comments-product':
+        //     $bang = 'binhluansp';
+        //     $tenCot = 'masp';
+        //     $cmt = $crValid->valid_value_insert($_REQUEST['arrData'][0]['value']); //nội dung đánh giá
+        //     $sao = $_REQUEST['arrData'][1]['value'][0]; //lấy giá trị index = 0 trong mảng arrDat và string đầu tiên (i = 0)
+        //     $ngaydang = date("Y:m:d H:i:s"); //ngày
+        //     $matk = 77; // mã tk đánh giá
+        //     //            $matk = $_SESSION['user']['idaccount'];// mã tk đánh giá
+        //     $masp = $_REQUEST['arrData'][2]['value'];
+
+        //     if ($crValid->valid_text($cmt) && $cmt != '') {
+        //         $crComm->upCmt($bang, $tenCot, $cmt, $sao, $ngaydang, $matk, $masp); //up cmt mới lên database
+
+        //         $cmtsList = $crComm->getCmt($bang, $tenCot, $masp); //lấy tổng số cmt ra để tính tổng cmts
+
+        //         $total = 0;
+        //         foreach ($cmtsList as $cmt) {
+        //             $total += $cmt['sao'];
+        //         }
+        //         $total = $total / count($cmtsList); // tính điểm tổng cho sp
+
+        //         $newCmt = $cmtsList[0]; //lấy cmt mới nhất trong cmtList
+        //         $star = ''; // hiện thị số sao người dùng đã đánh giá
+        //         for ($i = 0; $i < $newCmt['sao']; $i++) {
+        //             $star .= '<i class = "fa fa-star"></i> ';
+        //         }
+
+
+        //         $output = '<div class="review_item">
+        //                             <div class="media">
+        //                                 <div class="d-flex">
+        //                                     <img style="height: 60px; width: 60px; border-radius: 100%; object-fit: cover" src="../public/img/user/' . $newCmt['hinhanhkh'] . '" alt="" />
+        //                                 </div>
+        //                                 <div class="media-body">
+        //                                     <h4>' . $newCmt['tenkh'] . '</h4>' .
+        //             $star . '</div>
+        //                             </div>
+        //                             <p>' . $newCmt['noidung'] . '</p>
+        //                         </div>';
+
+        //         echo json_encode(array($output, $total, count($cmtsList)));
+        //     }
+        //     break;
+        // case 'pagination-cmts-product':
+        //     $bang = 'binhluansp';
+        //     $tenCot = 'masp';
+        //     $mabv = $_REQUEST['masp'];
+        //     $page = $_REQUEST['page'];
+
+        //     $limitCmtsPro = $crComm->paginationCmts($bang, $tenCot, 3, $page, $mabv); //tên bảng, tên cột, cmt giới hạn, trang, mã bv
+
+        //     $output = '';
+        //     foreach ($limitCmtsPro as $cmt) {
+        //         $star = ''; // hiện thị số sao người dùng đã đánh giá
+        //         for ($i = 0; $i < $cmt['sao']; $i++) {
+        //             $star .= '<i class = "fa fa-star"></i> ';
+        //         }
+        //         $output .= '<div class="review_item">
+        //                             <div class="media">
+        //                                 <div class="d-flex">
+        //                                     <img style="height: 60px; width: 60px; border-radius: 100%; object-fit: cover" src="../public/img/user/' . $cmt['hinhanhkh'] . '" alt="" />
+        //                                 </div>
+        //                                 <div class="media-body">
+        //                                     <h4>' . $cmt['tenkh'] . '</h4>' .
+        //             $star . '</div>
+        //                             </div>
+        //                             <p>' . $cmt['noidung'] . '</p>
+        //                         </div>';
+        //     }
+
+        //     echo json_encode($output);
+        //     break;
+        //    case 'add':
+        //        $maspct = $_GET['maspct'];
+        //
+>>>>>>> 4514fa398e81a3325223486498076b60143081ec
         //        $soluong = (isset($_GET['soluong'])) ? $_GET['soluong'] : 1;
     //
         //        add_item($maspct, $soluong);
@@ -360,18 +438,42 @@ switch ($type) {
 
         $limitPros = $crCata->proByPage($idCata, 5, $page, $kyw, $mams, $mamh);
 
-        $output = '';
+        $output = '<thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Danh Mục</th>
+            <th scope="col">Tên Sản Phẩm</th>
+            <th scope="col">Giá </th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Mô Tả</th>
+            <th scope="col">Mã Loại</th>
+            <th scope="col" class="text-center">Action</th>
+        </tr>
+    </thead>';
 
         foreach ($limitPros as $pro) {
             // $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
+<<<<<<< HEAD
             $output .= '<tr><td>' . $pro['masp'] . '</td>
+=======
+            $output .= '<tbody><tr><td>' . $pro['masp'] . '</td>
+>>>>>>> 4514fa398e81a3325223486498076b60143081ec
                         <td>' . $pro['tenlh'] . '</td>
                         <td>' . $pro['tensp'] . '</td>
                         <td>' . $pro['gia'] . '</td>
                         <td><img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" style="width:75px;height:75px;border-radius:50%"></td>
                         <td>' . $pro['mota'] . '</td>
+<<<<<<< HEAD
                         <td>' . $pro['malh'] . '</td></tr>
                         ';
+=======
+                        <td>' . $pro['malh'] . '</td>
+                        <td>
+                            <a href="admin.php?act=update_product_key&id=' . $pro['masp'] . '" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
+                            <a href="admin.php?act=delete_product&id=' . $pro['masp'] . '" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
+                        </td>
+                        </tr></tbody>';
+>>>>>>> 4514fa398e81a3325223486498076b60143081ec
         }
         echo json_encode($output);
         break;
@@ -379,4 +481,3 @@ switch ($type) {
         break;
 }
 //<---End-Controller--->
-?>

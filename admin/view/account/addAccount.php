@@ -18,7 +18,6 @@
                     <div class="col">
                         <input type="text" class="border-danger form-control " placeholder="Số Điện Thoại" name="phone" required="">
                     </div>
-
                 </div>
                 <div class="form-row mb-3">
                     <div class="col">
@@ -27,9 +26,6 @@
                     <div class="col">
                         <input type="text" class="border-danger form-control " placeholder="Địa Chỉ" name="address" required="">
                     </div>
-
-                </div>
-                <div class="form-row mb-3">
                     <div class="col">
                         <select class="custom-select border-danger  mb-3" id="inputGroupSelect01" name="phanquyen" required="">
                             <option selected disabled="">Phân Quyền</option>
@@ -38,18 +34,16 @@
                             <option value="user">user</option>
                         </select>
                     </div>
-                    <div class="col d-flex bd-highlight flex-row-reverse justify-content-center">
-                        <label class="" for="exampleFormControlFile1">Hình ảnh</label>
-                        <input type="file" class="custom-file-input p-2" name="hinhanhkh" required="required">
-                    </div>
                 </div>
                 <div class="form-row mb-3">
-
                     <div class="col">
-                        <textarea name="gioithieu" id="" cols="71" rows="3" placeholder="Giới Thiệu Bản Thân"></textarea>
+                        <textarea name="gioithieu" id="" cols="96" rows="3" placeholder="Giới Thiệu Bản Thân"></textarea>
+                    </div>
+                    <div class="col d-flex justify-content-around  align-items-end">
+                        <label class="" for="exampleFormControlFile1">Hình ảnh</label>
+                            <input type="file" class="custom-file-input" name="hinhanhkh" required="required">
                     </div>
                 </div>
-
                 <div class="form-row">
                     <div class="col">
                         <input type="submit" class="btn btn-danger" name="submit" value="Thêm Tài Khoản">

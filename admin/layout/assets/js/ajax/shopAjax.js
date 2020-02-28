@@ -17,7 +17,33 @@ $('.page-item').on('click', function () {
         dataType: 'json',
         data: {idCata: idCata, page: page, kyw: kyw, mams: mams, mamh: mamh, type: 'pagination-catalog'},
         success: function (res) {
+<<<<<<< HEAD
             $('#myTable tbody').html(res);
+=======
+            $('#myTable').html(res);
+            console.log(res);
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(error);
+            console.log(status);
+        }
+    })
+});
+$('.page-item-news').on('click', function () {
+    this.classList.add('active');
+    $(this).siblings().removeClass('active');
+    var page = this.innerText;
+    var mabv = this.parentElement.getAttribute('data-mabv');
+    var timbv = this.parentElement.getAttribute('data-timbv');
+    $.ajax({
+        url: '../admin/view/blog/handleNews.php',
+        type: 'get',
+        dataType: 'json',
+        data: {mabv:mabv , page: page,timbv:timbv, type: 'pagination-blog'},
+        success: function (res) {
+            $('#myBlog').html(res);
+>>>>>>> 4514fa398e81a3325223486498076b60143081ec
             console.log(res);
         },
         error: function (request, status, error) {

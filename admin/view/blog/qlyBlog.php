@@ -1,12 +1,11 @@
-
- <div class="container" style="margin-top:100px">
+<div class="container" style="margin-top:100px">
     <div class="card">
         <div class="card-header card-header-primary">
             <h3>Danh Sách Bài Viết</h3>
             <a href="admin.php?act=addBlogKey" class="btn btn-primary">Thêm Bài Viết</a>
         </div>
         <div class="card-body table-responsive">
-            <table class="table text-center" id="myTable">
+            <table class="table text-center" id="myBlog">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -22,7 +21,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($qlyBlog as $key => $blog) {
+                    foreach ($blogLimit as $key => $blog) {
                     ?>
                         <tr>
                             <td><?= $blog['mabv'] ?></td>
@@ -31,7 +30,7 @@
                             <td><?= $blog['motabv'] ?></td>
                             <td><?= $blog['noidungbv'] ?></td>
                             <td><?= $blog['luotxem'] ?></td>
-                            <td><img blog="../public/img/blog/upload/<?= $blog['hinhanhbv'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
+                            <td><img src="../public/img/blog/upload/<?= $blog['hinhanhbv'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
                             <td><?= $blog['ngaydang'] ?></td>
                             <td>
                                 <a href="<?php echo 'admin.php?act=updateBlogKey&id=' . $blog['mabv'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
@@ -43,6 +42,21 @@
                     ?>
                 </tbody>
             </table>
+            <div class="col-lg-12">
+                <div class="pageination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center" data-mabv= <?php isset($_GET['mabv'])?$_GET['mabv']:0 ?> data-timbv="">
+                            <?php
+                            $pages = $crCata->calcPage($qlyBlog,5 );
+                            for ($i = 0; $i < $pages; $i++) {
+                                $active = ($i === 0) ? " active" : "";
+                                echo "<li class='page-item-news" . $active . "'><a class='page-link' href='#/'>" . ($i + 1) . "</a></li>";
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
     </div>
-</div> 
+</div>

@@ -40,7 +40,6 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <!-- ckeditor -->
   <script type="text/javascript" src="../admin/layout/ckeditor/ckeditor.js"></script>
-
 </head>
 
 <body class="dark-edition">
@@ -76,7 +75,7 @@
               Quản Lí Tài Khoản
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="admin.php?act=qlyAcc">Danh Sách Tài Khoản</a>
+              <a class="dropdown-item" href="admin.php?act=qlyAcc">Danh Sách Tài Khoản</a>
               <a class="dropdown-item" href="admin.php?act=add_Acc_Key">Thêm Tài Khoản</a>
             </div>
           </li>
@@ -184,12 +183,16 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">
-                  <i class="material-icons">person</i>
-                  <p class="d-lg-none d-md-block">
-                    Account
-                  </p>
-                </a>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><img src="" alt=""></a>
+                    <a class="dropdown-item" href="#">Thông Tin </a>
+                    <a class="dropdown-item" href="#">Đổi Mật Khẩu</a>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
