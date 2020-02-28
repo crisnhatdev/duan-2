@@ -73,37 +73,28 @@
 
                                 <?php
                                 if ($crAcc->checkSs('user')) {
-
+                                    if ($_SESSION['user']['level'] == 1) {
                                 ?>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#account" id="navbarDropdown_2">Tài khoản</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                            <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
-                                            <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
-                                            <a class="dropdown-item logout" href="#">Thoát</a>
-                                        </div>
-                                    </li>
-                                <?php
-                                } else if (isset($_SESSION['user']) && $_SESSION['user']['level'] === 1) {
-                                ?>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#account" id="navbarDropdown_2">Tài khoản</a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                                            <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
-                                            <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
-                                            <a class="dropdown-item logout" href="#">Thoát</a>
-                                        </div>
-                                    </li>
-                                <?php
-                                } else{
-                                ?>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#account" id="navbarDropdown_2">Tài khoản</a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                                <a class="dropdown-item" href=".?act=acc-admin">Quản Trị</a>
+                                                <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
+                                                <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
+                                                <a class="dropdown-item logout" href="#">Thoát</a>
+                                            </div>
+                                        </li>
+                                    <?php
+                                    }
+                                } else {
+                                    ?>
                                     <li class="nav-item ">
-                                    <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
-                                </li>
+                                        <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
+                                    </li>
                                 <?php } ?>
                             </ul>
                         </div>
-                        
+
                         <div class="hearer_icon d-flex">
                             <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
                             <a href=""><i class="ti-heart"></i></a>

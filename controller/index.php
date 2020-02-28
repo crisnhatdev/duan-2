@@ -48,7 +48,7 @@ require_once '../view/layout/header.php';
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
     switch ($act) {
-        //page
+            //page
         case 'home':
             require_once '../view/layout/content.php';
             break;
@@ -58,7 +58,7 @@ if (isset($_GET['act'])) {
         case 'contact':
             require_once '../view/pages/contact.php';
             break;
-        //news
+            //news
         case 'news':
             $malbv = (isset($_GET['malbv'])) ? $_GET['malbv'] : 0;
             $newsList = $crNews->getNews($malbv);
@@ -81,7 +81,7 @@ if (isset($_GET['act'])) {
             $newsList = $crNews->findNews($search); //tất cả sản phẩm theo mã lh
             require_once '../view/news/findNews.php';
             break;
-        //shop
+            //shop
         case 'catalog':
             $malh = $_GET['malh'];
             $proByCata = $crPro->getPro($malh); //tất cả sản phẩm theo mã lh
@@ -114,7 +114,7 @@ if (isset($_GET['act'])) {
 
             require_once '../view/shop/findProduct.php';
             break;
-        //account
+            //account
         case 'account':
             require_once '../view/account/account.php';
             break;
@@ -131,6 +131,9 @@ if (isset($_GET['act'])) {
         case 'acc-change-forgot':
             require_once '../view/account/changeForgotUser.php';
             break;
+        case 'acc-admin':
+            header("Location: ./admin.php ");
+            break;
         default:
             require_once '../view/layout/content.php';
             break;
@@ -142,4 +145,3 @@ if (isset($_GET['act'])) {
 require_once '../view/layout/footer.php';
 //ob_end_flush();
 //<---End--->
-?>

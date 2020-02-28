@@ -1,6 +1,99 @@
 <!-- End Navbar -->
 <div class="content">
   <div class="container-fluid">
+
+    <!-- row2 -->
+    <div class="row">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">content_copy</i>
+            </div>
+            <p class="card-category">Sản Phẩm</p>
+            <h3 class="card-title">
+              <?php
+              $crPro = new Product();
+              $totalPro = count($crPro->total_pro());
+              echo $totalPro;
+              ?>
+
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <a class="text-white" href="admin.php?act=qlyProduct">Xem Thêm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">store</i>
+            </div>
+            <p class="card-category">Bình Luận</p>
+            <h3 class="card-title">
+              <?php
+              $crCmt = new Comment();
+              $totalCmt = count($crCmt->total_cmt());
+              echo $totalCmt;
+              ?>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">date_range</i> <a class="text-white" href="admin.php?act=qlyComment">Xem Thêm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-danger card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">info_outline</i>
+            </div>
+            <p class="card-category">Bài Viết</p>
+            <h3 class="card-title">
+              <?php
+              $crNews = new News();
+              $totalNews = count($crNews->total_news());
+              echo $totalNews;
+              ?>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">local_offer</i><a class="text-white" href="admin.php?act=qlyBlog"> Xem Thêm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+              <i class="fa fa-twitter"></i>
+            </div>
+            <p class="card-category">Tài Khoản</p>
+            <h3 class="card-title">+
+              <?php
+              $crAcc = new Account();
+              $totalAcc = count($crAcc->total_acc());
+              echo $totalAcc;
+              ?>
+            </h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i><a class="text-white" href="admin.php?act=qlyAccount"> Xem Thêm</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- row1 -->
     <div class="row">
       <div class="col-xl-4 col-lg-12">
@@ -48,98 +141,6 @@
           <div class="card-footer">
             <div class="stats">
               <i class="material-icons">access_time</i> Viết 2 ngày hôm qua
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- row2 -->
-    <div class="row">
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-warning card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">content_copy</i>
-            </div>
-            <p class="card-category">Sản Phẩm</p>
-            <h3 class="card-title">
-              <?php
-              $crPro = new Product();
-              $totalPro = count($crPro->total_pro());
-              echo $totalPro;
-              ?>
-
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <a class="text-white" href="admin.php?act=qlyProduct">Xem Thêm</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">store</i>
-            </div>
-            <p class="card-category">Bình Luận</p>
-            <h3 class="card-title">
-              <?php
-              $crCmt = new Comment();
-              $totalCmt = count($crCmt->total_cmt());
-              echo $totalCmt;
-              ?>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">date_range</i>  <a class="text-white" href="admin.php?act=qlyComment">Xem Thêm</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-danger card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">info_outline</i>
-            </div>
-            <p class="card-category">Bài Viết</p>
-            <h3 class="card-title">
-              <?php
-              $crNews = new News();
-              $totalNews = count($crNews->total_news());
-              echo $totalNews;
-              ?>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">local_offer</i><a class="text-white" href="admin.php?act=qlyBlog"> Xem Thêm</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-        <div class="card card-stats">
-          <div class="card-header card-header-info card-header-icon">
-            <div class="card-icon">
-              <i class="fa fa-twitter"></i>
-            </div>
-            <p class="card-category">Tài Khoản</p>
-            <h3 class="card-title">+
-              <?php
-              $crAcc = new Account();
-              $totalAcc = count($crAcc->total_acc());
-              echo $totalAcc;
-              ?>
-            </h3>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="material-icons">update</i><a class="text-white" href="admin.php?act=qlyAccount"> Xem Thêm</a>
             </div>
           </div>
         </div>
