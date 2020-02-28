@@ -77,6 +77,7 @@
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#account" id="navbarDropdown_2">Tài khoản</a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                            <a class="dropdown-item" href=".?act=acc-update">Quản Trị</a>
                                             <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
                                             <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
                                             <a class="dropdown-item logout" href="#">Thoát</a>

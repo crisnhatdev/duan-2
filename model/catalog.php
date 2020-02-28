@@ -81,8 +81,8 @@ class Catalog {
         if ($mamh > 0) {
             $query .= " and d.mamh = $mamh";
         }
-        $query .= " limit $gioihansp, $hiensp";
-
+        $query .= " limit $gioihansp, $hiensp ";
+        
         $result = $db->getAll($query);
         return $result; // trả về 1 mảng các sp đã theo giới hạn 
     }

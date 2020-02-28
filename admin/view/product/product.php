@@ -5,7 +5,7 @@
             <a href="admin.php?act=add_product_key" class="btn btn-primary">Thêm Sản Phẩm</a>
         </div>
         <div class="card-body table-responsive">
-            <table class="table text-center"  id="myTable">
+            <table class="table text-center"  id="myproduct">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -14,6 +14,8 @@
                         <th scope="col">Giá </th>
                         <th scope="col">Hình ảnh</th>
                         <th scope="col">Mô Tả</th>
+                        <th scope="col">Mặt Hàng</th>
+                        <th scope="col">Màu Sắc</th>
                         <th scope="col">Mã Loại</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
@@ -30,6 +32,8 @@
                             <td><?= $pro['gia'] ?></td>
                             <td><img src="../public/img/newproduct/upload/<?= $pro['hinhanhsp'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
                             <td><?= $pro['mota'] ?></td>
+                            <td><?= $pro['tenmh'] ?></td>
+                            <td><?= $pro['tenmau'] ?></td>
                             <td><?= $pro['malh'] ?></td>
                             <td>
                                 <a href="<?php echo 'admin.php?act=update_product_key&id=' . $pro['masp'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>

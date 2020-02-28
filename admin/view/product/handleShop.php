@@ -29,7 +29,7 @@ $crNews = new News();
 //Controller
 $type = $_REQUEST['type'];
 switch ($type) {
-<<<<<<< HEAD
+
     // case 'comments-product':
     //     $bang = 'binhluansp';
     //     $tenCot = 'masp';
@@ -95,7 +95,7 @@ switch ($type) {
     //    case 'add':
     //        $maspct = $_GET['maspct'];
     //
-=======
+
         // case 'comments-product':
         //     $bang = 'binhluansp';
         //     $tenCot = 'masp';
@@ -171,7 +171,7 @@ switch ($type) {
         //    case 'add':
         //        $maspct = $_GET['maspct'];
         //
->>>>>>> 4514fa398e81a3325223486498076b60143081ec
+
         //        $soluong = (isset($_GET['soluong'])) ? $_GET['soluong'] : 1;
     //
         //        add_item($maspct, $soluong);
@@ -446,6 +446,8 @@ switch ($type) {
             <th scope="col">Giá </th>
             <th scope="col">Hình ảnh</th>
             <th scope="col">Mô Tả</th>
+            <th scope="col">Mặt Hàn</th>
+            <th scope="col">Màu Sắc</th>
             <th scope="col">Mã Loại</th>
             <th scope="col" class="text-center">Action</th>
         </tr>
@@ -453,27 +455,20 @@ switch ($type) {
 
         foreach ($limitPros as $pro) {
             // $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
-<<<<<<< HEAD
-            $output .= '<tr><td>' . $pro['masp'] . '</td>
-=======
             $output .= '<tbody><tr><td>' . $pro['masp'] . '</td>
->>>>>>> 4514fa398e81a3325223486498076b60143081ec
                         <td>' . $pro['tenlh'] . '</td>
                         <td>' . $pro['tensp'] . '</td>
                         <td>' . $pro['gia'] . '</td>
                         <td><img src="../public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" style="width:75px;height:75px;border-radius:50%"></td>
                         <td>' . $pro['mota'] . '</td>
-<<<<<<< HEAD
-                        <td>' . $pro['malh'] . '</td></tr>
-                        ';
-=======
+                        <td>' . $pro['tenmh'] . '</td>
+                        <td>' . $pro['tenmau'] . '</td>
                         <td>' . $pro['malh'] . '</td>
                         <td>
                             <a href="admin.php?act=update_product_key&id=' . $pro['masp'] . '" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
                             <a href="admin.php?act=delete_product&id=' . $pro['masp'] . '" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>
                         </td>
                         </tr></tbody>';
->>>>>>> 4514fa398e81a3325223486498076b60143081ec
         }
         echo json_encode($output);
         break;
