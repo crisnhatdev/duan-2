@@ -1,6 +1,7 @@
 <?php
 
-class Product {
+class Product
+{
 
     protected $tensp = null;
     protected $gia = null;
@@ -11,7 +12,8 @@ class Product {
     protected $hinhanhsp = null;
     protected $malh = null;
 
-    function __construct() {
+    function __construct()
+    {
         if (func_num_args() === 7) {
             $this->tensp = func_get_args(0);
             $this->gia = func_get_args(1);
@@ -25,7 +27,8 @@ class Product {
     }
 
     //Hàm lấy danh sách sản phẩm
-    function getPro($malh = 0, $masp = 0, $dacbiet = 0, $moi = 0, $gioihan = 0, $mams = 0, $mamh = 0) {
+    function getPro($malh = 0, $masp = 0, $dacbiet = 0, $moi = 0, $gioihan = 0, $mams = 0, $mamh = 0)
+    {
         $db = new Connect();
         $order = '';
         $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh INNER JOIN mausac c on b.mams = c.mams INNER JOIN mathang d on d.mamh = b.mamh where 1";
@@ -64,8 +67,8 @@ class Product {
         $result = $db->getAll($query);
         return $result;
     }
-
-    function findProduct($timsp = '') {
+    function findProduct($timsp = '')
+    {
         $db = new Connect();
 
         $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh INNER JOIN mausac c on b.mams = c.mams INNER JOIN mathang d on d.mamh = b.mamh where 1";
@@ -76,14 +79,16 @@ class Product {
     }
 
     //tăng lượt xem
-    function upView($bang, $tenCot, $ma) {
+    function upView($bang, $tenCot, $ma)
+    {
         $db = new Connect();
         $query = "UPDATE $bang SET luotxem = luotxem + 1 WHERE $tenCot = $ma";
         $result = $db->execute($query);
     }
 
     //kiểm tra giá km
-    function checkKM($gia, $khuyenmai) {
+    function checkKM($gia, $khuyenmai)
+    {
         if ($khuyenmai > 0) {
             return $gia - $gia * $khuyenmai / 100;
         } else {
@@ -92,7 +97,8 @@ class Product {
     }
 
     //lay san pham theo id
-    function getProId($masp) {
+    function getProId($masp)
+    {
         $db = new Connect();
         $query = "SELECT * FROM loaihang a INNER JOIN sanpham b on a.malh = b.malh  WHERE masp=$masp";
         $result = $db->getOne($query);
@@ -100,32 +106,34 @@ class Product {
     }
 
     // nhớ sửa lại mấy hàm
-    function insertPro($tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh) {
+    function insertPro($tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $trangthai, $malh)
+    {
         $db = new Connect();
         $query = "INSERT INTO `sanpham`(`tensp`,`gia`,`luotxem`,`mota`,`mams`,`mamh`,`khuyenmai`,`dacbiet`,`ngaynhap`,`hinhanhsp`,`trangthai`,`malh`) VALUES ('$tensp','$gia','$luotxem','$mota','$mamausac','$mamathang','$khuyenmai','$dacbiet','$ngaynhap','$hinhanhsp','$trangthai','$malh')";
         $result = $db->execute($query);
     }
 
-    function delePro($masp) {
+    function delePro($masp)
+    {
         $db = new Connect();
         $query = "DELETE FROM `sanpham` WHERE masp = $masp";
         $db->execute($query);
     }
 
-    function updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $malh) {
+    function updatePro($masp, $tensp, $gia, $luotxem, $mota, $mamausac, $mamathang, $khuyenmai, $dacbiet, $ngaynhap, $hinhanhsp, $malh)
+    {
         $db = new Connect();
-        if($hinhanhsp !=""){
-        $query = "UPDATE sanpham SET tensp='$tensp',gia = '$gia',luotxem='$luotxem',mota ='$mota',mams= '$mamausac', mamh='$mamathang', khuyenmai ='$khuyenmai', dacbiet ='$dacbiet', ngaynhap ='$ngaynhap', hinhanhsp='$hinhanhsp', malh ='$malh' WHERE masp = $masp";
-        }
-        else{
-            $query = "UPDATE `sanpham` SET tensp= " . $tensp . ",gia = " . $gia . ",luotxem=" . $luotxem . ",mota = " . $mota . ",mams=" . $mamausac . ",mamh=" . $mamathang . ", khuyenmai = " . $khuyenmai . ", dacbiet = " . $dacbiet . ", ngaynhap = " . $ngaynhap . ", malh = " . $malh . " WHERE masp = $masp";    
+        if ($hinhanhsp != "") {
+            $query = "UPDATE sanpham SET tensp='$tensp',gia = '$gia',luotxem='$luotxem',mota ='$mota',mams= '$mamausac', mamh='$mamathang', khuyenmai ='$khuyenmai', dacbiet ='$dacbiet', ngaynhap ='$ngaynhap', hinhanhsp='$hinhanhsp', malh ='$malh' WHERE masp = $masp";
+        } else {
+            $query = "UPDATE `sanpham` SET tensp= " . $tensp . ",gia = " . $gia . ",luotxem=" . $luotxem . ",mota = " . $mota . ",mams=" . $mamausac . ",mamh=" . $mamathang . ", khuyenmai = " . $khuyenmai . ", dacbiet = " . $dacbiet . ", ngaynhap = " . $ngaynhap . ", malh = " . $malh . " WHERE masp = $masp";
         }
         $result = $db->execute($query);
     }
-    function total_pro() {
+    function total_pro()
+    {
         $db = new Connect();
         $query = "SELECT * FROM sanpham";
         return $db->getAll($query);
     }
-
 }

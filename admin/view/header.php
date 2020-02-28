@@ -2,19 +2,14 @@
 =========================================================
 * Material Dashboard Dark Edition - v2.1.0
 =========================================================
-
 * Product Page: https://www.creative-tim.com/product/material-dashboard-dark
 * Copyright 2019 Creative Tim (http://www.creative-tim.com)
-
 * Coded by www.creative-tim.com
-
 =========================================================
-
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../admin/layout/assets/img/apple-icon.png">
@@ -41,13 +36,11 @@
   <!-- ckeditor -->
   <script type="text/javascript" src="../admin/layout/ckeditor/ckeditor.js"></script>
 </head>
-
 <body class="dark-edition">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../admin/layout/assets/img/sidebar-2.jpg">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo" style="background: #fff"><a href="http://www.creative-tim.com" class="simple-text logo-normal text-white">
@@ -61,14 +54,12 @@
               <p>Quản Trị</p>
             </a>
           </li>
-
           <li class="nav-item ">
             <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
               <p>Trang Cá Nhân</p>
             </a>
           </li>
-
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">favorite</i>
@@ -79,7 +70,6 @@
               <a class="dropdown-item" href="admin.php?act=add_Acc_Key">Thêm Tài Khoản</a>
             </div>
           </li>
-
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="material-icons">shopping_cart</i>
@@ -91,7 +81,6 @@
               <a class="dropdown-item" href="#">Quản Lí Sản Phẩm Chi Tiết</a>
             </div>
           </li>
-
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
               <i class="material-icons">bubble_chart</i>
@@ -118,11 +107,10 @@
               <a class="dropdown-item" href="admin.php?act=qlyBlog">Quản Lí Bài Viêt</a>
             </div>
           </li>
-
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="admin.php?act=qlyBanner">
               <i class="material-icons">notificationst</i>
-              <p>Quản Lí Liên Hệ</p>
+              <p>Quản Lí Banner</p>
             </a>
           </li>
           <li class="nav-item active-pro ">
@@ -184,13 +172,23 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php
+                    if (isset($_SESSION['user'])) {
+                      echo $_SESSION['user']['name'];
+                      $matk = $_SESSION['user']['id'];
+                      $crAcc = new Account();
+                      $infoUser = $crAcc->info_acc($matk);
+                      if ($_SESSION['user']['id'] === $infoUser['matk']) {
+                        echo '<img src="../public/img/account/' . $infoUser['hinhanhkh'] . '" alt="" style="width:35px;padding-left:5px;border-radius:50%">';
+                      }
+                    }
+                    ?>
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#"><img src="" alt=""></a>
-                    <a class="dropdown-item" href="#">Thông Tin </a>
-                    <a class="dropdown-item" href="#">Đổi Mật Khẩu</a>
+                    <a class="dropdown-item" href="admin.php?act=profileAcc">Thông Tin </a>
+                    <a class="dropdown-item" href="">Đổi Mật Khẩu</a>
+                    <a class="dropdown-item" href="admin.php?act=logout">Thoát </a>
                   </div>
                 </div>
               </li>

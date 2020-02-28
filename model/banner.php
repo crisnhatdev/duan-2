@@ -33,10 +33,18 @@ class Banner {
         $result = $db->getAll($query);
         return $result;
     }
-
-    function insertBanner() {
+    function getBannerId($mabn = 0) {
         $db = new Connect();
-        $query = "INSERT INTO `banner`(`tieude`, `noidung`, `hinhanhbn`, `link`) VALUES ($this->tieude, $this->noidung, $this->hinhanhbn, $this->link)";
+        $query = "SELECT * FROM banner WHERE 1";
+        if($mabn > 0){
+            $query .=" and mabn= $mabn";
+        }
+        $result = $db->getOne($query);
+        return $result;
+    }
+    function insertBanner($tieude,$noidung,$hinhanh) {
+        $db = new Connect();
+        $query = "INSERT INTO `banner`(`tieude`, `noidung`, `hinhanhbn`, `link`) VALUES ('$tieude','$noidung','$hinhanh',Null)";
         $result = $db->execute($query);
     }
 
@@ -46,12 +54,16 @@ class Banner {
         $result = $db->execute($query);
     }
 
-    function updateBanner($mabn, $tieude, $noidung, $hinhanhbn, $link) {
+    function updateBanner($mabn, $tieude, $noidung, $hinhanhbn,$link) {
         $db = new Connect();
-        $query = "UPDATE `banner` SET `tieude`=$this->tieude,`noidung`=$this->noidung,`hinhanhbn`=$this->hinhanhbn,`link`=$this->link WHERE mabn = $mabn";
+        if($hinhanhbn !=""){
+            $query = "UPDATE banner SET tieude='" .$tieude. "',noidung='" .$noidung. "',hinhanhbn='" .$hinhanhbn. "',link='" .$link. "' WHERE mabn = $mabn";
+        }
+        else{
+            $query = "UPDATE banner SET tieude='" .$tieude. "',noidung='" .$noidung. "',link='" .$link. "' WHERE mabn = $mabn";   
+        }
+        echo $query;
         $result = $db->execute($query);
     }
 
 }
-
-?>
