@@ -174,21 +174,41 @@ $(document).on('ready', function () {
     $('#place_order').on('click', function (e) {
         e.preventDefault();
 
-        var note = $('#order_comments').val();
-        var type = 'checkout';
+        var orderForm = $('#order_form').serializeArray();
+        var type = $(this).data('type');
 
         $.ajax({
-            url: 'view/template/shop/handleshop.php',
-            type: 'get',
+            url: '../view/shop/handleShop.php',
+            type: 'post',
             dataType: 'json',
-            data: {note: note, type: type},
+            data: {orderForm: orderForm, type: type},
             success: function (res) {
-                $('#messages_modal .list-unstyled').html('<li class="text-center">' + res + '</li><li class="text-center"><a href=".">Về trang chủ</a></li>')
-                $('#messages_modal').modal('show');
+                for (let key in res) {
+                    if (key === 'success_field' || key === 'success_field_lg') {
+                        $('#modal_cart').modal({backdrop: 'static', keyboard: false})
+                        $('#place_order').attr('href', '#/');
+                    }
 
-                setTimeout(function () {
-                    window.location.href = '.';
-                }, 3000)
+                    $('.' + key).html(res[key])
+
+                    setTimeout(function () {
+                        $('.' + key).html('');
+                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
+                    }, 1500)
+
+
+                    if (key === 'direct') {
+                        setTimeout(function () {
+                            window.location.href = res[key];
+                        }, 2000)
+                    }
+                }
+//                $('#messages_modal .list-unstyled').html('<li class="text-center">' + res + '</li><li class="text-center"><a href=".">Về trang chủ</a></li>')
+//                $('#messages_modal').modal('show');
+//
+//                setTimeout(function () {
+//                    window.location.href = '.';
+//                }, 3000)
             },
             error: function (request, status, error) {
                 console.log(request.responseText);

@@ -34,7 +34,7 @@
                     <tbody class="shop_table cart">
 
                         <?php
-                        if (isset($_SESSION['cart'])) {
+                        if ($crAcc->checkSs('cart')) {
                             foreach ($cartList as $item) {
                                 ?>
                                 <tr>
@@ -55,9 +55,9 @@
                                     </td>
                                     <td>
                                         <div class="product_count">
-                                            <span class="input-number-decrement"> <i class="ti-angle-down qty_btn" style="widows: 100%"></i></span>
+                                            <span class="input-number-decrement"> <i class="ti-angle-down qty_btn"></i></span>
                                             <input class="input-number qty_input" type="text" value="<?= $item['soluong'] ?>" min="1" max="5" onchange="(this.value > 5) ? console.log(this.value) : this.value">
-                                            <span class="input-number-increment"> <i class="ti-angle-up qty_btn" style="width: 100%"></i></span>
+                                            <span class="input-number-increment"> <i class="ti-angle-up qty_btn"></i></span>
                                         </div>
                                     </td>
                                     <td>
@@ -102,7 +102,7 @@
                 </table>
                 <div class="checkout_btn_inner float-right">
                     <a class="btn_1" href=".">Tiếp tục mua sắm</a>
-                    <a class="btn_1 checkout_btn_1" href=".?act=checkout">Tiến hành thanh toán</a>
+                    <a class="btn_1 checkout_btn_1"  <?= ($crAcc->checkSs('cart')) ? 'href=".?act=checkout"' : 'href="#/"' ?>>Tiến hành thanh toán</a>
                 </div>
             </div>
         </div>

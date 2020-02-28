@@ -66,9 +66,13 @@ class Cart extends Product {
         return count($db->getAll($query));
     }
 
-    function add_bill($mahd, $ngaymua, $tongtien, $ghichu, $matk) {
+    function add_bill($mahd, $ngaymua, $tongtien, $ghichu, $matk = 0) {
         $db = new Connect();
-        $query = "INSERT INTO `hoadon`(`mahd`, `ngaymua`, `tongtien`, `ghichu`, `matk`) VALUES ($mahd, $ngaymua, $tongtien, '$ghichu', $matk)";
+        if ($matk > 0) {
+            $query = "INSERT INTO `hoadon`(`mahd`, `ngaymua`, `tongtien`, `ghichu`, `matk`) VALUES ($mahd, '$ngaymua', $tongtien, '$ghichu', $matk)";
+        } else {
+            $query = "INSERT INTO `hoadon`(`mahd`, `ngaymua`, `tongtien`, `ghichu`) VALUES ($mahd, '$ngaymua', $tongtien, '$ghichu')";
+        }
         $db->execute($query);
     }
 

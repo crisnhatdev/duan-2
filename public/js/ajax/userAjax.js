@@ -44,7 +44,6 @@ $(document).ready(function () {
 
     //login, register, update with ajax
     var checkSubmit = true;
-//    console.log($('.user-ajax'))
     $('.user-ajax').on('submit', function (e) {
         e.preventDefault();
         var form = $(this);
@@ -52,32 +51,20 @@ $(document).ready(function () {
         var method = form.attr('method');
         var type = form.data('type');
         var data = form.serializeArray();
-//        var pic = ($('input[name="picture"]').val()) ? $('input[name="picture"]') : '';
-        var checkValid = true;
-//        for (var i = 0; i < input.length; i++) {
-//            if (validate(input[i]) == false) {
-//                showValidate(input[i]);
-//                $(input[i]).val('');
-//                checkValid = false;
-//            }
-//        }
 
-        if (checkValid && checkSubmit) {
+        if (checkSubmit) {
             $.ajax({
                 url: action,
                 type: method,
                 dataType: false,
                 data: {arrData: data, type: type},
                 success: function (res) {
-                    console.log(res);
                     //res is object
                     for (let key in res) {
-//                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').attr('placeholder',res[key]);
-//                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').css('border', '1px solid red');
-//                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').focus(function() {
-//                            $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').css('border', '1px solid #ccc');
-//                            $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').attr('placeholder','');
-//                        });
+                        if(key === 'success_field' || key === 'success_field_lg') {
+                          $(':submit', form).attr('disabled', true);
+                        }
+                        
                         $('.' + key).html(res[key])
                         
                         setTimeout(function () {
@@ -85,9 +72,6 @@ $(document).ready(function () {
                             $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
                         }, 1500)
                                                    
-                        if(key === 'success_field' || key === 'success_field_lg') {
-                          $(':submit', form).attr('disabled', true);
-                        }  
                         
                         if (key === 'direct') {
                             setTimeout(function () {

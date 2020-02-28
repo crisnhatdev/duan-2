@@ -9,6 +9,8 @@ require_once '../../model/comment.php';
 require_once '../../model/validate.php';
 require_once '../../model/news.php';
 require_once '../../model/cart.php';
+require_once '../../model/account.php';
+require_once '../../model/phpmailer.php';
 //<---End-Model---->
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
@@ -30,8 +32,16 @@ $crNews = new News();
 //Cart
 $crCart = new Cart();
 // <---End-Cart--->
+//Acc
+$crAcc = new Account();
+// <---End-Acc--->
+//Mail
+$crMail = new PHPMail();
+// <---End-Mail--->
 //Controller
 $type = $_REQUEST['type'];
+$errArr = array();
+$succesArr = array();
 switch ($type) {
     case 'comments-product':
         $bang = 'binhluansp';
@@ -193,237 +203,296 @@ switch ($type) {
                             </td>
                         </tr>';
 
+        if (count($cartList) === 0) {
+            $output = '<tr><td colspan="6"><h1 class="text-center text-danger">Giỏ hàng trống<h1></td></tr>';
+        }
+
         echo json_encode(array($output, count($cartList)));
         break;
-//    case 'choose':
-//        $masp = $_GET['ma'][0];
-//        $mams = $_GET['ma'][1];
-//        $masz = $_GET['masz'];
-//
-//        $result = get_detailPro($masp, 0, $mams, $masz);
-//
-//        echo json_encode($result);
-//        break;
-//    case 'checkout':
-//        $mahd = count(get_bill()) + 1;
-//        $ngaymua = date('Y-m-d H:i:s');
-//        $tongtien = tongtien('cart');
-//        $ghichu = $_GET['note'];
-//        $user = $_SESSION['user'];
-//
-//        if (!valid_text($ghichu)) {
-//            echo json_encode("Không được sử dụng ký tự đặc biệt trong ghi chú. Xin cám ơn");
-//            return;
-//        }
-//
-//        add_bill($mahd, $ngaymua, $tongtien, $ghichu, $user['idaccount']);
-//
-//        $cartPros = $_SESSION['cart'];
-//        $listCart = '';
-//        foreach ($cartPros as $key => $pro) {
-//            //xóa số lượng sp
-//            del_qtt($pro['soluong'], $key);
-//            //thêm hóa đơn chi tiết. giá là giá đã tính sẵn khuyến mãi
-//            add_detail_bill($pro['soluong'], $pro['gia'], $mahd, $key);
-//
-//            $listCart .= '<tr class="item">
-//                        <td style="display: flex; align-items: center;">
-//                            <img src="https://trinhduy.com/view/images/shop/' . $pro['hinhanhsp'] . '" style="width:40px; height:40px; margin-right: 5px;">
-//                            <span>   
-//                                <b>' . $pro['tensp'] . ' x ' . $pro['soluong'] . '</b><br>
-//                                Màu: <b>' . $pro['tenmau'] . '</b> - Size: <b>' . $pro['size'] . '</b>    
-//                            </span>    
-//                        </td>
-//                        <td style="text-align: right;">
-//                            ' . number_format($pro['gia'] * $pro['soluong'], 0, '', '.') . ' VNĐ
-//                        </td>
-//                    </tr>';
-//        }
-//
-//
-//        $title = 'Hóa đơn mua hàng';
-//        $desc = '<!doctype html>
-//                <html>
-//                    <head>
-//                        <meta charset="utf-8">
-//
-//                        <style>
-//                            .invoice-box {
-//                                max-width: 800px;
-//                                margin: auto;
-//                                padding: 30px;
-//                                border: 1px solid #eee;
-//                                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-//                                font-size: 16px;
-//                                line-height: 24px;
-//                                font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-//                                color: #555;
-//                            }
-//
-//                            .invoice-box table {
-//                                width: 100%;
-//                                line-height: inherit;
-//                                text-align: left;
-//                            }
-//
-//                            .invoice-box table td {
-//                                padding: 5px;
-//                                vertical-align: top;
-//                            }
-//
-//                            .invoice-box table tr td:nth-child(2) {
-//                                text-align: right;
-//                            }
-//
-//                            .invoice-box table tr.top table td {
-//                                padding-bottom: 20px;
-//                            }
-//
-//                            .invoice-box table tr.top table td.title {
-//                                font-size: 45px;
-//                                line-height: 45px;
-//                                color: #333;
-//                            }
-//
-//                            .invoice-box table tr.information table td {
-//                                padding-bottom: 40px;
-//                            }
-//
-//                            .invoice-box table tr.heading td {
-//                                background: #eee;
-//                                border-bottom: 1px solid #ddd;
-//                                font-weight: bold;
-//                            }
-//
-//                            .invoice-box table tr.details td {
-//                                padding-bottom: 20px;
-//                            }
-//
-//                            .invoice-box table tr.item td{
-//                                border-bottom: 1px solid #eee;
-//                            }
-//
-//                            .invoice-box table tr.item.last td {
-//                                border-bottom: none;
-//                            }
-//
-//                            .invoice-box table tr.total td:nth-child(2) {
-//                                font-weight: bold;
-//                            }
-//
-//                            .invoice-box table tr .textRight {
-//                                text-align: right;
-//                            }
-//
-//                            @media only screen and (max-width: 600px) {
-//                                .invoice-box table tr.top table td {
-//                                    width: 100%;
-//                                    display: block;
-//                                    text-align: center;
-//                                }
-//
-//                                .invoice-box table tr.information table td {
-//                                    width: 100%;
-//                                    display: block;
-//                                    text-align: center;
-//                                }
-//                            }
-//
-//                            /** RTL **/
-//                            .rtl {
-//                                direction: rtl;
-//                                font-family: Tahoma, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-//                            }
-//
-//                            .rtl table {
-//                                text-align: right;
-//                            }
-//
-//                            .rtl table tr td:nth-child(2) {
-//                                text-align: left;
-//                            }
-//                        </style>
-//                    </head>
-//
-//                    <body>
-//                        <p>Xin cảm ơn quý khách đã tin tưởng và lựa chọn các sản phẩm của chúng tôi</p>
-//                        <p>Dưới đây là hóa đơn của quý khách. Chúc quý khách có một ngày vui vẻ</p>
-//                        <div class="invoice-box">
-//                            <table cellpadding="0" cellspacing="0">
-//                                <tr class="top">
-//                                    <td colspan="2">
-//                                        <table>
-//                                            <tr>
-//                                                <td class="title">
-//                                                    <img src="https://trinhduy.com/view/images/logo.png" style="width:80%; max-width:150px;">
-//                                                </td>
-//
-//                                                <td class="textRight">
-//                                                    Số Hóa Đơn: ' . (count(get_bill()) + 1) . '<br>
-//                                                    Ngày Tạo: ' . date('d-m-Y H:i') . '<br>
-//                                                </td>
-//                                            </tr>
-//                                        </table>
-//                                    </td>
-//                                </tr>
-//
-//                                <tr class="information">
-//                                    <td colspan="2">
-//                                        <table>
-//                                            <tr>
-//                                                <td>
-//                                                    Người gửi: Ftyler <br>
-//                                                    Địa chỉ: Công viên Phần Mềm Quang Trung<br>
-//                                                    Tô Ký, Quận 12
-//                                                </td>
-//
-//                                                <td class="textRight">
-//                                                    Xin chào: ' . $user['name'] . '<br>
-//                                                    Email: ' . $user['email'] . '
-//                                                </td>
-//                                            </tr>
-//                                        </table>
-//                                    </td>
-//                                </tr>
-//
-//                                <tr class="heading">
-//                                    <td colspan="2">
-//                                        Phương thức thanh toán
-//                                    </td>
-//                                </tr>
-//
-//                                <tr class="details">
-//                                    <td colspan="2">
-//                                        Thanh toán khi nhận hàng (COD)
-//                                    </td>
-//                                </tr>
-//
-//                                <tr class="heading">
-//                                    <td>
-//                                        Sản phẩm
-//                                    </td>
-//                                    <td class="textRight">
-//                                        Giá
-//                                    </td>
-//                                </tr>
-//                                ' . $listCart . '
-//                                <tr class="total">
-//                                    <td></td>
-//
-//                                    <td class="textRight">
-//                                        Tổng Cộng: ' . number_format(tongtien(), 0, '', '.') . ' VNĐ
-//                                    </td>
-//                                </tr>
-//                            </table>
-//                        </div>
-//                    </body>
-//                </html>';
-//        sendMail($title, $desc, $user['email']);
-//
-//        unset($_SESSION['cart']);
-//
-//        echo json_encode('Bạn đã đặt hàng thành công. Chúng tôi sẽ giao trong vòng 2-3 ngày.');
-//        break;
+    case 'checkout':
+        //lấy địa chỉ và ghi chú
+        $data = $_POST['orderForm'];
+        $address = $crValid->valid_value_insert($data[2]['value']);
+        $note = $crValid->valid_value_insert($data[3]['value']);
+        //dữ liệu cần thiết
+        $mahd = $crCart->get_bill() + 1;
+        $ngaymua = date('Y-m-d H:i:s');
+        $tongtien = $crCart->tongtien('cart');
+        $user = $_SESSION['user'];
+
+        //validate address
+        if (!$crValid->valid_text($address) || $address === '') {
+            $errArr['error_address'] = 'Bạn không được để trống hoặc có ký tự đặc biệt';
+        }
+        //validate note
+        if (!$crValid->valid_text($note)) {
+            $errArr['error_note'] = 'Bạn không được sử dụng ký tự đặc biệt';
+        }
+
+        if (count($errArr) === 0) {
+            $crAcc->update_user_by('diachi', $address, 'matk', $user['email']); //update địa chỉ cho user
+
+            $crCart->add_bill($mahd, $ngaymua, $tongtien, $note, $user['id']); //thêm bill vào db
+
+            $cartPros = $_SESSION['cart'];
+            $listCart = '';
+            foreach ($cartPros as $key => $pro) {
+                //xóa số lượng sp
+                $crCart->del_qtt($pro['soluong'], $key);
+                //thêm hóa đơn chi tiết. giá là giá đã tính sẵn khuyến mãi
+                $crCart->add_detail_bill($pro['soluong'], $crCart->checkKm($pro['gia'], $pro['khuyenmai']), $mahd, $key);
+
+                $listCart .= '<tr class="item">
+                        <td style="display: flex; align-items: center;">
+                            <img src="localhost/php2/asm/public/img/newproduct/upload/' . $pro['hinhanhsp'] . '" style="width:40px; height:40px; margin-right: 5px;">
+                            <span>   
+                                <b>' . $pro['tensp'] . ' x ' . $pro['soluong'] . '</b><br>
+                            </span>    
+                        </td>
+                        <td style="text-align: right;">
+                            ' . number_format($crCart->checkKm($pro['gia'], $pro['khuyenmai']) * $pro['soluong'], 0, '', '.') . ' VNĐ
+                        </td>
+                    </tr>';
+            }
+
+            $title = 'Hóa đơn mua hàng';
+            $desc = '<!doctype html>
+                <html>
+                    <head>
+                        <meta charset="utf-8">
+
+                        <style>
+                            .invoice-box {
+                                max-width: 800px;
+                                margin: auto;
+                                padding: 30px;
+                                border: 1px solid #eee;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+                                font-size: 16px;
+                                line-height: 24px;
+                                font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+                                color: #555;
+                            }
+
+                            .invoice-box table {
+                                width: 100%;
+                                line-height: inherit;
+                                text-align: left;
+                            }
+
+                            .invoice-box table td {
+                                padding: 5px;
+                                vertical-align: top;
+                            }
+
+                            .invoice-box table tr td:nth-child(2) {
+                                text-align: right;
+                            }
+
+                            .invoice-box table tr.top table td {
+                                padding-bottom: 20px;
+                            }
+
+                            .invoice-box table tr.top table td.title {
+                                font-size: 45px;
+                                line-height: 45px;
+                                color: #333;
+                            }
+
+                            .invoice-box table tr.information table td {
+                                padding-bottom: 40px;
+                            }
+
+                            .invoice-box table tr.heading td {
+                                background: #eee;
+                                border-bottom: 1px solid #ddd;
+                                font-weight: bold;
+                            }
+
+                            .invoice-box table tr.details td {
+                                padding-bottom: 20px;
+                            }
+
+                            .invoice-box table tr.item td{
+                                border-bottom: 1px solid #eee;
+                            }
+
+                            .invoice-box table tr.item.last td {
+                                border-bottom: none;
+                            }
+
+                            .invoice-box table tr.total td:nth-child(2) {
+                                font-weight: bold;
+                            }
+
+                            .invoice-box table tr .textRight {
+                                text-align: right;
+                            }
+
+                            @media only screen and (max-width: 600px) {
+                                .invoice-box table tr.top table td {
+                                    width: 100%;
+                                    display: block;
+                                    text-align: center;
+                                }
+
+                                .invoice-box table tr.information table td {
+                                    width: 100%;
+                                    display: block;
+                                    text-align: center;
+                                }
+                            }
+
+                            /** RTL **/
+                            .rtl {
+                                direction: rtl;
+                                font-family: Tahoma, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+                            }
+
+                            .rtl table {
+                                text-align: right;
+                            }
+
+                            .rtl table tr td:nth-child(2) {
+                                text-align: left;
+                            }
+                        </style>
+                    </head>
+
+                    <body>
+                        <p>Xin cảm ơn quý khách đã tin tưởng và lựa chọn các sản phẩm của chúng tôi</p>
+                        <p>Dưới đây là hóa đơn của quý khách. Chúc quý khách có một ngày vui vẻ</p>
+                        <div class="invoice-box">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr class="top">
+                                    <td colspan="2">
+                                        <table>
+                                            <tr>
+                                                <td class="title">
+                                                    <img src="localhost/php2/asm/public/img/logo.png" style="width:80%; max-width:150px;">
+                                                </td>
+
+                                                <td class="textRight">
+                                                    Số Hóa Đơn: ' . ($crCart->get_bill() + 1) . '<br>
+                                                    Ngày Tạo: ' . date('d-m-Y H:i') . '<br>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="information">
+                                    <td colspan="2">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    Người gửi: Sweet House <br>
+                                                    Địa chỉ: Công viên Phần Mềm Quang Trung<br>
+                                                    Tô Ký, Quận 12
+                                                </td>
+
+                                                <td class="textRight">
+                                                    Xin chào: ' . $user['name'] . '<br>
+                                                    Email: ' . $user['email'] . '
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr class="heading">
+                                    <td colspan="2">
+                                        Phương thức thanh toán
+                                    </td>
+                                </tr>
+
+                                <tr class="details">
+                                    <td colspan="2">
+                                        Thanh toán khi nhận hàng (COD)
+                                    </td>
+                                </tr>
+
+                                <tr class="heading">
+                                    <td>
+                                        Sản phẩm
+                                    </td>
+                                    <td class="textRight">
+                                        Giá
+                                    </td>
+                                </tr>
+                                ' . $listCart . '
+                                <tr class="total">
+                                    <td></td>
+
+                                    <td class="textRight">
+                                        Tổng Cộng: ' . number_format($crCart->tongtien(), 0, '', '.') . ' VNĐ
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </body>
+                </html>';
+            $crMail->sendMail($title, $desc, $user['email']);
+            unset($_SESSION['cart']);
+
+            $succesArr['success_field'] = 'Chúng tôi sẽ liên hệ trong thời gian sớm nhất. Sweet House xin cám ơn';
+            $succesArr['direct'] = '.';
+            echo json_encode($succesArr);
+        } else {
+            echo json_encode($errArr);
+        }
+        break;
+    case 'checkout-no-lg':
+        //lấy địa chỉ, ghi chú, phone, tên
+        $data = $_POST['orderForm'];
+        $name = $crValid->valid_value_insert($data[0]['value']);
+        $phone = $data[1]['value'];
+        $address = $crValid->valid_value_insert($data[2]['value']);
+        $note = $crValid->valid_value_insert($data[3]['value']);
+
+        //dữ liệu cần thiết
+        $mahd = $crCart->get_bill() + 1;
+        $ngaymua = date('Y-m-d H:i:s');
+        $tongtien = $crCart->tongtien('cart');
+        $user = 0;
+
+        //validate name
+        if (!$crValid->valid_text($name) || $name === '') {
+            $errArr['error_name'] = 'Bạn không được để trống hoặc có ký tự đặc biệt';
+        }
+        //validate phone
+        if (!$crValid->valid_phone($phone) || $phone === '') {
+            $errArr['error_phone'] = 'Bạn không được để trống hoặc có ký tự đặc biệt';
+        }
+        //validate address
+        if (!$crValid->valid_text($address) || $address === '') {
+            $errArr['error_address'] = 'Bạn không được để trống hoặc có ký tự đặc biệt';
+        }
+        //validate note
+        if (!$crValid->valid_text($note)) {
+            $errArr['error_note'] = 'Bạn không được sử dụng ký tự đặc biệt';
+        }
+
+        if (count($errArr) === 0) {
+            $crCart->add_bill($mahd, $ngaymua, $tongtien, $note); //thêm bill vào db
+            $cartPros = $_SESSION['cart'];
+
+            foreach ($cartPros as $key => $pro) {
+                //xóa số lượng sp
+                $crCart->del_qtt($pro['soluong'], $key);
+                //thêm hóa đơn chi tiết. giá là giá đã tính sẵn khuyến mãi
+                $crCart->add_detail_bill($pro['soluong'], $crCart->checkKm($pro['gia'], $pro['khuyenmai']), $mahd, $key);
+            }
+
+            unset($_SESSION['cart']);
+
+            $succesArr['success_field'] = 'Chúng tôi sẽ liên hệ trong thời gian sớm nhất. Sweet House xin cám ơn';
+            $succesArr['direct'] = '.';
+            echo json_encode($succesArr);
+        } else {
+            echo json_encode($errArr);
+        }
+        break;
     case 'pagination-catalog':
         $idCata = $_GET['idCata'];
         $page = $_GET['page'];
@@ -435,7 +504,7 @@ switch ($type) {
         $output = '';
 
         foreach ($limitPros as $pro) {
-            $promotion = ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
+            $promotion = ($pro['khuyenmai'] > 0 ) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '';
             $output .='<div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
                                 <a href=".?act=product&masp=' . $pro['masp'] . '">

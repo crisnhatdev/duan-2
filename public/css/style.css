@@ -3992,6 +3992,7 @@ ul {
     padding: 7px;
     border-left: 1px solid #dddddd;
     display: inline-block;
+    cursor: pointer;
 }
 
 /* line 727, ../../01 cl html template/03_jun 2019/188_Aranoz shop_html/sass/_product.scss */
@@ -4013,6 +4014,7 @@ ul {
     padding: 7px;
     border-left: 1px solid #dddddd;
     display: inline-block;
+    cursor: pointer;
 }
 
 @media (max-width: 576px) {
@@ -7916,7 +7918,7 @@ p.stars.selected a:not(.active):before {
     pointer-events: none;
     top: 1px;
     right: 22px;
-    background-color: #fff;
+    /*background-color: #fff;*/
 }
 .validate_field.none {
     position: static;

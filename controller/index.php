@@ -119,11 +119,13 @@ if (isset($_GET['act'])) {
             require_once '../view/shop/findProduct.php';
             break;
         case 'view-cart':
-            $cartList = (isset($_SESSION['cart'])) ? $_SESSION['cart'] : [];
+            $cartList = ($crAcc->checkSs('cart')) ? $_SESSION['cart'] : [];
             require_once '../view/shop/viewCart.php';
             break;
         case 'checkout':
-            require_once '../view/shop/viewCart.php';
+            $cartList = $_SESSION['cart'];
+            $user = @$_SESSION['user'];
+            require_once '../view/shop/checkout.php';
             break;
         //account
         case 'account':
