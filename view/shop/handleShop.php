@@ -232,7 +232,7 @@ switch ($type) {
         if (count($errArr) === 0) {
             $crAcc->update_user_by('diachi', $address, 'matk', $user['email']); //update địa chỉ cho user
 
-            $crCart->add_bill($mahd, $ngaymua, $tongtien, $note, $user['id']); //thêm bill vào db
+            $crCart->add_bill($mahd, $user['name'], $user['phone'], $user['email'], $user['address'], $ngaymua, $tongtien, $note, $user['id']); //thêm bill vào db
 
             $cartPros = $_SESSION['cart'];
             $listCart = '';
@@ -474,7 +474,7 @@ switch ($type) {
         }
 
         if (count($errArr) === 0) {
-            $crCart->add_bill($mahd, $ngaymua, $tongtien, $note); //thêm bill vào db
+            $crCart->add_bill($mahd, $name, $phone, '', $address, $ngaymua, $tongtien, $note); //thêm bill vào db
             $cartPros = $_SESSION['cart'];
 
             foreach ($cartPros as $key => $pro) {

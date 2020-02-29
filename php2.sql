@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: Feb 26, 2020 at 04:37 PM
+-- Generation Time: Feb 29, 2020 at 11:58 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -45,9 +45,9 @@ CREATE TABLE `baiviet` (
 --
 
 INSERT INTO `baiviet` (`mabv`, `tenbv`, `motabv`, `hinhanhbv`, `noidungbv`, `luotxem`, `ngaydang`, `matk`, `malbv`) VALUES
-(29, 'Kim Bảo', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100006, '2020-02-26 15:20:00', 77, 1),
-(30, 'trúc Đào', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100023, '2020-02-26 15:26:09', 77, 1),
-(31, 'Hồng nhật', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100041, '2020-02-26 15:36:12', 77, 1);
+(29, 'Kim Bảo', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100008, '2020-02-27 18:01:04', 77, 1),
+(30, 'trúc Đào', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100025, '2020-02-27 18:04:48', 77, 1),
+(31, 'Hồng nhật', 'đẹp trai vô đối', 'single_blog_1.png\r\n', 'đẹp trai vô đối không có gì để nói', 100058, '2020-02-27 18:05:04', 77, 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,8 @@ CREATE TABLE `binhluanbv` (
 --
 
 INSERT INTO `binhluanbv` (`stt`, `noidung`, `sao`, `ngaydang`, `matk`, `mabv`) VALUES
-(66, 'Good', '5', '2020-02-23 14:36:47', 77, 31);
+(66, 'Good', '5', '2020-02-23 14:36:47', 77, 31),
+(67, 'Tốt', '5', '2020-02-27 18:01:10', 77, 29);
 
 -- --------------------------------------------------------
 
@@ -124,7 +125,9 @@ INSERT INTO `binhluansp` (`stt`, `noidung`, `sao`, `ngaydang`, `matk`, `masp`) V
 (368, 'Tệ', 2, '2020-02-23 05:29:37', 77, 16),
 (369, 'Tốt', 5, '2020-02-23 05:29:40', 77, 16),
 (370, 'Tốt', 5, '2020-02-23 05:29:43', 77, 16),
-(371, 'Tốt', 5, '2020-02-23 05:29:46', 77, 16);
+(371, 'Tốt', 5, '2020-02-23 05:29:46', 77, 16),
+(373, 'Tuyệt', 5, '2020-02-27 18:01:24', 122, 6),
+(374, 'Tạm', 3, '2020-02-27 18:01:30', 122, 6);
 
 -- --------------------------------------------------------
 
@@ -142,38 +145,12 @@ CREATE TABLE `dangky-baiviet` (
 --
 
 INSERT INTO `dangky-baiviet` (`stt`, `email`) VALUES
-(1, 'kimbao123@yahoo.com'),
-(2, '123@yahoo.com'),
-(3, '123@yahoo.com'),
-(4, '123@yahoo.com'),
-(5, 'best2@yahoo.com'),
-(6, 'kimbao@yahoo.cc'),
-(7, 'best2@yahoo.com'),
-(8, 'hotvitlon@yahoo.com'),
-(9, 'kimbao756@yahoo.com'),
-(10, 'kimbao756@yahoo.com'),
-(11, 'kimbao756@yahoo.com'),
-(12, 'kimbao756@yahoo.com'),
-(13, 'kimbao756@yahoo.com'),
-(14, '123213A@yahoo.com'),
-(15, 'kibao123213@yahoo.com'),
-(16, 'kibao123213@yahoo.com'),
-(17, 'kibao123213@yahoo.com'),
-(18, 'kibao123213@yahoo.com'),
-(19, 'kibao123213@yahoo.com'),
-(20, 'kibao123213@yahoo.com'),
-(21, 'kibao123213@yahoo.com'),
-(22, 'kibao123213@yahoo.com'),
-(23, 'kibao123213@yahoo.com'),
-(24, 'kibao123213@yahoo.com'),
-(25, 'kibao123213@yahoo.com'),
-(26, 'kibao123213@yahoo.com'),
-(27, 'kibao123213@yahoo.com'),
-(28, 'kibao123213@yahoo.com'),
-(29, 'kibao123213@yahoo.com'),
-(30, 'kibao123213@yahoo.com'),
-(31, 'kibao123213@yahoo.com'),
-(32, 'kibao123213@yahoo.com');
+(33, 'kimbao756g@gmail.com'),
+(34, 'kimbao756g@gmail.com'),
+(35, 'kimbao756g@gmail.com'),
+(36, 'kimbao756g@gmail.com'),
+(37, 'kimbao756g@gmail.com'),
+(38, 'kimbao756g@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -196,11 +173,22 @@ CREATE TABLE `doitac` (
 
 CREATE TABLE `hoadon` (
   `mahd` int(11) NOT NULL,
+  `tenkh` varchar(254) COLLATE utf8_bin NOT NULL,
+  `sdt` varchar(20) COLLATE utf8_bin NOT NULL,
+  `email` varchar(100) COLLATE utf8_bin DEFAULT NULL,
+  `diachi` varchar(254) COLLATE utf8_bin NOT NULL,
   `ngaymua` timestamp NOT NULL DEFAULT current_timestamp(),
   `tongtien` double(10,0) NOT NULL,
   `ghichu` varchar(254) COLLATE utf8_bin DEFAULT NULL,
-  `matk` int(11) NOT NULL
+  `matk` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `hoadon`
+--
+
+INSERT INTO `hoadon` (`mahd`, `tenkh`, `sdt`, `email`, `diachi`, `ngaymua`, `tongtien`, `ghichu`, `matk`) VALUES
+(1, 'Kim bảo đẹp trai', '0974721751', NULL, '103 lê sao, phú thạnh, tân phú, tphcm', '2020-02-29 10:56:43', 148700000, 'Giao gấp ạ', NULL);
 
 -- --------------------------------------------------------
 
@@ -215,6 +203,19 @@ CREATE TABLE `hoadonchitiet` (
   `mahd` int(11) NOT NULL,
   `masp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `hoadonchitiet`
+--
+
+INSERT INTO `hoadonchitiet` (`stt`, `soluong`, `dongia`, `mahd`, `masp`) VALUES
+(168, 1, 62000000, 1, 16),
+(169, 1, 31900000, 1, 15),
+(170, 1, 12900000, 1, 12),
+(171, 1, 25700000, 1, 11),
+(172, 1, 9900000, 1, 6),
+(173, 1, 3000000, 1, 2),
+(174, 1, 3300000, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -337,6 +338,7 @@ CREATE TABLE `sanpham` (
   `masp` int(11) NOT NULL,
   `tensp` varchar(100) COLLATE utf8_bin NOT NULL,
   `gia` double(10,0) NOT NULL,
+  `soluong` int(11) NOT NULL DEFAULT 0,
   `luotxem` int(11) NOT NULL DEFAULT 0,
   `mota` text COLLATE utf8_bin DEFAULT NULL,
   `mams` int(11) NOT NULL DEFAULT 9,
@@ -353,23 +355,23 @@ CREATE TABLE `sanpham` (
 -- Dumping data for table `sanpham`
 --
 
-INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `luotxem`, `mota`, `mams`, `mamh`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `trangthai`, `malh`) VALUES
-(1, 'Ghế Màu Xanh Lá', 3300000, 12, 'Nhựa cao cấp - Chân kim loại', 2, 2, 0, 1, '2020-02-13 17:19:32', 'product_1.png', NULL, 3),
-(2, 'Ghế Màu Cam', 3000000, 2, 'Nhựa cao cấp - Chân kim loại', 6, 2, 0, 0, '2020-02-13 17:20:11', 'product_2.png', NULL, 3),
-(3, 'Bàn Nước Monocle', 10900000, 2, 'Khung kim loại, Đá hoa cương', 1, 1, 0, 1, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', NULL, 3),
-(4, 'Bàn Nước Oval', 15900000, 0, 'Chân kim loại màu đồng- MDF giả da', 2, 1, 0, 0, '2020-02-14 10:29:01', 'ban-nuoc-oval.jpg', NULL, 3),
-(5, 'Bàn Ăn Delta 01', 95000000, 450, 'Khung kim loại sơn tĩnh điện- Mặt đá', 7, 1, 10, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', NULL, 1),
-(6, 'Bàn Ăn Roma', 9900000, 17, 'Gỗ tần bì (Ash)- MDF sơn trắng', 7, 1, 0, 1, '2020-02-14 10:31:35', 'ban-an-roma.jpg', NULL, 1),
-(7, 'Ghế Ăn HC', 3300000, 27, 'Chân kim loại - da công nghiệp', 8, 2, 5, 0, '2020-02-14 10:32:35', 'ghe_an_hc.jpg', NULL, 1),
-(8, 'Ghế Tuscany', 3600000, 1, 'Da công nghiệp - Kim loại', 5, 2, 3, 1, '2020-02-14 10:33:23', 'ghe-tuscany.gif', NULL, 1),
-(9, 'Bàn Làm Việc Biblio', 11900000, 0, 'Chân kim loại+ MDF+ Da', 2, 1, 0, 1, '2020-02-14 10:36:30', 'ban-lam-viec-biblio.jpg', NULL, 4),
-(10, 'Kệ Treo Tường Natura Gautier', 11900000, 1, 'Gỗ sồi (Oak)', 1, 4, 0, 0, '2020-02-14 10:38:33', 'ke-treo-natura-gautier.jpg', NULL, 4),
-(11, 'Kệ sách Glamour màu Walnut', 25700000, 0, 'Gỗ xà cừ (Mahogany), gỗ ép, gỗ lạng', 2, 10, 0, 1, '2020-02-14 10:39:53', 'ke_sach_glamour_mau_walnut_l.jpg', NULL, 4),
-(12, 'Bàn Làm Việc Leo', 12900000, 4, 'Chân kim loại+ Gỗ', 9, 1, 0, 0, '2020-02-14 10:37:35', 'line-pio_desk.jpg', NULL, 4),
-(13, 'Giường Hộc Kéo Iris', 14900000, 1, 'Khung gỗ bọc vải', 3, 3, 20, 0, '2020-02-14 10:43:44', '500-iris-grey.jpg', NULL, 2),
-(14, 'Giường Bụi', 16900000, 20, 'Gỗ Thông + MDF Veneer Thông + Kim loại sơn tinh điện+ Vải', 7, 3, 29, 0, '2020-02-14 10:44:22', 'bui_bed-front.jpg', NULL, 2),
-(15, 'Giường Ngủ Lạc Viên', 31900000, 33, 'Gỗ xà cừ - Da công nghiệp', 4, 3, 0, 1, '2020-02-14 10:45:38', 'giuong-ngu-lac-vien.jpg', NULL, 2),
-(16, 'Giường Dixie', 62000000, 6, 'Khung gỗ tần bì', 3, 3, 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', NULL, 2);
+INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `soluong`, `luotxem`, `mota`, `mams`, `mamh`, `khuyenmai`, `dacbiet`, `ngaynhap`, `hinhanhsp`, `trangthai`, `malh`) VALUES
+(1, 'Ghế Màu Xanh Lá', 3300000, 999, 13, 'Nhựa cao cấp - Chân kim loại', 2, 2, 0, 1, '2020-02-13 17:19:32', 'product_1.png', NULL, 3),
+(2, 'Ghế Màu Cam', 3000000, 999, 2, 'Nhựa cao cấp - Chân kim loại', 6, 2, 0, 0, '2020-02-13 17:20:11', 'product_2.png', NULL, 3),
+(3, 'Bàn Nước Monocle', 10900000, 1000, 3, 'Khung kim loại, Đá hoa cương', 1, 1, 0, 1, '2020-02-14 10:28:11', 'ban-nuoc-monocle.jpg', NULL, 3),
+(4, 'Bàn Nước Oval', 15900000, 999, 1, 'Chân kim loại màu đồng- MDF giả da', 2, 1, 0, 0, '2020-02-14 10:29:01', 'ban-nuoc-oval.jpg', NULL, 3),
+(5, 'Bàn Ăn Delta 01', 95000000, 1000, 451, 'Khung kim loại sơn tĩnh điện- Mặt đá', 7, 1, 10, 0, '2020-02-14 10:30:48', 'ban-an-delta-1.jpg', NULL, 1),
+(6, 'Bàn Ăn Roma', 9900000, 998, 18, 'Gỗ tần bì (Ash)- MDF sơn trắng', 7, 1, 0, 1, '2020-02-14 10:31:35', 'ban-an-roma.jpg', NULL, 1),
+(7, 'Ghế Ăn HC', 3300000, 1000, 29, 'Chân kim loại - da công nghiệp', 8, 2, 5, 0, '2020-02-14 10:32:35', 'ghe_an_hc.jpg', NULL, 1),
+(8, 'Ghế Tuscany', 3600000, 1000, 1, 'Da công nghiệp - Kim loại', 5, 2, 3, 1, '2020-02-14 10:33:23', 'ghe-tuscany.gif', NULL, 1),
+(9, 'Bàn Làm Việc Biblio', 11900000, 1000, 1, 'Chân kim loại+ MDF+ Da', 2, 1, 0, 1, '2020-02-14 10:36:30', 'ban-lam-viec-biblio.jpg', NULL, 4),
+(10, 'Kệ Treo Tường Natura Gautier', 11900000, 1000, 1, 'Gỗ sồi (Oak)', 1, 4, 0, 0, '2020-02-14 10:38:33', 'ke-treo-natura-gautier.jpg', NULL, 4),
+(11, 'Kệ sách Glamour màu Walnut', 25700000, 997, 1, 'Gỗ xà cừ (Mahogany), gỗ ép, gỗ lạng', 2, 10, 0, 1, '2020-02-14 10:39:53', 'ke_sach_glamour_mau_walnut_l.jpg', NULL, 4),
+(12, 'Bàn Làm Việc Leo', 12900000, 998, 6, 'Chân kim loại+ Gỗ', 9, 1, 0, 0, '2020-02-14 10:37:35', 'line-pio_desk.jpg', NULL, 4),
+(13, 'Giường Hộc Kéo Iris', 14900000, 1000, 3, 'Khung gỗ bọc vải', 3, 3, 20, 0, '2020-02-14 10:43:44', '500-iris-grey.jpg', NULL, 2),
+(14, 'Giường Bụi', 16900000, 1000, 20, 'Gỗ Thông + MDF Veneer Thông + Kim loại sơn tinh điện+ Vải', 7, 3, 29, 0, '2020-02-14 10:44:22', 'bui_bed-front.jpg', NULL, 2),
+(15, 'Giường Ngủ Lạc Viên', 31900000, 999, 35, 'Gỗ xà cừ - Da công nghiệp', 4, 3, 0, 1, '2020-02-14 10:45:38', 'giuong-ngu-lac-vien.jpg', NULL, 2),
+(16, 'Giường Dixie', 62000000, 999, 6, 'Khung gỗ tần bì', 3, 3, 0, 0, '2020-02-14 10:46:43', 'giuong-ngu-dixie2.jpg', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -398,7 +400,7 @@ CREATE TABLE `taikhoan` (
 
 INSERT INTO `taikhoan` (`matk`, `tenkh`, `sdt`, `matkhau`, `diachi`, `email`, `gioithieu`, `hinhanhkh`, `phanquyen`, `token`, `hieuluc`, `kichhoat`) VALUES
 (77, 'Kim bảo', '0974721751', '$2y$10$bVFDNbSdQVFQ6aEdwRzp4OSAwCgcItqFWi9r5ZILVt6skkMwzxT/O', '103 lê sao, phú thạnh, tân phú', 'kimbao756@gmail.com', '\"Hãy cứ khát khao, hãy cứ dại khờ.\" <i>Steve Jobs</i>', 'hongnhat.jpg', 1, '', '', 1),
-(109, 'Kim bảo', '0909123123', '$2y$10$5i7tuJP3wbkedwfGYWZMCO.LgRdHt0q.fUMOubg.pU2aU.C6yjCX2', '103 lê sao phú thạnh. tân phú', 'kimbao756g@gmail.com', 'Kim bảo đẹp trai quá xá', '', 0, '$2y$10$GaKRpoU1mm3/IQ/mY./UEOAzJRXzLpTdCbridMRRwDuCIs8yAxlPq', '1582727759', 1);
+(122, 'Kim bảo', '0909334422', '$2y$10$DJ/Y/SQBEZWJ7EMLeW9ClewJUJYbBphHTbY9dOcG8kAW8qnzW6hbi', '103 lê sao, phú thạnh, tân phú', 'kimbao756g@gmail.com', 'đẹp trai', 'user.jpg', 0, NULL, NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -526,19 +528,19 @@ ALTER TABLE `banner`
 -- AUTO_INCREMENT for table `binhluanbv`
 --
 ALTER TABLE `binhluanbv`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `binhluansp`
 --
 ALTER TABLE `binhluansp`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=372;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
 
 --
 -- AUTO_INCREMENT for table `dangky-baiviet`
 --
 ALTER TABLE `dangky-baiviet`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `doitac`
@@ -550,13 +552,13 @@ ALTER TABLE `doitac`
 -- AUTO_INCREMENT for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  MODIFY `mahd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `mahd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `hoadonchitiet`
 --
 ALTER TABLE `hoadonchitiet`
-  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `stt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
 
 --
 -- AUTO_INCREMENT for table `lienhe`
@@ -598,7 +600,7 @@ ALTER TABLE `sanpham`
 -- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `matk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `matk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- Constraints for dumped tables
