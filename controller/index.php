@@ -127,7 +127,7 @@ if (isset($_GET['act'])) {
             break;
         case 'checkout':
             $cartList = $_SESSION['cart'];
-            $user = @$_SESSION['user'];
+            $user = $_SESSION['user'];
             require_once '../view/shop/checkout.php';
             break;
             //account
