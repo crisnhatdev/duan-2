@@ -9,6 +9,7 @@ require_once '../model/news.php';
 require_once '../model/account.php';
 require_once '../model/comment.php';
 require_once '../model/banner.php';
+require_once '../model/cart.php';
 //<---End--->
 //
 //Global Var
@@ -20,6 +21,7 @@ $crNews = new News(); // khởi tạo news
 $newsCataList = $crNews->getCataNews();
 $crAcc = new Account();
 $crBanner = new Banner();
+$crCart = new Cart();
 //<---End--->
 //
 //Control
@@ -424,6 +426,29 @@ if (isset($_SESSION['user']) && $_SESSION['user']['level'] == 1) {
                 $getAcc = $crAcc->all_user();
                 require_once '../admin/view/account/qlyAccount.php';
                 break;
+            case 'bill':
+                $crCart = new Cart();
+                $allBill = $crCart->get_bill_();
+                require_once '../admin/view/hoadon/bill.php';
+                break;
+            case 'billDetails':
+                $crCart = new Cart();
+                $billDetails = $crCart->get_bill_details();
+                require_once '../admin/view/hoadon/billDetails.php';
+                break;
+            case 'delBill':
+                $mahd = $_GET['mahd'];
+                $crCart->del_bill($mahd);
+                $allBill = $crCart->get_bill_();
+                require_once '../admin/view/hoadon/bill.php';
+                break;
+            case 'delBillDetails':
+                $masp = $_GET['masp'];
+                $crCart->del_bill_details($masp);
+                //capnhat
+                $billDetails = $crCart->get_bill_details();
+                require_once '../admin/view/hoadon/billDetails.php';
+                break;
             case 'profileAcc':
                 $crAcc = new Account();
                 require_once '../admin/view/account/profile.php';
@@ -443,4 +468,3 @@ if (isset($_SESSION['user']) && $_SESSION['user']['level'] == 1) {
 } else {
     header("Location: ../index.php");
 }
-//<---End--->

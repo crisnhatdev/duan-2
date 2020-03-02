@@ -10,6 +10,7 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../admin/layout/assets/img/apple-icon.png">
@@ -36,6 +37,7 @@
   <!-- ckeditor -->
   <script type="text/javascript" src="../admin/layout/ckeditor/ckeditor.js"></script>
 </head>
+
 <body class="dark-edition">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="black" data-image="../admin/layout/assets/img/sidebar-2.jpg">
@@ -82,7 +84,7 @@
             </div>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="admin.php?act=bill">
               <i class="material-icons">bubble_chart</i>
               <p>Quản Lí Hóa Đơn</p>
             </a>
@@ -172,19 +174,26 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                      echo $_SESSION['user']['name'];
-                      $matk = $_SESSION['user']['id'];
-                      $crAcc = new Account();
-                      $infoUser = $crAcc->info_acc($matk);
-                      if ($_SESSION['user']['id'] === $infoUser['matk']) {
-                        echo '<img src="../public/img/account/' . $infoUser['hinhanhkh'] . '" alt="" style="width:35px;padding-left:5px;border-radius:50%">';
-                      }
-                    }
-                    ?>
-                  </button>
+                  <?php
+                  if (isset($_SESSION['user']) && $_SESSION['user']) {
+                    echo '<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                    echo $_SESSION['user']['name'];
+                    $matk = $_SESSION['user']['id'];
+                    $crAcc = new Account();
+                    $infoUser = $crAcc->info_acc($matk);
+                    if ($_SESSION['user']['id'] === $infoUser['matk']) {
+                      echo '<img src="../public/img/account/' . $infoUser['hinhanhkh'] . '" alt="" style="width:35px;padding-left:5px;border-radius:50%">';
+                    };
+                    echo '</button>';
+                  } else {
+                    echo '
+                    <a class="nav-link" href="javascript:void(0)">
+                    <i class="material-icons">person</i>
+                    <p class="d-lg-none d-md-block">
+                      Account
+                    </p>
+                  </a>';
+                  }; ?>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="admin.php?act=profileAcc">Thông Tin </a>
                     <a class="dropdown-item" href="">Đổi Mật Khẩu</a>
