@@ -49,11 +49,13 @@
                     </p>
                     <div class="card_area d-flex justify-content-between align-items-center">
                         <div class="product_count">
-                            <span class="inumber-decrement"> <i class="ti-minus"></i></span>
-                            <input class="input-number" type="text" value="1" min="0" max="10">
-                            <span class="number-increment"> <i class="ti-plus"></i></span>
+                            <span class="input-number-decrement" style="cursor: pointer;"> <i class="ti-angle-down"></i></span>
+                            <input class="input-number qty_btn_product" type="text" value="1" min="1" max="5" onchange="(this.value > 5) ? this.value = '5' : this.value">
+                            <span class="input-number-increment" style="cursor: pointer;"> <i class="ti-angle-up"></i></span>
                         </div>
-                        <a href="#" class="btn_3">Thêm Vào Giỏ</a>
+
+                        <input type="hidden" name="masp" value="<?= $productDt['masp'] ?>"/>
+                        <a href="#/" class="btn_3 add_to_cart_button">Thêm Vào Giỏ</a>
                         <a href="#" class="like_us"> <i class="ti-heart"></i> </a>
                     </div>
                 </div>

@@ -35,11 +35,11 @@ class PHPMail {
         $mail->Body = "$desc";
 
         //send the message, check for errors
-//        if (!$mail->send()) {
-//            return 0;
-//        } else {
+        if (!$mail->send()) {
+            return 0;
+        } else {
             return 1;
-//        }
+        }
     }
 
     function htmlRegister($email) {
@@ -59,7 +59,7 @@ class PHPMail {
                     }
 
                     .container {
-                        width: 60%;
+                        width: 100%;
                         margin: 10px auto;
                         padding: 20px;
                         border: 1px solid #000;

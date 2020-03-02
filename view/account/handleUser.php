@@ -120,8 +120,8 @@ if ($type) {
             }
 
             if (!$crValid->valid_pass($pass)) {
-                $errArr['error_' . $data[1]['name']] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
-                $errArr['error_' . $data[2]['name']] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
+                $errArr['error_' . $data[1]['name']] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
+                $errArr['error_' . $data[2]['name']] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
             }
 
             if (count($errArr) === 0) {
@@ -160,7 +160,7 @@ if ($type) {
             }
 
             if (!$crValid->valid_pass($pass)) {
-                $errArr['error_' . $data[1]['name']] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
+                $errArr['error_' . $data[1]['name']] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
                 echo json_encode($errArr);
                 return;
             }
@@ -177,6 +177,7 @@ if ($type) {
             if (count($errArr) === 0) {
                 if ($user['kichhoat'] === '0') {
                     $errArr['error_field_lg'] = 'Tài khoản của bạn chưa kích hoạt. Hãy kiểm tra email';
+                    $errArr['error_psw_lg'] = '';
 
                     $title = "Kích hoạt tài khoản";
                     $desc = $crMail->htmlRegister($email);
@@ -235,6 +236,7 @@ if ($type) {
 
                 $crAcc->update_info_client($name, $address, $intro, $idAcc);
                 $succesArr['success_field'] = 'Cập nhật thành công';
+                $succesArr['direct'] = '.?act=acc-update';
                 echo json_encode($succesArr);
             } else {
                 echo json_encode($errArr);
@@ -260,8 +262,8 @@ if ($type) {
             }
 
             if (!$crValid->valid_pass($newPass)) { //2- valid pass with regex if false
-                $errArr['error_new_pass'] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
-                $errArr['error_new_pass_2'] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
+                $errArr['error_new_pass'] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
+                $errArr['error_new_pass_2'] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
             }
 
             $user = $crAcc->get_user_by('matk', $matk);
@@ -338,8 +340,8 @@ if ($type) {
             }
 
             if (!$crValid->valid_pass($newPass)) {
-                $errArr['error_new_pass'] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
-                $errArr['error_new_pass_2'] = 'Mật khẩu phải từ 8 ký tự (chữ hoa, thường và số)';
+                $errArr['error_new_pass'] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
+                $errArr['error_new_pass_2'] = 'Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)';
             }
 
             if (!$crAcc->bcrypt_verify($token, $user['token']) || ($user['hieuluc'] < date('U'))) {

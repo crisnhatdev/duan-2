@@ -233,7 +233,7 @@
     function makeTimer() {
 
         //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-        var endTime = new Date("29 Feb 2020 20:20:20 GMT+07:00");
+        var endTime = new Date("30 Marc 2020 20:20:20 GMT+07:00");
         endTime = (Date.parse(endTime) / 1000);
 
         var now = new Date();
@@ -269,28 +269,29 @@
 
             var min = el.getAttribute('min') || false;
             var max = el.getAttribute('max') || false;
-            
-//            var dec = el.previousElementSibling.addEventListener('click', decrement); //giảm
-//            var inc = el.nextElementSibling.addEventListener('click', increment); //tangw
 
-//            function decrement() {
-//                var value = el.value;
-//                value--;
-//                if (!min || value >= min) {
-//                    el.value = value;
-//                }
-//            }
-//
-//            function increment() {
-//                var value = el.value;
-//                value++;
-//                if (!max || value <= max) {
-//                    el.value = value++;
-//                }
-//            }
+            var dec = el.previousElementSibling.addEventListener('click', decrement); //giảm
+            var inc = el.nextElementSibling.addEventListener('click', increment); //tăng
+
+            function decrement() {
+                var value = el.value;
+                value--;
+                if (!min || value >= min) {
+                    el.value = value;
+                }
+            }
+
+            function increment() {
+                var value = el.value;
+                value++;
+                if (!max || value <= max) {
+                    el.value = value;
+                }
+            }
         }
     })();
-    $('.input-number').each(function () {
+
+    $('.qty_btn_product').each(function () {
         inputNumber(this);
     })
 
@@ -373,9 +374,24 @@
         $('#rating').val(this.className);
         $(this).parent().addClass('selected');
     })
+
 }(jQuery));
-//document.getElementById('test-login').addEventListener('click', function () {
-//    document.getElementById('test-login-form').style.transform = "translateX(100%)";
-//}
-//        
-//);
+var eventArea = document.querySelectorAll('.password_eye'); //container của input
+var passIpt = document.querySelectorAll('.password-form-control');//input
+var eye = document.querySelectorAll('.fa-eye');//show
+var eyeSlash = document.querySelectorAll('.fa-eye-slash');//hide
+eventArea.forEach(function (x, i) {
+    x.addEventListener('click', function (e) {
+        if (e.target.classList.contains('fa-eye')) {
+            passIpt[i].setAttribute('type', 'text');
+            eyeSlash[i].style.display = 'block';
+            eye[i].style.display = 'none';
+        }
+        ;
+        if (e.target.classList.contains('fa-eye-slash')) {
+            passIpt[i].setAttribute('type', 'password');
+            eye[i].style.display = 'block';
+            eyeSlash[i].style.display = 'none';
+        }
+    })
+})

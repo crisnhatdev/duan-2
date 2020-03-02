@@ -51,8 +51,18 @@ $(document).ready(function () {
         var method = form.attr('method');
         var type = form.data('type');
         var data = form.serializeArray();
-
-        if (checkSubmit) {
+        var inputArr = form.children().children('.validate-input .validate-form-control');
+        var checkValid = true;
+        
+        for (let i = 0; i < inputArr.length; i++) {
+            if (validate(inputArr[i]) == false) {
+            showValidate(inputArr[i]);
+            checkValid = false;
+            }
+        }
+        
+        if (checkValid) {
+        $(':submit', form).attr('disabled', true);
             $.ajax({
                 url: action,
                 type: method,
@@ -61,24 +71,34 @@ $(document).ready(function () {
                 success: function (res) {
                     //res is object
                     for (let key in res) {
-                        if(key === 'success_field' || key === 'success_field_lg') {
-                          $(':submit', form).attr('disabled', true);
+                        //thông báo lỗi chung chung
+                        if(key === 'error_field_lg') {
+                            $('.error_field_lg').html(res[key]);
+                        }
+                        if(key === 'error_field') {
+                            $('.error_field').html(res[key]);
                         }
                         
-                        $('.' + key).html(res[key])
+                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').parent().attr('data-validate', res[key]); //gắn thông báo validate lên parent's input
+                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').parent().addClass('alert-validate'); //add class to parent's input to show validate
                         
                         setTimeout(function () {
-                            $('.' + key).html('');
                             $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
-                        }, 1500)
-                                                   
+                        }, 100) //xóa value của input nếu sai validate
                         
                         if (key === 'direct') {
                             setTimeout(function () {
                                 window.location.href = res[key];
-                            }, 2000)
-                        }
+                            }, 1500)
+                        } // chuyển trang
+                        
+                        if(key === 'success_field' || key === 'success_field_lg') {
+                            $('.modal-body').html('');
+                            $('.modal-title').html(res[key]);
+                            $('#modal_cart').modal({backdrop: 'static', keyboard: false})
+                        }//show modal
                     }
+                    $(':submit', form).removeAttr( "disabled" )
                 },
                 error: function (request, status, error) {
                     console.log(request.responseText);
@@ -92,7 +112,7 @@ $(document).ready(function () {
     })
 
     //submit logout with ajax
-    $('.logout').on('click', function (e) {
+    $('.logout').one('click', function (e) {
         $.ajax({
             url: '../view/account/handleUser.php',
             type: 'post',

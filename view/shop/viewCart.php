@@ -29,6 +29,7 @@
                             <th scope="col">Giá</th>
                             <th scope="col">Số Lượng</th>
                             <th scope="col">Tổng</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody class="shop_table cart">
@@ -56,16 +57,20 @@
                                     <td>
                                         <div class="product_count">
                                             <span class="input-number-decrement"> <i class="ti-angle-down qty_btn"></i></span>
-                                            <input class="input-number qty_input" type="text" value="<?= $item['soluong'] ?>" min="1" max="5" onchange="(this.value > 5) ? console.log(this.value) : this.value">
+                                            <input class="input-number qty_input" type="text" value="<?= $item['soluong'] ?>" min="1" max="5" onchange="(this.value > 5) ? this.value = '5' : this.value">
                                             <span class="input-number-increment"> <i class="ti-angle-up qty_btn"></i></span>
                                         </div>
                                     </td>
                                     <td>
                                         <h5><?= number_format($crPro->checkKm($item['gia'], $item['khuyenmai']) * $item['soluong'], 0, '', '.') ?> VNĐ</h5>
                                     </td>
+                                    <td class="text-center" >
+                                        <i class="fa fa-trash" style="cursor: pointer" aria-hidden="true"></i>
+                                    </td>
                                 </tr>
                             <?php } ?>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -77,6 +82,7 @@
                                 </td>
                             </tr>
                             <tr class="shipping_area">
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

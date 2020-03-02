@@ -140,7 +140,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header justify-content-center">
-                        <h3 class="modal-title" id="cart-title">Đặt hàng thành công</h3>
+                        <h3 class="modal-title text-center" id="cart-title">Đặt hàng thành công</h3>
                     </div>
                     <div class="modal-body text-center">
                         Chúng tôi sẽ liên hệ trong thời gian sớm nhất. Sweet House xin cám ơn

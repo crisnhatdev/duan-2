@@ -24,30 +24,26 @@
                 <div class="login_part_form">
                     <div class="login_part_form_iner">
                         <h3>ĐĂNG KÝ! <br>Hãy đăng ký ngay bây giờ</h3>
-                        <div class="validate_field none success_field text-success"></div>
                         <div class="validate_field none error_field text-danger"></div>
                         <form class="row contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="register" novalidate="novalidate">
-                            <div class="col-md-12 form-group p_star">
-                                <input type="email" class="form-control" id="email" name="email" value="" placeholder="Email (*)" required="">
-                                <div class="validate_field error_email text-danger"></div>
+                            <div class="col-md-12 form-group p_star validate-input" data-validate="Email không đúng định dạng">
+                                <input type="email" class="form-control validate-form-control" id="email" name="email" value="" placeholder="Email (*)" required="">
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="password" class="form-control" id="password" name="password" value="" placeholder="Mật khẩu (*)" required="">
-                                <div class="validate_field error_password text-danger"></div>
-
+                            <div class="col-md-12 form-group p_star validate-input password_eye" data-validate="Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)">
+                                <input type="password" class="form-control validate-form-control password-form-control" id="password" name="password" value="" placeholder="Mật khẩu (*)" required="">
+                                <i class="fa fa-eye eye"></i>
+                                <i class="fa fa-eye-slash eye"></i>
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="password" class="form-control" id="password_2" name="password_2" value="" placeholder="Nhập lại mật khẩu (*)" required="">
-                                <div class="validate_field error_password_2 text-danger"></div>
-
+                            <div class="col-md-12 form-group p_star validate-input password_eye" data-validate="Mật khẩu cần 8 ký tự trở lên (hoa, thường, số)">
+                                <input type="password" class="form-control validate-form-control password-form-control" id="password_2" name="password_2" value="" placeholder="Nhập lại mật khẩu (*)" required="">
+                                <i class="fa fa-eye eye"></i>
+                                <i class="fa fa-eye-slash eye"></i>
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" class="form-control" id="name" name="name" value="" placeholder="Họ và tên (*)" required="">
-                                <div class="validate_field error_name text-danger"></div>
+                            <div class="col-md-12 form-group p_star validate-input" data-validate="Bạn không được để trống hoặc dùng ký tự đặc biệt">
+                                <input type="text" class="form-control validate-form-control" id="name" name="name" value="" placeholder="Họ và tên (*)" required="">
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="text" maxlength="10" class="form-control" id="phone" name="phone" value="" placeholder="Số điện thoại (*)" required="">
-                                <div class="validate_field error_phone text-danger"></div>
+                            <div class="col-md-12 form-group p_star validate-input" data-validate="Bạn không được để trống hoặc dùng ký tự đặc biệt">
+                                <input type="text" maxlength="10" class="form-control validate-form-control" id="phone" name="phone" value="" placeholder="Số điện thoại (*)" required="">
                             </div>
                             <div class="col-md-12 form-group">
                                 <button type="submit" value="submit" class="btn_3">
@@ -64,24 +60,22 @@
                     <div class="login_part_form_iner">
                         <h3>Chào mừng bạn quay trở lại ! <br>
                             Hãy đăng nhập ngay nào</h3>
-                        <!-- <?php
-                        // $user = @$crAcc->get_user_by('email', $_GET['email']);
-                        // if ($user['kichhoat'] === '0') {
-                        //     $crAcc->update_user_by('kichhoat', 1, 'email', $user['email']);
-                        //     echo '<p class="text-center text-success">Bạn đã kích hoạt tài khoản thành công.</p>';
-                        // }
-                        ?> -->
-                        <div class="validate_field none success_field_lg text-success"></div>
+                        <?php
+                        $user = @$crAcc->get_user_by('email', $_GET['email']);
+                        if ($user['kichhoat'] === '0') {
+                            $crAcc->update_user_by('kichhoat', 1, 'email', $user['email']);
+                            echo '<p class="text-center text-success">Bạn đã kích hoạt tài khoản thành công.</p>';
+                        }
+                        ?> 
                         <div class="validate_field none error_field_lg text-danger"></div>
                         <form class="row contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="login" novalidate="novalidate">
-
-                            <div class="col-md-12 form-group p_star">
-                                <input type="email" class="form-control" id="email_lg" name="email_lg" value="<?= ($crAcc->checkCookie('user-email')) ? $_COOKIE['user-email'] : '' ?>" placeholder="Email (*)">
-                                <div class="validate_field error_email_lg text-danger"></div>
+                            <div class="col-md-12 form-group p_star validate-input" data-validate="Email không đúng định dạng">
+                                <input type="email" class="form-control validate-form-control" id="email_lg" name="email_lg" value="<?= ($crAcc->checkCookie('user-email')) ? $_COOKIE['user-email'] : '' ?>" placeholder="Email (*)">
                             </div>
-                            <div class="col-md-12 form-group p_star">
-                                <input type="password" class="form-control" id="psw_lg" name="psw_lg" value="" placeholder="Mật khẩu (*)">
-                                <div class="validate_field error_psw_lg text-danger"></div>
+                            <div class="col-md-12 form-group p_star validate-input password_eye" data-validate="Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)">
+                                <input type="password" class="form-control validate-form-control password-form-control" id="psw_lg" name="psw_lg" value="" placeholder="Mật khẩu (*)">
+                                <i class="fa fa-eye eye"></i>
+                                <i class="fa fa-eye-slash eye"></i>
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account d-flex align-items-center">

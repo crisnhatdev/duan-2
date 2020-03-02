@@ -32,6 +32,8 @@ class Cart extends Product {
         if ($soluong <= 0) {
             //Thực hiện hủy phần tử trong giỏ hàng nếu người dùng nhập giá trị số lượng <=0 
             unset($_SESSION['cart'][$masp]);
+        } else if ($soluong >= 5) {
+            $_SESSION['cart'][$masp]['soluong'] = 5;
         } else {
             // Thực hiện cập nhật số lượng và thành tiền của sản phẩm trong giỏ hàng
             // với mảng biến $_SESSION['cart'] tại vị trí $masp của mảng

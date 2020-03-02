@@ -171,10 +171,14 @@ switch ($type) {
                     <td>
                         <h5>' . number_format($crPro->checkKm($item['gia'], $item['khuyenmai']) * $item['soluong'], 0, '', '.') . ' VNĐ</h5>
                     </td>
+                    <td  class="text-center" >
+                        <i class="fa fa-trash" style="cursor: pointer" aria-hidden="true"></i>
+                    </td>
                 </tr>';
         }
         $ship = ($crCart->tongtien() > 1000000) ? 'Free Ship' : number_format(30000, '0', '', '.');
         $output .= '<tr>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -186,6 +190,7 @@ switch ($type) {
                             </td>
                         </tr>
                         <tr class="shipping_area">
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -219,7 +224,6 @@ switch ($type) {
         $ngaymua = date('Y-m-d H:i:s');
         $tongtien = $crCart->tongtien('cart');
         $user = $_SESSION['user'];
-
         //validate address
         if (!$crValid->valid_text($address) || $address === '') {
             $errArr['error_address'] = 'Bạn không được để trống hoặc có ký tự đặc biệt';
@@ -230,7 +234,7 @@ switch ($type) {
         }
 
         if (count($errArr) === 0) {
-            $crAcc->update_user_by('diachi', $address, 'matk', $user['email']); //update địa chỉ cho user
+            $crAcc->update_user_by('diachi', $address, 'matk', $user['id']); //update địa chỉ cho user
 
             $crCart->add_bill($mahd, $user['name'], $user['phone'], $user['email'], $user['address'], $ngaymua, $tongtien, $note, $user['id']); //thêm bill vào db
 

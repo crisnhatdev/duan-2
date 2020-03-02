@@ -132,7 +132,7 @@ $saleList = array_filter($proList, function($pro) {
                     </div>
                     <div class="validate_field none success_subscribe text-success"></div>
                     <div class="validate_field none error_subscribe text-danger"></div>
-                    <form class="input-group subscribe-form-ajax form-group" action="../view/account/handleUser.php" method="post" data-type="subscribe">
+                    <form class="input-group subscribe-form-ajax form-group">
                         <input type="email" class="form-control validate-form-control" placeholder="Nhập email của bạn"
                                aria-label="Nhập email của bạn" aria-describedby="basic-addon3" name="subscribe-mail" onfocus="this.placeholder = ''"
                                onblur="this.placeholder = 'Nhập email của bạn'" required="">
@@ -194,7 +194,7 @@ $saleList = array_filter($proList, function($pro) {
                     <h2>Hãy đăng ký nhận tin tức về các hoạt động sắp tới của chúng tôi </h2>
                     <div class="validate_field none success_subscribe text-success"></div>
                     <div class="validate_field none error_subscribe text-danger"></div>
-                    <form class="input-group subscribe-form-ajax form-group" data-type="">
+                    <form class="input-group subscribe-form-ajax form-group">
                         <input type="email" class="form-control validate-form-control" placeholder="Nhập email của bạn"
                                aria-label="Nhập email của bạn" aria-describedby="basic-addon2" name="subscribe-mail" onfocus="this.placeholder = ''"
                                onblur="this.placeholder = 'Nhập email của bạn'" required="">

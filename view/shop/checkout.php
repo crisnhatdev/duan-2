@@ -31,16 +31,13 @@
                 </div>
                 <p>
                 </p>
-                <div class="validate_field none success_field_lg text-success"></div>
                 <div class="validate_field none error_field_lg text-danger"></div>
                 <form class="row contact_form user-ajax collapse" id="loginForm" action="../view/account/handleUser.php" method="post" data-type="login" novalidate="novalidate">
-                    <div class="col-md-12 form-group p_star">
-                        <input type="email" class="form-control" id="email_lg" name="email_lg" value="<?= ($crAcc->checkCookie('user-email')) ? $_COOKIE['user-email'] : '' ?>" placeholder="Email (*)">
-                        <div class="validate_field error_email_lg text-danger"></div>
+                    <div class="col-md-12 form-group p_star validate-input" data-validate="Email không đúng định dạng">
+                        <input type="email" class="form-control validate-form-control" id="email_lg" name="email_lg" value="<?= ($crAcc->checkCookie('user-email')) ? $_COOKIE['user-email'] : '' ?>" placeholder="Email (*)">
                     </div>
-                    <div class="col-md-12 form-group p_star">
-                        <input type="password" class="form-control" id="psw_lg" name="psw_lg" value="" placeholder="Mật khẩu (*)">
-                        <div class="validate_field error_psw_lg text-danger"></div>
+                    <div class="col-md-12 form-group p_star validate-input" data-validate="Mật khẩu cần 8 ký tự trở lên (Hoa, Thường, Số)">
+                        <input type="password" class="form-control validate-form-control" id="psw_lg" name="psw_lg" value="" placeholder="Mật khẩu (*)">
                     </div>
                     <div class="col-md-12 form-group">
                         <div class="creat_account d-flex align-items-center">
@@ -73,21 +70,17 @@
                 <div class="col-lg-7">
                     <h3>Thông Tin Mua Hàng</h3>
                     <form id="order_form" class="row contact_form" novalidate="novalidate">
-                        <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="name" value="<?= $user['name'] ?>" placeholder="Tên của bạn (*)" <?= ($crAcc->checkSs('user')) ? 'readonly' : '' ?>/>
-                            <div class="validate_field error_name text-danger"></div>
+                        <div class="col-md-12 form-group validate-input" data-validate="Bạn không được để trống hoặc dùng ký tự đặc biệt">
+                            <input type="text" class="form-control validate-form-control" id="name" name="name" value="<?= $user['tenkh'] ?>" placeholder="Tên của bạn (*)" <?= ($crAcc->checkSs('user')) ? 'readonly' : '' ?>/>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" maxlength="10" id="phone" name="phone" value="<?= $user['phone'] ?>" placeholder="Số điện thoại (*)" <?= ($crAcc->checkSs('user')) ? 'readonly' : '' ?>/>
-                            <div class="validate_field error_phone text-danger"></div>
+                        <div class="col-md-12 form-group validate-input" data-validate="Bạn không được để trống hoặc dùng ký tự đặc biệt">
+                            <input type="text" class="form-control validate-form-control" maxlength="10" id="phone" name="phone" value="<?= $user['sdt'] ?>" placeholder="Số điện thoại (*)" <?= ($crAcc->checkSs('user')) ? 'readonly' : '' ?>/>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="address" name="address" value="<?= $user['address'] ?>" placeholder="Địa chỉ (*)"/>
-                            <div class="validate_field error_address text-danger"></div>
+                        <div class="col-md-12 form-group validate-input" data-validate="Bạn không được để trống hoặc dùng ký tự đặc biệt">
+                            <input type="text" class="form-control validate-form-control" id="address" name="address" value="<?= $user['diachi'] ?>" placeholder="Địa chỉ (*)" <?= ($user['diachi'] !== "") ? '' : '' ?>/>
                         </div>
-                        <div class="col-md-12 form-group">
-                            <textarea class="form-control" id="note" name="note" rows="5"  placeholder="Ghi chú"></textarea>
-                            <div class="validate_field error_note text-danger"></div>
+                        <div class="col-md-12 form-group validate-input" data-validate="Bạn không được dùng ký tự đặc biệt">
+                            <textarea class="form-control validate-form-control" data-type="optional" id="note" name="note" rows="5" placeholder="Ghi chú"></textarea>
                         </div>
                     </form>
                 </div>

@@ -26,36 +26,26 @@
                 <div class="validate_field none error_field text-danger"></div>
                 <form class="form-contact contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="contact"
                       novalidate="novalidate">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Vấn đề của bạn (*)'" placeholder='Vấn đề của bạn (*)' required="">
-                                <div class="validate_field error_subject text-danger"></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Tên của bạn (*)'" placeholder='Tên của bạn (*)'required="">
-                                <div class="validate_field error_name text-danger"></div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input class="form-control" name="phone" id="phone" type="text" maxlength="10" onfocus="this.placeholder = ''"
-                                       onblur="this.placeholder = 'Số điện thoại (*)'" placeholder='Số điện thoại (*)'required="">
-                                <div class="validate_field error_phone text-danger"></div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
-                                          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nhập nội dung (*)'"
-                                          placeholder='Nhập nội dung (*)'required=""></textarea>
-                                <div class="validate_field error_message text-danger"></div>
-                            </div>
-                        </div>
+                    <div class="col-sm-12 form-group validate-input" data-validate="Bạn không được bỏ trống hoặc dùng ký tự đặc biệt">
+                        <input class="form-control validate-form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Vấn đề của bạn (*)'" placeholder='Vấn đề của bạn (*)' required="">
+                        <div class="validate_field error_subject text-danger"></div>
+                    </div>
+                    <div class="col-sm-12 form-group validate-input" data-validate="Bạn không được bỏ trống hoặc dùng ký tự đặc biệt">
+                        <input class="form-control validate-form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Tên của bạn (*)'" placeholder='Tên của bạn (*)'required="">
+                        <div class="validate_field error_name text-danger"></div>
+                    </div>
+                    <div class="col-sm-12 form-group validate-input" data-validate="Bạn không được bỏ trống hoặc dùng ký tự đặc biệt">
+                        <input class="form-control validate-form-control" name="phone" id="phone" type="text" maxlength="10" onfocus="this.placeholder = ''"
+                               onblur="this.placeholder = 'Số điện thoại (*)'" placeholder='Số điện thoại (*)'required="">
+                        <div class="validate_field error_phone text-danger"></div>
+                    </div>
+                    <div class="col-12 form-group validate-input" data-validate="Bạn không được bỏ trống hoặc dùng ký tự đặc biệt">
+                        <textarea class="form-control w-100 validate-form-control" name="message" id="message" cols="30" rows="9"
+                                  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nhập nội dung (*)'"
+                                  placeholder='Nhập nội dung (*)'required=""></textarea>
+                        <div class="validate_field error_message text-danger"></div>
                     </div>
                     <div class="form-group mt-3">
                         <button href="#" class="btn_3 button-contactForm">Gửi tin nhắn</button>

@@ -6,7 +6,6 @@ $('.form-group .validate-form-control').each(function () {
         hideValidate(this);
     });
 });
-
 //function validate
 function validate(input) {
     if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
@@ -23,25 +22,33 @@ function validate(input) {
         if (!valid_pass($(input).val())) {
             return false;
         }
+    }
+    if ($(input).attr('data-type') == 'optional') {
+        if (!valid_optional($(input).val())) {
+            return false;
+        }
     } else {
         if (!valid_text($(input).val())) {
             return false;
         }
     }
+
+
+
 }
 
 //add class validate
 function showValidate(input) {
     var parent = $(input).parent();
     $(parent).addClass('alert-validate');
-    $(input).css('border', '1px solid #ff3368')
+    $(input).css('border-bottom', '1px solid #ff3368')
 }
 
 //remove class validate
 function hideValidate(input) {
     var parent = $(input).parent();
     $(parent).removeClass('alert-validate');
-    $(input).css('border', '1px solid #ced4da')
+    $(input).css('border-bottom', '1px solid #ced4da')
 }
 
 function valid_phone(str) {
@@ -58,5 +65,9 @@ function valid_pass(str) {
 
 function valid_text(str) {
     return (str.match((/^\w+[^<>%$;]*$/)) !== null) ? true : false;
+}
+
+function valid_optional(str) {
+    return (str.match((/^\w?[^<>%$;]*$/)) !== null) ? true : false;
 }
 

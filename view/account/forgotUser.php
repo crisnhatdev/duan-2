@@ -24,12 +24,12 @@
                 <div class="col-lg-12 col-md-12 login_part_form">
                     <div class="login_part_form_iner">
                         <h3>Quên mật khẩu? <br>Mong chóng tìm lại nhanh nào</h3>
-                        <div class="validate_field none success_field text-success"></div>
+                        <!--<div class="validate_field none success_field text-success"></div>-->
                         <div class="validate_field none error_field text-danger"></div>
                         <form class="row contact_form user-ajax" action="../view/account/handleUser.php" method="post" data-type="forgot" novalidate="novalidate">
-                            <div class="col-md-12 form-group p_star">
-                                <input type="email" class="form-control" id="email" name="email" value=""
-                                       placeholder="Email (*)" required="">
+                            <div class="col-md-12 form-group p_star validate-input" data-validate="Email không đúng định dạng">
+                                 <input type="email" class="form-control validate-form-control" id="email" name="email" value=""
+                                   placeholder="Email (*)" required="">
                                 <div class="validate_field error_email text-danger"></div>
                             </div>
                             <div class="col-md-12 form-group">

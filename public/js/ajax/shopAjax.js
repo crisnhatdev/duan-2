@@ -103,7 +103,7 @@ $(document).on('ready', function () {
         e.preventDefault();
 
         var masp = $(this).prev().val().trim();
-        var soluong = $(this).siblings(':first').children('input[type="number"]').val();
+        var soluong = $(this).siblings(':first').children('input[type="text"]').val();
 
         $.ajax({
             url: '../view/shop/handleShop.php',
@@ -121,18 +121,22 @@ $(document).on('ready', function () {
         })
     })
 
-    //update qtt or remove item
-    $('body').on('click', '.qty_btn', function (e) {
+    //update qtt in view cart
+    $('body').on('click', '.shop_table.cart', function (e) {
         var target = e.target;
 
         var masp = $(target).parents('tr').children(':first').text().trim();
         var soluong = parseInt($(target).parent().siblings('.input-number').val());
-        var type = 'update';
 
         if (soluong > 0 && $(target).hasClass('ti-angle-down')) {
             var soluong = --soluong;
-        } else if ($(target).hasClass('ti-angle-up') && soluong < 5) {
+            var type = 'update';
+        } else if (soluong < 5 && $(target).hasClass('ti-angle-up')) {
             var soluong = ++soluong;
+            var type = 'update';
+        } else if ($(target).hasClass('fa-trash')) {
+            var soluong = -1;
+            var type = 'update';
         }
 
         $.ajax({
@@ -148,7 +152,7 @@ $(document).on('ready', function () {
         })
     })
 
-    //event in view-cart
+    //change input in view-cart
     $('body').on('change', '.qty_input', function (e) {
         var target = e.target;
 
@@ -171,44 +175,47 @@ $(document).on('ready', function () {
     })
 
     //checkout
+    var submit = true;
     $('#place_order').on('click', function (e) {
         e.preventDefault();
 
         var orderForm = $('#order_form').serializeArray();
         var type = $(this).data('type');
 
-        $.ajax({
+        var inputArr = $('#order_form').children().children('.validate-input .validate-form-control');
+        var checkValid = true;
+        for (let i = 0; i < inputArr.length; i++) {
+            if (validate(inputArr[i]) == false) {
+            showValidate(inputArr[i]);
+            console.log(inputArr[i])
+            checkValid = false;
+            }
+        }
+        
+        if(checkValid && submit) {
+            submit = false;
+            $.ajax({
             url: '../view/shop/handleShop.php',
             type: 'post',
             dataType: 'json',
             data: {orderForm: orderForm, type: type},
             success: function (res) {
                 for (let key in res) {
-                    if (key === 'success_field' || key === 'success_field_lg') {
+                    $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').parent().attr('data-validate', res[key]); //gắn thông báo validate lên input
+                    $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').parent().addClass('alert-validate'); //add class show validate
+
+                    if (key === 'success_field') {
                         $('#modal_cart').modal({backdrop: 'static', keyboard: false})
-                        $('#place_order').attr('href', '#/');
                     }
-
-                    $('.' + key).html(res[key])
-
-                    setTimeout(function () {
-                        $('.' + key).html('');
-                        $('input[name="' + key.slice(key.indexOf('_') + 1) + '"]').val('');
-                    }, 1500)
-
 
                     if (key === 'direct') {
                         setTimeout(function () {
                             window.location.href = res[key];
                         }, 2000)
                     }
+                    
+                    submit = true;
                 }
-//                $('#messages_modal .list-unstyled').html('<li class="text-center">' + res + '</li><li class="text-center"><a href=".">Về trang chủ</a></li>')
-//                $('#messages_modal').modal('show');
-//
-//                setTimeout(function () {
-//                    window.location.href = '.';
-//                }, 3000)
             },
             error: function (request, status, error) {
                 console.log(request.responseText);
@@ -216,5 +223,7 @@ $(document).on('ready', function () {
                 console.log(status);
             }
         })
+        }
+        
     })
 })
