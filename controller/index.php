@@ -127,11 +127,7 @@ if (isset($_GET['act'])) {
             break;
         case 'checkout':
             $cartList = $_SESSION['cart'];
-<<<<<<< HEAD
             $user = @$crAcc->get_user_by('matk', $_SESSION['user']['id']);
-=======
-            $user = $_SESSION['user'];
->>>>>>> f4afce4d8333bcb02377a691bd582582612c3220
             require_once '../view/shop/checkout.php';
             break;
         //account
