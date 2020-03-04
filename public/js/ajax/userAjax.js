@@ -43,7 +43,6 @@ $(document).ready(function () {
     })
 
     //login, register, update with ajax
-    var checkSubmit = true;
     $('.user-ajax').on('submit', function (e) {
         e.preventDefault();
         var form = $(this);
@@ -66,7 +65,7 @@ $(document).ready(function () {
             $.ajax({
                 url: action,
                 type: method,
-                dataType: false,
+                dataType: 'json',
                 data: {arrData: data, type: type},
                 success: function (res) {
                     //res is object
@@ -93,8 +92,8 @@ $(document).ready(function () {
                         } // chuyển trang
                         
                         if(key === 'success_field' || key === 'success_field_lg') {
-                            $('.modal-body').html('');
-                            $('.modal-title').html(res[key]);
+                            $('#modal-body-cart').html('');
+                            $('#modal-title-cart').html(res[key]);
                             $('#modal_cart').modal({backdrop: 'static', keyboard: false})
                         }//show modal
                     }
@@ -107,7 +106,51 @@ $(document).ready(function () {
                 }
             })
         }
-
+        return false;
+    })
+    
+    $('.find-bill').on('submit', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var inputArr = form.children().children('.validate-input .validate-form-control');
+        var sdt = form.serializeArray()[0]['value'];
+        var checkValid = true;
+        
+        for (let i = 0; i < inputArr.length; i++) {
+            if (validate(inputArr[i]) == false) {
+            showValidate(inputArr[i]);
+            checkValid = false;
+            }
+        }
+        
+        if (checkValid) {
+            $(':submit', form).attr('disabled', true);
+            $.ajax({
+                url: '../view/account/handleUser.php',
+                type: 'post',
+                dataType: false,
+                data: {sdt: sdt, type: 'check-bill-no-lg'},
+                success: function (res) {
+                    console.log(res)
+                    //res is object
+                    if (res['error_phone']) {
+                        $('input[name="phone"]').parent().attr('data-validate', res['error_phone']); //gắn thông báo validate lên parent's input
+                        $('input[name="phone"]').parent().addClass('alert-validate'); //add class to parent's input to show validate
+                    }
+                    
+                    if(!res['error_phone']) {
+                        window.location.href = '.?act=acc-bill&phone=' + sdt;
+                    }
+                    
+                    $(':submit', form).removeAttr( "disabled" )
+                },
+                error: function (request, status, error) {
+                    console.log(request.responseText);
+                    console.log(error);
+                    console.log(status);
+                }
+            })
+        }
         return false;
     })
 
@@ -122,6 +165,27 @@ $(document).ready(function () {
                 setTimeout(function () {
                     window.location.href = res['direct']
                 }, 200)
+            }
+        })
+    })
+    
+    //show modal bill detail
+    $('.bill-detail').on('click', function() {
+        var mahd = $(this).parents('tr').children(':first').html();
+
+        $.ajax({
+            url: '../view/account/handleUser.php',
+            type: 'post',
+            dataType: 'json',
+            data: {mahd: mahd, type: 'bill-detail'},
+            success: function (res) {
+                $('#table-bill tbody').html(res);
+                $('#modal-bill').modal('show');
+            },
+            error: function (request, status, error) {
+                console.log(request.responseText);
+                console.log(error);
+                console.log(status);
             }
         })
     })

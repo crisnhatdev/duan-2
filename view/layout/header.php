@@ -93,6 +93,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                                     <a class="dropdown-item" href=".?act=acc-update">Cập nhật thông tin</a>
                                                     <a class="dropdown-item" href=".?act=acc-change">Đổi mật khẩu</a>
+                                                    <!--<a class="dropdown-item" href=".?act=acc-bill">Lịch sử mua hàng</a>-->
                                                     <a class="dropdown-item logout" href="#">Thoát</a>
                                                 </div>
                                             </li>
@@ -100,7 +101,7 @@
                                         }
                                     } else {
                                         ?>
-                                        <li class="nav-item ">
+                                        <li class="nav-item">
                                             <a class="nav-link" href=".?act=account" id="navbarDropdown_2">Tài khoản</a>
                                         </li>
 
@@ -108,11 +109,11 @@
                                 </ul>
                             </div>
                             <div class="hearer_icon d-flex">
-                                <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-                                <a href=""><i class="ti-heart"></i></a>
+                                <a id="search_1" href="javascript:void(0)"><i class="ti-search" title="Tìm Kiếm"></i></a>
+                                <a href=".?act=<?= ($crAcc->checkSs('user')) ? 'acc-bill' : 'acc-bill-no-lg' ?>"><i title="Lịch Sử Mua Hàng" class="fas fa-history"></i></a>
                                 <div class="cart">
                                     <a href=".?act=view-cart" id="navbarDropdown3" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-cart-plus"  data-cart="<?= ($crAcc->checkSs('cart')) ? count($_SESSION['cart']) : 0 ?>"></i>
+                                        <i title="Giỏ Hàng" class="fas fa-cart-plus"  data-cart="<?= ($crAcc->checkSs('cart')) ? count($_SESSION['cart']) : 0 ?>"></i>
                                     </a>
                                     <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <div class="single_product">
@@ -140,10 +141,38 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header justify-content-center">
-                        <h3 class="modal-title text-center" id="cart-title">Đặt hàng thành công</h3>
+                        <h3 class="modal-title text-center" id="modal-title-cart">Đặt hàng thành công</h3>
                     </div>
-                    <div class="modal-body text-center">
+                    <div class="modal-body text-center" id="modal-body-cart">
                         Chúng tôi sẽ liên hệ trong thời gian sớm nhất. Sweet House xin cám ơn
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-bill" class="modal fade bs-example-modal-lg">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-title-bill">
+                            Hóa đơn chi tiết
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            ×
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="table-bill" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Tên SP</td>
+                                    <td>Giá</td>
+                                    <td>Số Lượng</td>
+                                    <td>Tổng</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

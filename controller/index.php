@@ -142,6 +142,19 @@ if (isset($_GET['act'])) {
         case 'acc-change':
             require_once '../view/account/changeUser.php';
             break;
+        case 'acc-bill':
+            if ($crAcc->checkSs('user')) {
+                $listBill = $crCart->get_bill($_SESSION['user']['id']);
+            } else if (isset($_REQUEST['phone'])) {
+                $listBill = $crCart->get_bill(0, $_REQUEST['phone']);
+            } else {
+                header('location: .?');
+            }
+            require_once '../view/account/bill.php';
+            break;
+        case 'acc-bill-no-lg':
+            require_once '../view/account/billNoLg.php';
+            break;
         case 'acc-forgot':
             require_once '../view/account/forgotUser.php';
             break;
