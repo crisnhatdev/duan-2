@@ -78,6 +78,20 @@ class Cart extends Product {
         // }
         return $db->getAll($query);
     }
+    function get_bill_by_page($mahd=0,$hienBill,$idtrang) {//phan trang hoa don admin
+        $db = new Connect();
+        $query = "SELECT * FROM hoadon a INNER JOIN hoadonchitiet b on a.mahd = b.mahd where 1";
+        if($mahd >0){
+            $query .=" and a.mahd = $mahd ";
+        }
+        $idtrang = (int) ($idtrang);
+        $gioihanBill = ($idtrang - 1 ) * $hienBill;
+
+        $query .= " limit $gioihanBill, $hienBill ";
+        
+        $result = $db->getAll($query);
+        return $result; // trả về 1 mảng các sp đã theo giới hạn 
+    }
     function get_bill_details($mahd=0,$matk=0) {//$matk=0,$tenkh,$sdt,$email,$diachi,$ngaymua,$tongtien
         $db = new Connect();
         $query = "SELECT * FROM hoadonchitiet a INNER JOIN sanpham b on a.masp = b.masp where 1";
@@ -123,6 +137,23 @@ class Cart extends Product {
         $db = new Connect();
         $query = "UPDATE `sanpham` SET `soluong` = soluong - $soluong WHERE masp = $masp";
         $db->execute($query);
+    }
+    function check_status_bill($status){
+        $stt ='';
+        if ($status == 1) {
+            $stt = 'Đã xác nhận';
+        } else if ($status == 2) {
+            $stt = 'Đã lấy hàng';
+        } else if ($status== 3) {
+            $stt = 'Đã giao hàng';
+        } else if ($status== 4) {
+            $stt = 'Khách hủy';
+        } else if ($status == 5) {
+            $stt = 'Hệ thống hủy';
+        } else {
+            $stt = 'Chờ xác nhận';
+        }
+        return $stt;
     }
 
 }

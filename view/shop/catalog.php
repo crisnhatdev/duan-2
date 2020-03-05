@@ -7,7 +7,7 @@
                 <div class="breadcrumb_iner">
                     <div class="breadcrumb_iner_item">
                         <h2><?= $proByCata[0]['tenlh'] ?></h2>
-<!--                        <p>Home <span>-</span> Shop Category</p>-->
+                        <!--                        <p>Home <span>-</span> Shop Category</p>-->
                     </div>
                 </div>
             </div>
@@ -30,12 +30,12 @@
                             <ul class="list">
                                 <?php
                                 foreach ($cataList as $cata) {
-                                    ?>
+                                ?>
                                     <li>
                                         <a href=".?act=catalog&malh=<?= $cata['malh'] ?>"><?= $cata['tenlh'] ?></a>
                                         <span>(<?= count($crPro->getPro($cata['malh'])) ?>)</span>
                                     </li>
-                                    <?php
+                                <?php
                                 }
                                 ?>
                             </ul>
@@ -123,7 +123,7 @@
                 <div class="row align-items-center latest_product_inner" id="catalog_page">
                     <?php
                     foreach ((isset($_GET['type'])) ? $limitProByCata_ft : $limitProByCata as $pro) {
-                        ?>
+                    ?>
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
                                 <a href=".?act=product&masp=<?= $pro['masp'] ?>">
@@ -131,14 +131,14 @@
                                 </a>
                                 <div class="single_product_text">
                                     <h4><?= $pro['tensp'] ?></h4>
-                                    <?= ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '', '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '' ?>
+                                    <?= ($pro['khuyenmai'] > 0) ? "<del>" . number_format($pro['gia'], 0, '.') . "VNĐ</del> - <b>" . $pro['khuyenmai'] . "%</b>" : '' ?>
                                     <h3><?= number_format($crPro->checkKm($pro['gia'], $pro['khuyenmai']), 0, '', '.') ?> VNĐ</h3>
-                                    <input type="hidden" name="masp" value="<?= $pro['masp'] ?>"/>
+                                    <input type="hidden" name="masp" value="<?= $pro['masp'] ?>" />
                                     <a href="#/" class="add_cart add_to_cart_button">+ Thêm vào giỏ<i class="ti-heart"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <?php
+                    <?php
                     }
                     ?>
                 </div>
@@ -146,7 +146,7 @@
                 <div class="col-lg-12">
                     <div class="pageination">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center" data-malh = '<?= (isset($_GET['malh'])) ? $_GET['malh'] : 0 ?>' data-mams="<?= (isset($_GET['mams'])) ? $_GET['mams'] : 0 ?>" data-mamh="<?= (isset($_GET['mamh'])) ? $_GET['mamh'] : 0 ?>">
+                            <ul class="pagination justify-content-center" data-malh='<?= (isset($_GET['malh'])) ? $_GET['malh'] : 0 ?>' data-mams="<?= (isset($_GET['mams'])) ? $_GET['mams'] : 0 ?>" data-mamh="<?= (isset($_GET['mamh'])) ? $_GET['mamh'] : 0 ?>">
                                 <?php
                                 $pages = $crCata->calcPage((isset($_GET['type'])) ? $proByCata_ft : $proByCata, 3);
                                 for ($i = 0; $i < $pages; $i++) {

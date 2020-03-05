@@ -65,5 +65,14 @@ class Banner {
         echo $query;
         $result = $db->execute($query);
     }
-
+    function activeBanner($mabn,$active) {
+        $db = new Connect();
+        $query = "UPDATE banner SET active =$active WHERE mabn = $mabn";
+        $result = $db->execute($query);
+    }
+    function deActiveBanner($mabn,$active) {
+        $db = new Connect();
+        $query = "UPDATE banner SET active =$active WHERE mabn = $mabn";
+        $result = $db->execute($query);
+    }
 }

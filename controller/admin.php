@@ -130,6 +130,18 @@ if (isset($_SESSION['user']) && $_SESSION['user']['level'] == 1) {
                 $getBannerList = $crBanner->getBanner();
                 require_once '../admin/view/banner/qlyBanner.php';
                 break;
+            case 'activeBanner':
+                $mabn = $_GET['mabn'];
+                $crBanner->activeBanner($mabn, 0);
+                $getBannerList = $crBanner->getBanner();
+                require_once '../admin/view/banner/qlyBanner.php';
+                break;
+            case 'deActiveBanner':
+                $mabn = $_GET['mabn'];
+                $crBanner->deActiveBanner($mabn, 1);
+                $getBannerList = $crBanner->getBanner();
+                require_once '../admin/view/banner/qlyBanner.php';
+                break;
                 // ---------------------------------------------------------------------PRODUCT-------------------------------------------
             case 'qlyProduct':
                 $crPro = new Product();
@@ -426,8 +438,10 @@ if (isset($_SESSION['user']) && $_SESSION['user']['level'] == 1) {
                 $getAcc = $crAcc->all_user();
                 require_once '../admin/view/account/qlyAccount.php';
                 break;
+            // ---------------------------------------------------------------Hóa Đơn----------------------------------------------------
             case 'bill':
                 $crCart = new Cart();
+                $billLimit = $crCart->get_bill_by_page(0,5,1);
                 $allBill = $crCart->get_bill_();
                 require_once '../admin/view/hoadon/bill.php';
                 break;
@@ -449,9 +463,32 @@ if (isset($_SESSION['user']) && $_SESSION['user']['level'] == 1) {
                 $billDetails = $crCart->get_bill_details();
                 require_once '../admin/view/hoadon/billDetails.php';
                 break;
+             // ---------------------------------------------------------------------------Hóa Đơn ----------------------------------------
             case 'profileAcc':
                 $crAcc = new Account();
                 require_once '../admin/view/account/profile.php';
+                break;
+            case 'changePass':
+                $crAcc = new Account();
+                require_once '../admin/view/account/changePass.php';
+                break;
+            case 'changePassForm':
+                $crAcc = new Account();
+                $id = $_SESSION['user']['id'];
+                $infoUser = $crAcc->info_acc($id);
+                $oldPass = $_POST['oldpass'];
+
+                $newpass = $_POST['newpass'];
+                $newpass2 = $_POST['newpass2'];
+                if ($crAcc->bcrypt_verify($oldPass, $infoUser['matkhau'])) {
+                    $hashedNewPass = $crAcc->bcrypt_password($newpass); //băm mật khẩu mới
+                    if ($newpass == $newpass2) {
+                        $crAcc->update_user_by('matkhau', $hashedNewPass, 'matk', $id);
+                    } else {
+                        echo 'mật khẩu mới không trùng nhau';
+                    }
+                }
+                require_once '../admin/view/account/changePass.php';
                 break;
             case 'logout':
                 unset($_SESSION['user']);

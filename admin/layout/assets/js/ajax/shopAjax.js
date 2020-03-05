@@ -49,4 +49,25 @@ $('.page-item-news').on('click', function () {
         }
     })
 })
+$('.page-item-bill').on('click', function () {
+    this.classList.add('active');
+    $(this).siblings().removeClass('active');
+    var mahd = this.parentElement.getAttribute('data-mahd');
+    var page = this.innerText;
+    $.ajax({
+        url: '../admin/view/hoadon/handleBill.php',
+        type: 'get',
+        dataType: 'json',
+        data: {mahd:mahd , page: page,type: 'pagination-bill'},
+        success: function (res) {
+            $('#myBill').html(res);
+            console.log(res);
+        },
+        error: function (request, status, error) {
+            console.log(request.responseText);
+            console.log(error);
+            console.log(status);
+        }
+    })
+})
 //})

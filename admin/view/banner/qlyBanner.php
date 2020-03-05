@@ -64,6 +64,7 @@
                             <th scope="col">Tiêu Đề </th>
                             <th scope="col">Nội Dung</th>
                             <th scope="col">Hình Ảnh</th>
+                            <th scope="col">Kích Hoạt</th>
                             <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -76,6 +77,17 @@
                                 <td><?= $banner['tieude'] ?></td>
                                 <td><?= $banner['noidung'] ?></td>
                                 <td><img src="../public/img/banner/<?= $banner['hinhanhbn'] ?>" style="width:75px;height:75px;border-radius:50%"></td>
+                                <td>
+                                    <?php
+                                    if ($banner['active'] == 1) {
+                                    ?>
+                                        <a href="admin.php?act=activeBanner&mabn=<?= $banner['mabn'] ?>">ON</a>
+                                    <?php
+                                    } else { ?>
+                                        <a href="admin.php?act=deActiveBanner&mabn=<?= $banner['mabn'] ?>">OFF</a>
+                                    <?php }
+                                    ?>
+                                </td>
                                 <td>
                                     <a href="<?php echo 'admin.php?act=updateBannerKey&id=' . $banner['mabn'] . ''; ?>" class="btn btn-info btn-sm"><i class="material-icons">mode_edit</i></a><br>
                                     <a href="<?php echo 'admin.php?act=delBanner&mabn=' . $banner['mabn'] . ''; ?>" class="btn btn-danger btn-sm"><i class="material-icons">delete</i></a>

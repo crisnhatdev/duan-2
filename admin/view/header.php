@@ -57,7 +57,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <a class="nav-link" href="admin.php?act=profileAcc">
               <i class="material-icons">person</i>
               <p>Trang Cá Nhân</p>
             </a>
@@ -196,7 +196,7 @@
                   }; ?>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="admin.php?act=profileAcc">Thông Tin </a>
-                    <a class="dropdown-item" href="">Đổi Mật Khẩu</a>
+                    <a class="dropdown-item" href="admin.php?act=changePass">Đổi Mật Khẩu</a>
                     <a class="dropdown-item" href="admin.php?act=logout">Thoát </a>
                   </div>
                 </div>

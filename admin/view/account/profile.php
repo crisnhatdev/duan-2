@@ -33,7 +33,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Email</label>
-                                        <input type="email" class="form-control" value="<?= $infoUser['email'] ?>">
+                                        <input type="email" class="form-control" value="<?= $infoUser['email'] ?>" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -55,13 +55,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Địa Chỉ</label>
-                                        <input type="text" class="form-control" value="<?= $infoUser['diachi'] ?>">
+                                        <input type="text" class="form-control" value="<?= $infoUser['diachi'] ?>" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Số Điện Thoại</label>
-                                        <input type="text" class="form-control" value="<?= $infoUser['sdt'] ?>">
+                                        <input type="text" class="form-control" value="<?= $infoUser['sdt'] ?>" disabled>
                                     </div>
                                 </div>
                                 <!-- <div class="col-md-4">
@@ -83,12 +83,11 @@
                                         <label>About Me</label>
                                         <div class="form-group">
                                             <!-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label> -->
-                                            <textarea class="form-control" rows="5"><?= $infoUser['gioithieu'] ?></textarea>
+                                            <textarea disabled class="form-control" rows="5"><?= $infoUser['gioithieu'] ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right">Cập Nhật Thông Tin</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
