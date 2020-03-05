@@ -125,15 +125,6 @@ switch ($type) {
 
         echo json_encode(count($_SESSION['cart']));
         break;
-//    case 'remove':
-//        $maspct = $_GET['maspct'];
-//
-//        unset($_SESSION['cart'][$maspct]);
-//
-//        $arr = load_cart();
-//
-//        echo json_encode($arr);
-//        break;
     case 'update':
         $masp = $_GET['masp'];
 
@@ -220,7 +211,7 @@ switch ($type) {
         $address = $crValid->valid_value_insert($data[2]['value']);
         $note = $crValid->valid_value_insert($data[3]['value']);
         //dữ liệu cần thiết
-        $mahd = $crCart->get_bill() + 1;
+        $mahd = count($crCart->get_bill()) + 1;
         $ngaymua = date('Y-m-d H:i:s');
         $tongtien = $crCart->tongtien('cart');
         $user = $_SESSION['user'];
@@ -377,7 +368,7 @@ switch ($type) {
                                                 </td>
 
                                                 <td class="textRight">
-                                                    Số Hóa Đơn: ' . ($crCart->get_bill() + 1) . '<br>
+                                                    Số Hóa Đơn: ' . (count($crCart->get_bill()) + 1) . '<br>
                                                     Ngày Tạo: ' . date('d-m-Y H:i') . '<br>
                                                 </td>
                                             </tr>
@@ -455,7 +446,7 @@ switch ($type) {
         $note = $crValid->valid_value_insert($data[3]['value']);
 
         //dữ liệu cần thiết
-        $mahd = $crCart->get_bill() + 1;
+        $mahd = count($crCart->get_bill()) + 1;
         $ngaymua = date('Y-m-d H:i:s');
         $tongtien = $crCart->tongtien('cart');
         $user = 0;

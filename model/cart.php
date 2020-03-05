@@ -62,15 +62,22 @@ class Cart extends Product {
         return $tongtien;
     }
 
-    function get_bill() {
+    function get_bill($matk = 0, $sdt = '') {
         $db = new Connect();
-        $query = "select * from hoadon";
-        return count($db->getAll($query));
+        $query = "select * from hoadon where 1";
+        if ($matk > 0) {
+            $query .= " and matk = $matk";
+        }
+        if ($sdt != '') {
+            $query .= " and sdt = $sdt";
+        }
+        return $db->getAll($query);
     }
-    function get_bill_($mahd=0) {//$matk=0,$tenkh,$sdt,$email,$diachi,$ngaymua,$tongtien
+
+    function get_bill_($mahd = 0) {//$matk=0,$tenkh,$sdt,$email,$diachi,$ngaymua,$tongtien
         $db = new Connect();
         $query = "SELECT * FROM hoadon";
-        if($mahd >0){
+        if ($mahd > 0) {
             $query .=" and a.mahd = $mahd ";
         }
         // if($matk >0){
@@ -78,6 +85,7 @@ class Cart extends Product {
         // }
         return $db->getAll($query);
     }
+
     function get_bill_by_page($mahd=0,$hienBill,$idtrang) {//phan trang hoa don admin
         $db = new Connect();
         $query = "SELECT * FROM hoadon a INNER JOIN hoadonchitiet b on a.mahd = b.mahd where 1";
@@ -92,31 +100,36 @@ class Cart extends Product {
         $result = $db->getAll($query);
         return $result; // trả về 1 mảng các sp đã theo giới hạn 
     }
-    function get_bill_details($mahd=0,$matk=0) {//$matk=0,$tenkh,$sdt,$email,$diachi,$ngaymua,$tongtien
+
+
+    function get_bill_details($mahd = 0, $matk = 0) {//$matk=0,$tenkh,$sdt,$email,$diachi,$ngaymua,$tongtien
         $db = new Connect();
         $query = "SELECT * FROM hoadonchitiet a INNER JOIN sanpham b on a.masp = b.masp where 1";
-        if($mahd >0){
+        if ($mahd > 0) {
             $query .=" and a.mahd = $mahd ";
         }
-        if($matk >0){
+        if ($matk > 0) {
             $query .=" and a.matk = $matk";
         }
         return $db->getAll($query);
     }
-    function del_bill($mahd=0){
+
+    function del_bill($mahd = 0) {
         $db = new Connect();
-        if($mahd>0){
+        if ($mahd > 0) {
             $query = " DELETE FROM hoadon where mahd = $mahd ";
         }
         $db->execute($query);
     }
-    function del_bill_details($masp=0){
+
+    function del_bill_details($masp = 0) {
         $db = new Connect();
-        if($masp>0){
+        if ($masp > 0) {
             $query = " DELETE FROM hoadonchitiet where masp = $masp ";
         }
         $db->execute($query);
     }
+
     function add_bill($mahd, $tenkh, $sdt, $email = '', $diachi, $ngaymua, $tongtien, $ghichu, $matk = 0) {
         $db = new Connect();
         if ($matk > 0) {
@@ -154,6 +167,11 @@ class Cart extends Product {
             $stt = 'Chờ xác nhận';
         }
         return $stt;
+    }
+
+    function check_st($matt) {
+        $arr = array('Chờ Xác Nhận', 'Đã Xác Nhận', 'Đã Lấy Hàng', 'Đã Giao Hàng', 'Khách Hủy', 'Hệ Thống Hủy');
+        return $arr[$matt];
     }
 
 }

@@ -10,6 +10,7 @@ require_once '../../model/validate.php';
 require_once '../../model/news.php';
 require_once '../../model/account.php';
 require_once '../../model/phpmailer.php';
+require_once '../../model/cart.php';
 //<---End-Model---->
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 
@@ -34,6 +35,9 @@ $crAcc = new Account();
 //Mail
 $crMail = new PHPMail();
 // <---End-Mail--->
+//Cart
+$crCart = new Cart();
+// <---End-Cart--->
 //Controller
 $type = $_REQUEST['type'];
 $errArr = array();
@@ -363,6 +367,34 @@ if ($type) {
             } else {
                 echo json_encode($errArr);
             }
+            break;
+        case 'bill-detail':
+            $mahd = $_POST['mahd'];
+            $listBillDetail = $crCart->get_bill_details($mahd);
+
+            $output = '';
+            foreach ($listBillDetail as $bill) {
+                $output .= '<tr>
+                        <td>' . $bill['tensp'] . '</td>
+                        <td>' . number_format($bill['dongia'], 0, '', '.') . ' VNĐ</td>
+                        <td>' . $bill[1] . '</td>
+                        <td>' . number_format($bill[1] * $bill['dongia'], 0, '', '.') . '</td>
+                    </tr>';
+            }
+            echo json_encode($output);
+            break;
+        case 'check-bill-no-lg':
+            $phone = $_POST['sdt'];
+
+            if ($crValid->valid_phone($phone)) {
+                if (count($crCart->get_bill(0, $phone)) === 0) {
+                    $errArr['error_phone'] = 'Số điện thoại chưa từng mua hàng';
+                }
+            } else {
+                $errArr['error_phone'] = 'Hãy nhập đúng số điện thoại';
+            }
+            
+            echo json_encode($errArr);
             break;
         default:
             json_encode('Có vẻ bạn chưa biết phải làm gì nhỉ');
